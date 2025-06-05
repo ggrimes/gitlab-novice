@@ -70,22 +70,87 @@ because we have not created any files or commits; the repository is empty.
 ``` bash
 $ echo "# My eddie Python project" > README.md
 $ git status          # untracked file appears in red
+```
+
+``` output
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+To add a file to the git repo use `git add`
+
+``` bash
 $ git add README.md   # stage the file
 $ git status          # file appears in green (staged)
 ```
 
-Staging tells Git *which* changes belong to the next snapshot.
+``` output
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+    new file:   README.md
+```
+
+Staging tells Git *which* changes, Changes to be committed, belong to the next snapshot.
 
 ### 3. Commit the snapshot
 
+To add snapshot to repository use the `git commit` command. For each commit you will need to add a message using the `-m` option.
+
+::: callout
+## Git messages
+
+1.  Limit the Subject Line: Keep the subject or summary line to 50 characters or fewer. This ensures it's easily readable in various Git tools.​
+2.  Use the Imperative Mood: Frame your commit message as a command or action, e.g., **"Fix"** rather than "**Fixed"** or **"Fixes."​**
+3.  Avoid Vague Messages: Instead of writing **"Update code"** or **"Fix bug"**, specify what you did, such as **"Add error handling for login process."**
+:::
+
 ``` bash
 $ git commit -m "Add README with project title"
-[main 23bd868] Add README with project title
+```
+
+``` output
+[main (root-commit) 72041c0] Add README with project title
  1 file changed, 1 insertion(+)
  create mode 100644 README.md
 ```
 
-Every commit receives a unique 40‑character *hash* (displayed here as **23bd868** for brevity).
+Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
+
+
+### Git Log
+
+Show the sequence of commits starting from the current one, in reverse chronological order of the Git repository in the current working directory:
+
+
+```bash
+git log
+```
+
+```output
+git log​
+
+commit f00b5b49b39884a9bf978bc272c82d862976abcb (HEAD -> main)​
+
+Author: Graeme Grimes <Graeme.Grimes@ed.ac.uk>​
+
+Date:   Tue Sep 24 10:06:58 2024 +0100​
+
+​
+
+    Add Readme.md
+```
+
 
 :::: challenge
 #### Challenge 2: Where is my commit?
@@ -96,7 +161,7 @@ Use `git log --oneline` to view the history. How many commits appear and what in
 One commit appears:
 
 ``` text
-23bd868 (HEAD -> main) Add README with project title
+72041c0 (HEAD -> main) Add README with project title
 ```
 
 We see the abbreviated hash, the branch name, and the commit message.
@@ -105,31 +170,52 @@ We see the abbreviated hash, the branch name, and the commit message.
 
 ### 4. Modifying a file
 
-Edit *README.md* 
+Edit *README.md*
 
-```bash
+``` bash
 nano README.md
 ```
 
 add a *Run Script* section
 
-```
+```         
 # My eddie Python project​
 
 To run Python on eddie need to run:​
     module load igmm/apps/python/3.7
 ```
 
-stage the file using `git add`
+
+git status
 
 ```bash
-git add README.md
+$ git status          # modified file in red
+```
+
+
+```output
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
 ```
 
 
 ``` bash
-$ git status          # modified file in red
 $ git diff README.md  # view changes
+```
+
+```output
+diff --git a/README.md b/README.md
+index a4c6c69..603f621 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,4 @@
+ # My eddie Python project
++
++To run Python on eddie need to run:
++    module load igmm/apps/python/3.7
 ```
 
 Lines removed are prefixed with `-` (red); additions with `+` (green).
@@ -141,6 +227,11 @@ $ git add README.md
 $ git commit -m "Describe how to run analysis script"
 ```
 
+```output
+[main 370eb9d] Describe how to run analysis script
+  1 file changed, 3 insertions(+)
+```
+
 ### 5. Inspecting differences between commits
 
 ``` bash
@@ -148,6 +239,18 @@ $ git diff HEAD~1 README.md   # compare current commit to one before
 ```
 
 `HEAD` is a symbolic name for *the current commit*; `HEAD~1` means *one commit ago*.
+
+```output
+diff --git a/README.md b/README.md
+index a4c6c69..603f621 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,4 @@
+ # My eddie Python project
++
++To run Python on eddie need to run:
++    module load igmm/apps/python/3.7
+```
 
 :::: challenge
 #### Challenge 3: Predict the diff
