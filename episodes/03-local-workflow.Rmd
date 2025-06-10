@@ -127,17 +127,15 @@ $ git commit -m "Add README with project title"
 
 Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
 
-
 ### Git Log
 
 Show the sequence of commits starting from the current one, in reverse chronological order of the Git repository in the current working directory:
 
-
-```bash
+``` bash
 git log
 ```
 
-```output
+``` output
 git log​
 
 commit f00b5b49b39884a9bf978bc272c82d862976abcb (HEAD -> main)​
@@ -150,7 +148,6 @@ Date:   Tue Sep 24 10:06:58 2024 +0100​
 
     Add Readme.md
 ```
-
 
 :::: challenge
 #### Challenge 2: Where is my commit?
@@ -185,28 +182,29 @@ To run Python on eddie need to run:​
     module load igmm/apps/python/3.7
 ```
 
-
 git status
 
-```bash
+``` bash
 $ git status          # modified file in red
 ```
 
-
-```output
+``` output
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   README.md
+    modified:   README.md
 ```
 
+## Viewing changes
+
+We can you the command `git diff` to view our change.
 
 ``` bash
 $ git diff README.md  # view changes
 ```
 
-```output
+``` output
 diff --git a/README.md b/README.md
 index a4c6c69..603f621 100644
 --- a/README.md
@@ -218,16 +216,74 @@ index a4c6c69..603f621 100644
 +    module load igmm/apps/python/3.7
 ```
 
-Lines removed are prefixed with `-` (red); additions with `+` (green).
+------------------------------------------------------------------------
 
-Stage and commit the update:
+### What Each Part Means
+
+------------------------------------------------------------------------
+
+#### `diff --git a/README.md b/README.md`
+
+-   **This is the file being changed**: `README.md`
+-   `a/README.md` = the old version
+-   `b/README.md` = the new version
+-   This line starts the diff block for that file.
+
+------------------------------------------------------------------------
+
+####  `index a4c6c69..603f621 100644`
+
+-   **`a4c6c69`** = commit hash of the file *before* the change
+-   **`603f621`** = commit hash of the file *after* the change
+-   **`100644`** = file mode (normal non-executable file)
+
+------------------------------------------------------------------------
+
+#### ➖ `--- a/README.md`
+
+#### ➕ `+++ b/README.md`
+
+-   Shows **what version** is being removed (`---`) and added (`+++`)
+-   Still refers to the same file (`README.md`), before and after
+
+------------------------------------------------------------------------
+
+####  `@@ -1 +1,4 @@`
+
+-   This is a **"hunk header"** showing line number context
+-   `-1` = from line 1 of the **old file**
+-   `+1,4` = starting at line 1 of the **new file**, and it now spans **4 lines**
+
+------------------------------------------------------------------------
+
+###  Content Change Section
+
+``` diff
+ # My eddie Python project
++
++To run Python on eddie need to run:
++    module load igmm/apps/python/3.7
+```
+
+| Symbol | Meaning | Explanation |
+|--------------|--------------|---------------------------------------------|
+|  | (no symbol) | This line was **already there** |
+| `+` | Line was **added** | These 3 new lines were inserted below the original first line |
+
+------------------------------------------------------------------------
+
+## 
+
+### Stage and commit the update:
+
+Once we are happy with the changes we can stage the changes and then commit into the git repository.
 
 ``` bash
 $ git add README.md
 $ git commit -m "Describe how to run analysis script"
 ```
 
-```output
+``` output
 [main 370eb9d] Describe how to run analysis script
   1 file changed, 3 insertions(+)
 ```
@@ -240,7 +296,7 @@ $ git diff HEAD~1 README.md   # compare current commit to one before
 
 `HEAD` is a symbolic name for *the current commit*; `HEAD~1` means *one commit ago*.
 
-```output
+``` output
 diff --git a/README.md b/README.md
 index a4c6c69..603f621 100644
 --- a/README.md
@@ -264,7 +320,7 @@ They will be **green with a + prefix** because new lines are *additions* relativ
 
 ### 6. Undoing a change in the working directory
 
-You can discard **unstaged** edits:
+If you accidently stage a file you can discard **unstaged** edits using `git restore`:
 
 ``` bash
 $ git restore README.md   # newer Git (>=2.23)
@@ -284,11 +340,16 @@ $ touch Src/.gitkeep
 $ git add Src/.gitkeep
 ```
 
-For data files:
+Let download a file into a Data directory
 
 ``` bash
 $ mkdir Data
 $ curl -L -o Data/data.csv https://figshare.com/ndownloader/files/14632895
+```
+
+We can now add ito staging area and commit to repository.
+
+```bash
 $ git add Data/data.csv # Comment on when to commit data​
 $ git commit -m "Add example dataset"
 ```
@@ -297,6 +358,12 @@ $ git commit -m "Add example dataset"
 #### Challenge 4: Multiple file workflow
 
 Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add and commit it. Then modify the script to read the CSV file added above and print the number of rows. Use `git diff` before committing to verify the change.
+
+```python
+        #!/usr/bin/env python
+        print("Hello World!")
+```
+
 
 ::: solution
 1.  Create the file:
@@ -310,9 +377,24 @@ Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add a
     $ git add Src/hello.py
     $ git commit -m "Add hello world script"
     ```
+:::
 
 2.  Edit the script, stage, inspect, commit:
 
+    ``` python
+    #!/usr/bin/env python​
+    ​
+    # load pandas library​
+    import pandas as pd​
+    ​
+    # Read the data​
+    variants =  pd.read_csv("Data/data.csv")​
+    ​
+    # Check we have the data​
+    print(variants)
+    ```
+
+::: solution
     ``` python
     #!/usr/bin/env python​
     ​
@@ -337,17 +419,16 @@ Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add a
 ### 8. Viewing the complete history
 
 ``` bash
-$ git log --graph --oneline --decorate --all
+$ git log
 ```
 
-The `--graph` flag draws an ASCII branch diagram; `--decorate` shows branch names.
 
 ::: keypoints
 -   `git init` turns a directory into a repository by creating `.git`.
--   `git status` is your friend—run it often.
+-   `git status` gives you a report on your git repository.
 -   Stage files with `git add`; record them permanently with `git commit -m`.
 -   Use `git diff` to inspect unstaged or staged changes.
 -   `git log` reveals the history; hashes uniquely identify commits.
 -   Empty directories are **not tracked**—add a file such as `.gitkeep`.
--   `git restore` (or `git checkout --`) returns a file to a known state.
+-   `git restore` returns a file to a known state.
 :::

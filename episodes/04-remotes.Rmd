@@ -1,111 +1,259 @@
 ---
-title: '04-remotes'
-teaching: 10
-exercises: 2
+title: "Working with Remote Repositories"
+teaching: 15
+exercises: 4
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+::: questions
+-   What is a *remote* in Git?
+-   How do I connect my local repository to one hosted on GitLab?
+-   How do I share my work (push) and incorporate others' work (pull)?
+-   What should I do if a push is rejected because my branch is behind?
+:::
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: objectives
-
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
-
-::::::::::::::::::::::::::::::::::::::::::::::::
+::: objectives
+-   Define the term *remote* and list at least two common hosting services.
+-   Clone an existing repository from GitLab to your computer with `git clone`.
+-   Create a new remote connection with `git remote add` and publish code with `git push -u origin main`.
+-   Retrieve updates with `git pull` and explain the difference between `git pull` and `git fetch`.
+-   Resolve a simple *non‑fast‑forward* push rejection by pulling before pushing.
+:::
 
 ## Introduction
 
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown][pandoc] for static files (with extension `.md`) and
-[R Markdown][r-markdown] for dynamic files that can render code into output
-(with extension `.Rmd`). Please refer to the [Introduction to The Carpentries
-Workbench][carpentries-workbench] for full documentation.
+A Git *remote* is a shorthand name for a version of your project hosted elsewhere, typically on a server like [GitLab](https://git.ecdf.ed.ac.uk/) or [GitHub](https://github.com/). Remotes allow you to **share** your history and **collaborate** with others.
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson template:
+## University of Edinburgh GitLab Repository
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+The University of Edinburgh provides a Git Repository hosting service using [GitLab](https://git.ecdf.ed.ac.uk) more information [here](https://www.wiki.ed.ac.uk/pages/viewpage.action?spaceKey=ResearchServices&title=GitLab)
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+Log into GitLab, [ttps://git.ecdf.ed.ac.uk, using your University of Edinburgh credentials.
 
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
+### Create New Project
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+1.  Select **New project**
 
-::::::::::::::::::::::::::::::::::::: challenge 
+    ![](fig/gitlab-homepage.png)
 
-## Challenge 1: Can you do it?
+2.  Select **Create blank project**
 
-What is the output of this command?
+    ![](fig/gitlab-new-project.png)
 
-```r
-paste("This", "new", "lesson", "looks", "good")
+3.  Add a Project Name **MyProject**
+
+4.  **Un-tick** **Project Configuration-\>Initialize with A README**
+
+5.  Click **Create Project**
+
+    ![]()![](fig/gitlab-new-project2.png)
+
+6.This will create an Empty Repository, with details on how to link your existing git repository.
+
+![](fig/gitlab-empty-project.png)
+
+### GitLab security
+
+To enable password less access to your remote, you can add your public SSH Key from Eddie to the remote repository.
+
+#### Generating a new SSH key
+
+You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on GitLab to enable authentication for Git operations over SSH. 
+
+The University guide can be found [here](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide)
+
+
+Example below
+
+
+```bash
+[username@login02(eddie) ~]$ ssh-keygen -o -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/username/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/username/.ssh/id_ed25519.
+Your public key has been saved in /home/username/.ssh/id_ed25519.pub.
+The key fingerprint is:
+SHA256:3t/tZzvbviR5Xs1YYYQeaGtI2n02W(and some more characters)hxxt (email address of the user)
+The key's randomart image is:
++--[ED25519 256]--+
+|  oo..   .  o... |
+| o. o o ...o.+.  |
+|  .+ + o+ +o+ .o |
+| E  o o. o +.B. .|
+|        S . = o .|
+|       . . .  .+.|
+|        . .  o.o+|
+|           . .=o=|
+|            . .O@|
++----[SHA256]-----+
 ```
 
-:::::::::::::::::::::::: solution 
+This will generate two files: the private key file (in this example `/home/username/.ssh/id_ed25519`) and the public key file (`/home/username/.ssh/id_ed25519.pub`) - it is vitally important that you never share your private key
 
-## Output
- 
-```output
-[1] "This new lesson looks good"
+You can now add the contents of the public key file `id_ed25519.pub` to the GitLab.
+
+Go to https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys then click add **new key**
+
+![](fig/gitlab-ssh2.png)\
+
+## Git Remote on Eddie
+
+Here we will link our existing repository on Eddie with the remote on GitLab, using the `git remote` command.
+
+``` bash
+$ git remote --help     # on eddie
 ```
 
-:::::::::::::::::::::::::::::::::
+To add out remote we use `git remote add` using the information on the blank GitLab Repository page.
 
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution 
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Figures
-
-You can include figures generated from R Markdown:
-
-```{r pyramid, fig.alt = "pie chart illusion of a pyramid", fig.cap = "Sun arise each and every morning"}
-pie(
-  c(Sky = 78, "Sunny side of pyramid" = 17, "Shady side of pyramid" = 5), 
-  init.angle = 315, 
-  col = c("deepskyblue", "yellow", "yellow3"), 
-  border = FALSE
-)
+``` bash
+$ git remote add origin git@git.ecdf.ed.ac.uk:ggrimes2/myproject.git
 ```
-Or you can use pandoc markdown for static figures with the following syntax:
 
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
+We can now use the `git remote -v` command to see it has been linked.
 
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+``` bash
+git remote -v
+```
 
-## Math
+::: callout
+Origin
 
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
+The name "origin" for a git remote is not inherently special to Git's internal mechanics, but it is a widely accepted convention and has a few notable points:
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+Default Name: When you clone a repository from a remote source using git clone <repository_url>, Git automatically names the remote repository "origin" by default. It's just a convention that Git follows.
 
-Cool, right?
+Widely Recognized: Because of this default behavior, many developers expect "origin" to refer to the primary or original repository from which the project was cloned. This shared understanding can help with clarity when collaborating.
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+Can be Renamed or Removed: There's nothing binding about the name "origin." You can rename it or even have multiple remotes with different names to track different repositories or branches.
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+In essence, "origin" is a convention, and while it's not mandatory to use, adhering to such conventions can make collaborative work smoother and more intuitive.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+When you **clone** a repository you automatically get one remote called `origin`. If you start with a local repo (`git init`) you can add one later:
+:::
 
+### Syncing Changes
+
+Now we have created an empty repository on the GitLab Server we can send the local changes to the remote using git push
+
+``` bash
+$ git push
+```
+
+### ![](fig/gitlab-push01.png)
+
+### 1. Cloning a repository
+
+Make a change
+
+``` bash
+$ nano Readme.md
+```
+
+Add this text to the bottom of the `Readme.md` file
+
+```         
+## Data
+The [data](https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632895) is made available under an [Creative Commons license](https://creativecommons.org/licenses/by/3.0/).
+```
+
+Now we will, add, commit and push changes to our remote repository.
+
+``` bash
+$ git status
+$ git add Readme.md
+$ git commit –m "Add Eddie and Data subsections"
+$ git status
+$ git push -u origin main # run once
+$ git push # use this after
+```
+
+::: instructor
+Learners often forget the `-u` flag on their *first* push. Emphasise that `git push -u origin main` sets up the **tracking relationship**, allowing future `git push`/`git pull` without extra arguments.
+:::
+
+
+### 3. Pulling changes
+
+Suppose a collaborator adds commits t our remote repository *origin/main*:
+
+``` bash
+$ git pull             # fetch + merge
+```
+
+If there is no divergence, Git performs a *fast‑forward* merge. Otherwise you may need to resolve conflicts before completing the merge.
+
+`git fetch` downloads objects **without** merging; you can inspect them before integrating.
+
+### 4. Handling a rejected push
+
+You may see:
+
+``` text
+! [rejected]   main -> main (non-fast-forward)
+```
+
+This means your local branch is **behind** the remote. Fix it by pulling, resolving any conflicts, then pushing again:
+
+``` bash
+$ git pull --rebase   # preferred: reapply your work on top of remote
+# ...resolve conflicts if prompted...
+$ git push
+```
+
+::::::::::: challenge
+#### Challenge 1: Check your remote
+
+1.  Run `git remote -v`.
+2.  Which command would you use to rename the remote from *origin* to *source*?
+
+::: solution
+1.  The output lists fetch and push URLs for *origin*.
+2.  `git remote rename origin source`.
+:::
+
+::::::::: challenge
+#### Challenge 2: Upstream tracking
+
+After cloning, what command shows which remote branch your local *main* is tracking?
+
+::: solution
+`git branch -vv` lists local branches with their upstream counterparts.
+:::
+
+::::::: challenge
+#### Challenge 3: Predict the outcome
+
+You run `git fetch origin` followed by `git log --oneline main..origin/main`. What will appear and why?
+
+::: solution
+The log shows commits that exist in *origin/main* but **not** in your local *main*; the two‑dot syntax lists commits reachable from the second reference and not the first.
+:::
+
+::::: challenge
+#### Challenge 4: Clone vs init
+
+List one advantage and one disadvantage of `git clone` compared to creating a repo with `git init` and then adding a remote.
+
+::: solution
+*Advantage:* `git clone` copies **all** history and configures the remote automatically, saving time.
+
+*Disadvantage:* You cannot easily choose which files or branches to include during the initial copy (though `--depth` and `--branch` options help).
+:::
+
+## Summary diagram
+
+![Add comprehensive remote workflow diagram.](TODO-fig/remote-workflow-overview.svg)
+
+::: keypoints
+-   A *remote* is a named reference to a repository hosted elsewhere.
+-   `git clone URL` copies a remote repository and sets up *origin*.
+-   Publish an existing repo with `git remote add` followed by `git push -u origin <branch>`.
+-   `git pull` equals `git fetch` + `git merge`; use `--rebase` to avoid unnecessary merges.
+-   A push may be rejected if your branch is behind; pull (or fetch & merge) then push again.
+:::
+:::::
+:::::::
+:::::::::
+:::::::::::
