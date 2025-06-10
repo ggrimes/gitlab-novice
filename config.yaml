@@ -70,6 +70,7 @@ episodes:
 - 03-local-workflow.Rmd
 - 04-remotes.Rmd
 - 05-exploring-history.Rmd
+- 05-git-gui.Rmd
 
 # Information for Learners
 learners: 
