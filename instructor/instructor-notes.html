@@ -244,7 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-introduction.html">1. Why Version Control?</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-introduction.html">2. Why Version Control?</a>
+        <a href="02-configuring-git.html">2. Configuring Git</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-configuring-git.html">3. Configuring Git</a>
+        <a href="03-local-workflow.html">3. Recording Changes Locally</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-local-workflow.html">4. Recording Changes Locally</a>
+        <a href="04-remotes.html">4. Working with Remote Repositories</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -292,7 +292,19 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-remotes.html">5. 04-remotes</a>
+        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-git-gui.html">6. Using Git with RStudio</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -364,16 +376,7 @@ any links that you are not going to use.
  -->
 
 
-      <section id="aggregate-instructor-notes"><section id="introduction"><h2 class="section-heading"><a href="introduction.html">Using RMarkdown</a></h2>
-<hr class="half-width">
-<h3 id="introduction-headingInstructor1">
-<a href="introduction.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor1"></a>
-</h3>
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
-<hr>
-<br></section><section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
+      <section id="aggregate-instructor-notes"><section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
 <hr class="half-width">
 <h3 id="01-introduction-headingInstructor1">
 <a href="01-introduction.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#01-introduction-headingInstructor1"></a>
@@ -405,14 +408,33 @@ packing items into a box (staging) before placing the box in long‑term
 storage (repository). Running <code>git status</code> after every major
 step reinforces the mental model.</p>
 <hr>
-<br></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">04-remotes</a></h2>
+<br></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">Working with Remote Repositories</a></h2>
 <hr class="half-width">
 <h3 id="04-remotes-headingInstructor1">
 <a href="04-remotes.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#04-remotes-headingInstructor1"></a>
 </h3>
+<p>Learners often forget the <code>-u</code> flag on their
+<em>first</em> push. Emphasise that <code>git push -u origin main</code>
+sets up the <strong>tracking relationship</strong>, allowing future
+<code>git push</code>/<code>git pull</code> without extra arguments.</p>
+<hr>
+<br></section><section id="05-exploring-history"><h2 class="section-heading"><a href="05-exploring-history.html">05-exploring-history</a></h2>
+<hr class="half-width">
+<h3 id="05-exploring-history-headingInstructor1">
+<a href="05-exploring-history.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#05-exploring-history-headingInstructor1"></a>
+</h3>
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
 View”</p>
+<hr>
+<br></section><section id="05-git-gui"><h2 class="section-heading"><a href="05-git-gui.html">Using Git with RStudio</a></h2>
+<hr class="half-width">
+<h3 id="05-git-gui-headingInstructor1">
+<a href="05-git-gui.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#05-git-gui-headingInstructor1"></a>
+</h3>
+<p>Reassure learners that the GUI is not a “less powerful” version of
+Git—it’s just another interface to the same tool. Some users will
+transition back and forth between the GUI and command line.</p>
 <hr>
 <br></section></section>
 </div>
@@ -462,8 +484,8 @@ View”</p>
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/instructor-notes.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/instructor-notes.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-10",
-  "datePublished": "2025-06-10"
+  "dateModified": "2025-06-11",
+  "datePublished": "2025-06-11"
 }
 
   </script><script>

@@ -65,11 +65,12 @@ contact: 'Graeme.Grimes@ed.ac.uk'
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.Rmd
 - 01-introduction.Rmd
 - 02-configuring-git.Rmd
 - 03-local-workflow.Rmd
 - 04-remotes.Rmd
+- 05-exploring-history.Rmd
+- 05-git-gui.Rmd
 
 # Information for Learners
 learners: 

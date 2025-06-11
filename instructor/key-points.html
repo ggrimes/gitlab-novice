@@ -244,7 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-introduction.html">1. Why Version Control?</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-introduction.html">2. Why Version Control?</a>
+        <a href="02-configuring-git.html">2. Configuring Git</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-configuring-git.html">3. Configuring Git</a>
+        <a href="03-local-workflow.html">3. Recording Changes Locally</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-local-workflow.html">4. Recording Changes Locally</a>
+        <a href="04-remotes.html">4. Working with Remote Repositories</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -292,7 +292,19 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-remotes.html">5. 04-remotes</a>
+        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-git-gui.html">6. Using Git with RStudio</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -356,18 +368,7 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="introduction"><h2 class="section-heading"><a href="introduction.html">Using RMarkdown</a></h2>
-<hr class="half-width">
-<ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
-</ul></section><section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
+<section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
 <hr class="half-width">
 <ul>
 <li>Version control records every meaningful change to your
@@ -394,7 +395,8 @@ commits are attributed correctly.</li>
 <code>git init</code> turns a directory into a repository by
 creating <code>.git</code>.</li>
 <li>
-<code>git status</code> is your friend—run it often.</li>
+<code>git status</code> gives you a report on your git
+repository.</li>
 <li>Stage files with <code>git add</code>; record them permanently with
 <code>git commit -m</code>.</li>
 <li>Use <code>git diff</code> to inspect unstaged or staged
@@ -405,9 +407,24 @@ commits.</li>
 <li>Empty directories are <strong>not tracked</strong>—add a file such
 as <code>.gitkeep</code>.</li>
 <li>
-<code>git restore</code> (or <code>git checkout --</code>) returns a
-file to a known state.</li>
-</ul></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">04-remotes</a></h2>
+<code>git restore</code> returns a file to a known state.</li>
+</ul></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">Working with Remote Repositories</a></h2>
+<hr class="half-width">
+<ul>
+<li>A <em>remote</em> is a named reference to a repository hosted
+elsewhere.</li>
+<li>
+<code>git clone URL</code> copies a remote repository and sets up
+<em>origin</em>.</li>
+<li>Publish an existing repo with <code>git remote add</code> followed
+by <code>git push -u origin &lt;branch&gt;</code>.</li>
+<li>
+<code>git pull</code> equals <code>git fetch</code> +
+<code>git merge</code>; use <code>--rebase</code> to avoid unnecessary
+merges.</li>
+<li>A push may be rejected if your branch is behind; pull (or fetch
+&amp; merge) then push again.</li>
+</ul></section><section id="05-exploring-history"><h2 class="section-heading"><a href="05-exploring-history.html">05-exploring-history</a></h2>
 <hr class="half-width">
 <ul>
 <li>Use <code>.md</code> files for episodes when you want static
@@ -418,6 +435,16 @@ output</li>
 with your lesson</li>
 <li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
 locally</li>
+</ul></section><section id="05-git-gui"><h2 class="section-heading"><a href="05-git-gui.html">Using Git with RStudio</a></h2>
+<hr class="half-width">
+<ul>
+<li>Git GUIs offer a visual way to use Git—perfect for beginners and for
+visualising changes.</li>
+<li>RStudio’s Git integration supports cloning, staging, committing, and
+pushing.</li>
+<li>Always configure your name/email before making your first
+commit.</li>
+<li>You can verify success by checking your changes online.</li>
 </ul></section>
 </div>
     </main>
@@ -466,8 +493,8 @@ locally</li>
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/key-points.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/key-points.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-10",
-  "datePublished": "2025-06-10"
+  "dateModified": "2025-06-11",
+  "datePublished": "2025-06-11"
 }
 
   </script><script>

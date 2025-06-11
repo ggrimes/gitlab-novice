@@ -118,11 +118,11 @@
   Introduction to Git and GitLab
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 54%" class="percentage">
-    54%
+<aside class="col-md-12 lesson-progress"><div style="width: 30%" class="percentage">
+    30%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 54%" aria-valuenow="54" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 30%" aria-valuenow="30" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -206,7 +206,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-introduction.html">1. Why Version Control?</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -215,16 +215,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-introduction.html">2. Why Version Control?</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush4">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading4">
-        <a href="02-configuring-git.html">3. Configuring Git</a>
+        <a href="02-configuring-git.html">2. Configuring Git</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -236,7 +227,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        4. Recording Changes Locally
+        3. Recording Changes Locally
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -244,8 +235,19 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#viewing-changes">Viewing changes</a></li>
+<li><a href="#section-1"></a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush5">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading5">
+        <a href="04-remotes.html">4. Working with Remote Repositories</a>
+    </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -253,7 +255,16 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-remotes.html">5. 04-remotes</a>
+        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-git-gui.html">6. Using Git with RStudio</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -311,13 +322,13 @@
           Previous: Configuring Git
         </a>
         <a class="chapter-link float-end" href="../instructor/04-remotes.html" rel="next">
-          Next: 04-remotes...
+          Next: Working with Remote...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Recording Changes Locally</h1>
-        <p>Last updated on 2025-06-05 |
+        <p>Last updated on 2025-06-11 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/03-local-workflow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -600,8 +611,11 @@ To run Python on eddie need to run:​
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
   (use "git restore &lt;file&gt;..." to discard changes in working directory)
-	modified:   README.md</code></pre>
+    modified:   README.md</code></pre>
 </div>
+</div>
+</section><section><h2 class="section-heading" id="viewing-changes">Viewing changes<a class="anchor" aria-label="anchor" href="#viewing-changes"></a></h2>
+<hr class="half-width"><p>We can you the command <code>git diff</code> to view our change.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -620,14 +634,89 @@ index a4c6c69..603f621 100644
 +To run Python on eddie need to run:
 +    module load igmm/apps/python/3.7</code></pre>
 </div>
-<p>Lines removed are prefixed with <code>-</code> (red); additions with
-<code>+</code> (green).</p>
-<p>Stage and commit the update:</p>
+<hr><div class="section level3">
+<h3 id="what-each-part-means">What Each Part Means<a class="anchor" aria-label="anchor" href="#what-each-part-means"></a></h3>
+<hr><div class="section level4">
+<h4 id="diff---git-areadme-md-breadme-md"><code>diff --git a/README.md b/README.md</code><a class="anchor" aria-label="anchor" href="#diff---git-areadme-md-breadme-md"></a></h4>
+<ul><li>
+<strong>This is the file being changed</strong>:
+<code>README.md</code>
+</li>
+<li>
+<code>a/README.md</code> = the old version</li>
+<li>
+<code>b/README.md</code> = the new version</li>
+<li>This line starts the diff block for that file.</li>
+</ul><hr></div>
+<div class="section level4">
+<h4 id="index-a4c6c69--603f621-100644"><code>index a4c6c69..603f621 100644</code><a class="anchor" aria-label="anchor" href="#index-a4c6c69--603f621-100644"></a></h4>
+<ul><li>
+<strong><code>a4c6c69</code></strong> = commit hash of the file
+<em>before</em> the change</li>
+<li>
+<strong><code>603f621</code></strong> = commit hash of the file
+<em>after</em> the change</li>
+<li>
+<strong><code>100644</code></strong> = file mode (normal
+non-executable file)</li>
+</ul><hr></div>
+<div class="section level4">
+<h4 id="areadme-md">➖ <code>--- a/README.md</code>
+<a class="anchor" aria-label="anchor" href="#areadme-md"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="breadme-md">➕ <code>+++ b/README.md</code>
+<a class="anchor" aria-label="anchor" href="#breadme-md"></a></h4>
+<ul><li>Shows <strong>what version</strong> is being removed
+(<code>---</code>) and added (<code>+++</code>)</li>
+<li>Still refers to the same file (<code>README.md</code>), before and
+after</li>
+</ul><hr></div>
+<div class="section level4">
+<h4 id="section"><code>@@ -1 +1,4 @@</code><a class="anchor" aria-label="anchor" href="#section"></a></h4>
+<ul><li>This is a <strong>“hunk header”</strong> showing line number
+context</li>
+<li>
+<code>-1</code> = from line 1 of the <strong>old file</strong>
+</li>
+<li>
+<code>+1,4</code> = starting at line 1 of the <strong>new
+file</strong>, and it now spans <strong>4 lines</strong>
+</li>
+</ul><hr></div>
+</div>
+<div class="section level3">
+<h3 id="content-change-section">Content Change Section<a class="anchor" aria-label="anchor" href="#content-change-section"></a></h3>
 <div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">DIFF<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode diff" tabindex="0"><code class="sourceCode diff"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a> # My eddie Python project</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="va">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="va">+To run Python on eddie need to run:</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="va">+    module load igmm/apps/python/3.7</span></span></code></pre>
+</div>
+<table class="table"><colgroup><col width="19%"><col width="19%"><col width="61%"></colgroup><thead><tr class="header"><th>Symbol</th>
+<th>Meaning</th>
+<th>Explanation</th>
+</tr></thead><tbody><tr class="odd"><td></td>
+<td>(no symbol)</td>
+<td>This line was <strong>already there</strong>
+</td>
+</tr><tr class="even"><td><code>+</code></td>
+<td>Line was <strong>added</strong>
+</td>
+<td>These 3 new lines were inserted below the original first line</td>
+</tr></tbody></table><hr></div>
+</section><section><h2 class="section-heading" id="section-1"></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="stage-and-commit-the-update">Stage and commit the update:<a class="anchor" aria-label="anchor" href="#stage-and-commit-the-update"></a></h3>
+<p>Once we are happy with the changes we can stage the changes and then
+commit into the git repository.</p>
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> git add README.md</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Describe how to run analysis script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">$</span> git add README.md</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Describe how to run analysis script"</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -638,10 +727,10 @@ index a4c6c69..603f621 100644
 </div>
 <div class="section level3">
 <h3 id="inspecting-differences-between-commits">5. Inspecting differences between commits<a class="anchor" aria-label="anchor" href="#inspecting-differences-between-commits"></a></h3>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 README.md   <span class="co"># compare current commit to one before</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 README.md   <span class="co"># compare current commit to one before</span></span></code></pre>
 </div>
 <p><code>HEAD</code> is a symbolic name for <em>the current commit</em>;
 <code>HEAD~1</code> means <em>one commit ago</em>.</p>
@@ -687,13 +776,14 @@ are <em>additions</em> relative to the previous snapshot.</p>
 </div>
 <div class="section level3">
 <h3 id="undoing-a-change-in-the-working-directory">6. Undoing a change in the working directory<a class="anchor" aria-label="anchor" href="#undoing-a-change-in-the-working-directory"></a></h3>
-<p>You can discard <strong>unstaged</strong> edits:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<p>If you accidently stage a file you can discard
+<strong>unstaged</strong> edits using <code>git restore</code>:</p>
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">$</span> git restore README.md   <span class="co"># newer Git (&gt;=2.23)</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> README.md  <span class="co"># older Git versions</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> git restore README.md   <span class="co"># newer Git (&gt;=2.23)</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> README.md  <span class="co"># older Git versions</span></span></code></pre>
 </div>
 <p>Be cautious: this removes changes <strong>permanently</strong> unless
 they were staged or committed.</p>
@@ -703,21 +793,26 @@ they were staged or committed.</p>
 <p>Git tracks <strong>files</strong>, not empty directories. To include
 a folder you must add at least one file inside it (often an empty
 <code>.gitkeep</code>):</p>
-<div class="codewrapper sourceCode" id="cb23">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> mkdir Src</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="ex">$</span> touch Src/.gitkeep</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="ex">$</span> git add Src/.gitkeep</span></code></pre>
-</div>
-<p>For data files:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> mkdir Data</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-L</span> <span class="at">-o</span> Data/data.csv https://figshare.com/ndownloader/files/14632895</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="ex">$</span> git add Data/data.csv <span class="co"># Comment on when to commit data​</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add example dataset"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> mkdir Src</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="ex">$</span> touch Src/.gitkeep</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="ex">$</span> git add Src/.gitkeep</span></code></pre>
+</div>
+<p>Let download a file into a Data directory</p>
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> mkdir Data</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-L</span> <span class="at">-o</span> Data/data.csv https://figshare.com/ndownloader/files/14632895</span></code></pre>
+</div>
+<p>We can now add ito staging area and commit to repository.</p>
+<div class="codewrapper sourceCode" id="cb26">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">$</span> git add Data/data.csv <span class="co"># Comment on when to commit data​</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add example dataset"</span></span></code></pre>
 </div>
 <div id="challenge-4-multiple-file-workflow" class="callout challenge">
 <div class="callout-square">
@@ -730,6 +825,12 @@ a folder you must add at least one file inside it (often an empty
 <em>“Hello World!”</em>. Add and commit it. Then modify the script to
 read the CSV file added above and print the number of rows. Use
 <code>git diff</code> before committing to verify the change.</p>
+<div class="codewrapper sourceCode" id="cb27">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>        <span class="co">#!/usr/bin/env python</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -742,57 +843,93 @@ read the CSV file added above and print the number of rows. Use
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <p>Create the file:</p>
-<div class="codewrapper sourceCode" id="cb25">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>    <span class="co">#!/usr/bin/env python</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb26">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
-</div>
-</li>
-<li>
-<p>Edit the script, stage, inspect, commit:</p>
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>​</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd​</span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>​</span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co"># Read the data​</span></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)​</span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>​</span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb28">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>    <span class="co">#!/usr/bin/env python</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
 </div>
 </li>
 </ol></div>
 </div>
 </div>
 </div>
+<div id="challenge-4-multiple-file-workflow" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="challenge-4-multiple-file-workflow" class="callout-inner">
+<h3 class="callout-title">Challenge 4: Multiple file workflow<em>
+(continued)</em>
+</h3>
+<div class="callout-content">
+<ol start="2" style="list-style-type: decimal"><li>
+<p>Edit the script, stage, inspect, commit:</p>
+<div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>​</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd​</span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>​</span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="co"># Read the data​</span></span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)​</span>
+<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>​</span>
+<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
+<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
+</div>
+</li>
+</ol></div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb31">
+<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="kw">```</span> <span class="ex">python</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="ex">import</span> pandas as pd​</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a><span class="co"># Read the data​</span></span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="ex">variants</span> =  pd.read_csv<span class="er">(</span><span class="st">"Data/data.csv"</span><span class="kw">)</span><span class="ex">​</span></span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">variants</span><span class="kw">)</span></span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a><span class="kw">```</span></span>
+<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="kw">```</span> <span class="fu">bash</span></span>
+<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
+<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span>
+<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="kw">```</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="viewing-the-complete-history">8. Viewing the complete history<a class="anchor" aria-label="anchor" href="#viewing-the-complete-history"></a></h3>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--graph</span> <span class="at">--oneline</span> <span class="at">--decorate</span> <span class="at">--all</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre>
 </div>
-<p>The <code>--graph</code> flag draws an ASCII branch diagram;
-<code>--decorate</code> shows branch names.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -804,7 +941,8 @@ read the CSV file added above and print the number of rows. Use
 <code>git init</code> turns a directory into a repository by
 creating <code>.git</code>.</li>
 <li>
-<code>git status</code> is your friend—run it often.</li>
+<code>git status</code> gives you a report on your git
+repository.</li>
 <li>Stage files with <code>git add</code>; record them permanently with
 <code>git commit -m</code>.</li>
 <li>Use <code>git diff</code> to inspect unstaged or staged
@@ -815,8 +953,7 @@ commits.</li>
 <li>Empty directories are <strong>not tracked</strong>—add a file such
 as <code>.gitkeep</code>.</li>
 <li>
-<code>git restore</code> (or <code>git checkout --</code>) returns a
-file to a known state.</li>
+<code>git restore</code> returns a file to a known state.</li>
 </ul></div>
 </div>
 </div>
@@ -837,7 +974,7 @@ any links that you are not going to use.
           Previous: Configuring Git
         </a>
         <a class="chapter-link float-end" href="../instructor/04-remotes.html" rel="next">
-          Next: 04-remotes...
+          Next: Working with Remote...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -883,8 +1020,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/03-local-workflow.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/03-local-workflow.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-05",
-  "datePublished": "2025-06-10"
+  "dateModified": "2025-06-11",
+  "datePublished": "2025-06-11"
 }
 
   </script><script>

@@ -210,7 +210,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-introduction.html">1. Why Version Control?</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -219,7 +219,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-introduction.html">2. Why Version Control?</a>
+        <a href="02-configuring-git.html">2. Configuring Git</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -228,7 +228,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-configuring-git.html">3. Configuring Git</a>
+        <a href="03-local-workflow.html">3. Recording Changes Locally</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -237,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-local-workflow.html">4. Recording Changes Locally</a>
+        <a href="04-remotes.html">4. Working with Remote Repositories</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -246,7 +246,16 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-remotes.html">5. 04-remotes</a>
+        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-git-gui.html">6. Using Git with RStudio</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -294,11 +303,11 @@
         <!-- START: inst/pkgdown/templates/content-syllabus.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/introduction.html" rel="next">Next: Using RMarkdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-introduction.html" rel="next">Next: Why Version Control?... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
@@ -316,26 +325,17 @@ any links that you are not going to use.
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
 <td>
- 1. <a href="introduction.html">Using RMarkdown</a>
-</td>
-<td>
-How do you write a lesson using R Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
-</td>
-</tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 12m
-</td>
-<td>
- 2. <a href="01-introduction.html">Why Version Control?</a>
+ 1. <a href="01-introduction.html">Why Version Control?</a>
 </td>
 <td>
 What problem does version control solve?<br>When should I use
 Git?<br>How will this workshop be structured?<br>::::::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 30m
+<span class="visually-hidden">Duration: </span>00h 18m
 </td>
 <td>
- 3. <a href="02-configuring-git.html">Configuring Git</a>
+ 2. <a href="02-configuring-git.html">Configuring Git</a>
 </td>
 <td>
 How does Git know who I am?<br>What is the difference between local,
@@ -343,10 +343,10 @@ global, and system configuration?<br>Which Git settings are helpful to
 change right away?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 43m
+<span class="visually-hidden">Duration: </span>00h 31m
 </td>
 <td>
- 4. <a href="03-local-workflow.html">Recording Changes Locally</a>
+ 3. <a href="03-local-workflow.html">Recording Changes Locally</a>
 </td>
 <td>
 How do I create a new Git repository for my project?<br>How do I check
@@ -354,16 +354,41 @@ which files have been modified?<br>How do I record a snapshot of my
 work?<br>How can I review what has changed between versions?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 08m
+<span class="visually-hidden">Duration: </span>00h 56m
 </td>
 <td>
- 5. <a href="04-remotes.html">04-remotes</a>
+ 4. <a href="04-remotes.html">Working with Remote Repositories</a>
 </td>
 <td>
-How do you write a lesson using R Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
+What is a <em>remote</em> in Git?<br>How do I connect my local
+repository to one hosted on GitLab?<br>How do I share my work (push)
+and incorporate others’ work (pull)?<br>What should I do if a push is
+rejected because my branch is behind?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 20m
+<span class="visually-hidden">Duration: </span>01h 15m
+</td>
+<td>
+ 5. <a href="05-exploring-history.html">05-exploring-history</a>
+</td>
+<td>
+How do you write a lesson using R Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?<br>:::
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 27m
+</td>
+<td>
+ 6. <a href="05-git-gui.html">Using Git with RStudio</a>
+</td>
+<td>
+What is a Git GUI and how does it relate to the command line?<br>How
+can I use Git in RStudio on the University of Edinburgh’s Noteable
+service?<br>What steps do I follow to clone, edit, and push using
+RStudio?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 44m
 </td>
 <td>
 Finish
@@ -407,7 +432,7 @@ e.g. online setup) in the solutions blocks.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Use PuTTY</p>
 </div>
@@ -422,7 +447,7 @@ e.g. online setup) in the solutions blocks.</p>
   MacOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>Use Terminal.app</p>
 </div>
@@ -437,7 +462,7 @@ e.g. online setup) in the solutions blocks.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>Use Terminal</p>
 </div>
@@ -449,11 +474,11 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/introduction.html" rel="next">Next: Using RMarkdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-introduction.html" rel="next">Next: Why Version Control?... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
@@ -497,8 +522,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/index.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/index.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-10",
-  "datePublished": "2025-06-10"
+  "dateModified": "2025-06-11",
+  "datePublished": "2025-06-11"
 }
 
   </script><script>

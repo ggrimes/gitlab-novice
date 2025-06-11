@@ -244,7 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-introduction.html">1. Why Version Control?</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-introduction.html">2. Why Version Control?</a>
+        <a href="02-configuring-git.html">2. Configuring Git</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-configuring-git.html">3. Configuring Git</a>
+        <a href="03-local-workflow.html">3. Recording Changes Locally</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-local-workflow.html">4. Recording Changes Locally</a>
+        <a href="04-remotes.html">4. Working with Remote Repositories</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -292,7 +292,19 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-remotes.html">5. 04-remotes</a>
+        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-git-gui.html">6. Using Git with RStudio</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -356,17 +368,7 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="introduction"><h2 class="section-heading"><a href="introduction.html">Using RMarkdown</a></h2>
-<hr class="half-width">
-<h3 id="introduction-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘pie chart illusion of a pyramid’</p>
-<figure style="text-align: center"><img src="../fig/introduction-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid" class="figure mx-auto d-block"><figcaption>
-Sun arise each and every morning
-</figcaption></figure><hr>
-<h3 id="introduction-figure-2">Figure 2</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Blue Carpentries hex person logo with no text.’</p>
-<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
-</figure><hr></section><section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
+<section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Why Version Control?</a></h2>
 <hr class="half-width">
 <h3 id="01-introduction-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram showing working directory, staging area, and repository.’</p>
@@ -375,16 +377,50 @@ Sun arise each and every morning
 <hr class="half-width">
 <h3 id="03-local-workflow-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Flow diagram from working directory to staging area to repository.’</p>
-<figure><img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="Flow diagram from working directory to staging area to repository." class="figure mx-auto d-block"></figure><hr></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">04-remotes</a></h2>
+<figure><img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="Flow diagram from working directory to staging area to repository." class="figure mx-auto d-block"></figure><hr></section><section id="04-remotes"><h2 class="section-heading"><a href="04-remotes.html">Working with Remote Repositories</a></h2>
 <hr class="half-width">
 <h3 id="04-remotes-figure-1">Figure 1</h3>
+<figure><img src="../fig/gitlab-homepage.png" class="figure mx-auto d-block"></figure><hr>
+<h3 id="04-remotes-figure-2">Figure 2</h3>
+<figure><img src="../fig/gitlab-new-project.png" class="figure mx-auto d-block"></figure><hr>
+<h3 id="04-remotes-figure-3">Figure 3</h3>
+<p><img src=".." class="figure"><img src="../fig/gitlab-new-project2.png" class="figure"></p>
+<hr>
+<h3 id="04-remotes-figure-4">Figure 4</h3>
+<figure><img src="../fig/gitlab-empty-project.png" class="figure mx-auto d-block"></figure><hr>
+<h3 id="04-remotes-figure-5">Figure 5</h3>
+<p><img src="../fig/gitlab-ssh2.png" class="figure"><br></p>
+<hr>
+<h3 id="04-remotes-figure-6">Figure 6</h3>
+<h3 id="section">
+<img src="../fig/gitlab-push01.png" class="figure"><a class="anchor" aria-label="anchor" href="#section"></a>
+</h3>
+<hr>
+<h3 id="04-remotes-figure-7">Figure 7</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Add comprehensive remote workflow diagram.’</p>
+<figure><img src="../TODO-fig/remote-workflow-overview.svg" alt="Add comprehensive remote workflow diagram." class="figure mx-auto d-block"><div class="figcaption">Add comprehensive remote workflow diagram.</div>
+</figure><hr></section><section id="05-exploring-history"><h2 class="section-heading"><a href="05-exploring-history.html">05-exploring-history</a></h2>
+<hr class="half-width">
+<h3 id="05-exploring-history-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘pie chart illusion of a pyramid’</p>
-<figure style="text-align: center"><img src="../fig/04-remotes-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid" class="figure mx-auto d-block"><figcaption>
+<figure style="text-align: center"><img src="../fig/05-exploring-history-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid" class="figure mx-auto d-block"><figcaption>
 Sun arise each and every morning
 </figcaption></figure><hr>
-<h3 id="04-remotes-figure-2">Figure 2</h3>
+<h3 id="05-exploring-history-figure-2">Figure 2</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Blue Carpentries hex person logo with no text.’</p>
-<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
+<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">Blue Carpentries hex person logo with no
+text.</div>
+</figure><hr></section><section id="05-git-gui"><h2 class="section-heading"><a href="05-git-gui.html">Using Git with RStudio</a></h2>
+<hr class="half-width">
+<h3 id="05-git-gui-figure-1">Figure 1</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Add screenshot of cloning Git project via RStudio.’</p>
+<figure><img src="../TODO-fig/rstudio-clone.png" alt="Add screenshot of cloning Git project via RStudio." class="figure mx-auto d-block"><div class="figcaption">Placeholder: screenshot of RStudio New Project
+from Git interface</div>
+</figure><hr>
+<h3 id="05-git-gui-figure-2">Figure 2</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Add screenshot of RStudio commit dialog.’</p>
+<figure><img src="../TODO-fig/rstudio-commit.png" alt="Add screenshot of RStudio commit dialog." class="figure mx-auto d-block"><div class="figcaption">Placeholder: screenshot of Git commit window in
+RStudio</div>
 </figure><hr></section>
 </div>
     </main>
@@ -433,8 +469,8 @@ Sun arise each and every morning
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/images.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/images.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-10",
-  "datePublished": "2025-06-10"
+  "dateModified": "2025-06-11",
+  "datePublished": "2025-06-11"
 }
 
   </script><script>
