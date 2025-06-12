@@ -84,6 +84,8 @@ because we have not created any files or commits; the repository is empty.
 
 ### 2. Add a README file
 
+
+
 Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file “README.md”.
 
 ``` bash

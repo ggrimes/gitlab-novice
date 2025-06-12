@@ -57,15 +57,13 @@ To enable password less access to your remote, you can add your public SSH Key f
 
 #### Generating a new SSH key
 
-You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on GitLab to enable authentication for Git operations over SSH. 
+You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on GitLab to enable authentication for Git operations over SSH.
 
 The University guide can be found [here](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide)
 
-
 Example below
 
-
-```bash
+``` bash
 [username@login02(eddie) ~]$ ssh-keygen -o -t ed25519
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/username/.ssh/id_ed25519):
@@ -93,7 +91,7 @@ This will generate two files: the private key file (in this example `/home/usern
 
 You can now add the contents of the public key file `id_ed25519.pub` to the GitLab.
 
-Go to https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys then click add **new key**
+Go to <https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys> then click add **new key**
 
 ![](fig/gitlab-ssh2.png)\
 
@@ -133,32 +131,43 @@ In essence, "origin" is a convention, and while it's not mandatory to use, adher
 When you **clone** a repository you automatically get one remote called `origin`. If you start with a local repo (`git init`) you can add one later:
 :::
 
-### Syncing Changes
+### Syncing Repository
 
-Now we have created an empty repository on the GitLab Server we can send the local changes to the remote using git push
+Now we have created an empty repository on the GitLab Server we can send the local changes to the remote using `git push`. The command `git push` tells Git, “Thanks for tracking these file changes. Now I want to upload these changes into the main project file.”
+
+When you push your changes, you are essentially updating the remote repository with commits that have been made in your local repository
+
+To do this, use the command
 
 ``` bash
+# on eddie
+$ git push origin main
+#or shorthand
 $ git push
 ```
 
+In your case, you can type `git push origin main` where “origin” refers to the “remote repository” and “main” refers to the branch you want to upload.
+
+If you go back to the repository on GitLab and refresh the page you will the repository has been synced with the local version.
+
 ### ![](fig/gitlab-push01.png)
 
-### 1. Cloning a repository
+### 1.  Syncing Changes
 
-Make a change
+Make a change to the `Readme.md file`
 
 ``` bash
 $ nano Readme.md
 ```
 
-Add this text to the bottom of the `Readme.md` file
+Add this text, or something else, to the bottom of the `Readme.md` file
 
 ```         
 ## Data
 The [data](https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632895) is made available under an [Creative Commons license](https://creativecommons.org/licenses/by/3.0/).
 ```
 
-Now we will, add, commit and push changes to our remote repository.
+Now we will, add, commit to our local repository and push changes to our remote repository.
 
 ``` bash
 $ git status
@@ -173,18 +182,15 @@ $ git push # use this after
 Learners often forget the `-u` flag on their *first* push. Emphasise that `git push -u origin main` sets up the **tracking relationship**, allowing future `git push`/`git pull` without extra arguments.
 :::
 
-
 ### 3. Pulling changes
 
-Suppose a collaborator adds commits t our remote repository *origin/main*:
+Suppose a collaborator adds commits to our remote repository. Now we need to get these changes locally. We can use the command `git pull` to keep your local repository up to date with the remote repository.
 
 ``` bash
-$ git pull             # fetch + merge
+$ git pull
 ```
 
 If there is no divergence, Git performs a *fast‑forward* merge. Otherwise you may need to resolve conflicts before completing the merge.
-
-`git fetch` downloads objects **without** merging; you can inspect them before integrating.
 
 ### 4. Handling a rejected push
 
