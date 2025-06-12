@@ -292,7 +292,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-exploring-history.html">5. 05-exploring-history</a>
+        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface RStudio</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -304,7 +304,19 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="05-git-gui.html">6. Using Git with RStudio</a>
+        <a href="06-collaborating.html">6. 06-collaborating</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="05-exploring-history.html">7. Exploring History</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -370,7 +382,7 @@
         
 <section id="aio-01-introduction"><p>Content from <a href="01-introduction.html">Why Version Control?</a></p>
 <hr>
-<p>Last updated on 2025-06-05 |
+<p>Last updated on 2025-06-12 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/01-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 18 minutes</p>
@@ -425,7 +437,7 @@ files!),</li>
 <li>collaborate safely with colleagues, and</li>
 <li>showcase the evolution of your work.</li>
 </ul>
-<p>In the next two hours we will explore:</p>
+<p>In this workshop we will explore:</p>
 <ul>
 <li>tracking changes locally,</li>
 <li>sharing work with a remote repository hosted on GitLab,</li>
@@ -438,7 +450,7 @@ development.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Learners often try to remember <strong>all</strong> Git commands at
 once. Reassure them that they only need a handful today:
@@ -476,7 +488,7 @@ D. Collaborating with colleagues on a shared project</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>C. Encrypting files. While encryption is possible, it is
 <strong>not</strong> the primary purpose of a version control
@@ -510,7 +522,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-02-configuring-git"><p>Content from <a href="02-configuring-git.html">Configuring Git</a></p>
 <hr>
-<p>Last updated on 2025-06-05 |
+<p>Last updated on 2025-06-12 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/02-configuring-git.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 13 minutes</p>
@@ -604,6 +616,11 @@ silently set the editor to <em>vim</em>).</p>
 <div class="section level3">
 <h3 id="identify-yourself">1. Identify yourself<a class="anchor" aria-label="anchor" href="#identify-yourself"></a>
 </h3>
+<p>The first thing you should do is configure Git so that it understands
+who you are. The <code>git config</code> command allows you to set Git
+configuration values that can help you create a customized Git
+workflow.</p>
+<p>To set your email and username, type</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -821,7 +838,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-local-workflow"><p>Content from <a href="03-local-workflow.html">Recording Changes Locally</a></p>
 <hr>
-<p>Last updated on 2025-06-11 |
+<p>Last updated on 2025-06-12 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/03-local-workflow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
@@ -891,7 +908,7 @@ history.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Some learners struggle with the staging area at first. Compare it to
 packing items into a box (staging) before placing the box in long‑term
@@ -904,13 +921,30 @@ step reinforces the mental model.</p>
 <div class="section level3">
 <h3 id="create-a-repository">1. Create a repository<a class="anchor" aria-label="anchor" href="#create-a-repository"></a>
 </h3>
+<p>Let’s create a new folder with the terminal command</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> mkdir MyProject</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> cd MyProject</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">$</span> git init            <span class="co"># creates .git directory</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">mkdir</span> MyProject </span></code></pre>
 </div>
+<p>You can go into <code>MyProject</code> by running</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> mkdir MyProject</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">$</span> cd <span class="kw">`</span><span class="ex">MyProject</span><span class="kw">`</span> </span></code></pre>
+</div>
+<p>In its current state, project1 is not a Git repository.</p>
+<p>If you want this folder to be a Git repository so that you can track
+all changes you make, type <code>git init</code> command.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> git init            <span class="co"># creates .git directory</span></span></code></pre>
+</div>
+<p>When you run the git init command in an ordinary folder, it allows
+you to transform that folder into a trackable git repository where you
+can use Git commands.</p>
 <p><code>git init</code> creates a hidden <code>.git</code> folder that
 stores all future history.</p>
 <div id="challenge-1-first-contact" class="callout challenge">
@@ -930,7 +964,7 @@ What output do you see and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Git reports</p>
 <pre class="text"><code>On branch main (or master)
@@ -947,11 +981,14 @@ empty.</p>
 <div class="section level3">
 <h3 id="add-a-readme-file">2. Add a README file<a class="anchor" aria-label="anchor" href="#add-a-readme-file"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb3">
+<p>Let’s create a new file by running touch README.md then run git
+status again. Now you should see that you have an untracked file
+“README.md”.</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"# My eddie Python project"</span> <span class="op">&gt;</span> README.md</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># untracked file appears in red</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"# My eddie Python project"</span> <span class="op">&gt;</span> README.md</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># untracked file appears in red</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -966,12 +1003,28 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)</code></pre>
 </div>
-<p>To add a file to the git repo use <code>git add</code></p>
-<div class="codewrapper sourceCode" id="cb5">
+<p>An untracked file is one that has not been added to the staging area.
+To add files to the staging area, you can use the <code>git add</code>
+command.</p>
+</div>
+<div class="section level3">
+<h3 id="git-add">Git add<a class="anchor" aria-label="anchor" href="#git-add"></a>
+</h3>
+<p>There are quite a few ways to use this command. For example, you can
+use <code>git add .</code> to add all files to the staging area from the
+working directory or use <code>git add filename</code> to add a specific
+file to the staging area.</p>
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> git add README.md   <span class="co"># stage the file</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># file appears in green (staged)</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git add README.md   <span class="co"># stage the file</span></span></code></pre>
+</div>
+<p>If you run <code>git status</code> again, this will show you that
+README.md is in the staging area</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># file appears in green (staged)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -984,8 +1037,14 @@ Changes to be committed:
   (use "git rm --cached &lt;file&gt;..." to unstage)
     new file:   README.md</code></pre>
 </div>
+<p>When files are added to the staging area, that means they are in safe
+keeping before you commit them. Think of using the Git add command as
+telling Git, “Please keep track of this file in its current state.”</p>
 <p>Staging tells Git <em>which</em> changes, Changes to be committed,
 belong to the next snapshot.</p>
+<p>If you make additional changes to the tracked files, you’ll need to
+use the <code>git add</code> command again for Git to keep track of
+them.</p>
 </div>
 <div class="section level3">
 <h3 id="commit-the-snapshot">3. Commit the snapshot<a class="anchor" aria-label="anchor" href="#commit-the-snapshot"></a>
@@ -1016,10 +1075,11 @@ as <strong>“Add error handling for login process.”</strong>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb7">
+<p>Let’s run git commit -m “initial commit” to see what happens.</p>
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add README with project title"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"initial commit"</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1030,6 +1090,16 @@ as <strong>“Add error handling for login process.”</strong>
 </div>
 <p>Every commit receives a unique 40‑character <em>hash</em> (displayed
 here as <strong>72041c0</strong> for brevity).</p>
+<p>If you run <code>git status</code>, you’ll see that you have “1 file
+changed, 1 insertion(+)” because you just added one new files, and the
+files has one line of code.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre>
+</div>
+<p>That’s how you use the git add and git commit commands together! Well
+done tracking changes and storing your new work.</p>
 </div>
 <div class="section level3">
 <h3 id="git-log">Git Log<a class="anchor" aria-label="anchor" href="#git-log"></a>
@@ -1037,10 +1107,10 @@ here as <strong>72041c0</strong> for brevity).</p>
 <p>Show the sequence of commits starting from the current one, in
 reverse chronological order of the Git repository in the current working
 directory:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1074,7 +1144,7 @@ commits appear and what information is shown?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>One commit appears:</p>
 <pre class="text"><code>72041c0 (HEAD -&gt; main) Add README with project title</code></pre>
@@ -1089,10 +1159,10 @@ message.</p>
 <h3 id="modifying-a-file">4. Modifying a file<a class="anchor" aria-label="anchor" href="#modifying-a-file"></a>
 </h3>
 <p>Edit <em>README.md</em></p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">nano</span> README.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">nano</span> README.md</span></code></pre>
 </div>
 <p>add a <em>Run Script</em> section</p>
 <pre><code># My eddie Python project​
@@ -1100,10 +1170,10 @@ message.</p>
 To run Python on eddie need to run:​
     module load igmm/apps/python/3.7</code></pre>
 <p>git status</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># modified file in red</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> git status          <span class="co"># modified file in red</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1119,10 +1189,10 @@ Changes not staged for commit:
 </h2>
 <hr class="half-width">
 <p>We can you the command <code>git diff</code> to view our change.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> git diff README.md  <span class="co"># view changes</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> git diff README.md  <span class="co"># view changes</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1214,13 +1284,13 @@ file</strong>, and it now spans <strong>4 lines</strong>
 <div class="section level3">
 <h3 id="content-change-section">Content Change Section<a class="anchor" aria-label="anchor" href="#content-change-section"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">DIFF<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode diff" tabindex="0"><code class="sourceCode diff"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a> # My eddie Python project</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="va">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="va">+To run Python on eddie need to run:</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="va">+    module load igmm/apps/python/3.7</span></span></code></pre>
+<pre class="sourceCode diff" tabindex="0"><code class="sourceCode diff"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a> # My eddie Python project</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="va">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="va">+To run Python on eddie need to run:</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="va">+    module load igmm/apps/python/3.7</span></span></code></pre>
 </div>
 <table class="table">
 <colgroup>
@@ -1257,11 +1327,11 @@ file</strong>, and it now spans <strong>4 lines</strong>
 </h3>
 <p>Once we are happy with the changes we can stage the changes and then
 commit into the git repository.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">$</span> git add README.md</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Describe how to run analysis script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> git add README.md</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Describe how to run analysis script"</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1273,10 +1343,10 @@ commit into the git repository.</p>
 <div class="section level3">
 <h3 id="inspecting-differences-between-commits">5. Inspecting differences between commits<a class="anchor" aria-label="anchor" href="#inspecting-differences-between-commits"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 README.md   <span class="co"># compare current commit to one before</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 README.md   <span class="co"># compare current commit to one before</span></span></code></pre>
 </div>
 <p><code>HEAD</code> is a symbolic name for <em>the current commit</em>;
 <code>HEAD~1</code> means <em>one commit ago</em>.</p>
@@ -1311,7 +1381,7 @@ appear in the diff output and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>They will be <strong>green with a + prefix</strong> because new lines
 are <em>additions</em> relative to the previous snapshot.</p>
@@ -1325,12 +1395,12 @@ are <em>additions</em> relative to the previous snapshot.</p>
 </h3>
 <p>If you accidently stage a file you can discard
 <strong>unstaged</strong> edits using <code>git restore</code>:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> git restore README.md   <span class="co"># newer Git (&gt;=2.23)</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> README.md  <span class="co"># older Git versions</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">$</span> git restore README.md   <span class="co"># newer Git (&gt;=2.23)</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> README.md  <span class="co"># older Git versions</span></span></code></pre>
 </div>
 <p>Be cautious: this removes changes <strong>permanently</strong> unless
 they were staged or committed.</p>
@@ -1341,26 +1411,26 @@ they were staged or committed.</p>
 <p>Git tracks <strong>files</strong>, not empty directories. To include
 a folder you must add at least one file inside it (often an empty
 <code>.gitkeep</code>):</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> mkdir Src</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="ex">$</span> touch Src/.gitkeep</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="ex">$</span> git add Src/.gitkeep</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">$</span> mkdir Src</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="ex">$</span> touch Src/.gitkeep</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="ex">$</span> git add Src/.gitkeep</span></code></pre>
 </div>
 <p>Let download a file into a Data directory</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> mkdir Data</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-L</span> <span class="at">-o</span> Data/data.csv https://figshare.com/ndownloader/files/14632895</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">$</span> mkdir Data</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-L</span> <span class="at">-o</span> Data/data.csv https://figshare.com/ndownloader/files/14632895</span></code></pre>
 </div>
 <p>We can now add ito staging area and commit to repository.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">$</span> git add Data/data.csv <span class="co"># Comment on when to commit data​</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add example dataset"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="ex">$</span> git add Data/data.csv <span class="co"># Comment on when to commit data​</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add example dataset"</span></span></code></pre>
 </div>
 <div id="challenge-4-multiple-file-workflow" class="callout challenge">
 <div class="callout-square">
@@ -1373,11 +1443,11 @@ a folder you must add at least one file inside it (often an empty
 <em>“Hello World!”</em>. Add and commit it. Then modify the script to
 read the CSV file added above and print the number of rows. Use
 <code>git diff</code> before committing to verify the change.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>        <span class="co">#!/usr/bin/env python</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>        <span class="co">#!/usr/bin/env python</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1387,22 +1457,22 @@ read the CSV file added above and print the number of rows. Use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
 <p>Create the file:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>    <span class="co">#!/usr/bin/env python</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>    <span class="co">#!/usr/bin/env python</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
 </div>
 </li>
 </ol>
@@ -1422,19 +1492,19 @@ read the CSV file added above and print the number of rows. Use
 <ol start="2" style="list-style-type: decimal">
 <li>
 <p>Edit the script, stage, inspect, commit:</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>​</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd​</span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>​</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="co"># Read the data​</span></span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)​</span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>​</span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>​</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd​</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>​</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="co"># Read the data​</span></span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)​</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>​</span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
 </div>
 </li>
 </ol>
@@ -1446,29 +1516,29 @@ read the CSV file added above and print the number of rows. Use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="kw">```</span> <span class="ex">python</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="ex">​</span></span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="ex">import</span> pandas as pd​</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="ex">​</span></span>
-<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a><span class="co"># Read the data​</span></span>
-<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="ex">variants</span> =  pd.read_csv<span class="er">(</span><span class="st">"Data/data.csv"</span><span class="kw">)</span><span class="ex">​</span></span>
-<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a><span class="ex">​</span></span>
-<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
-<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">variants</span><span class="kw">)</span></span>
-<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a><span class="kw">```</span></span>
-<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="kw">```</span> <span class="fu">bash</span></span>
-<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
-<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span>
-<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="kw">```</span></span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="kw">```</span> <span class="ex">python</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="co">#!/usr/bin/env python​</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="co"># load pandas library​</span></span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="ex">import</span> pandas as pd​</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="co"># Read the data​</span></span>
+<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a><span class="ex">variants</span> =  pd.read_csv<span class="er">(</span><span class="st">"Data/data.csv"</span><span class="kw">)</span><span class="ex">​</span></span>
+<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a><span class="ex">​</span></span>
+<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="co"># Check we have the data​</span></span>
+<span id="cb35-11"><a href="#cb35-11" tabindex="-1"></a><span class="ex">print</span><span class="er">(</span><span class="ex">variants</span><span class="kw">)</span></span>
+<span id="cb35-12"><a href="#cb35-12" tabindex="-1"></a><span class="kw">```</span></span>
+<span id="cb35-13"><a href="#cb35-13" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" tabindex="-1"></a><span class="kw">```</span> <span class="fu">bash</span></span>
+<span id="cb35-15"><a href="#cb35-15" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
+<span id="cb35-16"><a href="#cb35-16" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb35-17"><a href="#cb35-17" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span>
+<span id="cb35-18"><a href="#cb35-18" tabindex="-1"></a><span class="kw">```</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1478,10 +1548,10 @@ read the CSV file added above and print the number of rows. Use
 <div class="section level3">
 <h3 id="viewing-the-complete-history">8. Viewing the complete history<a class="anchor" aria-label="anchor" href="#viewing-the-complete-history"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -1753,7 +1823,7 @@ repository.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Learners often forget the <code>-u</code> flag on their
 <em>first</em> push. Emphasise that <code>git push -u origin main</code>
@@ -1814,7 +1884,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The output lists fetch and push URLs for <em>origin</em>.</li>
@@ -1854,7 +1924,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>git branch -vv</code> lists local branches with their upstream
 counterparts.</p>
@@ -1904,7 +1974,7 @@ why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The log shows commits that exist in <em>origin/main</em> but
 <strong>not</strong> in your local <em>main</em>; the two‑dot syntax
@@ -1967,7 +2037,7 @@ remote.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p><em>Advantage:</em> <code>git clone</code> copies
 <strong>all</strong> history and configures the remote automatically,
@@ -2056,9 +2126,420 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
 </div>
-</section></section><section id="aio-05-exploring-history"><p>Content from <a href="05-exploring-history.html">05-exploring-history</a></p>
+</section></section><section id="aio-05-git-gui"><p>Content from <a href="05-git-gui.html">Using Git with a Graphical User Interface RStudio</a></p>
 <hr>
-<p>Last updated on 2025-06-11 |
+<p>Last updated on 2025-06-12 |
+
+        <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/05-git-gui.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 17 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What is a Git GUI and how does it relate to the command line?</li>
+<li>How can I use Git in RStudio on the University of Edinburgh’s
+Noteable service?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Define what a Git GUI is and why you might use one.</li>
+<li>Use RStudio to clone a repository via its Git integration.</li>
+<li>Configure Git with your name and email address.</li>
+<li>Stage, commit, and push changes using RStudio’s GUI.</li>
+<li>Verify that your changes appear on the remote repository.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="what-is-a-git-gui">1. What is a Git GUI?<a class="anchor" aria-label="anchor" href="#what-is-a-git-gui"></a>
+</h2>
+<hr class="half-width">
+<p>A Git GUI (Graphical User Interface) provides a visual alternative to
+the command-line interface. Instead of typing commands like
+<code>git commit</code>, users can interact with buttons, menus, and
+panels. GUIs are helpful for:</p>
+<ul>
+<li>Beginners who aren’t yet comfortable with terminal commands</li>
+<li>Visualising the commit history and file changes</li>
+<li>Handling merge conflicts more easily</li>
+</ul>
+<p>RStudio includes built-in Git support, making it easy to integrate
+version control into your analysis projects.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>Reassure learners that the GUI is not a “less powerful” version of
+Git—it’s just another interface to the same tool. Some users will
+transition back and forth between the GUI and command line.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="rstudio-and-the-noteable-environment">2. RStudio and the Noteable Environment<a class="anchor" aria-label="anchor" href="#rstudio-and-the-noteable-environment"></a>
+</h2>
+<hr class="half-width">
+<p>We will be using RStudio Server via the University of Edinburgh’s <a href="https://noteable.edina.ac.uk/" class="external-link">Noteable</a> platform. This
+cloud-based RStudio environment supports Git integration and is ideal
+for version-controlled reproducible research.</p>
+</section><section><h2 class="section-heading" id="configure-git-in-noteable">3. Configure Git in Noteable<a class="anchor" aria-label="anchor" href="#configure-git-in-noteable"></a>
+</h2>
+<hr class="half-width">
+<p>The first time you use Git in a new environment (like Noteable), you
+need to tell Git who you are:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span></code></pre>
+</div>
+<p>You can run this in the Terminal pane in RStudio.</p>
+</section><section><h2 class="section-heading" id="clone-a-repository-with-rstudio">4. Clone a Repository with RStudio<a class="anchor" aria-label="anchor" href="#clone-a-repository-with-rstudio"></a>
+</h2>
+<hr class="half-width">
+<p>Now let’s bring your project into RStudio: This can be found on the
+GitLab repository page.</p>
+<ol style="list-style-type: decimal">
+<li>First copy the <strong>Clone with HTTPS</strong> text from
+GitLab</li>
+</ol>
+<figure><img src="../fig/gitlab-clone-button.png" class="figure mx-auto d-block"></figure><ol start="2" style="list-style-type: decimal">
+<li>In RStudio, go to the top menu: <strong>File → New Project → Version
+Control → Git</strong>
+</li>
+</ol>
+<figure><img src="../fig/git-gui-01.png" class="figure mx-auto d-block"></figure><ol start="3" style="list-style-type: decimal">
+<li>
+<p>Enter the Repository URL:</p>
+<pre><code>https://git.ecdf.ed.ac.uk/&lt;username&gt;/myproject.git</code></pre>
+</li>
+<li>
+<p>Choose a directory to clone into (e.g. your home folder or
+<code>~/projects</code>)</p>
+<figure><img src="../fig/git-gui-02.png" class="figure mx-auto d-block"></figure>
+</li>
+<li><p>Click <strong>Create Project</strong></p></li>
+</ol>
+<p>RStudio will open the project and show the Git pane in the
+top-right.</p>
+<figure><img src="../TODO-fig/rstudio-clone.png" alt="Add screenshot of cloning Git project via RStudio." class="figure mx-auto d-block"><div class="figcaption">Add screenshot of cloning Git project via
+RStudio.</div>
+</figure></section><section><h2 class="section-heading" id="make-a-change-to-readme-md">5. Make a Change to README.md<a class="anchor" aria-label="anchor" href="#make-a-change-to-readme-md"></a>
+</h2>
+<hr class="half-width">
+<ol style="list-style-type: decimal">
+<li>In the <strong>Files</strong> pane, click on <code>README.md</code>
+to open it.</li>
+<li>Add a sentence like:
+<code>This change was made from RStudio on Noteable.</code>
+</li>
+<li>Save the file (<code>Ctrl + S</code> or <strong>File →
+Save</strong>)</li>
+</ol></section><section><h2 class="section-heading" id="commit-and-push-from-rstudio">6. Commit and Push from RStudio<a class="anchor" aria-label="anchor" href="#commit-and-push-from-rstudio"></a>
+</h2>
+<hr class="half-width">
+<ol style="list-style-type: decimal">
+<li>In the <strong>Git</strong> pane, you should see
+<code>README.md</code> listed as modified.</li>
+<li>Tick the checkbox next to it to stage the file.</li>
+<li>Click <strong>Commit</strong>. A window appears.</li>
+<li>Write a short commit message,
+e.g. <code>Edit README from Noteable</code>
+</li>
+<li>Click <strong>Commit</strong> in the dialog box.</li>
+<li>Now click <strong>Push</strong> (also in the Git pane) to upload
+your changes.</li>
+</ol>
+<figure><img src="../TODO-fig/rstudio-commit.png" alt="Add screenshot of RStudio commit dialog." class="figure mx-auto d-block"><div class="figcaption">Add screenshot of RStudio commit dialog.</div>
+</figure></section><section><h2 class="section-heading" id="check-the-remote-repository">7. Check the Remote Repository<a class="anchor" aria-label="anchor" href="#check-the-remote-repository"></a>
+</h2>
+<hr class="half-width">
+<ol style="list-style-type: decimal">
+<li>Visit your project page on <a href="https://git.ecdf.ed.ac.uk" class="external-link uri">https://git.ecdf.ed.ac.uk</a>.</li>
+<li>Look at the <strong>Repository → Files</strong> tab to confirm that
+your changes have appeared.</li>
+<li>You can also check the <strong>Repository → Commits</strong> tab to
+see your message.</li>
+</ol>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
+<ul>
+<li>Git GUIs offer a visual way to use Git—perfect for beginners and for
+visualising changes.</li>
+<li>RStudio’s Git integration supports cloning, staging, committing, and
+pushing.</li>
+<li>Always configure your name/email before making your first
+commit.</li>
+<li>You can verify success by checking your changes online.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-06-collaborating"><p>Content from <a href="06-collaborating.html">06-collaborating</a></p>
+<hr>
+<p>Last updated on 2025-06-12 |
+
+        <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/06-collaborating.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 18 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do I collaborate with others using Git?</li>
+<li>What different models exist for Git collaboration?</li>
+<li>What are protected branches, and how do I handle merge
+conflicts?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Describe multiple models of collaboration using Git</li>
+<li>Demonstrate how to add collaborators and manage permissions in
+GitLab</li>
+<li>Practice cloning, committing, and pushing to a shared
+repository</li>
+<li>Understand how to resolve common issues like push rejections and
+merge conflicts</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="collaborating-with-git">Collaborating with Git<a class="anchor" aria-label="anchor" href="#collaborating-with-git"></a>
+</h2>
+<hr class="half-width">
+<p>One of Git’s most powerful features is that it makes collaboration
+straightforward and trackable. When working with others, a shared
+repository acts as the single source of truth. Contributors clone,
+modify, and then sync their work using version control commands like
+<code>pull</code>, <code>commit</code>, and <code>push</code>.</p>
+</section><section><h2 class="section-heading" id="different-models-for-collaboration">Different Models for Collaboration<a class="anchor" aria-label="anchor" href="#different-models-for-collaboration"></a>
+</h2>
+<hr class="half-width">
+<p>There are several ways to collaborate using Git:</p>
+<ul>
+<li><p><strong>Shared repository model</strong>: You give collaborators
+direct access to your repository. This is quick but requires
+trust.</p></li>
+<li><p><strong>Fork-and-pull model</strong>: A collaborator creates a
+copy (fork) of your repository, makes changes, and submits a <em>merge
+request</em> (also called a pull request). This is commonly used in
+open-source projects. It may not work between two private
+repositories.</p></li>
+</ul>
+<p>For this exercise, we assume a <strong>shared repository trust
+model</strong>. That means you’ll work directly in each other’s
+repositories.</p>
+<p>We’ll now walk through the process of adding a collaborator and
+working on the same project together.</p>
+</section><section><h2 class="section-heading" id="step-1-pair-up-and-add-a-collaborator">Step 1: Pair Up and Add a Collaborator<a class="anchor" aria-label="anchor" href="#step-1-pair-up-and-add-a-collaborator"></a>
+</h2>
+<hr class="half-width">
+<p>You will work in pairs. First:</p>
+<ul>
+<li>Introduce yourselves.</li>
+<li>Person 1: Get the UUN (University User Name) of Person 2.</li>
+</ul>
+<div class="section level3">
+<h3 id="add-member-to-your-repository">Add Member to Your Repository<a class="anchor" aria-label="anchor" href="#add-member-to-your-repository"></a>
+</h3>
+<p><strong>Person 1</strong> should add <strong>Person 2</strong> as a
+collaborator on their GitLab repository:</p>
+<ol style="list-style-type: decimal">
+<li>Click <strong>Invite members</strong>.</li>
+<li>Enter Person 2’s UUN.</li>
+<li>Set the role to <strong>Developer</strong>.</li>
+<li>Go to the sidebar and click <code>Project → Members</code>.</li>
+<li>Confirm the role is set correctly.</li>
+</ol>
+<figure><img src="../fig/collaborating01.png" alt="Add members in GitLab" class="figure mx-auto d-block"><div class="figcaption">Add members in GitLab</div>
+</figure><figure><img src="../fig/collaborating03.png" alt="Adjust permissions" class="figure mx-auto d-block"><div class="figcaption">Adjust permissions</div>
+</figure>
+</div>
+</section><section><h2 class="section-heading" id="step-2-unprotect-the-branch">Step 2: Unprotect the Branch<a class="anchor" aria-label="anchor" href="#step-2-unprotect-the-branch"></a>
+</h2>
+<hr class="half-width">
+<p>In GitLab, branches can be protected to restrict who can push to
+them. To allow collaborators to push changes, you need to modify this
+setting:</p>
+<ul>
+<li>Go to
+<code>Settings -&gt; Repository -&gt; Protected Branches</code>.</li>
+<li>Find the <code>main</code> branch (or <code>master</code> depending
+on your setup).</li>
+<li>Click <strong>Unprotect</strong>.</li>
+</ul>
+<figure><img src="../fig/collaborating04.png" alt="Unprotect branch" class="figure mx-auto d-block"><div class="figcaption">Unprotect branch</div>
+</figure></section><section><h2 class="section-heading" id="step-3-clone-the-repository">Step 3: Clone the Repository<a class="anchor" aria-label="anchor" href="#step-3-clone-the-repository"></a>
+</h2>
+<hr class="half-width">
+<p><strong>Person 2</strong> now clones the repository on their system
+(e.g., on Eddie):</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">git</span> clone https://git.ecdf.ed.ac.uk/<span class="op">&lt;</span>person1<span class="op">&gt;</span>/myproject.git project-collab</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">cd</span> project-collab</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre>
+</div>
+<p>This creates a local copy of the repository and shows the remote
+repository settings.</p>
+<figure><img src="../fig/collaborating05.png" alt="Clone repo" class="figure mx-auto d-block"><div class="figcaption">Clone repo</div>
+</figure></section><section><h2 class="section-heading" id="step-4-check-who-edited-what">Step 4: Check Who Edited What<a class="anchor" aria-label="anchor" href="#step-4-check-who-edited-what"></a>
+</h2>
+<hr class="half-width">
+<p>Git provides the <code>blame</code> command to show who last modified
+each line of a file:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">git</span> blame README.md</span></code></pre>
+</div>
+<p>This is useful when debugging or understanding the origin of
+changes.</p>
+</section><section><h2 class="section-heading" id="step-5-make-a-change-and-commit">Step 5: Make a Change and Commit<a class="anchor" aria-label="anchor" href="#step-5-make-a-change-and-commit"></a>
+</h2>
+<hr class="half-width">
+<p><strong>Person 2</strong> can now make a change to the
+<code>README.md</code> file:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">nano</span> README.md  <span class="co"># or use any editor</span></span></code></pre>
+</div>
+<p>After saving the file:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update README.md with message from Person 2"</span></span></code></pre>
+</div>
+</section><section><h2 class="section-heading" id="step-6-push-the-changes">Step 6: Push the Changes<a class="anchor" aria-label="anchor" href="#step-6-push-the-changes"></a>
+</h2>
+<hr class="half-width">
+<p>Now attempt to push:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre>
+</div>
+<div id="rejected" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="rejected" class="callout-inner">
+<h3 class="callout-title">Rejected?</h3>
+<div class="callout-content">
+<p>If you see a “rejected” message, this likely means your local copy is
+behind the remote. You need to pull the latest changes:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre>
+</div>
+<p>Then resolve any conflicts if necessary and try pushing again.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="merge-conflicts">Merge Conflicts<a class="anchor" aria-label="anchor" href="#merge-conflicts"></a>
+</h2>
+<hr class="half-width">
+<p>Sometimes two collaborators edit the same part of a file. This
+creates a <em>merge conflict</em>.</p>
+<p>Git will mark the conflict like this:</p>
+<figure><img src="../fig/collaborating07.png" alt="Merge conflict example" class="figure mx-auto d-block"><div class="figcaption">Merge conflict example</div>
+</figure><p>You must manually edit the file to resolve the conflict, then:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">git</span> add filename</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Resolve conflict in filename"</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre>
+</div>
+<div id="optional-cache-your-credentials" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="optional-cache-your-credentials" class="callout-inner">
+<h3 class="callout-title">Optional: Cache Your Credentials</h3>
+<div class="callout-content">
+<p>If you’re prompted for your credentials too often, you can cache them
+temporarily:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper <span class="st">'cache --timeout=3600'</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>This caches your credentials for one hour.</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
+<ul>
+<li>Git allows multiple collaboration models; shared access is fastest
+but requires trust.</li>
+<li>GitLab permissions and protected branches must be configured for
+collaborators.</li>
+<li>Always pull before pushing to avoid rejection.</li>
+<li>Merge conflicts are normal and can be resolved with manual
+editing.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-05-exploring-history"><p>Content from <a href="05-exploring-history.html">Exploring History</a></p>
+<hr>
+<p>Last updated on 2025-06-12 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/05-exploring-history.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -2240,191 +2721,6 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-05-git-gui"><p>Content from <a href="05-git-gui.html">Using Git with RStudio</a></p>
-<hr>
-<p>Last updated on 2025-06-11 |
-
-        <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/05-git-gui.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 17 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What is a Git GUI and how does it relate to the command line?</li>
-<li>How can I use Git in RStudio on the University of Edinburgh’s
-Noteable service?</li>
-<li>What steps do I follow to clone, edit, and push using RStudio?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Define what a Git GUI is and why you might use one.</li>
-<li>Use RStudio to clone a repository via its Git integration.</li>
-<li>Configure Git with your name and email address.</li>
-<li>Stage, commit, and push changes using RStudio’s GUI.</li>
-<li>Verify that your changes appear on the remote repository.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<section><h2 class="section-heading" id="what-is-a-git-gui">1. What is a Git GUI?<a class="anchor" aria-label="anchor" href="#what-is-a-git-gui"></a>
-</h2>
-<hr class="half-width">
-<p>A Git GUI (Graphical User Interface) provides a visual alternative to
-the command-line interface. Instead of typing commands like
-<code>git commit</code>, users can interact with buttons, menus, and
-panels. GUIs are helpful for:</p>
-<ul>
-<li>Beginners who aren’t yet comfortable with terminal commands</li>
-<li>Visualising the commit history and file changes</li>
-<li>Handling merge conflicts more easily</li>
-</ul>
-<p>RStudio includes built-in Git support, making it easy to integrate
-version control into your analysis projects.</p>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
-<div class="accordion-body">
-<p>Reassure learners that the GUI is not a “less powerful” version of
-Git—it’s just another interface to the same tool. Some users will
-transition back and forth between the GUI and command line.</p>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="rstudio-and-the-noteable-environment">2. RStudio and the Noteable Environment<a class="anchor" aria-label="anchor" href="#rstudio-and-the-noteable-environment"></a>
-</h2>
-<hr class="half-width">
-<p>We will be using RStudio Server via the University of Edinburgh’s <a href="https://noteable.edina.ac.uk/" class="external-link">Noteable</a> platform. This
-cloud-based RStudio environment supports Git integration and is ideal
-for version-controlled reproducible research.</p>
-<div class="section level3">
-<h3 id="before-you-start">Before you start:<a class="anchor" aria-label="anchor" href="#before-you-start"></a>
-</h3>
-<p>Make sure your project is hosted on a Git server such as <a href="https://git.ecdf.ed.ac.uk" class="external-link">GitLab @ ECDF</a>. You’ll need the
-repository URL for the next step.</p>
-</div>
-</section><section><h2 class="section-heading" id="configure-git-in-noteable">3. Configure Git in Noteable<a class="anchor" aria-label="anchor" href="#configure-git-in-noteable"></a>
-</h2>
-<hr class="half-width">
-<p>The first time you use Git in a new environment (like Noteable), you
-need to tell Git who you are:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span></code></pre>
-</div>
-<p>You can run this in the Terminal pane in RStudio.</p>
-<div id="challenge-set-your-identity" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<div id="challenge-set-your-identity" class="callout-inner">
-<h3 class="callout-title">Challenge: Set your identity</h3>
-<div class="callout-content">
-<p>Open the RStudio Terminal and run the <code>git config</code>
-commands above using your actual name and University email.</p>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="clone-a-repository-with-rstudio">4. Clone a Repository with RStudio<a class="anchor" aria-label="anchor" href="#clone-a-repository-with-rstudio"></a>
-</h2>
-<hr class="half-width">
-<p>Now let’s bring your project into RStudio:</p>
-<ol style="list-style-type: decimal">
-<li><p>In RStudio, go to the top menu: <strong>File → New Project →
-Version Control → Git</strong></p></li>
-<li>
-<p>Enter the Repository URL:</p>
-<pre><code>https://git.ecdf.ed.ac.uk/ggrimes2/myproject.git</code></pre>
-</li>
-<li><p>Choose a directory to clone into (e.g. your home folder or
-<code>~/projects</code>)</p></li>
-<li><p>Click <strong>Create Project</strong></p></li>
-</ol>
-<p>RStudio will open the project and show the Git pane in the
-top-right.</p>
-<figure><img src="../TODO-fig/rstudio-clone.png" alt="Add screenshot of cloning Git project via RStudio." class="figure mx-auto d-block"><div class="figcaption">Placeholder: screenshot of RStudio New Project
-from Git interface</div>
-</figure></section><section><h2 class="section-heading" id="make-a-change-to-readme-md">5. Make a Change to README.md<a class="anchor" aria-label="anchor" href="#make-a-change-to-readme-md"></a>
-</h2>
-<hr class="half-width">
-<ol style="list-style-type: decimal">
-<li>In the <strong>Files</strong> pane, click on <code>README.md</code>
-to open it.</li>
-<li>Add a sentence like:
-<code>This change was made from RStudio on Noteable.</code>
-</li>
-<li>Save the file (<code>Ctrl + S</code> or <strong>File →
-Save</strong>)</li>
-</ol></section><section><h2 class="section-heading" id="commit-and-push-from-rstudio">6. Commit and Push from RStudio<a class="anchor" aria-label="anchor" href="#commit-and-push-from-rstudio"></a>
-</h2>
-<hr class="half-width">
-<ol style="list-style-type: decimal">
-<li>In the <strong>Git</strong> pane, you should see
-<code>README.md</code> listed as modified.</li>
-<li>Tick the checkbox next to it to stage the file.</li>
-<li>Click <strong>Commit</strong>. A window appears.</li>
-<li>Write a short commit message,
-e.g. <code>Edit README from Noteable</code>
-</li>
-<li>Click <strong>Commit</strong> in the dialog box.</li>
-<li>Now click <strong>Push</strong> (also in the Git pane) to upload
-your changes.</li>
-</ol>
-<figure><img src="../TODO-fig/rstudio-commit.png" alt="Add screenshot of RStudio commit dialog." class="figure mx-auto d-block"><div class="figcaption">Placeholder: screenshot of Git commit window in
-RStudio</div>
-</figure></section><section><h2 class="section-heading" id="check-the-remote-repository">7. Check the Remote Repository<a class="anchor" aria-label="anchor" href="#check-the-remote-repository"></a>
-</h2>
-<hr class="half-width">
-<ol style="list-style-type: decimal">
-<li>Visit your project page on <a href="https://git.ecdf.ed.ac.uk" class="external-link">https://git.ecdf.ed.ac.uk</a>.</li>
-<li>Look at the <strong>Repository → Files</strong> tab to confirm that
-your changes have appeared.</li>
-<li>You can also check the <strong>Repository → Commits</strong> tab to
-see your message.</li>
-</ol>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<div class="callout-inner">
-<h3 class="callout-title">Key Points</h3>
-<div class="callout-content">
-<ul>
-<li>Git GUIs offer a visual way to use Git—perfect for beginners and for
-visualising changes.</li>
-<li>RStudio’s Git integration supports cloning, staging, committing, and
-pushing.</li>
-<li>Always configure your name/email before making your first
-commit.</li>
-<li>You can verify success by checking your changes online.</li>
-</ul>
-</div>
-</div>
-</div>
-<!--
-Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use.
- -->
 </section></section>
 </div>
     </main>
@@ -2473,8 +2769,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/instructor/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/instructor/aio.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-11",
-  "datePublished": "2025-06-11"
+  "dateModified": "2025-06-12",
+  "datePublished": "2025-06-12"
 }
 
   </script><script>

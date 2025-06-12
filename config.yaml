@@ -64,22 +64,23 @@ contact: 'Graeme.Grimes@ed.ac.uk'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - 01-introduction.Rmd
 - 02-configuring-git.Rmd
 - 03-local-workflow.Rmd
 - 04-remotes.Rmd
-- 05-exploring-history.Rmd
 - 05-git-gui.Rmd
+- 06-collaborating.Rmd
+- 05-exploring-history.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #

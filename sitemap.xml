@@ -19,6 +19,9 @@
     <loc>https://carpentries.github.io/workbench-template-rmd/05-git-gui.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/06-collaborating.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/404.html</loc>
   </url>
   <url>
@@ -53,6 +56,9 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/instructor/05-git-gui.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/06-collaborating.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/instructor/404.html</loc>
