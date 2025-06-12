@@ -1,5 +1,5 @@
 ---
-title: "06-collaborating"
+title: "Collaborating"
 teaching: 15
 exercises: 3
 ---
