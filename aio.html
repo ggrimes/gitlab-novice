@@ -468,7 +468,7 @@ D. Collaborating with colleagues on a shared project</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>C. Encrypting files. While encryption is possible, it is
 <strong>not</strong> the primary purpose of a version control
@@ -616,7 +616,7 @@ name and email were saved.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -691,7 +691,7 @@ to?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>
@@ -748,7 +748,7 @@ directory? What happens if you commit in a different repository?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ul>
 <li>Inside the project directory Git will record <strong><a href="mailto:user@project" class="email">user@project</a></strong>
@@ -1538,7 +1538,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-04-remotes"><p>Content from <a href="04-remotes.html">Working with Remote Repositories</a></p>
 <hr>
-<p>Last updated on 2025-06-11 |
+<p>Last updated on 2025-06-12 |
 
         <a href="https://github.com/carpentries/workbench-template-rmd/edit/main/episodes/04-remotes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1727,15 +1727,29 @@ one remote called <code>origin</code>. If you start with a local repo
 </div>
 </div>
 <div class="section level3">
-<h3 id="syncing-changes">Syncing Changes<a class="anchor" aria-label="anchor" href="#syncing-changes"></a>
+<h3 id="syncing-repository">Syncing Repository<a class="anchor" aria-label="anchor" href="#syncing-repository"></a>
 </h3>
 <p>Now we have created an empty repository on the GitLab Server we can
-send the local changes to the remote using git push</p>
+send the local changes to the remote using <code>git push</code>. The
+command <code>git push</code> tells Git, “Thanks for tracking these file
+changes. Now I want to upload these changes into the main project
+file.”</p>
+<p>When you push your changes, you are essentially updating the remote
+repository with commits that have been made in your local repository</p>
+<p>To do this, use the command</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> git push</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># on eddie</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> git push origin main</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#or shorthand</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="ex">$</span> git push</span></code></pre>
 </div>
+<p>In your case, you can type <code>git push origin main</code> where
+“origin” refers to the “remote repository” and “main” refers to the
+branch you want to upload.</p>
+<p>If you go back to the repository on GitLab and refresh the page you
+will the repository has been synced with the local version.</p>
 </div>
 <div class="section level3">
 <h3 id="section">
@@ -1743,19 +1757,20 @@ send the local changes to the remote using git push</p>
 </h3>
 </div>
 <div class="section level3">
-<h3 id="cloning-a-repository">1. Cloning a repository<a class="anchor" aria-label="anchor" href="#cloning-a-repository"></a>
+<h3 id="syncing-changes">1. Syncing Changes<a class="anchor" aria-label="anchor" href="#syncing-changes"></a>
 </h3>
-<p>Make a change</p>
+<p>Make a change to the <code>Readme.md file</code></p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> nano Readme.md</span></code></pre>
 </div>
-<p>Add this text to the bottom of the <code>Readme.md</code> file</p>
+<p>Add this text, or something else, to the bottom of the
+<code>Readme.md</code> file</p>
 <pre><code>## Data
 The [data](https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632895) is made available under an [Creative Commons license](https://creativecommons.org/licenses/by/3.0/).</code></pre>
-<p>Now we will, add, commit and push changes to our remote
-repository.</p>
+<p>Now we will, add, commit to our local repository and push changes to
+our remote repository.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1771,18 +1786,18 @@ repository.</p>
 <div class="section level3">
 <h3 id="pulling-changes">3. Pulling changes<a class="anchor" aria-label="anchor" href="#pulling-changes"></a>
 </h3>
-<p>Suppose a collaborator adds commits t our remote repository
-<em>origin/main</em>:</p>
+<p>Suppose a collaborator adds commits to our remote repository. Now we
+need to get these changes locally. We can use the command
+<code>git pull</code> to keep your local repository up to date with the
+remote repository.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git pull             <span class="co"># fetch + merge</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git pull</span></code></pre>
 </div>
 <p>If there is no divergence, Git performs a <em>fast‑forward</em>
 merge. Otherwise you may need to resolve conflicts before completing the
 merge.</p>
-<p><code>git fetch</code> downloads objects <strong>without</strong>
-merging; you can inspect them before integrating.</p>
 </div>
 <div class="section level3">
 <h3 id="handling-a-rejected-push">4. Handling a rejected push<a class="anchor" aria-label="anchor" href="#handling-a-rejected-push"></a>
@@ -1818,7 +1833,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The output lists fetch and push URLs for <em>origin</em>.</li>
@@ -1858,7 +1873,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><code>git branch -vv</code> lists local branches with their upstream
 counterparts.</p>
@@ -1908,7 +1923,7 @@ why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The log shows commits that exist in <em>origin/main</em> but
 <strong>not</strong> in your local <em>main</em>; the two‑dot syntax
@@ -1971,7 +1986,7 @@ remote.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><em>Advantage:</em> <code>git clone</code> copies
 <strong>all</strong> history and configures the remote automatically,
@@ -2332,6 +2347,11 @@ on your setup).</li>
 </figure></section><section><h2 class="section-heading" id="step-3-clone-the-repository">Step 3: Clone the Repository<a class="anchor" aria-label="anchor" href="#step-3-clone-the-repository"></a>
 </h2>
 <hr class="half-width">
+<p>What if you were given a link to a folder from a remote location that
+you needed to get on your computer? How would you do that? You’d need to
+make a copy of the remote repository to your local machine. In the world
+of Git, this is referred to as “cloning.” The command for cloning is,
+you guessed it, <code>git clone</code>.</p>
 <p><strong>Person 2</strong> now clones the repository on their system
 (e.g., on Eddie):</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -2536,7 +2556,7 @@ reinforce the objectives.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2563,7 +2583,7 @@ reinforce the objectives.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
