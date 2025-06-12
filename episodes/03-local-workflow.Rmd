@@ -38,11 +38,28 @@ Some learners struggle with the staging area at first. Compare it to packing ite
 
 ### 1. Create a repository
 
-``` bash
+Let’s create a new folder with the terminal command 
+
+```bash
+mkdir MyProject 
+```
+
+You can go into `MyProject` by running 
+
+```bash
 $ mkdir MyProject
-$ cd MyProject
+$ cd `MyProject` 
+```
+
+In its current state, project1 is not a Git repository.
+
+If you want this folder to be a Git repository so that you can track all changes you make, type `git init` command. 
+
+``` bash
 $ git init            # creates .git directory
 ```
+
+When you run the git init command in an ordinary folder, it allows you to transform that folder into a trackable git repository where you can use Git commands.
 
 `git init` creates a hidden `.git` folder that stores all future history.
 
@@ -67,6 +84,8 @@ because we have not created any files or commits; the repository is empty.
 
 ### 2. Add a README file
 
+Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file “README.md”.
+
 ``` bash
 $ echo "# My eddie Python project" > README.md
 $ git status          # untracked file appears in red
@@ -84,10 +103,19 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-To add a file to the git repo use `git add`
+An untracked file is one that has not been added to the staging area. To add files to the staging area, you can use the `git add` command.
+
+### Git add
+
+There are quite a few ways to use this command. For example, you can use `git add .` to add all files to the staging area from the working directory or use `git add filename` to add a specific file to the staging area.
 
 ``` bash
 $ git add README.md   # stage the file
+```
+
+If you run `git status` again, this will show you that README.md is in the staging area 
+
+```bash
 $ git status          # file appears in green (staged)
 ```
 
@@ -101,7 +129,13 @@ Changes to be committed:
     new file:   README.md
 ```
 
+When files are added to the staging area, that means they are in safe keeping before you commit them. Think of using the Git add command as telling Git, “Please keep track of this file in its current state.”
+
 Staging tells Git *which* changes, Changes to be committed, belong to the next snapshot.
+
+
+If you make additional changes to the tracked files, you’ll need to use the `git add` command again for Git to keep track of them. 
+
 
 ### 3. Commit the snapshot
 
@@ -115,8 +149,10 @@ To add snapshot to repository use the `git commit` command. For each commit you 
 3.  Avoid Vague Messages: Instead of writing **"Update code"** or **"Fix bug"**, specify what you did, such as **"Add error handling for login process."**
 :::
 
+Let’s run git commit -m "initial commit" to see what happens.
+
 ``` bash
-$ git commit -m "Add README with project title"
+$ git commit -m "initial commit"
 ```
 
 ``` output
@@ -126,6 +162,14 @@ $ git commit -m "Add README with project title"
 ```
 
 Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
+
+If you run `git status`, you’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+
+```bash
+git status
+```
+
+That’s how you use the git add and git commit commands together! Well done tracking changes and storing your new work.
 
 ### Git Log
 
