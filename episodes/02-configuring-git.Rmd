@@ -37,10 +37,15 @@ Learners may have already used Git on their computers.  Ask them to run `git con
 
 ### 1. Identify yourself
 
+The first thing you should do is configure Git so that it understands who you are. The `git config` command allows you to set Git configuration values that can help you create a customized Git workflow. 
+
+To set your email and username, type 
+
 ```bash
 $ git config --global user.name "Your Name"
 $ git config --global user.email "you@example.com"
 ```
+
 
 These two lines create (or update) entries in `~/.gitconfig` so every commit you make will be tagged with the correct author information.
 
