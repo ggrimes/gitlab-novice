@@ -1,5 +1,5 @@
 ---
-title: '05-exploring-history'
+title: 'Exploring History'
 teaching: 10
 exercises: 2
 ---
