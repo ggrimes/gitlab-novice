@@ -29,7 +29,7 @@ A VCS helps you:
 -   collaborate safely with colleagues, and
 -   showcase the evolution of your work.
 
-In the next two hours we will explore:
+In this workshop we will explore:
 
 -   tracking changes locally,
 -   sharing work with a remote repository hosted on GitLab,
