@@ -66,6 +66,10 @@ In GitLab, branches can be protected to restrict who can push to them. To allow 
 
 ## Step 3: Clone the Repository
 
+What if you were given a link to a folder from a remote location that you needed to get on your computer? How would you do that? You’d need to make a copy of the remote repository to your local machine. In the world of Git, this is referred to as “cloning.” The command for cloning is, you guessed it, `git clone`.
+
+
+
 **Person 2** now clones the repository on their system (e.g., on Eddie):
 
 ``` bash
