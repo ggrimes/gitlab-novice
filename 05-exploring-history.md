@@ -1,92 +1,196 @@
 ---
-title: 'Exploring History'
+title: "Exploring History"
 teaching: 10
 exercises: 2
 ---
 
 ::: questions
--   How do you write a lesson using R Markdown and `{sandpaper}`?
+-   How can I view the history of changes in a Git repository?
+-   How can I find out what was changed, when, and by whom?
+-   How do I explore history using the command line and RStudio?
 :::
 
 ::: objectives
--   Explain how to use markdown with the new lesson template
--   Demonstrate how to include pieces of code, figures, and nested challenge blocks
+-   Use `git log` to inspect the commit history of a project
+-   Use `git show` and `git diff` to examine specific changes
+-   View history using RStudio’s Git interface
 :::
 
 ## Introduction
 
-This is a lesson created via The Carpentries Workbench. It is written in [Pandoc-flavored Markdown][pandoc] for static files (with extension `.md`) and [R Markdown][r-markdown] for dynamic files that can render code into output (with extension `.Rmd`). Please refer to the [Introduction to The Carpentries Workbench][carpentries-workbench] for full documentation.
+Git tracks everything. This means you can always go back and see who changed what, when, and why. This history is extremely useful for debugging, collaboration, and documentation.
 
-What you need to know is that there are three sections required for a valid Carpentries lesson template:
+Let’s look at some tools for exploring that history.
 
-1.  `questions` are displayed at the beginning of the episode to prime the learner for the content.
-2.  `objectives` are the learning objectives for an episode displayed with the questions.
-3.  `keypoints` are displayed at the end of the episode to reinforce the objectives.
+## Using `git log`
 
-::: instructor
-Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the "Instructor View"
-:::
+The most basic command to view history is:
 
-::::: challenge
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-``` r
-paste("This", "new", "lesson", "looks", "good")
+``` bash
+git log
 ```
+
+This shows:
+
+-   The commit hash (a long ID)
+-   Author
+-   Date
+-   Commit message
+
+This gives you a full history of commits, starting from the most recent.
+
+### Shorter Log View
+
+Use `--oneline` for a more concise view:
+
+``` bash
+git log --oneline
+```
+
+This is helpful when scanning many commits quickly.
+
+![Terminal showing git log --oneline output](TODO-fig/git-log-oneline.png)
+
+## Inspecting a Commit
+
+To see exactly what was changed in a commit:
+
+``` bash
+git show <commit-id>
+```
+
+For example:
+
+``` bash
+git show a3f2d4e
+```
+
+This shows the diff (the change) introduced in that commit.
+
+## Comparing Changes
+
+Use `git diff` to compare versions:
+
+-   Compare working directory to last commit:
+
+    ``` bash
+    git diff
+    ```
+
+-   Compare staged changes:
+
+    ``` bash
+    git diff --cached
+    ```
+
+-   Compare between two commits:
+
+    ``` bash
+    git diff abc123 def456
+    ```
+
+    ## On a specific file
+
+You can do a  `git diff` with a specific a file and a specific revision to see changes made between and a previous version:
+
+``` bash
+$ git diff [commit_ID] Readme.md
+# Note A single git commit may contain multiple files.
+```
+
+It's important to note that any changes that have been staged but not yet committed will not be included in this git diff comparison.
+
+Remember command only considers changes in the working directory that have not yet been staged.
+
+``` bash
+$ git diff –-staged [commit_ID] Readme.md
+```
+
+## Shortcut
+
+git diff HEAD\~N Readme.md
+
+``` bash
+$ git diff HEAD~2 Readme.md
+```
+
+## Show
+
+If you want the specific contents of a file at given revision you can do:
+
+``` bash
+$ git show RevNum:Readme.md
+```
+
+## Restore
+
+Replace a file in the current working directory with the version of it committed in a given branch: Requires Git version 2.23+..
+
+``` bash
+git restore Readme.md
+```
+
+## Using RStudio to Explore History
+
+RStudio has a Git pane that allows you to explore commit history graphically:
+
+1.  Click on the **History** button in the Git pane.
+
+2.  Select a commit to see:
+
+    -   Author and date
+    -   Commit message
+    -   File changes
+
+3.  You can **diff** individual files by selecting them.
+
+![Screenshot of RStudio Git History pane](TODO-fig/rstudio-history-pane.png)
+
+This is a good way to review changes if you prefer a GUI over the command line.
+
+## Challenge: What Changed?
+
+:::: challenge
+Open a repository (your project or a partner’s). Then:
+
+1.  Run `git log --oneline` and pick an older commit.
+
+2.  Use `git show` to see what was changed in that commit.
+
+3.  Identify:
+
+    -   Who made the change?
+    -   What file(s) were edited?
+    -   What was added or removed? :::
 
 ::: solution
-## Output
-
-``` output
-[1] "This new lesson looks good"
-```
-:::
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-::: solution
-You can add a line with at least three colons and a `solution` tag.
-:::
-:::::
-
-## Figures
-
-You can include figures generated from R Markdown:
-
-
-``` r
-pie(
-  c(Sky = 78, "Sunny side of pyramid" = 17, "Shady side of pyramid" = 5), 
-  init.angle = 315, 
-  col = c("deepskyblue", "yellow", "yellow3"), 
-  border = FALSE
-)
+``` bash
+git log --oneline
+git show <commit-id>
 ```
 
-<div class="figure" style="text-align: center">
-<img src="fig/05-exploring-history-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid"  />
-<p class="caption">Sun arise each and every morning</p>
-</div>
+Look for:
 
-Or you can use pandoc markdown for static figures with the following syntax:
+-   Author and date near the top
+-   File names and the actual line changes below
+:::
+::::
 
-`![optional caption that appears below the figure](figure url){alt='alt text for accessibility purposes'}`
+## Bonus: Who Wrote This Line?
 
-![Blue Carpentries hex person logo with no text.](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg)
+Git has a powerful blame tool:
 
-## Math
+``` bash
+git blame README.md
+```
 
-One of our episodes contains $\LaTeX$ equations when describing how to create dynamic reports with {knitr}, so we now use mathjax to describe this:
+This shows you, line by line, who last modified each part of the file.
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
-
-Cool, right?
+Very useful for identifying the history of a specific part of the code.
 
 ::: keypoints
--   Use `.md` files for episodes when you want static content
--   Use `.Rmd` files for episodes when you need to generate output
--   Run `sandpaper::check_lesson()` to identify any issues with your lesson
--   Run `sandpaper::build_lesson()` to preview your lesson locally
+-   Use `git log` and `git show` to investigate project history
+-   Use `git diff` to compare changes between commits
+-   RStudio provides a GUI for exploring Git history
+-   `git blame` can help identify the origin of specific lines
 :::
