@@ -1,10 +1,7 @@
 ---
-title: "09-exploring-history"
+title: "Exploring History"
 teaching: 10
 exercises: 2
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ::: questions
@@ -21,9 +18,7 @@ editor_options:
 
 ## Introduction
 
-Git tracks everything. This means you can always go back and see who
-changed what, when, and why. This history is extremely useful for
-debugging, collaboration, and documentation.
+Git tracks everything. This means you can always go back and see who changed what, when, and why. This history is extremely useful for debugging, collaboration, and documentation.
 
 Let’s look at some tools for exploring that history.
 
@@ -54,8 +49,7 @@ git log --oneline
 
 This is helpful when scanning many commits quickly.
 
-![Terminal showing git log --oneline
-output](TODO-fig/git-log-oneline.png)
+![Terminal showing git log --oneline output](TODO-fig/git-log-oneline.png)
 
 ## Inspecting a Commit
 
@@ -94,11 +88,12 @@ Use `git diff` to compare versions:
     ``` bash
     git diff abc123 def456
     ```
-## On a specific file
+
+    ## On a specific file
 
 You can do a  `git diff` with a specific a file and a specific revision to see changes made between and a previous version:
 
-```bash
+``` bash
 $ git diff [commit_ID] Readme.md
 # Note A single git commit may contain multiple files.
 ```
@@ -107,41 +102,37 @@ It's important to note that any changes that have been staged but not yet commit
 
 Remember command only considers changes in the working directory that have not yet been staged.
 
-```bash
+``` bash
 $ git diff –-staged [commit_ID] Readme.md
 ```
 
 ## Shortcut
 
-git diff HEAD~N Readme.md
+git diff HEAD\~N Readme.md
 
-```bash
+``` bash
 $ git diff HEAD~2 Readme.md
-
 ```
 
-## Show 
+## Show
 
 If you want the specific contents of a file at given revision you can do:
 
-```bash
+``` bash
 $ git show RevNum:Readme.md
 ```
 
 ## Restore
 
-Replace a file in the current working directory with the version of it committed in a given branch:
-Requires Git version 2.23+.. 
+Replace a file in the current working directory with the version of it committed in a given branch: Requires Git version 2.23+..
 
-```bash
+``` bash
 git restore Readme.md
 ```
 
-
 ## Using RStudio to Explore History
 
-RStudio has a Git pane that allows you to explore commit history
-graphically:
+RStudio has a Git pane that allows you to explore commit history graphically:
 
 1.  Click on the **History** button in the Git pane.
 
@@ -153,15 +144,14 @@ graphically:
 
 3.  You can **diff** individual files by selecting them.
 
-![Screenshot of RStudio Git History
-pane](TODO-fig/rstudio-history-pane.png)
+![Screenshot of RStudio Git History pane](TODO-fig/rstudio-history-pane.png)
 
-This is a good way to review changes if you prefer a GUI over the
-command line.
+This is a good way to review changes if you prefer a GUI over the command line.
 
 ## Challenge: What Changed?
 
-:::: challenge Open a repository (your project or a partner’s). Then:
+:::: challenge
+Open a repository (your project or a partner’s). Then:
 
 1.  Run `git log --oneline` and pick an older commit.
 
@@ -179,11 +169,11 @@ git log --oneline
 git show <commit-id>
 ```
 
-
 Look for:
 
 -   Author and date near the top
 -   File names and the actual line changes below
+:::
 ::::
 
 ## Bonus: Who Wrote This Line?
