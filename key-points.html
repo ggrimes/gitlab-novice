@@ -303,7 +303,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-collaborating.html">6. 06-collaborating</a>
+        <a href="06-collaborating.html">6. Collaborating</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -316,6 +316,18 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
         <a href="05-exploring-history.html">7. Exploring History</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="ignoring-things.html">8. Ignoring Things</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -444,7 +456,7 @@ pushing.</li>
 <li>Always configure your name/email before making your first
 commit.</li>
 <li>You can verify success by checking your changes online.</li>
-</ul></section><section id="06-collaborating"><h2 class="section-heading"><a href="06-collaborating.html">06-collaborating</a></h2>
+</ul></section><section id="06-collaborating"><h2 class="section-heading"><a href="06-collaborating.html">Collaborating</a></h2>
 <hr class="half-width">
 <ul>
 <li>Git allows multiple collaboration models; shared access is fastest
@@ -457,14 +469,22 @@ editing.</li>
 </ul></section><section id="05-exploring-history"><h2 class="section-heading"><a href="05-exploring-history.html">Exploring History</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
+<li>Use <code>git log</code> and <code>git show</code> to investigate
+project history</li>
+<li>Use <code>git diff</code> to compare changes between commits</li>
+<li>RStudio provides a GUI for exploring Git history</li>
+<li>
+<code>git blame</code> can help identify the origin of specific
+lines</li>
+</ul></section><section id="ignoring-things"><h2 class="section-heading"><a href="ignoring-things.html">Ignoring Things</a></h2>
+<hr class="half-width">
+<ul>
+<li>Use <code>.gitignore</code> to prevent tracking of unnecessary or
+sensitive files</li>
+<li>Edit <code>.gitignore</code> early in your project to keep your
+history clean</li>
+<li>Use <code>.git/info/exclude</code> for machine-specific ignores</li>
+<li>Files already tracked by Git won’t be ignored retroactively</li>
 </ul></section>
 </div>
     </main>
@@ -513,8 +533,8 @@ locally</li>
   "url": "https://carpentries.github.io/workbench-template-rmd/key-points.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/key-points.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-12",
-  "datePublished": "2025-06-12"
+  "dateModified": "2025-06-13",
+  "datePublished": "2025-06-13"
 }
 
   </script><script>
