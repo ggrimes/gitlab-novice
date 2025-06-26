@@ -78,6 +78,35 @@ $ git config --global color.ui auto
 
 With colour enabled, Git highlights additions (*green*), deletions (*red*), and branch names, making the status information easier to parse.
 
+::: callout
+
+### Example Configuration for Red-Green Colorblindness (Deuteranopia/Protanopia)
+
+For someone with red-green colorblindness, avoiding pure red and green for critical distinctions is key. Here's an example configuration that uses blues, purples, and yellows instead:
+
+```bash
+# General UI color (already set to auto)
+git config --global color.ui auto
+
+# Diff colors
+git config --global color.diff.old "magenta bold"  # Changed from red
+git config --global color.diff.new "cyan bold"    # Changed from green
+git config --global color.diff.meta "blue"
+git config --global color.diff.frag "yellow"
+
+# Status colors
+git config --global color.status.added "cyan bold"      # Changed from green
+git config --global color.status.changed "yellow bold"  # Often orange/yellow by default, keep it distinct
+git config --global color.status.untracked "magenta"    # Changed from red
+
+# Branch colors
+git config --global color.branch.current "yellow bold"
+git config --global color.branch.local "cyan"
+git config --global color.branch.remote "magenta"
+```
+
+:::
+
 ### 3. Choose your editor
 
 ```bash
