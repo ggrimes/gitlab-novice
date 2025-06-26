@@ -56,7 +56,7 @@ $ mkdir MyProject
 $ cd `MyProject` 
 ```
 
-In its current state, project1 is not a Git repository.
+In its current state the directory, `MyProject` is not a Git repository.
 
 If you want this folder to be a Git repository so that you can track all changes you make, type `git init` command. 
 
@@ -64,7 +64,7 @@ If you want this folder to be a Git repository so that you can track all changes
 $ git init            # creates .git directory
 ```
 
-When you run the git init command in an ordinary folder, it allows you to transform that folder into a trackable git repository where you can use Git commands.
+When you run the `git init` command in an ordinary folder, it allows you to transform that folder into a trackable git repository where you can use Git commands.
 
 `git init` creates a hidden `.git` folder that stores all future history.
 
