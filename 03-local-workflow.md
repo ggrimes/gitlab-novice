@@ -180,34 +180,40 @@ $ git commit -m "initial commit"
 
 Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
 
-If you run `git status`, you’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+You’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+
+Now that your changes are committed, your working directory should be clean. You can verify this by running git status again:
 
 ```bash
 git status
 ```
 
+This output means there are no new changes to track or commit since your last snapshot. Your project's state is now safely recorded in your Git history!
+
+```output
+On branch main
+nothing to commit, working tree clean
+```
+
 That’s how you use the git add and git commit commands together! Well done tracking changes and storing your new work.
 
-### Git Log
+### Git Log: Tracing Your Project's History
 
-Show the sequence of commits starting from the current one, in reverse chronological order of the Git repository in the current working directory:
+The `git log` command is your window into the history of your Git repository. After you've made and committed changes (like we did with the README.md file), your `git status` shows a clean working tree because those changes are now safely recorded. `git log` then lets you see a chronological list of all those recorded commits, starting from the most recent one and working backward. Each commit represents a snapshot of your project at a specific point in time, along with who made the change and why.
 
 ``` bash
 git log
 ```
 
 ``` output
-git log​
 
 commit f00b5b49b39884a9bf978bc272c82d862976abcb (HEAD -> main)​
 
-Author: Graeme Grimes <Graeme.Grimes@ed.ac.uk>​
+Author: firstname surname <emailaddress@ed.ac.uk>​
 
 Date:   Tue Sep 24 10:06:58 2024 +0100​
 
-​
-
-    Add Readme.md
+initial commit
 ```
 
 :::: challenge
@@ -219,7 +225,7 @@ Use `git log --oneline` to view the history. How many commits appear and what in
 One commit appears:
 
 ``` text
-72041c0 (HEAD -> main) Add README with project title
+72041c0 (HEAD -> main) initial commit
 ```
 
 We see the abbreviated hash, the branch name, and the commit message.
