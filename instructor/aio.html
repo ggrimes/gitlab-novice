@@ -462,7 +462,7 @@ development.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Learners often try to remember <strong>all</strong> Git commands at
 once. Reassure them that they only need a handful today:
@@ -500,7 +500,7 @@ D. Collaborating with colleagues on a shared project</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>C. Encrypting files. While encryption is possible, it is
 <strong>not</strong> the primary purpose of a version control
@@ -642,6 +642,51 @@ workflow.</p>
 <p>These two lines create (or update) entries in
 <code>~/.gitconfig</code> so every commit you make will be tagged with
 the correct author information.</p>
+<p>Setting Up Your Identity: user.name and user.email Before you make
+your first commit, Git needs to know who you are. Every commit you make
+is tagged with an author, which includes a name and an email address.
+This is how Git tracks who made what changes in the project’s
+history.</p>
+<p>You’ll set these globally so Git remembers them for all your future
+projects:</p>
+<p>Bash</p>
+<p>$ git config –global user.name “Your Name” $ git config –global
+user.email “<a href="mailto:you@example.com" class="email">you@example.com</a>” Replace “Your Name” with your actual
+name and “<a href="mailto:you@example.com" class="email">you@example.com</a>” with your email address. Using the
+–global flag ensures these settings apply to every Git repository on
+your computer, so you won’t have to set them up for each new
+project.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Callout</h3>
+<div class="callout-content">
+<p>Think Before You Share: Email Addresses in Git While Git requires an
+email address for your commits, be mindful about the address you use.
+Your commit email address becomes part of the public history of any
+repository you push to a public platform (like GitHub or GitLab).</p>
+<p>Here’s why this matters and what you can do:</p>
+<p>Privacy Concerns: A public email address can be scraped by bots,
+leading to more spam or unwanted solicitations. Security Risks: In some
+rare cases, a public email could potentially be used for targeted
+attacks if combined with other publicly available information. What are
+your options?</p>
+<p>Use a dedicated “no-reply” email provided by your Git hosting
+service: GitHub, for example, offers a “noreply” email address you can
+use. This keeps your personal email private while still uniquely
+identifying your commits. Check your account settings on platforms like
+GitHub or GitLab for this option. Use a separate email address: You
+could use an email address specifically for Git commits that you don’t
+use for other personal or critical communications. Keep private
+repositories private: If you’re working on a private project, your email
+address is only visible to those with access to the repository. Always
+consider the visibility of your repository and choose an email strategy
+that aligns with your privacy preferences.</p>
+</div>
+</div>
+</div>
 <div id="challenge-1-check-your-work" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2291,7 +2336,7 @@ version control into your analysis projects.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Reassure learners that the GUI is not a “less powerful” version of
 Git—it’s just another interface to the same tool. Some users will
@@ -2876,7 +2921,7 @@ commit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3072,7 +3117,7 @@ it.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
