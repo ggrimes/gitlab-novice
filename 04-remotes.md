@@ -13,7 +13,6 @@ exercises: 4
 
 ::: objectives
 -   Define the term *remote* and list at least two common hosting services.
--   Clone an existing repository from GitLab to your computer with `git clone`.
 -   Create a new remote connection with `git remote add` and publish code with `git push -u origin main`.
 -   Retrieve updates with `git pull` and explain the difference between `git pull` and `git fetch`.
 -   Resolve a simple *non‑fast‑forward* push rejection by pulling before pushing.
@@ -27,7 +26,7 @@ A Git *remote* is a shorthand name for a version of your project hosted elsewher
 
 The University of Edinburgh provides a Git Repository hosting service using [GitLab](https://git.ecdf.ed.ac.uk) more information [here](https://www.wiki.ed.ac.uk/pages/viewpage.action?spaceKey=ResearchServices&title=GitLab)
 
-Log into GitLab, [ttps://git.ecdf.ed.ac.uk, using your University of Edinburgh credentials.
+Log into GitLab, https://git.ecdf.ed.ac.uk, using your University of Edinburgh credentials.
 
 ### Create New Project
 
