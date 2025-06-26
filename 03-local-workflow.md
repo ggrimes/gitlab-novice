@@ -89,12 +89,17 @@ because we have not created any files or commits; the repository is empty.
 
 ### 2. Add a README file
 
-::: callout
-What’s a README?
 
 A README file in a Git repository provides essential information about the project, including its purpose, usage instructions, how to get started, where to find help, and details on contributors. It serves as an introductory guide for visitors, helping them understand and utilize the project effectively
 
-::: 
+::: callout
+
+Markdown Files
+
+README files are typically named README.md. The .md extension indicates that the file is written in Markdown, a lightweight markup language that allows you to add formatting (like headings, bold text, lists, and code blocks) using plain text.
+
+When you view a repository on platforms like GitHub, GitLab, or Bitbucket, they automatically detect README.md (or similar filenames like README.txt, README) in the root directory. These platforms then render the Markdown content into beautifully formatted HTML, making the project's introduction easily readable directly in your web browser without needing to open the file in a text editor. This automatic rendering is a key reason Markdown is so popular for repository documentation.
+:::
 
 Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file “README.md”.
 
