@@ -384,6 +384,18 @@ staging area, commit history).</li>
 </div>
 </div>
 </div>
+<p>Have you ever found yourself with a folder full of files like
+this?</p>
+<ul><li><code>report.docx</code></li>
+<li><code>report_final.docx</code></li>
+<li><code>report_final_v2.docx</code></li>
+<li><code>report_final_for_real_this_time.docx</code></li>
+<li><code>report_final_sent_to_boss.docx</code></li>
+</ul><p>Or maybe you’ve been working on a file and thought, “I wish I could
+go back to the version I had yesterday before I deleted that
+paragraph.”</p>
+<p>This is the kind of problem that version control is designed to
+solve.</p>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>Version control is like a digital lab notebook: it keeps a dated,
 permanent record of every meaningful change you make to your project
@@ -398,7 +410,8 @@ files!),</li>
 <li>showcase the evolution of your work.</li>
 </ul><p>In this workshop we will explore:</p>
 <ul><li>tracking changes locally,</li>
-<li>sharing work with a remote repository hosted on GitLab,</li>
+<li>sharing work using <strong>GitLab</strong>, a web-based platform for
+hosting your Git repositories and collaborating with others,</li>
 <li>collaborating via pushes, pulls, and merge requests, and</li>
 <li>branching to develop new ideas without breaking the main line of
 development.</li>
@@ -406,13 +419,29 @@ development.</li>
 <h3 id="the-git-workflow">The Git Workflow<a class="anchor" aria-label="anchor" href="#the-git-workflow"></a></h3>
 <figure><img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="Diagram showing working directory, staging area, and repository." class="figure mx-auto d-block"></figure><p>The diagram above summarises the flow of information in a Git
 repository.</p>
-<div id="challenge-1-why-bother" class="callout challenge">
+<p>Here is what these terms mean:</p>
+<ul><li>
+<strong>Working Directory:</strong> The folder on your computer
+where your project files live. This is where you do all your work:
+creating, editing, and deleting files.</li>
+<li>
+<strong>Staging Area (or Index):</strong> A “waiting room” for your
+changes. You select which changes from your working directory you want
+to save, and you add them to the staging area. This allows you to group
+related changes into a single, meaningful snapshot.</li>
+<li>
+<strong>Repository (or Commit History):</strong> The permanent,
+dated record of all the snapshots you have saved. Once a change is
+committed from the staging area to the repository, it’s saved in your
+project’s history.</li>
+</ul><div id="challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-why-bother" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Why bother?</h3>
+<div id="challenge" class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
+<p>1: Why bother?</p>
 <p>Which of the following is <strong>not</strong> a typical reason to
 use a version control system?</p>
 <p>A. Keeping files synchronised between two laptops<br>

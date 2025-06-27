@@ -430,6 +430,20 @@ staging area, commit history).</li>
 </div>
 </div>
 </div>
+<p>Have you ever found yourself with a folder full of files like
+this?</p>
+<ul>
+<li><code>report.docx</code></li>
+<li><code>report_final.docx</code></li>
+<li><code>report_final_v2.docx</code></li>
+<li><code>report_final_for_real_this_time.docx</code></li>
+<li><code>report_final_sent_to_boss.docx</code></li>
+</ul>
+<p>Or maybe you’ve been working on a file and thought, “I wish I could
+go back to the version I had yesterday before I deleted that
+paragraph.”</p>
+<p>This is the kind of problem that version control is designed to
+solve.</p>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
@@ -449,7 +463,8 @@ files!),</li>
 <p>In this workshop we will explore:</p>
 <ul>
 <li>tracking changes locally,</li>
-<li>sharing work with a remote repository hosted on GitLab,</li>
+<li>sharing work using <strong>GitLab</strong>, a web-based platform for
+hosting your Git repositories and collaborating with others,</li>
 <li>collaborating via pushes, pulls, and merge requests, and</li>
 <li>branching to develop new ideas without breaking the main line of
 development.</li>
@@ -459,13 +474,31 @@ development.</li>
 </h3>
 <figure><img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="Diagram showing working directory, staging area, and repository." class="figure mx-auto d-block"></figure><p>The diagram above summarises the flow of information in a Git
 repository.</p>
-<div id="challenge-1-why-bother" class="callout challenge">
+<p>Here is what these terms mean:</p>
+<ul>
+<li>
+<strong>Working Directory:</strong> The folder on your computer
+where your project files live. This is where you do all your work:
+creating, editing, and deleting files.</li>
+<li>
+<strong>Staging Area (or Index):</strong> A “waiting room” for your
+changes. You select which changes from your working directory you want
+to save, and you add them to the staging area. This allows you to group
+related changes into a single, meaningful snapshot.</li>
+<li>
+<strong>Repository (or Commit History):</strong> The permanent,
+dated record of all the snapshots you have saved. Once a change is
+committed from the staging area to the repository, it’s saved in your
+project’s history.</li>
+</ul>
+<div id="challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-why-bother" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Why bother?</h3>
+<div id="challenge" class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
+<p>1: Why bother?</p>
 <p>Which of the following is <strong>not</strong> a typical reason to
 use a version control system?</p>
 <p>A. Keeping files synchronised between two laptops<br>
@@ -673,7 +706,7 @@ name and email were saved.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -783,7 +816,7 @@ to?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>
@@ -840,7 +873,7 @@ directory? What happens if you commit in a different repository?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ul>
 <li>Inside the project directory Git will record <strong><a href="mailto:user@project" class="email">user@project</a></strong>
@@ -2839,7 +2872,7 @@ commit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
