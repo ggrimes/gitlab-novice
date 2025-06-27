@@ -56,7 +56,7 @@ $ mkdir MyProject
 $ cd `MyProject` 
 ```
 
-In its current state, project1 is not a Git repository.
+In its current state the directory, `MyProject` is not a Git repository.
 
 If you want this folder to be a Git repository so that you can track all changes you make, type `git init` command. 
 
@@ -64,7 +64,7 @@ If you want this folder to be a Git repository so that you can track all changes
 $ git init            # creates .git directory
 ```
 
-When you run the git init command in an ordinary folder, it allows you to transform that folder into a trackable git repository where you can use Git commands.
+When you run the `git init` command in an ordinary folder, it allows you to transform that folder into a trackable git repository where you can use Git commands.
 
 `git init` creates a hidden `.git` folder that stores all future history.
 
@@ -89,12 +89,17 @@ because we have not created any files or commits; the repository is empty.
 
 ### 2. Add a README file
 
-::: callout
-What’s a README?
 
 A README file in a Git repository provides essential information about the project, including its purpose, usage instructions, how to get started, where to find help, and details on contributors. It serves as an introductory guide for visitors, helping them understand and utilize the project effectively
 
-::: 
+::: callout
+
+Markdown Files
+
+README files are typically named README.md. The .md extension indicates that the file is written in Markdown, a lightweight markup language that allows you to add formatting (like headings, bold text, lists, and code blocks) using plain text.
+
+When you view a repository on platforms like GitHub, GitLab, or Bitbucket, they automatically detect README.md (or similar filenames like README.txt, README) in the root directory. These platforms then render the Markdown content into beautifully formatted HTML, making the project's introduction easily readable directly in your web browser without needing to open the file in a text editor. This automatic rendering is a key reason Markdown is so popular for repository documentation.
+:::
 
 Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file “README.md”.
 
@@ -175,34 +180,40 @@ $ git commit -m "initial commit"
 
 Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
 
-If you run `git status`, you’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+You’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+
+Now that your changes are committed, your working directory should be clean. You can verify this by running git status again:
 
 ```bash
 git status
 ```
 
+This output means there are no new changes to track or commit since your last snapshot. Your project's state is now safely recorded in your Git history!
+
+```output
+On branch main
+nothing to commit, working tree clean
+```
+
 That’s how you use the git add and git commit commands together! Well done tracking changes and storing your new work.
 
-### Git Log
+### Git Log: Tracing Your Project's History
 
-Show the sequence of commits starting from the current one, in reverse chronological order of the Git repository in the current working directory:
+The `git log` command is your window into the history of your Git repository. After you've made and committed changes (like we did with the README.md file), your `git status` shows a clean working tree because those changes are now safely recorded. `git log` then lets you see a chronological list of all those recorded commits, starting from the most recent one and working backward. Each commit represents a snapshot of your project at a specific point in time, along with who made the change and why.
 
 ``` bash
 git log
 ```
 
 ``` output
-git log​
 
 commit f00b5b49b39884a9bf978bc272c82d862976abcb (HEAD -> main)​
 
-Author: Graeme Grimes <Graeme.Grimes@ed.ac.uk>​
+Author: firstname surname <emailaddress@ed.ac.uk>​
 
 Date:   Tue Sep 24 10:06:58 2024 +0100​
 
-​
-
-    Add Readme.md
+initial commit
 ```
 
 :::: challenge
@@ -214,7 +225,7 @@ Use `git log --oneline` to view the history. How many commits appear and what in
 One commit appears:
 
 ``` text
-72041c0 (HEAD -> main) Add README with project title
+72041c0 (HEAD -> main) initial commit
 ```
 
 We see the abbreviated hash, the branch name, and the commit message.
