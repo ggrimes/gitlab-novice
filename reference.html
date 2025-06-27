@@ -344,13 +344,190 @@
         </div>
 
         
+
 <section><h2 class="section-heading" id="glossary">Glossary<a class="anchor" aria-label="anchor" href="#glossary"></a></h2>
-<hr class="half-width"><p>This is a placeholder file. Please add content here.</p>
-<!--
+<hr class="half-width"><dl><dt><strong>Branch</strong></dt>
+<dd>
+A separate line of development. New branches are often created to work
+on new features without disturbing the main line of development.
+</dd>
+<dt><strong>Clone</strong></dt>
+<dd>
+To make a local copy of a remote repository. The local copy is connected
+to the remote, allowing you to pull changes from the remote and push
+your own changes to it.
+</dd>
+<dt><strong>Commit</strong></dt>
+<dd>
+A snapshot of the state of your files at a particular point in time.
+Each commit has a unique identifier (a hash) and a message describing
+the changes.
+</dd>
+<dt><strong>Conflict</strong></dt>
+<dd>
+A situation that occurs when two or more people make changes to the same
+part of a file. Git is unable to automatically decide which change to
+keep, so it asks the user to resolve the conflict manually.
+</dd>
+<dt><strong>Diff</strong></dt>
+<dd>
+The difference between two versions of a file or set of files.
+</dd>
+<dt><strong>Fork</strong></dt>
+<dd>
+A copy of a repository that is owned by you. Forks allow you to freely
+experiment with changes without affecting the original project. It is
+often used in open-source software to propose changes to a project you
+don’t have write access to.
+</dd>
+<dt><strong>Git</strong></dt>
+<dd>
+A distributed version control system that tracks changes in source code
+during software development. It is designed for coordinating work among
+programmers, but it can be used to track changes in any set of files.
+</dd>
+<dt><strong>GitLab</strong></dt>
+<dd>
+A web-based Git repository hosting service. It provides a graphical
+interface, plus access control and several collaboration features, such
+as wikis and basic task management tools for every project.
+</dd>
+<dt><strong>HEAD</strong></dt>
+<dd>
+A reference to the most recent commit in the currently checked-out
+branch.
+</dd>
+<dt><strong>Index</strong></dt>
+<dd>
+Another name for the staging area.
+</dd>
+<dt><strong>Log</strong></dt>
+<dd>
+A record of the sequence of commits that have been made to a repository.
+</dd>
+<dt><strong>Main</strong></dt>
+<dd>
+The default branch in a Git repository. It is conventionally the main
+line of development.
+</dd>
+<dt><strong>Merge</strong></dt>
+<dd>
+To combine the changes from one branch into another.
+</dd>
+<dt><strong>Origin</strong></dt>
+<dd>
+The default name for the remote repository from which a local repository
+was cloned.
+</dd>
+<dt><strong>Pull</strong></dt>
+<dd>
+To fetch changes from a remote repository and merge them into the
+current branch.
+</dd>
+<dt><strong>Push</strong></dt>
+<dd>
+To send your committed changes to a remote repository.
+</dd>
+<dt><strong>Rebase</strong></dt>
+<dd>
+To re-apply a series of commits on top of another base tip. This is an
+alternative to merging.
+</dd>
+<dt><strong>Remote</strong></dt>
+<dd>
+A version of your repository that is hosted on another computer, usually
+a server. You can have multiple remotes for a single local repository.
+</dd>
+<dt><strong>Repository</strong></dt>
+<dd>
+A collection of files and the history of their changes. The history is
+stored in a hidden subdirectory called <code>.git</code>.
+</dd>
+<dt><strong>Staging Area</strong></dt>
+<dd>
+A file, also known as the index, that stores information about what will
+go into your next commit. You can add and remove files from the staging
+area before you commit them.
+</dd>
+<dt><strong>Tag</strong></dt>
+<dd>
+A reference to a specific commit, often used to mark a release (e.g.,
+v1.0).
+</dd>
+<dt><strong>Upstream</strong></dt>
+<dd>
+A term for the remote repository from which you cloned your local
+repository. It is the main place where the code is developed.
+</dd>
+<dt><strong>Version Control System (VCS)</strong></dt>
+<dd>
+A system that records changes to a file or set of files over time so
+that you can recall specific versions later.
+</dd>
+<dt><strong>Working Directory</strong></dt>
+<dd>
+The directory on your computer where you are currently working. It
+contains the files that you are editing.
+</dd>
+</dl><hr></section><section><h2 class="section-heading" id="git-cheatsheets-for-quick-reference">Git Cheatsheets for Quick Reference<a class="anchor" aria-label="anchor" href="#git-cheatsheets-for-quick-reference"></a></h2>
+<hr class="half-width"><ul><li>Printable Git cheatsheets in several languages are available <a href="https://training.github.com/downloads/github-git-cheat-sheet/" class="external-link">here</a>.</li>
+<li>More material is available from the <a href="https://training.github.com/" class="external-link">GitHub training website</a>.</li>
+<li>An interactive one-page visualisation about the relationships
+between workspace, staging area, local repository, upstream repository,
+and the commands associated with each (with explanations) is available
+<a href="http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;" class="external-link">here</a>.</li>
+<li>Both resources are also available in other languages (e.g. Spanish,
+French, and more).</li>
+<li>“Happy Git and GitHub for the useR” is an accessible, free online
+book by Jenny Bryan on how to setup and use Git and GitHub with specific
+references on the integration of Git with RStudio and working with Git
+in R.</li>
+<li>Open Scientific Code using Git and GitHub - A collection of
+explanations and short practical exercises to help researchers learn
+more about version control and open source software.</li>
+</ul><hr></section><section><h2 class="section-heading" id="git-command-cheatsheet">Git Command Cheatsheet<a class="anchor" aria-label="anchor" href="#git-command-cheatsheet"></a></h2>
+<hr class="half-width"><table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr class="header"><th>Command</th>
+<th>Description</th>
+</tr></thead><tbody><tr class="odd"><td><code>git config --global user.name "Your Name"</code></td>
+<td>Set your name for Git commits</td>
+</tr><tr class="even"><td><code>git config --global user.email "you@example.com"</code></td>
+<td>Set your email for Git commits</td>
+</tr><tr class="odd"><td><code>git init</code></td>
+<td>Create a new local repository</td>
+</tr><tr class="even"><td><code>git status</code></td>
+<td>Check the status of your repository</td>
+</tr><tr class="odd"><td><code>git add &lt;file&gt;</code></td>
+<td>Add a file to the staging area</td>
+</tr><tr class="even"><td><code>git commit -m "Your message"</code></td>
+<td>Commit your staged changes with a message</td>
+</tr><tr class="odd"><td><code>git log</code></td>
+<td>View the commit history</td>
+</tr><tr class="even"><td><code>git log --oneline</code></td>
+<td>View the commit history in a condensed format</td>
+</tr><tr class="odd"><td><code>git diff &lt;file&gt;</code></td>
+<td>View the changes you’ve made to a file</td>
+</tr><tr class="even"><td><code>git diff HEAD~N &lt;file&gt;</code></td>
+<td>Compare a file with the version from N commits ago</td>
+</tr><tr class="odd"><td><code>git show &lt;commit&gt;</code></td>
+<td>Show the changes made in a specific commit</td>
+</tr><tr class="even"><td><code>git restore &lt;file&gt;</code></td>
+<td>Discard changes in the working directory</td>
+</tr><tr class="odd"><td><code>git remote add origin &lt;url&gt;</code></td>
+<td>Connect your local repository to a remote one</td>
+</tr><tr class="even"><td><code>git push -u origin main</code></td>
+<td>Push your changes to the remote repository for the first time</td>
+</tr><tr class="odd"><td><code>git push</code></td>
+<td>Push your changes to the remote repository</td>
+</tr><tr class="even"><td><code>git pull</code></td>
+<td>Pull changes from the remote repository</td>
+</tr><tr class="odd"><td><code>git clone &lt;url&gt;</code></td>
+<td>Clone a remote repository to your local machine</td>
+</tr><tr class="even"><td><code>git blame &lt;file&gt;</code></td>
+<td>Show who last modified each line of a file</td>
+</tr></tbody></table><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-</section></div> <!-- / div.lesson-content -->
+ --></section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
