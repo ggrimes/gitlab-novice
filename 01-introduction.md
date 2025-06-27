@@ -17,6 +17,18 @@ exercises: 3
 -   State the topics that will be covered in the workshop.
 ::::::
 
+Have you ever found yourself with a folder full of files like this?
+
+-   `report.docx`
+-   `report_final.docx`
+-   `report_final_v2.docx`
+-   `report_final_for_real_this_time.docx`
+-   `report_final_sent_to_boss.docx`
+
+Or maybe you've been working on a file and thought, "I wish I could go back to the version I had yesterday before I deleted that paragraph."
+
+This is the kind of problem that version control is designed to solve.
+
 ## Introduction
 
 Version control is like a digital lab notebook: it keeps a dated, permanent record of every meaningful change you make to your project files. In this episode we introduce Git, the distributed version control system we will use throughout the lesson.
@@ -32,7 +44,7 @@ A VCS helps you:
 In this workshop we will explore:
 
 -   tracking changes locally,
--   sharing work with a remote repository hosted on GitLab,
+-   sharing work using **GitLab**, a web-based platform for hosting your Git repositories and collaborating with others,
 -   collaborating via pushes, pulls, and merge requests, and
 -   branching to develop new ideas without breaking the main line of development.
 
@@ -46,8 +58,15 @@ Learners often try to remember **all** Git commands at once. Reassure them that 
 
 The diagram above summarises the flow of information in a Git repository.
 
+Here is what these terms mean:
+
+-   **Working Directory:** The folder on your computer where your project files live. This is where you do all your work: creating, editing, and deleting files.
+-   **Staging Area (or Index):** A "waiting room" for your changes. You select which changes from your working directory you want to save, and you add them to the staging area. This allows you to group related changes into a single, meaningful snapshot.
+-   **Repository (or Commit History):** The permanent, dated record of all the snapshots you have saved. Once a change is committed from the staging area to the repository, it's saved in your project's history.
+
 ::::::::::::::::::::::::::::::::::::: challenge
-### Challenge 1: Why bother?
+### Challenge
+1: Why bother?
 
 Which of the following is **not** a typical reason to use a version control system?
 
