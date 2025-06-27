@@ -207,8 +207,7 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#data-sets">Data Sets</a></li>
-<li><a href="#software-setup">Software Setup</a></li>
+        <ul><li><a href="#software-setup">Software Setup</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -337,38 +336,84 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Setup</h1>
       
-
-<p>This is a new lesson built with <a href="https://carpentries.github.io/sandpaper-docs" class="external-link">The Carpentries
+<div class="section level1">
+<h1 id="introduction-to-git-and-gitlab">Introduction to Git and GitLab<a class="anchor" aria-label="anchor" href="#introduction-to-git-and-gitlab"></a></h1>
+<p>This lesson provides an introduction to version control with Git and
+GitLab.</p>
+<div class="section level2">
+<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a></h2>
+<p>The lesson covers the basics of Git, including:</p>
+<ul><li>Configuring Git</li>
+<li>The local workflow (staging, committing, etc.)</li>
+<li>Working with remotes</li>
+<li>Exploring the history of a project</li>
+<li>Collaborating with others</li>
+</ul><p>It also introduces GitLab as a platform for hosting and managing Git
+repositories.</p>
+</div>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a></h2>
+<p>The setup instructions for this lesson are specific to resources
+available at the University of Edinburgh. These instructions can be
+found in the <a href="index.html#setup">setup guide</a>.</p>
+<p>This lesson is built with <a href="https://carpentries.github.io/sandpaper-docs" class="external-link">The Carpentries
 Workbench</a>.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
+</div>
 
-
-      <section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
-tools and the data sets the Learner needs to have installed.</p>
-<section><h2 class="section-heading" id="data-sets">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a></h2>
-<hr class="half-width"><!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
---></section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><div id="details" class="callout discussion">
+      <section id="setup"><p>This lesson requires a few software packages to be installed on your
+computer. This page provides instructions on how to set them up.</p>
+<section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
+<hr class="half-width"><p>This lesson uses Git, a text editor, R, and RStudio. Below are
+instructions for installing this software on different operating
+systems.</p>
+<div id="university-of-edinburgh-resources" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details</h3>
+<div id="university-of-edinburgh-resources" class="callout-inner">
+<h3 class="callout-title">University of Edinburgh Resources</h3>
 <div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>spoiler</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
+<p>This lesson is designed to be used with resources provided by the
+University of Edinburgh. While the core concepts are general, some of
+the setup and examples are specific to the University’s IT
+environment.</p>
+<ul><li>
+<strong>ECDF Gitlab:</strong> We will be using the University of
+Edinburgh’s GitLab service at <a href="https://git.ecdf.ed.ac.uk" class="external-link uri">https://git.ecdf.ed.ac.uk</a>. You will need your University
+login to access this.</li>
+<li>
+<strong>VPN:</strong> To access the ECDF GitLab from off-campus, you
+will need to be connected to the University VPN.</li>
+<li>
+<strong>SSH Keys:</strong> You will need to set up SSH keys to
+securely connect to GitLab. Instructions are provided below.</li>
+</ul><p>If you are not a member of the University of Edinburgh, you can still
+follow this lesson by using the public GitLab service at <a href="https://gitlab.com" class="external-link uri">https://gitlab.com</a> and
+adapting the instructions accordingly.</p>
 </div>
 </div>
 </div>
+<div class="section level3">
+<h3 id="required-software">Required Software<a class="anchor" aria-label="anchor" href="#required-software"></a></h3>
+<p>You will need to install the following software:</p>
+<ol style="list-style-type: decimal"><li>
+<strong>A shell:</strong> A command-line interface to your
+computer.</li>
+<li>
+<strong>Git:</strong> The version control software.</li>
+<li>
+<strong>A text editor:</strong> For editing plain text files.</li>
+<li>
+<strong>R and RStudio:</strong> For running R code and as an
+interface to Git.</li>
+</ol><hr></div>
+<div class="section level3">
+<h3 id="installation-instructions">Installation Instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a></h3>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -377,10 +422,38 @@ e.g. online setup) in the solutions blocks.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<p>Use PuTTY</p>
-</div>
+<ol style="list-style-type: decimal"><li>
+<strong>Shell:</strong>
+<ul><li>Download and install Git for Windows from <a href="https://git-scm.com/download/win" class="external-link">git-scm.com</a>.</li>
+<li>This will also install Git Bash, which provides a Unix-like
+shell.</li>
+</ul></li>
+<li>
+<strong>Git:</strong>
+<ul><li>Git is included in the Git for Windows installation.</li>
+</ul></li>
+<li>
+<strong>Text Editor:</strong>
+<ul><li>We recommend using a modern text editor like <a href="https://code.visualstudio.com/" class="external-link">Visual Studio Code</a> or <a href="https://www.sublimetext.com/" class="external-link">Sublime Text</a>.</li>
+<li>Notepad++ is also a good option.</li>
+</ul></li>
+<li>
+<strong>R and RStudio:</strong>
+<ul><li>Install R from the <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">Comprehensive R
+Archive Network (CRAN)</a>.</li>
+<li>Install RStudio Desktop (the free version) from the <a href="https://www.rstudio.com/products/rstudio/download/" class="external-link">RStudio
+website</a>.</li>
+</ul></li>
+<li>
+<strong>SSH Keys:</strong>
+<ul><li>Open Git Bash and follow the instructions on the <a href="https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair" class="external-link">GitLab
+documentation</a> to generate an SSH key.</li>
+<li>Add your public key to your <a href="https://git.ecdf.ed.ac.uk/-/profile/keys" class="external-link">ECDF GitLab
+account</a>.</li>
+</ul></li>
+</ol></div>
 </div>
 </div>
 </div>
@@ -392,10 +465,40 @@ e.g. online setup) in the solutions blocks.</p>
   MacOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
-<p>Use Terminal.app</p>
-</div>
+<ol style="list-style-type: decimal"><li>
+<strong>Shell:</strong>
+<ul><li>The <code>Terminal.app</code> is included with macOS and is located
+in the <code>Utilities</code> folder within your
+<code>Applications</code> folder.</li>
+</ul></li>
+<li>
+<strong>Git:</strong>
+<ul><li>Git is pre-installed on most recent versions of macOS. You can check
+by opening the Terminal and typing <code>git --version</code>.</li>
+<li>If it’s not installed, it will prompt you to install the Xcode
+Command Line Tools. Follow the prompts to do so.</li>
+</ul></li>
+<li>
+<strong>Text Editor:</strong>
+<ul><li>We recommend using a modern text editor like <a href="https://code.visualstudio.com/" class="external-link">Visual Studio Code</a> or <a href="https://www.sublimetext.com/" class="external-link">Sublime Text</a>.</li>
+</ul></li>
+<li>
+<strong>R and RStudio:</strong>
+<ul><li>Install R from the <a href="https://cran.r-project.org/bin/macosx/" class="external-link">Comprehensive R Archive
+Network (CRAN)</a>.</li>
+<li>Install RStudio Desktop (the free version) from the <a href="https://www.rstudio.com/products/rstudio/download/" class="external-link">RStudio
+website</a>.</li>
+</ul></li>
+<li>
+<strong>SSH Keys:</strong>
+<ul><li>Open the Terminal and follow the instructions on the <a href="https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair" class="external-link">GitLab
+documentation</a> to generate an SSH key.</li>
+<li>Add your public key to your <a href="https://git.ecdf.ed.ac.uk/-/profile/keys" class="external-link">ECDF GitLab
+account</a>.</li>
+</ul></li>
+</ol></div>
 </div>
 </div>
 </div>
@@ -407,17 +510,80 @@ e.g. online setup) in the solutions blocks.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
-<p>Use Terminal</p>
+<ol style="list-style-type: decimal"><li>
+<strong>Shell:</strong>
+<ul><li>The shell is pre-installed on all major Linux distributions (e.g.,
+Bash, Zsh).</li>
+</ul></li>
+<li>
+<strong>Git:</strong>
+<ul><li>
+<p>You can install Git using your distribution’s package manager.
+For example, on Debian/Ubuntu:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install git</span></code></pre>
+</div>
+</li>
+</ul></li>
+<li>
+<strong>Text Editor:</strong>
+<ul><li>We recommend using a modern text editor like <a href="https://code.visualstudio.com/" class="external-link">Visual Studio Code</a> or <a href="https://www.sublimetext.com/" class="external-link">Sublime Text</a>.</li>
+<li>Your distribution will also come with a default text editor (e.g.,
+Gedit, Kate).</li>
+</ul></li>
+<li>
+<strong>R and RStudio:</strong>
+<ul><li>Install R from the <a href="https://cran.r-project.org/" class="external-link">Comprehensive R Archive Network
+(CRAN)</a>. Follow the instructions for your specific distribution.</li>
+<li>Install RStudio Desktop (the free version) from the <a href="https://www.rstudio.com/products/rstudio/download/" class="external-link">RStudio
+website</a>.</li>
+</ul></li>
+<li>
+<strong>SSH Keys:</strong>
+<ul><li>Open a terminal and follow the instructions on the <a href="https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair" class="external-link">GitLab
+documentation</a> to generate an SSH key.</li>
+<li>Add your public key to your <a href="https://git.ecdf.ed.ac.uk/-/profile/keys" class="external-link">ECDF GitLab
+account</a>.</li>
+</ul></li>
+</ol></div>
 </div>
 </div>
 </div>
+<hr></div>
+<div class="section level3">
+<h3 id="r-packages">R Packages<a class="anchor" aria-label="anchor" href="#r-packages"></a></h3>
+<p>Once you have R and RStudio installed, you will need to install a
+couple of R packages. Open RStudio and run the following command in the
+console:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"usethis"</span>, <span class="st">"credentials"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
+</div>
+<div class="section level3">
+<h3 id="check-your-setup">Check Your Setup<a class="anchor" aria-label="anchor" href="#check-your-setup"></a></h3>
+<p>You can check your Git and R setup by running the following command
+in the RStudio console:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">git_sitrep</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<p>This will provide a report on your configuration. If you encounter
+any issues, please ask for help.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
@@ -467,8 +633,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-rmd/index.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/index.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-06-26",
-  "datePublished": "2025-06-26"
+  "dateModified": "2025-06-27",
+  "datePublished": "2025-06-27"
 }
 
   </script><script>
