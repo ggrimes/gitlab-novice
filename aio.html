@@ -511,7 +511,7 @@ D. Collaborating with colleagues on a shared project</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>C. Encrypting files. While encryption is possible, it is
 <strong>not</strong> the primary purpose of a version control
@@ -704,7 +704,7 @@ name and email were saved.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -814,7 +814,7 @@ to?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul>
 <li>
@@ -871,7 +871,7 @@ directory? What happens if you commit in a different repository?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ul>
 <li>Inside the project directory Git will record <strong><a href="mailto:user@project" class="email">user@project</a></strong>
@@ -926,7 +926,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-local-workflow"><p>Content from <a href="03-local-workflow.html">Recording Changes Locally</a></p>
 <hr>
-<p>Last updated on 2025-06-27 |
+<p>Last updated on 2025-07-01 |
 
         <a href="https://github.com/ggrimes/gitlab-novice/edit/main/episodes/03-local-workflow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -993,12 +993,14 @@ history.</li>
 <figure><img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="Flow diagram from working directory to staging area to repository." class="figure mx-auto d-block"></figure><div class="section level3">
 <h3 id="create-a-repository">1. Create a repository<a class="anchor" aria-label="anchor" href="#create-a-repository"></a>
 </h3>
-<p>A repository, or repo, is a fundamental element of GitHub and Git.
-It’s a space where project files live, allowing for version control and
+<p>A repository, or repo, is a fundamental element of Git. It’s a space
+where project files live, allowing for version control and
 collaboration.</p>
 <p>You can think of a repository as a project folder that tracks
 changes, stores history, and lets multiple people work together
 seamlessly.</p>
+<p>We are going to create a folder for our project
+<code>MyProject</code> which will turn into a git repository.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1089,7 +1091,7 @@ documentation.</p>
 </div>
 <p>Let’s create a new file by running touch README.md then run git
 status again. Now you should see that you have an untracked file
-“README.md”.</p>
+<code>README.md</code>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1707,7 +1709,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-04-remotes"><p>Content from <a href="04-remotes.html">Working with Remote Repositories</a></p>
 <hr>
-<p>Last updated on 2025-06-27 |
+<p>Last updated on 2025-07-01 |
 
         <a href="https://github.com/ggrimes/gitlab-novice/edit/main/episodes/04-remotes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1989,8 +1991,6 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
 <li>Run <code>git remote -v</code>.</li>
-<li>Which command would you use to rename the remote from
-<em>origin</em> to <em>source</em>?</li>
 </ol>
 </div>
 </div>
@@ -2000,12 +2000,10 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The output lists fetch and push URLs for <em>origin</em>.</li>
-<li>
-<code>git remote rename origin source</code>.</li>
 </ol>
 </div>
 </div>
@@ -2040,7 +2038,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><code>git branch -vv</code> lists local branches with their upstream
 counterparts.</p>
@@ -2090,7 +2088,7 @@ why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The log shows commits that exist in <em>origin/main</em> but
 <strong>not</strong> in your local <em>main</em>; the two‑dot syntax
@@ -2153,7 +2151,7 @@ remote.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><em>Advantage:</em> <code>git clone</code> copies
 <strong>all</strong> history and configures the remote automatically,
@@ -2944,7 +2942,7 @@ commit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><code>bash git log --oneline</code></li>
@@ -2985,7 +2983,7 @@ filename in the <code>git show</code> command.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>First, find the last commit in the log:
@@ -3021,7 +3019,7 @@ exactly what they changed.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Filter the log by author:
@@ -3064,7 +3062,7 @@ using more complex Git commands.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>See what was changed in the last commit:
