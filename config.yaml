@@ -33,7 +33,7 @@ life_cycle: 'pre-alpha'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/carpentries/workbench-template-rmd'
+source: 'https://github.com/ggrimes/gitlab-novice'
 
 # Default branch of your lesson
 branch: 'main'
@@ -59,12 +59,12 @@ contact: 'Graeme.Grimes@ed.ac.uk'
 # instructors:
 # - instructor-notes.md
 #
-# profiles:
+# profiles:git status
 # - one-learner.md
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - 01-introduction.Rmd
 - 02-configuring-git.Rmd
 - 03-local-workflow.Rmd
@@ -75,13 +75,13 @@ episodes:
 - ignoring-things.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
