@@ -39,11 +39,11 @@ Some learners struggle with the staging area at first. Compare it to packing ite
 ### 1. Create a repository
 
 
-A repository, or repo, is a fundamental element of GitHub and Git. It’s a space where project files live, allowing for version control and collaboration.
+A repository, or repo, is a fundamental element of Git. It’s a space where project files live, allowing for version control and collaboration.
 
 You can think of a repository as a project folder that tracks changes, stores history, and lets multiple people work together seamlessly.
 
-
+We are going to create a folder for our project `MyProject` which will turn into a git repository.
 
 ```bash
 mkdir MyProject 
@@ -101,7 +101,7 @@ README files are typically named README.md. The .md extension indicates that the
 When you view a repository on platforms like GitHub, GitLab, or Bitbucket, they automatically detect README.md (or similar filenames like README.txt, README) in the root directory. These platforms then render the Markdown content into beautifully formatted HTML, making the project's introduction easily readable directly in your web browser without needing to open the file in a text editor. This automatic rendering is a key reason Markdown is so popular for repository documentation.
 :::
 
-Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file “README.md”.
+Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file `README.md`.
 
 ``` bash
 $ echo "# My eddie Python project" > README.md

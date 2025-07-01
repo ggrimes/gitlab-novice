@@ -26,7 +26,7 @@ A Git *remote* is a shorthand name for a version of your project hosted elsewher
 
 The University of Edinburgh provides a Git Repository hosting service using [GitLab](https://git.ecdf.ed.ac.uk) more information [here](https://www.wiki.ed.ac.uk/pages/viewpage.action?spaceKey=ResearchServices&title=GitLab)
 
-Log into GitLab, https://git.ecdf.ed.ac.uk, using your University of Edinburgh credentials.
+Log into GitLab, <https://git.ecdf.ed.ac.uk>, using your University of Edinburgh credentials.
 
 ### Create New Project
 
@@ -151,7 +151,7 @@ If you go back to the repository on GitLab and refresh the page you will the rep
 
 ### ![](fig/gitlab-push01.png)
 
-### 1.  Syncing Changes
+### 1. Syncing Changes
 
 Make a change to the `Readme.md file`
 
@@ -211,11 +211,9 @@ $ git push
 #### Challenge 1: Check your remote
 
 1.  Run `git remote -v`.
-2.  Which command would you use to rename the remote from *origin* to *source*?
 
 ::: solution
 1.  The output lists fetch and push URLs for *origin*.
-2.  `git remote rename origin source`.
 :::
 
 ::::::::: challenge
