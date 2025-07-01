@@ -33,7 +33,7 @@ You will need to install the following software:
 
 ### Installation Instructions
 
-::: spoiler
+
 ### Windows
 
 1.  **Shell:**
@@ -50,9 +50,7 @@ You will need to install the following software:
 5.  **SSH Keys:**
     -   Open Git Bash and follow the instructions on the [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair) to generate an SSH key.
     -   Add your public key to your [ECDF GitLab account](https://git.ecdf.ed.ac.uk/-/profile/keys).
-:::
 
-::: spoiler
 ### MacOS
 
 1.  **Shell:**
@@ -68,9 +66,7 @@ You will need to install the following software:
 5.  **SSH Keys:**
     -   Open the Terminal and follow the instructions on the [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair) to generate an SSH key.
     -   Add your public key to your [ECDF GitLab account](https://git.ecdf.ed.ac.uk/-/profile/keys).
-:::
 
-::: spoiler
 ### Linux
 
 1.  **Shell:**
@@ -91,24 +87,6 @@ You will need to install the following software:
 5.  **SSH Keys:**
     -   Open a terminal and follow the instructions on the [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair) to generate an SSH key.
     -   Add your public key to your [ECDF GitLab account](https://git.ecdf.ed.ac.uk/-/profile/keys).
-:::
+
 
 ------------------------------------------------------------------------
-
-### R Packages
-
-Once you have R and RStudio installed, you will need to install a couple of R packages. Open RStudio and run the following command in the console:
-
-``` r
-install.packages(c("usethis", "credentials"))
-```
-
-### Check Your Setup
-
-You can check your Git and R setup by running the following command in the RStudio console:
-
-``` r
-usethis::git_sitrep()
-```
-
-This will provide a report on your configuration. If you encounter any issues, please ask for help.
