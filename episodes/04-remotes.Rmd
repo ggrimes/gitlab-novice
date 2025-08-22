@@ -260,7 +260,3 @@ List one advantage and one disadvantage of `git clone` compared to creating a re
 -   `git pull` equals `git fetch` + `git merge`; use `--rebase` to avoid unnecessary merges.
 -   A push may be rejected if your branch is behind; pull (or fetch & merge) then push again.
 :::
-:::::
-:::::::
-:::::::::
-:::::::::::
