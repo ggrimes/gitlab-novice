@@ -79,14 +79,14 @@ Always consider the visibility of your repository and choose an email strategy t
 :::
 
 
-::::::::::::::::::::::::::::::::::::: challenge 
+::::: challenge
 
 ### Challenge 1: Check your work
 
 1. Run `git config --global --list` to confirm that your name and email were saved.
 2. Where would the same information be stored if you had used `--local` instead?
 
-:::::::::::::::::::::::: solution 
+::: solution
 
 1. Your terminal should show lines similar to
 
@@ -97,8 +97,8 @@ Always consider the visibility of your repository and choose an email strategy t
 
 2. With the `--local` flag the values are written to `.git/config` inside the current repository, leaving other projects unaffected.
 
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::: 
+:::
+:::::
 
 ### 2. Make output readable
 
@@ -154,20 +154,20 @@ $ git config --global pull.rebase false    # Default to merge when running `git 
 
 Autocorrect spares you from typos, while the pull setting aligns behaviour with the rest of this workshop (merging instead of rebasing).
 
-::::::::::::::::::::::::::::::::::::: challenge 
+::::: challenge
 
 ### Challenge 2: Inspect your `.gitconfig`
 
 Use `cat ~/.gitconfig` (or open the file in your editor) and locate the lines you just added.  Which section header (`[user]`, `[core]`, etc.) does each belong to?
 
-:::::::::::::::::::::::: solution 
+::: solution
 
 - `[user]` contains `name` and `email`.
 - `[core]` contains `editor` and options such as `autocorrect`.
 - `[color]` stores `ui = auto`.
 
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::: 
+:::
+:::::
 
 ### 5. Override settings per‑project
 
@@ -180,7 +180,7 @@ $ git config --local user.email "bot@example.org"
 
 These values live in `.git/config` and apply only to that repository.
 
-::::::::::::::::::::::::::::::::::::: challenge 
+::::: challenge
 
 ### Challenge 3: Predict the result
 
@@ -192,13 +192,13 @@ You have the following configuration hierarchy:
 
 What email address will Git record when you commit inside the project directory?  What happens if you commit in a different repository?
 
-:::::::::::::::::::::::: solution 
+::: solution
 
 - Inside the project directory Git will record **user@project** because local overrides everything else.
 - In any other repository Git falls back to the system‑wide value **root@machine**.
 
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::: 
+:::
+:::::
 
 ## Key commands reference
 
