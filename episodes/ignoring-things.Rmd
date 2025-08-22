@@ -82,11 +82,11 @@ Then add it to `.gitignore`.
 
 ## Challenge: Ignore and Track
 
-:::: challenge
+::::: challenge
 1.  Create a file called `secret.txt` and add some text to it.
 2.  Add it to your `.gitignore`.
 3.  Try running `git status` — is it listed?
-4.  Add and commit your `.gitignore` file. :::
+4.  Add and commit your `.gitignore` file.
 
 ::: solution
 ``` bash
@@ -97,7 +97,7 @@ git add .gitignore
 git commit -m "Add gitignore to exclude secret.txt"
 ```
 :::
-::::
+:::::
 
 ## Advanced Tip: Ignore Locally Only
 

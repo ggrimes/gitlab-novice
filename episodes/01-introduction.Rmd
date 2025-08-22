@@ -62,7 +62,7 @@ Here is what these terms mean:
 -   **Staging Area (or Index):** A "waiting room" for your changes. You select which changes from your working directory you want to save, and you add them to the staging area. This allows you to group related changes into a single, meaningful snapshot.
 -   **Repository (or Commit History):** The permanent, dated record of all the snapshots you have saved. Once a change is committed from the staging area to the repository, it's saved in your project's history.
 
-:::: challenge
+::::: challenge
 ### Challenge
 
 1: Why bother?
@@ -77,7 +77,7 @@ D. Collaborating with colleagues on a shared project
 ::: solution
 C. Encrypting files. While encryption is possible, it is **not** the primary purpose of a version control system.
 :::
-::::
+:::::
 
 ::: keypoints
 -   Version control records every meaningful change to your project.
