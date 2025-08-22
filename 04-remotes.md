@@ -207,7 +207,7 @@ $ git pull --rebase   # preferred: reapply your work on top of remote
 $ git push
 ```
 
-::::::::::: challenge
+::::: challenge
 #### Challenge 1: Check your remote
 
 1.  Run `git remote -v`.
@@ -215,8 +215,9 @@ $ git push
 ::: solution
 1.  The output lists fetch and push URLs for *origin*.
 :::
+:::::
 
-::::::::: challenge
+::::: challenge
 #### Challenge 2: Upstream tracking
 
 After cloning, what command shows which remote branch your local *main* is tracking?
@@ -224,8 +225,9 @@ After cloning, what command shows which remote branch your local *main* is track
 ::: solution
 `git branch -vv` lists local branches with their upstream counterparts.
 :::
+:::::
 
-::::::: challenge
+::::: challenge
 #### Challenge 3: Predict the outcome
 
 You run `git fetch origin` followed by `git log --oneline main..origin/main`. What will appear and why?
@@ -233,6 +235,7 @@ You run `git fetch origin` followed by `git log --oneline main..origin/main`. Wh
 ::: solution
 The log shows commits that exist in *origin/main* but **not** in your local *main*; the two‑dot syntax lists commits reachable from the second reference and not the first.
 :::
+:::::
 
 ::::: challenge
 #### Challenge 4: Clone vs init
@@ -244,6 +247,7 @@ List one advantage and one disadvantage of `git clone` compared to creating a re
 
 *Disadvantage:* You cannot easily choose which files or branches to include during the initial copy (though `--depth` and `--branch` options help).
 :::
+:::::
 
 ## Summary diagram
 
@@ -256,7 +260,3 @@ List one advantage and one disadvantage of `git clone` compared to creating a re
 -   `git pull` equals `git fetch` + `git merge`; use `--rebase` to avoid unnecessary merges.
 -   A push may be rejected if your branch is behind; pull (or fetch & merge) then push again.
 :::
-:::::
-:::::::
-:::::::::
-:::::::::::

@@ -68,7 +68,7 @@ When you run the `git init` command in an ordinary folder, it allows you to tran
 
 `git init` creates a hidden `.git` folder that stores all future history.
 
-:::: challenge
+::::: challenge
 #### Challenge 1: First contact
 
 Run `git status` immediately after `git init`. What output do you see and why?
@@ -85,7 +85,7 @@ nothing to commit (create/copy files and use "git add" to track)
 
 because we have not created any files or commits; the repository is empty.
 :::
-::::
+:::::
 
 ### 2. Add a README file
 
@@ -216,7 +216,7 @@ Date:   Tue Sep 24 10:06:58 2024 +0100​
 initial commit
 ```
 
-:::: challenge
+::::: challenge
 #### Challenge 2: Where is my commit?
 
 Use `git log --oneline` to view the history. How many commits appear and what information is shown?
@@ -230,7 +230,7 @@ One commit appears:
 
 We see the abbreviated hash, the branch name, and the commit message.
 :::
-::::
+:::::
 
 ### 4. Modifying a file
 
@@ -265,7 +265,7 @@ Changes not staged for commit:
 
 ## Viewing changes
 
-We can you the command `git diff` to view our change.
+We can use the command `git diff` to view our change.
 
 ``` bash
 $ git diff README.md  # view changes
@@ -375,7 +375,7 @@ index a4c6c69..603f621 100644
 +    module load igmm/apps/python/3.7
 ```
 
-:::: challenge
+::::: challenge
 #### Challenge 3: Predict the diff
 
 Suppose the original README contained only a title. After adding a section called **Data**, what colour will the new lines appear in the diff output and why?
@@ -383,7 +383,7 @@ Suppose the original README contained only a title. After adding a section calle
 ::: solution
 They will be **green with a + prefix** because new lines are *additions* relative to the previous snapshot.
 :::
-::::
+:::::
 
 ### 6. Undoing a change in the working directory
 
@@ -407,71 +407,50 @@ $ touch Src/.gitkeep
 $ git add Src/.gitkeep
 ```
 
-Let download a file into a Data directory
+Let's download a file into a Data directory
 
 ``` bash
 $ mkdir Data
 $ curl -L -o Data/data.csv https://figshare.com/ndownloader/files/14632895
 ```
 
-We can now add ito staging area and commit to repository.
+We can now add it to staging area and commit to repository.
 
 ```bash
 $ git add Data/data.csv # Comment on when to commit data​
 $ git commit -m "Add example dataset"
 ```
 
-:::: challenge
+::::: challenge
 #### Challenge 4: Multiple file workflow
 
 Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add and commit it. Then modify the script to read the CSV file added above and print the number of rows. Use `git diff` before committing to verify the change.
-
-```python
-        #!/usr/bin/env python
-        print("Hello World!")
-```
-
 
 ::: solution
 1.  Create the file:
 
     ``` python
-        #!/usr/bin/env python
-        print("Hello World!")
+    #!/usr/bin/env python
+    print("Hello World!")
     ```
 
     ``` bash
     $ git add Src/hello.py
     $ git commit -m "Add hello world script"
     ```
-:::
 
 2.  Edit the script, stage, inspect, commit:
 
     ``` python
-    #!/usr/bin/env python​
-    ​
-    # load pandas library​
-    import pandas as pd​
-    ​
-    # Read the data​
-    variants =  pd.read_csv("Data/data.csv")​
-    ​
-    # Check we have the data​
-    print(variants)
-    ```
-
-::: solution
-    ``` python
-    #!/usr/bin/env python​
-    ​
-    # load pandas library​
-    import pandas as pd​
-    ​
-    # Read the data​
-    variants =  pd.read_csv("Data/data.csv")​
-    ​
-    # Check we have the data​
+    #!/usr/bin/env python
+    
+    # load pandas library
+    import pandas as pd
+    
+    # Read the data
+    variants =  pd.read_csv("Data/data.csv")
+    
+    # Check we have the data
     print(variants)
     ```
 
@@ -481,7 +460,7 @@ Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add a
     $ git commit -m "Read CSV and report row count"
     ```
 :::
-::::
+:::::
 
 ### 8. Viewing the complete history
 
