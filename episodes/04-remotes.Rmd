@@ -227,7 +227,7 @@ After cloning, what command shows which remote branch your local *main* is track
 :::
 :::::
 
-::::::: challenge
+::::: challenge
 #### Challenge 3: Predict the outcome
 
 You run `git fetch origin` followed by `git log --oneline main..origin/main`. What will appear and why?

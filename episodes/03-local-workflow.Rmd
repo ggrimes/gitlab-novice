@@ -68,7 +68,7 @@ When you run the `git init` command in an ordinary folder, it allows you to tran
 
 `git init` creates a hidden `.git` folder that stores all future history.
 
-:::: challenge
+::::: challenge
 #### Challenge 1: First contact
 
 Run `git status` immediately after `git init`. What output do you see and why?
@@ -85,7 +85,7 @@ nothing to commit (create/copy files and use "git add" to track)
 
 because we have not created any files or commits; the repository is empty.
 :::
-::::
+:::::
 
 ### 2. Add a README file
 
@@ -216,7 +216,7 @@ Date:   Tue Sep 24 10:06:58 2024 +0100​
 initial commit
 ```
 
-:::: challenge
+::::: challenge
 #### Challenge 2: Where is my commit?
 
 Use `git log --oneline` to view the history. How many commits appear and what information is shown?
@@ -230,7 +230,7 @@ One commit appears:
 
 We see the abbreviated hash, the branch name, and the commit message.
 :::
-::::
+:::::
 
 ### 4. Modifying a file
 
