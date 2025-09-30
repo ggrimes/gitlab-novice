@@ -944,11 +944,35 @@ a folder you must add at least one file inside it (often an empty
 <div id="challenge-4-multiple-file-workflow" class="callout-inner">
 <h3 class="callout-title">Challenge 4: Multiple file workflow</h3>
 <div class="callout-content">
-<p>Create a simple Python script <em>Src/hello.py</em> that prints
-<em>“Hello World!”</em>. Add and commit it. Then modify the script to
-read the CSV file added above and print the number of rows. Use
-<code>git diff</code> before committing to verify the change.</p>
+<ol style="list-style-type: decimal"><li>Create a simple Python script <em>Src/hello.py</em>.</li>
+</ol><div class="codewrapper sourceCode" id="cb32">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a> <span class="co">#!/usr/bin/env python</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
 </div>
+<ol start="2" style="list-style-type: decimal"><li>Add and commit it. <code>git add</code> &amp;
+<code>git commit</code>
+</li>
+<li>Then modify the script to read the CSV file added above and print
+the number of rows.</li>
+</ol><div class="codewrapper sourceCode" id="cb33">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>    </span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="co"># load pandas library</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>    </span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a><span class="co"># Read the data</span></span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a>    </span>
+<span id="cb33-9"><a href="#cb33-9" tabindex="-1"></a><span class="co"># Check we have the data</span></span>
+<span id="cb33-10"><a href="#cb33-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal"><li>Use <code>git diff</code> before committing to verify the
+change.</li>
+</ol></div>
 </div>
 </div>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
@@ -960,41 +984,41 @@ read the CSV file added above and print the number of rows. Use
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <p>Create the file:</p>
-<div class="codewrapper sourceCode" id="cb32">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb33">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
-</div>
-</li>
-<li>
-<p>Edit the script, stage, inspect, commit:</p>
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co"># load pandas library</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="co"># Read the data</span></span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)</span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="co"># Check we have the data</span></span>
-<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add hello world script"</span></span></code></pre>
+</div>
+</li>
+<li>
+<p>Edit the script, stage, inspect, commit:</p>
+<div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="co"># load pandas library</span></span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="co"># Read the data</span></span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>variants <span class="op">=</span>  pd.read_csv(<span class="st">"Data/data.csv"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a><span class="co"># Check we have the data</span></span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="bu">print</span>(variants)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">$</span> git diff Src/hello.py   <span class="co"># shows additions</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="ex">$</span> git add Src/hello.py</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Read CSV and report row count"</span></span></code></pre>
 </div>
 </li>
 </ol></div>
@@ -1004,10 +1028,10 @@ read the CSV file added above and print the number of rows. Use
 </div>
 <div class="section level3">
 <h3 id="viewing-the-complete-history">8. Viewing the complete history<a class="anchor" aria-label="anchor" href="#viewing-the-complete-history"></a></h3>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
