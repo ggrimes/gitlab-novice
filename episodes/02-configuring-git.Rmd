@@ -46,20 +46,8 @@ $ git config --global user.name "Your Name"
 $ git config --global user.email "you@example.com"
 ```
 
-
-These two lines create (or update) entries in `~/.gitconfig` so every commit you make will be tagged with the correct author information.
-
-
-Setting Up Your Identity: user.name and user.email
-Before you make your first commit, Git needs to know who you are. Every commit you make is tagged with an author, which includes a name and an email address. This is how Git tracks who made what changes in the project's history.
-
-You'll set these globally so Git remembers them for all your future projects:
-
-Bash
-
-$ git config --global user.name "Your Name"
-$ git config --global user.email "you@example.com"
-Replace "Your Name" with your actual name and "you@example.com" with your email address. Using the --global flag ensures these settings apply to every Git repository on your computer, so you won't have to set them up for each new project.
+Replace "Your Name" with your actual name and "you@example.com" with your email address. 
+Using the `--global` flag ensures these settings apply to every Git repository on your computer, so you won't have to set them up for each new project.
 
 ::: callout
 
