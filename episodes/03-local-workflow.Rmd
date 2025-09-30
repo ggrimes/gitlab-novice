@@ -407,11 +407,11 @@ $ touch Src/.gitkeep
 $ git add Src/.gitkeep
 ```
 
-Let's download a file into a Data directory
+Copy a file into a Data directory
 
 ``` bash
 $ mkdir Data
-$ curl -L -o Data/data.csv https://figshare.com/ndownloader/files/14632895
+$ cp /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/combined_tidy_vcf.csv Data/data.csv
 ```
 
 We can now add it to staging area and commit to repository.
