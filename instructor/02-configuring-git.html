@@ -345,7 +345,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Configuring Git</h1>
-        <p>Last updated on 2025-09-23 |
+        <p>Last updated on 2025-09-30 |
 
         <a href="https://github.com/ggrimes/gitlab-novice/edit/main/episodes/02-configuring-git.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -415,7 +415,7 @@ local settings override global, which override system.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Learners may have already used Git on their computers. Ask them to
 run <code>git config --list --show-origin</code> to display where each
@@ -438,23 +438,10 @@ workflow.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span></code></pre>
 </div>
-<p>These two lines create (or update) entries in
-<code>~/.gitconfig</code> so every commit you make will be tagged with
-the correct author information.</p>
-<p>Setting Up Your Identity: user.name and user.email Before you make
-your first commit, Git needs to know who you are. Every commit you make
-is tagged with an author, which includes a name and an email address.
-This is how Git tracks who made what changes in the project’s
-history.</p>
-<p>You’ll set these globally so Git remembers them for all your future
-projects:</p>
-<p>Bash</p>
-<p>$ git config –global user.name “Your Name” $ git config –global
-user.email “<a href="mailto:you@example.com" class="email">you@example.com</a>” Replace “Your Name” with your actual
-name and “<a href="mailto:you@example.com" class="email">you@example.com</a>” with your email address. Using the
-–global flag ensures these settings apply to every Git repository on
-your computer, so you won’t have to set them up for each new
-project.</p>
+<p>Replace “Your Name” with your actual name and “<a href="mailto:you@example.com" class="email">you@example.com</a>” with
+your email address. Using the <code>--global</code> flag ensures these
+settings apply to every Git repository on your computer, so you won’t
+have to set them up for each new project.</p>
 <div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -506,7 +493,7 @@ name and email were saved.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <p>Your terminal should show lines similar to</p>
@@ -614,7 +601,7 @@ to?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul><li>
 <code>[user]</code> contains <code>name</code> and
@@ -667,7 +654,7 @@ directory? What happens if you commit in a different repository?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ul><li>Inside the project directory Git will record <strong><a href="mailto:user@project" class="email">user@project</a></strong>
 because local overrides everything else.</li>
@@ -772,7 +759,7 @@ any links that you are not going to use.
   "url": "https://ggrimes.github.io/gitlab-novice/instructor/02-configuring-git.html",
   "identifier": "https://ggrimes.github.io/gitlab-novice/instructor/02-configuring-git.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2025-09-23",
+  "dateModified": "2025-09-30",
   "datePublished": "2025-09-30"
 }
 
