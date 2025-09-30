@@ -475,7 +475,7 @@ development.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Learners often try to remember <strong>all</strong> Git commands at
 once. Reassure them that they only need a handful today:
@@ -532,7 +532,7 @@ D. Collaborating with colleagues on a shared project</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>C. Encrypting files. While encryption is possible, it is
 <strong>not</strong> the primary purpose of a version control
@@ -1024,7 +1024,7 @@ history.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Some learners struggle with the staging area at first. Compare it to
 packing items into a box (staging) before placing the box in long‑term
@@ -1089,7 +1089,7 @@ What output do you see and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Git reports</p>
 <pre class="text"><code>On branch main (or master)
@@ -1311,7 +1311,7 @@ commits appear and what information is shown?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>One commit appears:</p>
 <pre class="text"><code>72041c0 (HEAD -&gt; main) initial commit</code></pre>
@@ -1335,7 +1335,7 @@ message.</p>
 <pre><code># My eddie Python project​
 
 To run Python on eddie need to run:​
-    module load igmm/apps/python/3.7</code></pre>
+module load igmm/apps/python/3.12.3</code></pre>
 <p>git status</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1372,7 +1372,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.7</code></pre>
++module load igmm/apps/python/3.12.3</code></pre>
 </div>
 <hr>
 <div class="section level3">
@@ -1457,7 +1457,7 @@ file</strong>, and it now spans <strong>4 lines</strong>
 <pre class="sourceCode diff" tabindex="0"><code class="sourceCode diff"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a> # My eddie Python project</span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="va">+</span></span>
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="va">+To run Python on eddie need to run:</span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="va">+    module load igmm/apps/python/3.7</span></span></code></pre>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="va">+    module load igmm/apps/python/3.12.3</span></span></code></pre>
 </div>
 <table class="table">
 <colgroup>
@@ -1528,7 +1528,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.7</code></pre>
++module load igmm/apps/python/3.12.3</code></pre>
 </div>
 <div id="challenge-3-predict-the-diff" class="callout challenge">
 <div class="callout-square">
@@ -1549,7 +1549,7 @@ appear in the diff output and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>They will be <strong>green with a + prefix</strong> because new lines
 are <em>additions</em> relative to the previous snapshot.</p>
@@ -1620,7 +1620,7 @@ read the CSV file added above and print the number of rows. Use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -1959,7 +1959,7 @@ our remote repository.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Learners often forget the <code>-u</code> flag on their
 <em>first</em> push. Emphasise that <code>git push -u origin main</code>
@@ -2019,7 +2019,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The output lists fetch and push URLs for <em>origin</em>.</li>
@@ -2046,7 +2046,7 @@ Fix it by pulling, resolving any conflicts, then pushing again:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>git branch -vv</code> lists local branches with their upstream
 counterparts.</p>
@@ -2073,7 +2073,7 @@ why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The log shows commits that exist in <em>origin/main</em> but
 <strong>not</strong> in your local <em>main</em>; the two‑dot syntax
@@ -2101,7 +2101,7 @@ remote.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p><em>Advantage:</em> <code>git clone</code> copies
 <strong>all</strong> history and configures the remote automatically,
