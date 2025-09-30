@@ -53,7 +53,7 @@ You can go into `MyProject` by running
 
 ```bash
 $ mkdir MyProject
-$ cd `MyProject` 
+$ cd MyProject 
 ```
 
 In its current state the directory, `MyProject` is not a Git repository.
