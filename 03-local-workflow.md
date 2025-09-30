@@ -424,7 +424,26 @@ $ git commit -m "Add example dataset"
 ::::: challenge
 #### Challenge 4: Multiple file workflow
 
-Create a simple Python script *Src/hello.py* that prints *"Hello World!"*. Add and commit it. Then modify the script to read the CSV file added above and print the number of rows. Use `git diff` before committing to verify the change.
+1. Create a simple Python script *Src/hello.py*.
+```python
+ #!/usr/bin/env python
+    print("Hello World!")
+```
+2. Add and commit it. `git add` & `git commit`
+3. Then modify the script to read the CSV file added above and print the number of rows. 
+```python
+#!/usr/bin/env python
+    
+# load pandas library
+import pandas as pd
+    
+# Read the data
+variants =  pd.read_csv("Data/data.csv")
+    
+# Check we have the data
+print(variants)
+```
+4. Use `git diff` before committing to verify the change.
 
 ::: solution
 1.  Create the file:
