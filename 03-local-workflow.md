@@ -246,7 +246,7 @@ add a *Run Script* section
 # My eddie Python project​
 
 To run Python on eddie need to run:​
-    module load igmm/apps/python/3.7
+module load igmm/apps/python/3.12.3
 ```
 
 git status
@@ -280,7 +280,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.7
++module load igmm/apps/python/3.12.3
 ```
 
 ------------------------------------------------------------------------
@@ -329,7 +329,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.7
++    module load igmm/apps/python/3.12.3
 ```
 
 | Symbol | Meaning | Explanation |
@@ -372,7 +372,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.7
++module load igmm/apps/python/3.12.3
 ```
 
 ::::: challenge
