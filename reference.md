@@ -104,9 +104,9 @@ title: "Reference"
 
 ## Git Cheatsheets for Quick Reference
 
--   Printable Git cheatsheets in several languages are available [here](https://training.github.com/downloads/github-git-cheat-sheet/).
+-   [Printable Git cheatsheets](https://training.github.com/downloads/github-git-cheat-sheet/) are available in several languages.
 -   More material is available from the [GitHub training website](https://training.github.com/).
--   An interactive one-page visualisation about the relationships between workspace, staging area, local repository, upstream repository, and the commands associated with each (with explanations) is available [here](http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;).
+-   An interactive one-page visualisation about the relationships between workspace, staging area, local repository, upstream repository, and the commands associated with each (with explanations) is available as the [interactive Git cheatsheet](https://ndpsoftware.com/git-cheatsheet.html#loc=workspace;).
 -   Both resources are also available in other languages (e.g. Spanish, French, and more).
 -   "Happy Git and GitHub for the useR" is an accessible, free online book by Jenny Bryan on how to setup and use Git and GitHub with specific references on the integration of Git with RStudio and working with Git in R.
 -   Open Scientific Code using Git and GitHub - A collection of explanations and short practical exercises to help researchers learn more about version control and open source software.

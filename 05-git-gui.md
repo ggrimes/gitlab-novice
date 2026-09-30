@@ -52,14 +52,13 @@ Now let’s bring your project into RStudio: This can be found on the GitLab rep
 
 1.  First copy the **Clone with HTTPS** text from GitLab
 
-![](fig/gitlab-clone-button.png)
+    ![](fig/gitlab-clone-button.png){alt="GitLab project page with the Code drop-down open, showing Clone with SSH and Clone with HTTPS addresses and copy buttons."}
 
 2.  In RStudio, go to the top menu: **File → New Project → Version Control → Git**
 
+    ![](fig/git-gui-01.png){alt="RStudio on Noteable with the New Project Wizard open, offering New Directory, Existing Directory and Version Control."}
 
-  ![](fig/git-gui-01.png)
-
-3. Enter the Repository URL:
+3.  Enter the Repository URL:
 
     ```         
     https://git.ecdf.ed.ac.uk/<username>/myproject.git
@@ -67,7 +66,7 @@ Now let’s bring your project into RStudio: This can be found on the GitLab rep
 
 4.  Choose a directory to clone into (e.g. your home folder or `~/projects`)
 
-    ![](fig/git-gui-02.png)
+    ![](fig/git-gui-02.png){alt="RStudio Clone Git Repository dialog with the GitLab repository URL, project directory name myproject, and the Create Project button."}
 
 5.  Click **Create Project**
 

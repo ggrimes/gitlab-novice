@@ -44,15 +44,15 @@ You will work in pairs. First:
 
 **Person 1** should add **Person 2** as a collaborator on their GitLab repository:
 
-1.  Click **Invite members**.
-2.  Enter Person 2's UUN.
-3.  Set the role to **Developer**.
-4.  Go to the sidebar and click `Project → Members`.
-5.  Confirm the role is set correctly.
+1.  Go to the sidebar and click `Project → Members`.
+2.  Click **Invite members**.
+3.  Enter Person 2's UUN.
+4.  Set the role to **Developer**.
+5.  Confirm the role is set correctly in the members list.
 
-![Add members in GitLab](fig/collaborating01.png)
+![Add members in GitLab](fig/collaborating01.png){alt="GitLab Project members page for MyProject with the Invite members button at the top right."}
 
-![Adjust permissions](fig/collaborating03.png)
+![Adjust permissions](fig/collaborating03.png){alt="GitLab Project members page after a collaborator has been added with the Developer role, alongside the Owner."}
 
 ## Step 2: Unprotect the Branch
 
@@ -62,7 +62,7 @@ In GitLab, branches can be protected to restrict who can push to them. To allow 
 -   Find the `main` branch (or `master` depending on your setup).
 -   Click **Unprotect**.
 
-![Unprotect branch](fig/collaborating04.png)
+![Unprotect branch](fig/collaborating04.png){alt="GitLab Repository settings, Protected branches section, showing the main branch with a red Unprotect button."}
 
 ## Step 3: Clone the Repository
 
@@ -80,7 +80,7 @@ git remote -v
 
 This creates a local copy of the repository and shows the remote repository settings.
 
-![Clone repo](fig/collaborating05.png)
+![How clone, fetch, pull and push move changes](fig/collaborating05.png){alt="Diagram of a remote, local repository, index and workspace: clone copies the remote to the workspace, fetch brings changes into the local repository, pull brings them into the workspace, and add, commit and push send changes back."}
 
 ## Step 4: Check Who Edited What
 
@@ -133,7 +133,7 @@ Sometimes two collaborators edit the same part of a file. This creates a *merge 
 
 Git will mark the conflict like this:
 
-![Merge conflict example](fig/collaborating07.png)
+![Merge conflict example](fig/collaborating07.png){alt="Merge conflict markers: <<<<<<< HEAD marks the start and your text, ======= divides it from the other version, and >>>>>>> followed by a commit hash marks the end."}
 
 You must manually edit the file to resolve the conflict, then:
 
@@ -151,9 +151,9 @@ If you're prompted for your credentials too often, you can cache them temporaril
 ``` bash
 git config --global credential.helper 'cache --timeout=3600'
 ```
-:::
 
 This caches your credentials for one hour.
+:::
 
 ::: keypoints
 -   Git allows multiple collaboration models; shared access is fastest but requires trust.

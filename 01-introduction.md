@@ -63,9 +63,7 @@ Here is what these terms mean:
 -   **Repository (or Commit History):** The permanent, dated record of all the snapshots you have saved. Once a change is committed from the staging area to the repository, it's saved in your project's history.
 
 ::::: challenge
-### Challenge
-
-1: Why bother?
+### Challenge 1: Why bother?
 
 Which of the following is **not** a typical reason to use a version control system?
 

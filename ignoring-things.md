@@ -52,6 +52,12 @@ data/
 -   `*.csv`, `*.xlsx`: Data files you don’t want versioned
 -   `data/`: An entire directory
 
+::: callout
+### Should data be committed?
+
+In the Recording Changes Locally episode we committed a small example dataset, `Data/data.csv`, so everyone working on the project has it. That is fine for small files that rarely change. Large, frequently regenerated, or sensitive data files are better kept out of Git with `.gitignore`. Note that `.gitignore` does not affect files Git is already tracking (see below).
+:::
+
 ![A sample .gitignore file](TODO-fig/gitignore-example.png)
 
 ## How to Create and Use `.gitignore`
@@ -101,10 +107,10 @@ git commit -m "Add gitignore to exclude secret.txt"
 
 ## Advanced Tip: Ignore Locally Only
 
-If you want to ignore files only on your machine (not share with others), you can use:
+If you want to ignore files only on your machine (not share with others), add patterns to the file `.git/info/exclude`:
 
 ``` bash
-.git/info/exclude
+nano .git/info/exclude
 ```
 
 This works like `.gitignore`, but it’s **not committed** to the repository.

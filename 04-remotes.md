@@ -24,7 +24,7 @@ A Git *remote* is a shorthand name for a version of your project hosted elsewher
 
 ## University of Edinburgh GitLab Repository
 
-The University of Edinburgh provides a Git Repository hosting service using [GitLab](https://git.ecdf.ed.ac.uk) more information [here](https://www.wiki.ed.ac.uk/pages/viewpage.action?spaceKey=ResearchServices&title=GitLab)
+The University of Edinburgh provides a Git Repository hosting service using [GitLab](https://git.ecdf.ed.ac.uk). More information is on the [University GitLab wiki page](https://www.wiki.ed.ac.uk/pages/viewpage.action?spaceKey=ResearchServices&title=GitLab).
 
 Log into GitLab, <https://git.ecdf.ed.ac.uk>, using your University of Edinburgh credentials.
 
@@ -32,11 +32,11 @@ Log into GitLab, <https://git.ecdf.ed.ac.uk>, using your University of Edinburgh
 
 1.  Select **New project**
 
-    ![](fig/gitlab-homepage.png)
+    ![](fig/gitlab-homepage.png){alt="GitLab Projects page listing your projects, with the New project button at the top right."}
 
 2.  Select **Create blank project**
 
-    ![](fig/gitlab-new-project.png)
+    ![](fig/gitlab-new-project.png){alt="GitLab Create new project page with options Create blank project, Create from template and Import project."}
 
 3.  Add a Project Name **MyProject**
 
@@ -44,11 +44,11 @@ Log into GitLab, <https://git.ecdf.ed.ac.uk>, using your University of Edinburgh
 
 5.  Click **Create Project**
 
-    ![]()![](fig/gitlab-new-project2.png)
+    ![](fig/gitlab-new-project2.png){alt="GitLab Create blank project form with Project name MyProject, visibility set to Private, and Initialize repository with a README unticked."}
 
-6.This will create an Empty Repository, with details on how to link your existing git repository.
+6.  This will create an Empty Repository, with details on how to link your existing git repository.
 
-![](fig/gitlab-empty-project.png)
+![](fig/gitlab-empty-project.png){alt="New empty MyProject page on GitLab showing command line instructions for creating a repository or pushing an existing folder or Git repository."}
 
 ### GitLab security
 
@@ -58,7 +58,7 @@ To enable password less access to your remote, you can add your public SSH Key f
 
 You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on GitLab to enable authentication for Git operations over SSH.
 
-The University guide can be found [here](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide)
+See the University's [SSH keys best practice guide](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide).
 
 Example below
 
@@ -92,7 +92,7 @@ You can now add the contents of the public key file `id_ed25519.pub` to the GitL
 
 Go to <https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys> then click add **new key**
 
-![](fig/gitlab-ssh2.png)\
+![](fig/gitlab-ssh2.png){alt="GitLab SSH Keys settings page with the Add an SSH key form: a Key box, Title, Usage type and Expiration date."}
 
 ## Git Remote on Eddie
 
@@ -102,10 +102,10 @@ Here we will link our existing repository on Eddie with the remote on GitLab, us
 $ git remote --help     # on eddie
 ```
 
-To add out remote we use `git remote add` using the information on the blank GitLab Repository page.
+To add our remote we use `git remote add` using the information on the blank GitLab Repository page, replacing `<username>` with your own UUN.
 
 ``` bash
-$ git remote add origin git@git.ecdf.ed.ac.uk:ggrimes2/myproject.git
+$ git remote add origin git@git.ecdf.ed.ac.uk:<username>/myproject.git
 ```
 
 We can now use the `git remote -v` command to see it has been linked.
@@ -127,7 +127,7 @@ Can be Renamed or Removed: There's nothing binding about the name "origin." You 
 
 In essence, "origin" is a convention, and while it's not mandatory to use, adhering to such conventions can make collaborative work smoother and more intuitive.
 
-When you **clone** a repository you automatically get one remote called `origin`. If you start with a local repo (`git init`) you can add one later:
+When you **clone** a repository you automatically get one remote called `origin`. If you start with a local repo (`git init`) you can add one later with `git remote add`, as we did above.
 :::
 
 ### Syncing Repository
@@ -140,26 +140,24 @@ To do this, use the command
 
 ``` bash
 # on eddie
-$ git push origin main
-#or shorthand
-$ git push
+$ git push -u origin main
 ```
 
-In your case, you can type `git push origin main` where “origin” refers to the “remote repository” and “main” refers to the branch you want to upload.
+Here “origin” refers to the “remote repository” and “main” refers to the branch you want to upload. The `-u` flag sets up a *tracking relationship* between your local `main` and `origin/main`, so after this first push you can simply type `git push` or `git pull`.
 
-If you go back to the repository on GitLab and refresh the page you will the repository has been synced with the local version.
+If you go back to the repository on GitLab and refresh the page you will see the repository has been synced with the local version.
 
-### ![](fig/gitlab-push01.png)
+![](fig/gitlab-push01.png){alt="MyProject page on GitLab after pushing, listing the Data and Src folders and the README file, with the rendered README below."}
 
 ### 1. Syncing Changes
 
-Make a change to the `Readme.md file`
+Make a change to the `README.md` file
 
 ``` bash
-$ nano Readme.md
+$ nano README.md
 ```
 
-Add this text, or something else, to the bottom of the `Readme.md` file
+Add this text, or something else, to the bottom of the `README.md` file
 
 ```         
 ## Data
@@ -170,18 +168,17 @@ Now we will, add, commit to our local repository and push changes to our remote 
 
 ``` bash
 $ git status
-$ git add Readme.md
-$ git commit –m "Add Eddie and Data subsections"
+$ git add README.md
+$ git commit -m "Add Data section"
 $ git status
-$ git push -u origin main # run once
-$ git push # use this after
+$ git push
 ```
 
 ::: instructor
 Learners often forget the `-u` flag on their *first* push. Emphasise that `git push -u origin main` sets up the **tracking relationship**, allowing future `git push`/`git pull` without extra arguments.
 :::
 
-### 3. Pulling changes
+### 2. Pulling changes
 
 Suppose a collaborator adds commits to our remote repository. Now we need to get these changes locally. We can use the command `git pull` to keep your local repository up to date with the remote repository.
 
@@ -191,7 +188,7 @@ $ git pull
 
 If there is no divergence, Git performs a *fast‑forward* merge. Otherwise you may need to resolve conflicts before completing the merge.
 
-### 4. Handling a rejected push
+### 3. Handling a rejected push
 
 You may see:
 
@@ -202,10 +199,16 @@ You may see:
 This means your local branch is **behind** the remote. Fix it by pulling, resolving any conflicts, then pushing again:
 
 ``` bash
-$ git pull --rebase   # preferred: reapply your work on top of remote
+$ git pull   # merge the remote changes into your branch
 # ...resolve conflicts if prompted...
 $ git push
 ```
+
+::: callout
+### Merge or rebase?
+
+We configured `git pull` to **merge** in the Configuring Git episode. As you gain confidence you may prefer `git pull --rebase`, which replays your local commits on top of the remote ones instead of creating a merge commit, giving a straighter history.
+:::
 
 ::::: challenge
 #### Challenge 1: Check your remote
