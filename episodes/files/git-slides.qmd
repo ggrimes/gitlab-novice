@@ -19,7 +19,10 @@ format:
     code-copy: true
     menu:
       numbers: true
-    include-after-body: exercise-timer.html
+    include-after-body: [exercise-timer.html, wooclap.html]
+# Wooclap event code: set this once, then re-render. The join slide,
+# QR code and quiz badges all use it.
+wooclap-code: "XXXXXX"
 title-slide-attributes:
   data-background-color: "#13294b"
   data-background-image: "../fig/lesson-qr.svg"
@@ -87,6 +90,53 @@ Stick it on your laptop lid. Every exercise slide has a reminder at the bottom.
 Do this check now, not at 14:00 when we get to Noteable. Walk the room while people log in. Anyone with a red sticky: get a helper there straight away.
 
 Common problems: forgotten UUN password, not on the VPN / eduroam, qlogin queueing for a minute (that's normal).
+:::
+
+## Join the Wooclap {.wooclap-join}
+
+:::: {.columns}
+::: {.column width="55%"}
+1. On your **phone** or laptop, go to **wooclap.com**
+2. Enter the event code:
+
+[{{< meta wooclap-code >}}]{.wooclap-code}
+
+::: {.muted .small}
+No account needed. Keep the tab open: we'll use it for the quiz questions all day.
+:::
+:::
+::: {.column width="45%"}
+[]{.wooclap-qr}
+:::
+::::
+
+::: notes
+Open the Wooclap event on the presenter laptop now and leave it in a second window. Give people a minute to join; the participant count in Wooclap tells you when most are in.
+
+Warm-up questions (Q1 and Q2 in the question bank) go straight after this.
+:::
+
+## Warm-up {.wooclap-poll}
+
+[Answer on Wooclap · Q1–Q2 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.poll}
+**Q1.** How comfortable are you with the **command line**?
+
+1 = never used it · 5 = live in it
+:::
+:::
+::: {.column width="50%"}
+::: {.poll}
+**Q2.** One **word** that comes to mind when you hear *"version control"*
+:::
+:::
+::::
+
+::: notes
+Q1 is a rating question, Q2 a word cloud. Switch to the Wooclap window to show the results. The rating tells you how fast to go this morning; it's asked again at the end of the day so everyone can see the change.
 :::
 
 # Why Version Control? {.section-slide background-color="#13294b"}
@@ -213,12 +263,14 @@ Analogy: the staging area is a box you are packing. You can put things in and ta
 
 ## Your turn: why bother? {.exercise}
 
+[Answer on Wooclap · Q3 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
 ::: {.task time="2"}
 Which of these is **not** a typical reason to use version control?
 
-A. Keeping files synchronised between two laptops
-B. Tracking the history of code changes
-C. Encrypting files to keep them secret
+A. Keeping files synchronised between two laptops\
+B. Tracking the history of code changes\
+C. Encrypting files to keep them secret\
 D. Collaborating with colleagues on a shared project
 :::
 
@@ -324,6 +376,8 @@ The point: git config just edits a plain text file. Nothing magic.
 :::
 
 ## Your turn: predict the result {.exercise}
+
+[Answer on Wooclap · Q4 · {{< meta wooclap-code >}}]{.wooclap-badge}
 
 ::: {.task time="3"}
 - System: `user.email = root@machine`
@@ -1210,6 +1264,8 @@ Check with git log --oneline: they should see both "Add silly line" and "Revert 
 
 ## Your turn: `git diff HEAD` {.exercise}
 
+[Answer on Wooclap · Q5 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
 ::: {.task time="2"}
 What does `git diff HEAD` show?
 
@@ -1535,6 +1591,8 @@ Fast finishers: make a commit on main as well before merging, to get a real merg
 
 ## Your turn: branch or tag? {.exercise}
 
+[Answer on Wooclap · Q6–Q8 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
 ::: {.task time="3"}
 1. Try a new way of plotting without breaking the working script
 2. Record the exact code behind a submitted paper's figures
@@ -1559,6 +1617,34 @@ Quick discussion. For 2, mention adding the tag name and URL to the paper's code
 
 ::: notes
 Episode 10: about 10 minutes. Leave time for questions and the feedback form.
+:::
+
+## Before you go {.wooclap-poll}
+
+[Answer on Wooclap · Q9–Q11 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="33%"}
+::: {.poll}
+**Q9.** How comfortable are you with the **command line** now?
+
+1–5, same as this morning
+:::
+:::
+::: {.column width="33%"}
+::: {.poll}
+**Q10.** Which command will you use **first** on your own project?
+:::
+:::
+::: {.column width="34%"}
+::: {.poll}
+**Q11.** What's still **confusing**? Anything goes, it's anonymous.
+:::
+:::
+::::
+
+::: notes
+Show Q9 next to this morning's Q1 result: the shift is a nice way to end. Q11's answers are the best input for improving the course, and for a follow-up email to the group.
 :::
 
 ## What we covered {.keypoints}

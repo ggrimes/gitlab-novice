@@ -1,0 +1,31 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* Wooclap join QR code. The event code comes from `wooclap-code` in the
+   deck's YAML (rendered into .wooclap-code); the QR points at the join URL. */
+(function () {
+  var codeEl = document.querySelector(".reveal .wooclap-code");
+  var code = codeEl ? codeEl.textContent.trim() : "";
+  var unset = !code || /^X+$/.test(code);
+
+  if (unset) {
+    document.querySelectorAll(".reveal .wooclap-code, .reveal .wooclap-badge")
+      .forEach(function (el) { el.classList.add("unset"); });
+  }
+
+  document.querySelectorAll(".reveal .wooclap-qr").forEach(function (el) {
+    if (unset) {
+      el.innerHTML = '<span class="qr-missing">Set <code>wooclap-code</code> in the YAML header and re-render</span>';
+      return;
+    }
+    var url = "https://app.wooclap.com/" + encodeURIComponent(code);
+    if (window.QRCode) {
+      new QRCode(el, { text: url, width: 280, height: 280, colorDark: "#13294b",
+                       colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+    }
+    var cap = document.createElement("div");
+    cap.className = "qr-url";
+    cap.textContent = url.replace("https://", "");
+    el.appendChild(cap);
+  });
+})();
+</script>

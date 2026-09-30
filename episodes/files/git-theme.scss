@@ -435,6 +435,67 @@ $code-bg: #eef4f4;
 .reveal .checklist ul { list-style: none; padding-left: 0; margin-left: 0; }
 .reveal .checklist li::before { content: "☐  "; color: $git-teal; font-weight: 800; }
 
+/* ---------- Wooclap ---------- */
+$wooclap: #6f3cff;
+.reveal .wooclap-code {
+  display: inline-block;
+  font-family: $font-family-monospace;
+  font-size: 2.2em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: $wooclap;
+  padding: 0.1em 0.5em;
+  border-radius: 12px;
+  margin: 0.2em 0 0.4em;
+}
+.reveal .wooclap-qr { display: block; text-align: center; }
+/* qrcodejs draws a canvas and an img copy of it: show only the img */
+.reveal .wooclap-qr canvas { display: none !important; }
+.reveal .wooclap-qr img {
+  display: inline-block !important;
+  box-shadow: none;
+  border: 10px solid #fff;
+  outline: 3px solid $wooclap;
+  border-radius: 6px;
+}
+.reveal .wooclap-qr .qr-url {
+  font-family: $font-family-monospace;
+  font-size: 0.55em;
+  color: $git-muted;
+  margin-top: 0.4em;
+}
+.reveal .wooclap-qr .qr-missing {
+  display: inline-block;
+  font-size: 0.6em;
+  color: #b42318;
+  border: 3px dashed #b42318;
+  border-radius: 10px;
+  padding: 2em 1em;
+}
+.reveal .wooclap-code.unset, .reveal .wooclap-badge.unset { outline: 3px dashed #b42318; outline-offset: 3px; }
+/* badge in the top-right corner of quiz slides */
+.reveal .slides section .wooclap-badge {
+  position: absolute;
+  top: 0.55em;
+  right: 0;
+  font-size: 0.5em;
+  font-weight: 700;
+  color: #fff;
+  background: $wooclap;
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+.reveal .poll {
+  background: $git-sand;
+  border-left: 8px solid $wooclap;
+  border-radius: 8px;
+  padding: 0.6em 0.9em;
+  font-size: 0.85em;
+  height: 100%;
+}
+
 /* link lists next to a QR code */
 .reveal .links .column p { font-size: 0.72em; overflow-wrap: anywhere; }
 .reveal .links .column.qr p { font-size: 1em; }
