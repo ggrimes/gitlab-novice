@@ -22,6 +22,9 @@
     <loc>https://ggrimes.github.io/gitlab-novice/06-collaborating.html</loc>
   </url>
   <url>
+    <loc>https://ggrimes.github.io/gitlab-novice/07-branching-and-tagging.html</loc>
+  </url>
+  <url>
     <loc>https://ggrimes.github.io/gitlab-novice/404.html</loc>
   </url>
   <url>
@@ -65,6 +68,9 @@
   </url>
   <url>
     <loc>https://ggrimes.github.io/gitlab-novice/instructor/06-collaborating.html</loc>
+  </url>
+  <url>
+    <loc>https://ggrimes.github.io/gitlab-novice/instructor/07-branching-and-tagging.html</loc>
   </url>
   <url>
     <loc>https://ggrimes.github.io/gitlab-novice/instructor/404.html</loc>
