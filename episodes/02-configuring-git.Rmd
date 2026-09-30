@@ -51,18 +51,21 @@ Using the `--global` flag ensures these settings apply to every Git repository o
 
 ::: callout
 
-Think Before You Share: Email Addresses in Git
+### Think Before You Share: Email Addresses in Git
+
 While Git requires an email address for your commits, be mindful about the address you use. Your commit email address becomes part of the public history of any repository you push to a public platform (like GitHub or GitLab).
 
-Here's why this matters and what you can do:
+Here's why this matters:
 
-Privacy Concerns: A public email address can be scraped by bots, leading to more spam or unwanted solicitations.
-Security Risks: In some rare cases, a public email could potentially be used for targeted attacks if combined with other publicly available information.
+-   **Privacy concerns:** A public email address can be scraped by bots, leading to more spam or unwanted solicitations.
+-   **Security risks:** In some rare cases, a public email could potentially be used for targeted attacks if combined with other publicly available information.
+
 What are your options?
 
-Use a dedicated "no-reply" email provided by your Git hosting service: GitHub, for example, offers a "noreply" email address you can use. This keeps your personal email private while still uniquely identifying your commits. Check your account settings on platforms like GitHub or GitLab for this option.
-Use a separate email address: You could use an email address specifically for Git commits that you don't use for other personal or critical communications.
-Keep private repositories private: If you're working on a private project, your email address is only visible to those with access to the repository.
+-   **Use a dedicated "no-reply" email provided by your Git hosting service:** GitHub, for example, offers a "noreply" email address you can use. This keeps your personal email private while still uniquely identifying your commits. Check your account settings on platforms like GitHub or GitLab for this option.
+-   **Use a separate email address:** You could use an email address specifically for Git commits that you don't use for other personal or critical communications.
+-   **Keep private repositories private:** If you're working on a private project, your email address is only visible to those with access to the repository.
+
 Always consider the visibility of your repository and choose an email strategy that aligns with your privacy preferences.
 :::
 
@@ -133,14 +136,15 @@ $ git config --global core.editor "nano -w"
 
 Git drops you into an editor for multi‑line commit messages, merge conflict resolutions, and interactive rebases.  Pick an editor you are comfortable with (common choices are *nano*, *code --wait*, or *notepad.exe* on Windows).
 
-### 4. Tame autocorrect and pulls
+### 4. Set the default branch, autocorrect and pulls
 
 ```bash
-$ git config --global help.autocorrect 1   # Suggest closest command after 1/10 second
-$ git config --global pull.rebase false    # Default to merge when running `git pull`
+$ git config --global init.defaultBranch main   # Name the first branch "main" in new repositories
+$ git config --global help.autocorrect 1         # Run the closest matching command after 1/10 second
+$ git config --global pull.rebase false          # Default to merge when running `git pull`
 ```
 
-Autocorrect spares you from typos, while the pull setting aligns behaviour with the rest of this workshop (merging instead of rebasing).
+Older versions of Git name the first branch `master`; setting `init.defaultBranch` means your repositories use `main`, matching the commands in this lesson. Autocorrect spares you from typos by running the command Git thinks you meant, while the pull setting aligns behaviour with the rest of this workshop (merging instead of rebasing).
 
 ::::: challenge
 
@@ -151,8 +155,11 @@ Use `cat ~/.gitconfig` (or open the file in your editor) and locate the lines yo
 ::: solution
 
 - `[user]` contains `name` and `email`.
-- `[core]` contains `editor` and options such as `autocorrect`.
+- `[core]` contains `editor`.
 - `[color]` stores `ui = auto`.
+- `[init]` stores `defaultBranch = main`.
+- `[help]` stores `autocorrect = 1`.
+- `[pull]` stores `rebase = false`.
 
 :::
 :::::

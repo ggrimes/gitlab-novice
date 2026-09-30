@@ -46,7 +46,7 @@ This gives you a full history of commits, starting from the most recent.
 -   **Shorter Log View:** Use `--oneline` for a more concise view. This is helpful when scanning many commits quickly.
 
     ```bash
-git log --oneline
+    git log --oneline
     ```
 
     ![Terminal showing git log --oneline output](git-log-oneline.png)
@@ -54,19 +54,19 @@ git log --oneline
 -   **Graphical History:** To see a visual representation of branches and merges:
 
     ```bash
-git log --graph --oneline --decorate
+    git log --graph --oneline --decorate
     ```
 
 -   **History of a Specific File:** To see only the commits that affected a particular file, along with the changes made in each commit:
 
     ```bash
-git log -p README.md
+    git log -p README.md
     ```
 
 -   **Filter by Author:** To see commits made by a specific person:
 
     ```bash
-git log --author="Your Name"
+    git log --author="Your Name"
     ```
 
 ## 2. Inspecting a Specific Commit (`git show`)
@@ -99,33 +99,33 @@ git show <commit-id>:<file-path>
 -   **Compare Working Directory vs. Staging Area:** Shows changes you've made but haven't yet added to the staging area.
 
     ```bash
-git diff
+    git diff
     ```
 
 -   **Compare Staging Area vs. Last Commit (HEAD):** Shows changes that are staged and ready to be committed.
 
     ```bash
-git diff --staged
+    git diff --staged
     ```
 
 -   **Compare Working Directory vs. Last Commit (HEAD):** Shows all changes since your last commit, whether staged or not.
 
     ```bash
-git diff HEAD
+    git diff HEAD
     ```
 
 -   **Compare Between Two Commits:** Shows the differences between any two specific commits.
 
     ```bash
-git diff <commit1-id> <commit2-id>
-# Example: git diff abc123 def456
+    git diff <commit1-id> <commit2-id>
+    # Example: git diff abc123 def456
     ```
 
 -   **Compare a File Between Two Commits:** To see changes to a specific file between two commits:
 
     ```bash
-git diff <commit1-id> <commit2-id> <file-path>
-# Example: git diff HEAD~1 HEAD README.md
+    git diff <commit1-id> <commit2-id> <file-path>
+    # Example: git diff HEAD~1 HEAD README.md
     ```
 
 ## 4. Undoing Changes and Restoring Files (`git restore`)
@@ -135,22 +135,23 @@ git diff <commit1-id> <commit2-id> <file-path>
 -   **Discard unstaged changes in working directory:**
 
     ```bash
-git restore <file-path>
-# Example: git restore README.md
+    git restore <file-path>
+    # Example: git restore README.md
     ```
+
     Be cautious: this removes changes **permanently** unless they were staged or committed.
 
 -   **Unstage changes (move from staging area back to working directory):**
 
     ```bash
-git restore --staged <file-path>
+    git restore --staged <file-path>
     ```
 
 -   **Restore a file to a version from a specific commit:**
 
     ```bash
-git restore --source=<commit-id> <file-path>
-# Example: git restore --source=HEAD~1 README.md
+    git restore --source=<commit-id> <file-path>
+    # Example: git restore --source=HEAD~1 README.md
     ```
 
 ## 5. Using RStudio to Explore History (GUI)
@@ -200,15 +201,23 @@ Open a repository (your project or a partner’s). Then:
     -   What was added or removed?
 
 ::: solution
-1.  ```bash
-git log --oneline
+1.  List the commits:
+
+    ```bash
+    git log --oneline
     ```
-2.  ```bash
-git show <commit-id>
+
+2.  Show the chosen commit:
+
+    ```bash
+    git show <commit-id>
     ```
+
 3.  Look for:
+
     -   Author and date near the top
     -   File names and the actual line changes below
+
 :::
 :::::
 
@@ -223,15 +232,18 @@ Your project's `README.md` has changed many times. Your task is to find the very
 **Hint:** You can combine the commit hash and the filename in the `git show` command.
 
 ::: solution
-1.  First, find the last commit in the log:
+1.  First, find the oldest commit in the log:
+
     ```bash
-git log --oneline
+    git log --oneline
     ```
+
     Scroll to the bottom of the output to find the very first commit and copy its hash (e.g., `72041c0`).
 
 2.  Then, show the file from that commit:
+
     ```bash
-git show 72041c0:README.md
+    git show 72041c0:README.md
     ```
 :::
 :::::
@@ -246,12 +258,15 @@ You're curious about the changes your collaborator made.
 
 ::: solution
 1.  Filter the log by author:
+
     ```bash
-git log --author="Collaborator's Name"
+    git log --author="Collaborator's Name"
     ```
+
 2.  Copy a commit hash from the output and inspect it:
+
     ```bash
-git show <hash>
+    git show <hash>
     ```
 :::
 :::::
@@ -269,14 +284,18 @@ This is a common and safe way to selectively recover code without using more com
 
 ::: solution
 1.  See what was changed in the last commit:
+
     ```bash
-git diff HEAD~1 HEAD README.md
+    git diff HEAD~1 HEAD README.md
     ```
+
 2.  Open `README.md` in your editor, and re-insert the lines that are marked with `-` in the diff output.
+
 3.  Commit the fix:
+
     ```bash
-git add README.md
-git commit -m "Fix: Restore deleted section in README"
+    git add README.md
+    git commit -m "Fix: Restore deleted section in README"
     ```
 :::
 :::::

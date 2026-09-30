@@ -46,14 +46,13 @@ You can think of a repository as a project folder that tracks changes, stores hi
 We are going to create a folder for our project `MyProject` which will turn into a git repository.
 
 ```bash
-mkdir MyProject 
+$ mkdir MyProject
 ```
 
-You can go into `MyProject` by running 
+You can go into `MyProject` by running
 
 ```bash
-$ mkdir MyProject
-$ cd MyProject 
+$ cd MyProject
 ```
 
 In its current state the directory, `MyProject` is not a Git repository.
@@ -101,7 +100,7 @@ README files are typically named README.md. The .md extension indicates that the
 When you view a repository on platforms like GitHub, GitLab, or Bitbucket, they automatically detect README.md (or similar filenames like README.txt, README) in the root directory. These platforms then render the Markdown content into beautifully formatted HTML, making the project's introduction easily readable directly in your web browser without needing to open the file in a text editor. This automatic rendering is a key reason Markdown is so popular for repository documentation.
 :::
 
-Let’s create a new file by running touch README.md then run git status again. Now you should see that you have an untracked file `README.md`.
+Let’s create a new `README.md` file containing a title, then run `git status` again. Now you should see that you have an untracked file `README.md`.
 
 ``` bash
 $ echo "# My eddie Python project" > README.md
@@ -161,8 +160,8 @@ To add snapshot to repository use the `git commit` command. For each commit you 
 ::: callout
 ## Git messages
 
-1.  Limit the Subject Line: Keep the subject or summary line to 50 characters or fewer. This ensures it's easily readable in various Git tools.​
-2.  Use the Imperative Mood: Frame your commit message as a command or action, e.g., **"Fix"** rather than "**Fixed"** or **"Fixes."​**
+1.  Limit the Subject Line: Keep the subject or summary line to 50 characters or fewer. This ensures it's easily readable in various Git tools.
+2.  Use the Imperative Mood: Frame your commit message as a command or action, e.g., **"Fix"** rather than **"Fixed"** or **"Fixes."**
 3.  Avoid Vague Messages: Instead of writing **"Update code"** or **"Fix bug"**, specify what you did, such as **"Add error handling for login process."**
 :::
 
@@ -173,14 +172,14 @@ $ git commit -m "initial commit"
 ```
 
 ``` output
-[main (root-commit) 72041c0] Add README with project title
+[main (root-commit) 72041c0] initial commit
  1 file changed, 1 insertion(+)
  create mode 100644 README.md
 ```
 
 Every commit receives a unique 40‑character *hash* (displayed here as **72041c0** for brevity).
 
-You’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new files, and the files has one line of code. 
+You’ll see that you have “1 file changed, 1 insertion(+)” because you just added one new file, and the file has one line of text.
 
 Now that your changes are committed, your working directory should be clean. You can verify this by running git status again:
 
@@ -206,14 +205,11 @@ git log
 ```
 
 ``` output
+commit 72041c0b39884a9bf978bc272c82d862976abcb (HEAD -> main)
+Author: firstname surname <emailaddress@ed.ac.uk>
+Date:   Tue Sep 24 10:06:58 2024 +0100
 
-commit f00b5b49b39884a9bf978bc272c82d862976abcb (HEAD -> main)​
-
-Author: firstname surname <emailaddress@ed.ac.uk>​
-
-Date:   Tue Sep 24 10:06:58 2024 +0100​
-
-initial commit
+    initial commit
 ```
 
 ::::: challenge
@@ -243,9 +239,9 @@ nano README.md
 add a *Run Script* section
 
 ```         
-# My eddie Python project​
+# My eddie Python project
 
-To run Python on eddie need to run:​
+To run Python on eddie need to run:
 module load igmm/apps/python/3.12.3
 ```
 
@@ -300,8 +296,8 @@ index a4c6c69..603f621 100644
 
 ####  `index a4c6c69..603f621 100644`
 
--   **`a4c6c69`** = commit hash of the file *before* the change
--   **`603f621`** = commit hash of the file *after* the change
+-   **`a4c6c69`** = short hash of the file's contents *before* the change
+-   **`603f621`** = short hash of the file's contents *after* the change
 -   **`100644`** = file mode (normal non-executable file)
 
 ------------------------------------------------------------------------
@@ -329,7 +325,7 @@ index a4c6c69..603f621 100644
  # My eddie Python project
 +
 +To run Python on eddie need to run:
-+    module load igmm/apps/python/3.12.3
++module load igmm/apps/python/3.12.3
 ```
 
 | Symbol | Meaning | Explanation |
@@ -339,9 +335,7 @@ index a4c6c69..603f621 100644
 
 ------------------------------------------------------------------------
 
-## 
-
-### Stage and commit the update:
+### Stage and commit the update
 
 Once we are happy with the changes we can stage the changes and then commit into the git repository.
 
@@ -387,7 +381,7 @@ They will be **green with a + prefix** because new lines are *additions* relativ
 
 ### 6. Undoing a change in the working directory
 
-If you accidently stage a file you can discard **unstaged** edits using `git restore`:
+If you make an edit you don't want to keep, you can discard **unstaged** changes using `git restore`:
 
 ``` bash
 $ git restore README.md   # newer Git (>=2.23)
@@ -396,6 +390,12 @@ $ git checkout -- README.md  # older Git versions
 ```
 
 Be cautious: this removes changes **permanently** unless they were staged or committed.
+
+If you accidentally stage a file, you can unstage it (keeping your edits in the working directory) with:
+
+``` bash
+$ git restore --staged README.md
+```
 
 ### 7. Adding directories and data
 
@@ -417,33 +417,38 @@ $ cp /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data
 We can now add it to staging area and commit to repository.
 
 ```bash
-$ git add Data/data.csv # Comment on when to commit data​
+$ git add Data/data.csv # Comment on when to commit data
 $ git commit -m "Add example dataset"
 ```
 
 ::::: challenge
 #### Challenge 4: Multiple file workflow
 
-1. Create a simple Python script *Src/hello.py*.
-```python
- #!/usr/bin/env python
+1.  Create a simple Python script *Src/hello.py*.
+
+    ``` python
+    #!/usr/bin/env python
     print("Hello World!")
-```
-2. Add and commit it. `git add` & `git commit`
-3. Then modify the script to read the CSV file added above and print the number of rows. 
-```python
-#!/usr/bin/env python
-    
-# load pandas library
-import pandas as pd
-    
-# Read the data
-variants =  pd.read_csv("Data/data.csv")
-    
-# Check we have the data
-print(variants)
-```
-4. Use `git diff` before committing to verify the change.
+    ```
+
+2.  Add and commit it with `git add` and `git commit`.
+
+3.  Then modify the script to read the CSV file added above and print the number of rows.
+
+    ``` python
+    #!/usr/bin/env python
+
+    # load pandas library
+    import pandas as pd
+
+    # Read the data
+    variants = pd.read_csv("Data/data.csv")
+
+    # Report the number of rows
+    print(len(variants))
+    ```
+
+4.  Use `git diff` before committing to verify the change.
 
 ::: solution
 1.  Create the file:
@@ -465,12 +470,12 @@ print(variants)
     
     # load pandas library
     import pandas as pd
-    
+
     # Read the data
-    variants =  pd.read_csv("Data/data.csv")
-    
-    # Check we have the data
-    print(variants)
+    variants = pd.read_csv("Data/data.csv")
+
+    # Report the number of rows
+    print(len(variants))
     ```
 
     ``` bash
