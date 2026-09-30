@@ -73,6 +73,7 @@ episodes:
 - 06-collaborating.Rmd
 - 05-exploring-history.Rmd
 - ignoring-things.Rmd
+- 07-branching-and-tagging.Rmd
 
 # Information for Learners
 learners:
