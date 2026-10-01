@@ -496,6 +496,29 @@ $wooclap: #6f3cff;
   height: 100%;
 }
 
+/* live Wooclap slides: small heading, iframe fills the rest */
+.reveal .wooclap-embed-url { display: none; }
+.reveal .wooclap-live h2 {
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  border-bottom-color: $wooclap;
+}
+.reveal .wooclap-embed { display: block; text-align: center; }
+.reveal .wooclap-embed iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: 3px solid $wooclap;
+  border-radius: 10px;
+  background: $git-sand;
+}
+.reveal .wooclap-embed .wooclap-open {
+  display: inline-block;
+  margin-top: 0.3em;
+  font-size: 0.45em;
+  color: $git-muted;
+}
+
 /* link lists next to a QR code */
 .reveal .links .column p { font-size: 0.72em; overflow-wrap: anywhere; }
 .reveal .links .column.qr p { font-size: 1em; }

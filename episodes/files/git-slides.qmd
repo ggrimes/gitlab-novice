@@ -23,6 +23,10 @@ format:
 # Wooclap event code: set this once, then re-render. The join slide,
 # QR code and quiz badges all use it.
 wooclap-code: "XXXXXX"
+# Optional: page shown in the live Wooclap slides. Leave as "none" to use the
+# participant link app.wooclap.com/<code>; paste a presenter/results link to
+# show that instead.
+wooclap-embed-url: "none"
 title-slide-attributes:
   data-background-color: "#13294b"
   data-background-image: "../fig/lesson-qr.svg"
@@ -110,6 +114,8 @@ No account needed. Keep the tab open: we'll use it for the quiz questions all da
 :::
 ::::
 
+[{{< meta wooclap-embed-url >}}]{.wooclap-embed-url}
+
 ::: notes
 Open the Wooclap event on the presenter laptop now and leave it in a second window. Give people a minute to join; the participant count in Wooclap tells you when most are in.
 
@@ -137,6 +143,14 @@ Warm-up questions (Q1 and Q2 in the question bank) go straight after this.
 
 ::: notes
 Q1 is a rating question, Q2 a word cloud. Switch to the Wooclap window to show the results. The rating tells you how fast to go this morning; it's asked again at the end of the day so everyone can see the change.
+:::
+
+## Wooclap Q1–Q2 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath.
 :::
 
 # Why Version Control? {.section-slide background-color="#13294b"}
@@ -282,6 +296,14 @@ D. Collaborating with colleagues on a shared project
 Quick show of fingers: 1–4 for A–D. Don't wait for the full two minutes if everyone has answered.
 :::
 
+## Wooclap Q3 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath. Tip: vote first, look at the spread here, then go back (←) and reveal the answer.
+:::
+
 # Configuring Git {.section-slide background-color="#0f8b8d"}
 
 [Episode 02]{.ep-num}
@@ -393,6 +415,14 @@ Inside the project: **user@project** (local wins). Anywhere else: **root@machine
 
 ::: notes
 Discuss with a neighbour for a minute before revealing.
+:::
+
+## Wooclap Q4 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath.
 :::
 
 # Recording Changes Locally {.section-slide background-color="#13294b"}
@@ -1283,6 +1313,14 @@ d) two different commits
 Fingers up 1–4 again.
 :::
 
+## Wooclap Q5 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath.
+:::
+
 ## Your turn: the archaeologist {.exercise}
 
 ::: {.task time="5"}
@@ -1609,6 +1647,14 @@ Fast finishers: make a commit on main as well before merging, to get a real merg
 Quick discussion. For 2, mention adding the tag name and URL to the paper's code availability statement.
 :::
 
+## Wooclap Q6–Q8 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath.
+:::
+
 # Wrap Up {.section-slide background-color="#0f8b8d"}
 
 [Episode 10]{.ep-num}
@@ -1645,6 +1691,14 @@ Episode 10: about 10 minutes. Leave time for questions and the feedback form.
 
 ::: notes
 Show Q9 next to this morning's Q1 result: the shift is a nice way to end. Q11's answers are the best input for improving the course, and for a follow-up email to the group.
+:::
+
+## Wooclap Q9–Q11 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Live Wooclap view: loads when you arrive on this slide. Open the question in Wooclap (or let participants go at their own pace) and show the votes as they come in. If the frame stays blank, use the link underneath. Compare Q9 with this morning's Q1.
 :::
 
 ## What we covered {.keypoints}
