@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+/* Layered after ../git-theme.scss and ../intro-experiment/intro-experiment.scss
+   (both reused unchanged). */
+
+#title-slide::before { content: "Half-day course · 09:00–14:00"; }
+
+/* break / lunch slides */
+.reveal .breakslide h2 { border-bottom-color: #ffd479; }
+.reveal .breakslide .bigq { color: #fff; }
+.reveal .breakslide strong { color: #ffd479; }
+
+/* journey strip on dark section slides: light "done" marker */
+.reveal section.has-dark-background .journey .stop.done { border-top-color: #bfe6e6; }
+.reveal .section-slide .journey { margin-top: 0.8em; }
+
+/* compact one-line flow diagrams */
+.reveal .flow.compact { font-size: 0.75em; }
+.reveal .flow.compact .box { min-width: 5em; }

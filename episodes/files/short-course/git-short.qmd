@@ -1,0 +1,1219 @@
+---
+title: "Introduction to Git and GitLab"
+subtitle: "Version control for your research, hands-on on Eddie"
+author: "Graeme Grimes"
+format:
+  revealjs:
+    theme: [default, ../git-theme.scss, ../intro-experiment/intro-experiment.scss, short-course.scss]
+    slide-number: c/t
+    transition: fade
+    background-transition: fade
+    progress: true
+    hash: true
+    center: false
+    width: 1280
+    height: 760
+    margin: 0.06
+    footer: "Introduction to Git and GitLab"
+    embed-resources: true
+    code-copy: true
+    menu:
+      numbers: true
+    include-after-body: [../exercise-timer.html, ../wooclap.html]
+# One Wooclap event for the whole morning (questions W1–W10 in wooclap-questions.md)
+wooclap-code: "XXXXXX"
+wooclap-embed-url: "none"
+# Where the workshop data lives on Eddie: data.csv source, messy_project/ and
+# tidy_project/ (built with ../intro-experiment/make-messy-project.sh)
+workshop-data: "/exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data"
+title-slide-attributes:
+  data-background-color: "#13294b"
+  data-background-image: "../../fig/lesson-qr.svg"
+  data-background-size: "150px"
+  data-background-position: "right 60px bottom 70px"
+---
+
+## {background-color="#13294b"}
+
+::: {.email}
+[**From:** Reviewer 2 · **To:** you · **Subject:** Manuscript GEN-2025-0417, revision]{.hdr}
+
+Dear author,
+
+The histogram in **Figure 3** looks different from the one in your preprint.
+
+Please provide **the exact code and parameters** used to generate Figure 3 in the submitted version, and explain what changed.
+:::
+
+::: {.bigq .fragment style="color:#fff"}
+You made Figure 3 fourteen months ago.\
+Could you answer this email today?
+:::
+
+::: notes
+**09:00 · HOOK · 3 min.** Open on the problem: no welcome, no agenda yet. Read the email aloud, pause on the question.
+
+"Hold that thought. By 2 o'clock you'll answer this email in about 30 seconds."
+
+(Gagné: gain attention; Keller ARCS: relevance.)
+:::
+
+## How today works
+
+:::: {.columns}
+::: {.column width="55%"}
+- I'm **Graeme**; helpers today: **[names]**
+- **Mistakes are expected.** Git is built for *undo*.
+- No question is too basic.
+- We type **everything** together.
+- **Break 10:30 · lunch 12:15 · finish 14:00**
+:::
+::: {.column width="45%"}
+**Sticky notes**
+
+[]{.sticky .green} **Green**: done / all good
+
+[]{.sticky .red} **Red**: stuck, please come over
+
+<br>
+
+::: {.muted .small}
+Your Eddie and GitLab logins were checked before today. Red sticky now if either doesn't work.
+:::
+:::
+::::
+
+::: notes
+**BELONG · 3 min.** Psychological safety first (Edmondson): anxiety uses up working memory. Avoid "just" and "simply" all morning.
+
+Set-up was checked before the day (pre-course email). Helpers fix red stickies quietly while you carry on.
+:::
+
+## Join the Wooclap
+
+:::: {.columns}
+::: {.column width="55%"}
+1. On your **phone** or laptop, go to **wooclap.com**
+2. Enter the event code:
+
+[{{< meta wooclap-code >}}]{.wooclap-code}
+
+::: {.muted .small}
+No account needed. Answers are anonymous.
+:::
+:::
+::: {.column width="45%"}
+[]{.wooclap-qr}
+:::
+::::
+
+[{{< meta wooclap-embed-url >}}]{.wooclap-embed-url}
+
+## Where are you starting from? {.wooclap-poll}
+
+[Answer on Wooclap · W1–W2 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.poll}
+**W1.** How comfortable are you with the **command line**?
+
+1 = never used it · 5 = live in it
+:::
+:::
+::: {.column width="55%"}
+::: {.poll}
+**W2.** How do you keep track of **versions** of your work *now*? (pick all that apply)
+
+- Renamed copies: `_v2`, `_final`…
+- Dropbox / OneDrive / SharePoint history
+- Emailing files to myself or others
+- Git (or another version control system)
+- I don't, really
+:::
+:::
+::::
+
+::: notes
+**ACTIVATE · 4 min.** Prior knowledge (Ambrose et al.) and the pretesting effect (Richland et al.). W1 comes back as W8 at the end.
+:::
+
+## Wooclap W1–W2 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+## Your turn: be the detective {.exercise}
+
+::: {.task time="6"}
+In pairs. Copy a colleague's project to your home directory on Eddie:
+
+```bash
+cp -r {{< meta workshop-data >}}/messy_project ~/
+cd ~/messy_project
+ls -l
+```
+
+1. Which script made `figure3.png`?
+2. What **changed** compared with the version before it?
+3. **How sure are you?** Could you prove it to Reviewer 2?
+:::
+
+::: notes
+**STRUGGLE · 6 min.** Productive failure (Kapur; Schwartz & Bransford). "This is designed to be frustrating; there's no clean answer."
+
+The trap: figure3.png is dated 2 May (copied to a shared drive), later than every script. notes_old.txt says use FIXED, but FIXED has savefig commented out.
+:::
+
+## What made that hard? {.wooclap-poll}
+
+[Answer on Wooclap · W3 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+::: {.poll}
+**W3.** In one or two words: what made that hard?
+:::
+
+::: {.fragment}
+Best guess: `analysis_final.py`, with the threshold lowered from 30 to 20 and a log scale added.\
+**But nothing in that folder can *prove* it.**
+:::
+
+## Wooclap W3 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+## So we need a tool that… {.needs}
+
+| You said… | So we need… | Git's answer |
+|:--|:--|:--|
+| "which one is final?" | **one** file, with its whole history | commits |
+| "dates were wrong" | a **record** of when and who | `git log` |
+| "couldn't see what changed" | **exact differences** between versions | `git diff` |
+| "notes didn't match" | a **message** attached to every change | commit messages |
+| "can't prove it" | a fixed label on **the submitted version** | tags |
+
+::: {.muted .small}
+That's version control: a dated, permanent **lab book for code**.
+:::
+
+::: notes
+Use the room's own words from W3 in the left column (generation effect).
+:::
+
+## Today
+
+::: {.journey}
+[**Why Git**<br>the detective]{.stop .done}
+[**First commit**<br>on Eddie]{.stop .here}
+[**Recording**<br>changes]{.stop}
+[**GitLab**<br>backup & sync]{.stop}
+[**History**<br>& undo]{.stop}
+[**Ignoring**<br>& big data]{.stop}
+[**Tags**<br>answer Reviewer 2]{.stop}
+:::
+
+::: {.outcomes}
+By **14:00** you will be able to:
+
+- **record** your work as commits, and see exactly what changed
+- **back up** a project on the University GitLab and keep two copies in sync
+- **go back** to any version, and undo mistakes safely
+- keep **big data and secrets** out of your repository
+- **tag** the exact version behind a paper
+:::
+
+::: notes
+**MAP · 3 min.** Objectives and an advance organiser. The strip comes back at the start of every section.
+
+Not covered today (on "Where next?"): working with colleagues in one repository, branches, Git in RStudio.
+:::
+
+## Your goal for today {.wooclap-poll}
+
+[Answer on Wooclap · W4 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+::: {.poll}
+**W4.** What's **one thing** you want to be able to do with Git by 2 pm? A real project of yours is ideal.
+:::
+
+::: {.muted .small}
+We'll look back at these at the end.
+:::
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip data-id="file"}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .ghost}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .ghost}]{.box .coral data-id="repo"}
+:::
+
+Like a **lab book**: first you do the work on the bench…
+
+::: notes
+**MODEL · 4 min.** Concreteness fading: analogy → diagram → commands.
+:::
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip .ghost}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .staged data-id="file"}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .ghost}]{.box .coral data-id="repo"}
+:::
+
+…then you **choose** what goes on today's page…
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip .ghost}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .ghost}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .committed data-id="file"}]{.box .coral data-id="repo"}
+:::
+
+…and **sign and date** the page. It's permanent.
+
+- **Working directory**: the files you edit
+- **Staging area**: what you've chosen for the next snapshot
+- **Repository**: every snapshot (**commit**), forever
+
+## Check your model {.wooclap-poll}
+
+[Answer on Wooclap · W5 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+[Vote 1: on your own]{.pi-step}
+
+You edit **two** files, `a.py` and `b.py`. Then you run:
+
+```bash
+git add a.py
+git commit -m "Fix plotting bug"
+```
+
+::: {.options}
+What's in the commit?
+
+A. Changes to both `a.py` and `b.py`\
+B. Only the changes to `a.py`\
+C. Nothing: you have to add both files first\
+D. Only the changes to `b.py`
+:::
+
+::: notes
+**PEER INSTRUCTION · 4 min** (Crouch & Mazur; Smith et al. 2009). Vote alone; don't show results yet. If over ~80% are right, skip straight to the answer.
+:::
+
+## Talk to your neighbour {.wooclap-poll}
+
+[Answer on Wooclap · W6 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+[Convince your neighbour]{.pi-step .talk}
+
+You edit `a.py` and `b.py`, then run `git add a.py` and `git commit`.
+
+::: {.bigq}
+What's in the commit?
+:::
+
+::: {.muted .small}
+1 minute: find someone who voted differently and convince them. Then **vote again** (W6).
+:::
+
+## Wooclap W5–W6 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+## Answer: B, only `a.py`
+
+::: {.flow}
+[Working directory [b.py (still modified)]{.filechip}]{.box}
+[`git add a.py` →]{.arrow}
+[Staging area [a.py]{.filechip .staged}]{.box .teal}
+[`git commit` →]{.arrow}
+[Repository [a.py]{.filechip .committed}]{.box .coral}
+:::
+
+A commit contains **exactly what's staged**: no more, no less. `b.py` is still waiting in the working directory.
+
+::: {.muted .small}
+That's a feature: one commit = one logical change, even if you've touched five files.
+:::
+
+## Tell Git who you are
+
+```{.bash code-line-numbers="|1|2|3|4"}
+git config --global user.name "Your Name"
+git config --global user.email "you@ed.ac.uk"
+git config --global init.defaultBranch main
+git config --global core.editor "nano -w"
+```
+
+Every commit is **signed** with this name and email, just like a lab book page.
+
+::: {.muted .small}
+Once per machine. Line 4: if Git ever opens an editor, it's the simple `nano` (save: Ctrl+O, Enter · exit: Ctrl+X).
+:::
+
+::: notes
+**Just in time (3 min).** Only what the first commit needs, plus the editor: a commit without -m opens it, and a stray vim session costs 10 minutes. pull.rebase comes just before the first pull.
+:::
+
+## Your first commit
+
+```{.bash code-line-numbers="|1|2|3|4|5"}
+mkdir ~/MyProject && cd ~/MyProject
+git init
+echo "# My eddie Python project" > README.md
+git add README.md
+git commit -m "initial commit"
+```
+
+:::: {.columns .small}
+::: {.column width="33%"}
+**Set up** · lines 1–2\
+make a folder; start tracking
+:::
+::: {.column width="33%"}
+**Make a change** · line 3\
+write a file
+:::
+::: {.column width="34%"}
+**Save a snapshot** · lines 4–5\
+stage → commit
+:::
+::::
+
+::: notes
+**WIN · 10 min.** Live-code at typing speed. Subgoal labels under the code (Margulieux). Before line 4, go to the next slide and ask for a prediction.
+
+This is the one repository we use all morning: MyProject.
+:::
+
+## Predict first
+
+[Predict]{.predict}
+
+You've just created `README.md` but haven't run `git add` yet.
+
+::: {.bigq}
+What will `git status` say?
+:::
+
+::: {.fragment}
+```{.output}
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+```
+
+Git **sees** the file but isn't tracking it yet: it's still on the bench.
+:::
+
+## You made a commit {background-color="#0f8b8d"}
+
+```{.output}
+[main (root-commit) 72041c0] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+```
+
+::: {.bigq style="color:#fff"}
+Green sticky up when you see this.
+:::
+
+::: notes
+Count the greens and celebrate out loud. Aim: about 09:45.
+:::
+
+# Recording Changes {.section-slide background-color="#13294b"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**<br>changes]{.stop .here}
+[**GitLab**]{.stop}
+[**History**]{.stop}
+[**Ignoring**]{.stop}
+[**Tags**]{.stop}
+:::
+
+[How do I record what changed, and see the difference?]{.ep-q}
+
+::: notes
+**09:45–10:30.**
+:::
+
+## Look at the history
+
+```bash
+git log
+```
+
+```{.output}
+commit 72041c0b39884a9bf978bc272c82d862976abcb (HEAD -> main)
+Author: Your Name <you@ed.ac.uk>
+Date:   Tue Sep 24 10:06:58 2024 +0100
+
+    initial commit
+```
+
+`HEAD` is a pointer to **where you are** in the history.
+
+```bash
+git log --oneline
+```
+
+::: notes
+If the log fills the screen, press q to quit. Hashes differ for everyone.
+
+Callback: "Who, when, what: the 'dates were wrong' problem from the detective task, solved."
+:::
+
+## Make a change
+
+```bash
+nano README.md
+```
+
+```
+# My eddie Python project
+
+To run Python on eddie need to run:
+module load igmm/apps/python/3.12.3
+```
+
+```bash
+git status
+```
+
+```{.output}
+Changes not staged for commit:
+    modified:   README.md
+```
+
+::: notes
+nano: Ctrl+O, Enter to save; Ctrl+X to exit. Say it out loud.
+:::
+
+## What changed? `git diff`
+
+```bash
+git diff README.md
+```
+
+```diff
+diff --git a/README.md b/README.md
+index a4c6c69..603f621 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,4 @@
+ # My eddie Python project
++
++To run Python on eddie need to run:
++module load igmm/apps/python/3.12.3
+```
+
+**`+`** added · **`-`** removed · a leading space: unchanged.
+
+::: notes
+Callback: "couldn't see what changed" from the detective task. Habit: always git diff before git add.
+:::
+
+## Stage, commit, compare
+
+```bash
+git add README.md
+git commit -m "Describe how to run Python on eddie"
+git diff HEAD~1 README.md     # compare with one commit ago
+```
+
+<br>
+
+| Command | Compares |
+|:--|:--|
+| `git diff` | working directory ↔ staging area |
+| `git diff --staged` | staging area ↔ last commit |
+| `git diff HEAD` | working directory ↔ last commit |
+| `git diff HEAD~1` | now ↔ one commit ago |
+
+::: notes
+Map the table to the three boxes. W7 later asks about git diff HEAD.
+:::
+
+## Undoing changes
+
+```bash
+git restore README.md           # discard unstaged edits
+git restore --staged README.md  # unstage, keep the edits
+```
+
+<br>
+
+⚠️ `git restore` **permanently** discards edits that were never staged or committed.
+
+::: notes
+The one place Git can lose work: edits never committed. Everything committed can be recovered.
+:::
+
+## Directories and data
+
+Git tracks **files**, not empty directories:
+
+```bash
+mkdir Src
+touch Src/.gitkeep
+git add Src/.gitkeep
+```
+
+Add a small dataset:
+
+```bash
+mkdir Data
+cp {{< meta workshop-data >}}/combined_tidy_vcf.csv Data/data.csv
+git add Data/data.csv
+git commit -m "Add example dataset"
+```
+
+::: {.muted .small}
+Small, stable data is fine to commit. Large or sensitive data: after lunch.
+:::
+
+## Your turn: a Python script {.exercise}
+
+::: {.task time="10"}
+1. Create `Src/hello.py`, then add and commit it:
+
+```python
+#!/usr/bin/env python
+print("Hello World!")
+```
+
+2. Change it to read the CSV and print the number of rows. Check `git diff` before you commit.
+:::
+
+::: {.answer .fragment}
+```python
+#!/usr/bin/env python
+import pandas as pd
+
+variants = pd.read_csv("Data/data.csv")
+print(len(variants))
+```
+
+`git diff Src/hello.py` → `git add Src/hello.py` → `git commit -m "Read CSV and report row count"`
+:::
+
+::: notes
+Fast finishers: git log --oneline (should be 4 commits).
+:::
+
+## Break {.breakslide background-color="#13294b"}
+
+::: {.bigq}
+Back at **10:45**
+:::
+
+::: {.muted style="color:#bfe6e6"}
+Leave your Eddie terminal open. Next: backing up to GitLab.
+:::
+
+# GitLab {.section-slide background-color="#0f8b8d"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**]{.stop .done}
+[**GitLab**<br>backup & sync]{.stop .here}
+[**History**]{.stop}
+[**Ignoring**]{.stop}
+[**Tags**]{.stop}
+:::
+
+[How do I back up my repository and keep two copies in sync?]{.ep-q}
+
+::: notes
+**10:45–11:45.** The SSH key step is where people get stuck: helpers ready.
+:::
+
+## What is a remote?
+
+:::: {.columns}
+::: {.column width="55%"}
+A **remote** is a saved link to another copy of your repository on a server.
+
+- **Back up**: Eddie's scratch space isn't forever
+- **Sync**: laptop ↔ Eddie ↔ work PC
+- **Share** with your supervisor, or the world
+
+**University GitLab**: <https://git.ecdf.ed.ac.uk>
+:::
+::: {.column width="45%"}
+::: {.flow style="flex-direction:column"}
+[Remote (GitLab)]{.box .teal}
+[`git push` ↑ &nbsp; ↓ `git pull`]{.arrow}
+[Local (Eddie)]{.box}
+:::
+:::
+::::
+
+::: notes
+Every copy is a full copy with all the history; GitLab is just the one you agree to sync through.
+:::
+
+## Create a GitLab project
+
+:::: {.columns}
+::: {.column width="55%"}
+![](../../fig/gitlab-new-project2.png){fig-alt="GitLab Create blank project form with Project name MyProject and Initialize repository with a README unticked."}
+:::
+::: {.column width="45%"}
+1. Log in to <https://git.ecdf.ed.ac.uk>
+2. **New project** → **Create blank project**
+3. Project name: **MyProject**
+4. **Untick** *Initialize repository with a README*
+5. **Create project**
+:::
+::::
+
+::: notes
+Stress unticking the README box. If left ticked, the first push is rejected: git pull --allow-unrelated-histories, then push.
+:::
+
+## SSH keys: password-less access
+
+```bash
+ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub
+```
+
+- `~/.ssh/id_ed25519`: **private** key. Never share it!
+- `~/.ssh/id_ed25519.pub`: **public** key. Paste it into GitLab.
+
+[User settings > SSH Keys > Add new key]{.menu}
+
+```bash
+ssh -T git@git.ecdf.ed.ac.uk      # should say "Welcome to GitLab"
+```
+
+::: notes
+Analogy: the public key is a padlock you hand out; the private key is the only key that opens it. Copy the single line from cat.
+:::
+
+## Connect and push
+
+```{.bash code-line-numbers="|1|2|3"}
+git remote add origin git@git.ecdf.ed.ac.uk:<username>/myproject.git
+git remote -v
+git push -u origin main
+```
+
+- `origin` is the conventional name for your main remote
+- `-u` sets up **tracking**: after this, plain `git push` and `git pull` just work
+
+::: notes
+Copy the SSH URL from the GitLab page. Typo? git remote set-url origin <correct-url>.
+
+Callback: "A backup Reviewer 2 can't make you lose."
+:::
+
+## Pushed!
+
+![](../../fig/gitlab-push01.png){.r-stretch fig-align="center" fig-alt="MyProject page on GitLab after pushing, listing the Data and Src folders and the README file."}
+
+## A second computer
+
+Pretend your **laptop** is another folder on Eddie:
+
+```{.bash code-line-numbers="|1|2|3"}
+git config --global pull.rebase false
+git clone git@git.ecdf.ed.ac.uk:<username>/myproject.git ~/MyProject-laptop
+cd ~/MyProject-laptop && git log --oneline
+```
+
+::: {.flow .compact}
+[MyProject<br>"Eddie"]{.box}
+[push ↑ pull ↓]{.arrow}
+[GitLab]{.box .teal}
+[push ↑ pull ↓]{.arrow}
+[MyProject-laptop<br>"laptop"]{.box .coral}
+:::
+
+::: notes
+Line 1 is just in time: it tells git pull to merge (the classic behaviour). Without it, newer Git refuses to pull when both copies have new commits, which is exactly what happens in the next exercise.
+
+Same history on both: that's the point of a clone.
+:::
+
+## Pull, fetch and rejected pushes
+
+- `git fetch`: download changes, don't touch your files
+- `git pull` = `git fetch` + `git merge`
+
+```{.output}
+! [rejected]   main -> main (non-fast-forward)
+```
+
+Your copy is **behind** → `git pull`, then `git push` again.
+
+::: {.muted .small}
+Not an error in your work: the other copy just pushed first.
+:::
+
+## Your turn: keep two copies in sync {.exercise}
+
+::: {.task time="12"}
+1. In **MyProject-laptop**: add a `## Data` section to `README.md`; commit and **push**.
+2. In **MyProject**: `git pull`. Is it there?
+3. In **MyProject**: create `notes.txt`; commit and push.
+4. In **MyProject-laptop**, *without pulling*: edit `Src/hello.py`; commit and push. What happens? Fix it.
+:::
+
+::: {.answer .fragment}
+Step 4 is **rejected**: the laptop copy is behind. `git pull` (Git merges the two changes automatically, since they're in different files), then `git push`.\
+**Always pull before you start work.**
+:::
+
+::: notes
+If git pull opens nano for a merge message: Ctrl+O, Enter, Ctrl+X.
+
+Fast finishers: make both copies change the **same line** of README.md: they'll get a conflict (next slide).
+:::
+
+## Same line, two versions: a conflict
+
+![](../../fig/conflict.svg){.diagram fig-align="center" fig-alt="Commit graph: two copies start from the same commit and change the same line; the second push is rejected and git pull reports a conflict."}
+
+Edit the file, keep what you want, **delete the `<<<<<<<` `=======` `>>>>>>>` markers**, then `add` → `commit` → `push`.
+
+::: notes
+Two minutes, conceptual only. Working with colleagues in one repository is a follow-on topic (Where next?); this is enough to recognise a conflict and not panic.
+:::
+
+# History & Undo {.section-slide background-color="#13294b"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**]{.stop .done}
+[**GitLab**]{.stop .done}
+[**History**<br>& undo]{.stop .here}
+[**Ignoring**]{.stop}
+[**Tags**]{.stop}
+:::
+
+[How do I find old versions, and undo mistakes?]{.ep-q}
+
+::: notes
+**11:45–12:15.** Back in ~/MyProject (git pull first!).
+:::
+
+## Looking back
+
+```bash
+git log --oneline --graph       # history, merges included
+git log -p README.md            # every change to one file
+git show HEAD~2:README.md       # a file as it was two commits ago
+git diff HEAD~2 HEAD README.md  # what changed since then
+```
+
+`HEAD~N` = *N commits before* where you are now.
+
+::: notes
+--graph now shows the merge from the sync exercise. Callback: this is what the detective task was missing.
+:::
+
+## Oops! Undoing mistakes {.dense}
+
+| Situation | Fix |
+|:--|:--|
+| Deleted or broke a file (not committed) | `git restore <file>` |
+| Want a file back from an earlier commit | `git restore --source=HEAD~1 <file>` |
+| Typo in the last commit message | `git commit --amend -m "Better message"` |
+| A bad commit is **already pushed** | `git revert <hash>`: a *new* commit that undoes it |
+| Half-done edits, but need to `git pull` | `git stash` → `git pull` → `git stash pop` |
+
+::: {.warn}
+**Golden rule:** only `--amend` commits you have **not pushed** yet. Once something is on GitLab, use `git revert`, which adds history instead of rewriting it.
+:::
+
+::: notes
+The slide people photograph.
+:::
+
+## Your turn: undo it {.exercise}
+
+::: {.task time="6"}
+1. Add a silly line to `README.md` and commit it with the message `"oops"`.
+2. Fix the message to `"Add silly line"` **without** a new commit.
+3. Push, then undo the whole commit **safely**.
+:::
+
+::: {.answer .fragment}
+```bash
+git commit --amend -m "Add silly line"   # before pushing: rewrite is fine
+git push
+git revert HEAD --no-edit                # after pushing: add an undo commit
+git push
+```
+:::
+
+## Your turn: `git diff HEAD` {.exercise}
+
+[Answer on Wooclap · W7 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+::: {.task time="2"}
+What does `git diff HEAD` show?
+
+a) working directory ↔ staging area
+b) staging area ↔ last commit
+c) working directory ↔ last commit
+d) two different commits
+:::
+
+::: {.answer .fragment}
+**c)**. Everything that has changed since the last commit, staged or not.
+:::
+
+::: notes
+Spaced retrieval of the 09:45 material just before lunch.
+:::
+
+## Lunch {.breakslide background-color="#13294b"}
+
+::: {.bigq}
+Back at **12:45**
+:::
+
+::: {.muted style="color:#bfe6e6"}
+Next: keeping big data and secrets out, then answering Reviewer 2.
+:::
+
+# Ignoring Things {.section-slide background-color="#0f8b8d"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**]{.stop .done}
+[**GitLab**]{.stop .done}
+[**History**]{.stop .done}
+[**Ignoring**<br>& big data]{.stop .here}
+[**Tags**]{.stop}
+:::
+
+[How do I keep big data and secrets out of my repository?]{.ep-q}
+
+::: notes
+**12:45–13:10.** Start with a 1-minute recall: "Tell your neighbour the difference between amend and revert."
+:::
+
+## `.gitignore`
+
+Files you usually **don't** want to track:
+
+- outputs you can regenerate
+- temporary files from your editor or IDE
+- large data or binary files
+- anything **sensitive**: passwords, keys, patient data
+
+```bash
+nano .gitignore
+```
+
+```
+results/
+*.dat
+.Rhistory
+```
+
+```bash
+git add .gitignore
+git commit -m "Ignore outputs and temporary files"
+```
+
+## Large data on Eddie {.dense}
+
+:::: {.columns}
+::: {.column width="55%"}
+- Git keeps **every version forever**: commit a 20 GB BAM once and it stays in `.git` even after you delete it
+- GitLab has **size limits**: big pushes get rejected
+- Commit the **scripts** and a README that says **where the data lives**
+- Check how big your repository is: `du -sh .git`
+:::
+::: {.column width="45%"}
+```
+# .gitignore for genomics
+*.bam
+*.bai
+*.cram
+*.fastq.gz
+*.vcf.gz
+results/
+work/
+```
+:::
+::::
+
+::: {.warn}
+Already committed a big file? `git rm --cached big.bam` stops tracking it, but it's **still in the history**. Ask for help **before** you push.
+:::
+
+## Your turn: ignore a secret {.exercise}
+
+::: {.task time="5"}
+1. Create `secret.txt` containing some text.
+2. Add it to `.gitignore`.
+3. Run `git status`. Is it listed?
+4. Commit your `.gitignore` and push.
+:::
+
+::: {.answer .fragment}
+```bash
+echo "my password" > secret.txt
+echo "secret.txt" >> .gitignore
+git status        # secret.txt no longer appears
+git add .gitignore
+git commit -m "Ignore secret.txt"
+git push
+```
+:::
+
+::: notes
+`>>` appends; a single `>` would overwrite .gitignore.
+:::
+
+# Tags {.section-slide background-color="#13294b"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**]{.stop .done}
+[**GitLab**]{.stop .done}
+[**History**]{.stop .done}
+[**Ignoring**]{.stop .done}
+[**Tags**<br>answer Reviewer 2]{.stop .here}
+:::
+
+[How do I mark the exact version behind a paper?]{.ep-q}
+
+::: notes
+**13:10–13:35.** The payoff of the morning.
+:::
+
+## A label that never moves
+
+:::: {.columns}
+::: {.column width="50%"}
+A **tag** is a permanent name for **one commit**.
+
+Use tags for:
+
+- the code behind a **paper** or thesis chapter
+- a **release** (`v1.0`, `v1.1`)
+- the end of a milestone
+:::
+::: {.column width="50%"}
+```bash
+git tag -a v1.0 -m "Version used for the workshop report"
+git tag
+git show v1.0
+git push origin v1.0
+```
+
+::: {.small .muted}
+GitLab: [Code > Tags]{.menu}, then download that version or create a **Release**.
+:::
+:::
+::::
+
+::: notes
+Tags aren't pushed by default: git push origin v1.0 (or --tags). Mention: put the tag name and GitLab URL in the paper's code availability statement.
+:::
+
+## Answer Reviewer 2 {.exercise}
+
+::: {.task time="6"}
+The detective's project again, but this time someone used Git:
+
+```bash
+cp -r {{< meta workshop-data >}}/tidy_project ~/
+cd ~/tidy_project
+```
+
+1. Which commit made `figure3.png`?
+2. What changed compared with the version before it?
+3. Which version was **submitted**?
+:::
+
+::: {.answer .fragment}
+```bash
+git log --oneline -- figure3.png                          # 1.
+git show v1.0-submitted --stat                            # 3.
+git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
+```
+`QUAL > 30` → `QUAL > 20`, log scale added, `savefig("figure3.png")`. **Provable**, with dates and a message.
+:::
+
+::: notes
+**CLOSE THE LOOP.** Same question as 09:10: then six minutes and no proof; now 30 seconds. Ask: "So what would you write back to Reviewer 2?"
+:::
+
+# Wrap Up {.section-slide background-color="#0f8b8d"}
+
+[What should I remember, and where do I go next?]{.ep-q}
+
+::: notes
+**13:35–14:00.**
+:::
+
+## What we covered {.keypoints}
+
+- `git config`: tell Git who you are, once per machine
+- **edit → `git add` → `git commit`**, and check with `git status`
+- `git diff` and `git log` to see exactly what changed, and when
+- `git push` to **GitLab** for backup; `git pull` before you start work
+- `git restore`, `git revert` and `git stash` to undo safely
+- `.gitignore` to keep big data and secrets out
+- **Tags** for the exact version behind a paper
+
+## Cheat sheet
+
+::::: {.cheatsheet}
+:::: {.card}
+[Set up (once)]{.card-title}
+`git config --global user.name "…"`\
+`git config --global user.email "…"`\
+`git init` · `git clone <url>`
+::::
+:::: {.card}
+[Everyday loop]{.card-title}
+`git pull`\
+`git status` · `git diff`\
+`git add <file>`\
+`git commit -m "Message"`\
+`git push`
+::::
+:::: {.card}
+[Look around]{.card-title}
+`git log --oneline --graph`\
+`git show <hash>`\
+`git diff HEAD~1`\
+`git show HEAD~2:<file>`
+::::
+:::: {.card}
+[Remotes]{.card-title}
+`git remote add origin <url>`\
+`git remote -v`\
+`git push -u origin main`\
+`git fetch`
+::::
+:::: {.card}
+[Tags]{.card-title}
+`git tag -a v1.0 -m "…"`\
+`git tag`\
+`git show v1.0`\
+`git push origin v1.0`
+::::
+:::: {.card}
+[Undo]{.card-title}
+`git restore <file>`\
+`git restore --staged <file>`\
+`git commit --amend`\
+`git revert <hash>` · `git stash`
+::::
+:::::
+
+## Before you go {.wooclap-poll}
+
+[Answer on Wooclap · W8–W10 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="33%"}
+::: {.poll}
+**W8.** How comfortable are you with the **command line** now?
+
+1–5, same as this morning
+:::
+:::
+::: {.column width="33%"}
+::: {.poll}
+**W9.** Your goal from this morning (W4): can you do it now?
+
+Yes · Partly · Not yet
+:::
+:::
+::: {.column width="34%"}
+::: {.poll}
+**W10.** What's still **confusing**? Anonymous.
+:::
+:::
+::::
+
+::: notes
+Show W8 next to W1. Four weeks later: "Have you committed to a repository since?"
+:::
+
+## Wooclap W8–W10 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+## Where next? {.links}
+
+:::: {.columns}
+::: {.column width="38%"}
+**Not covered today: the lesson has them**
+
+- **Collaborating** in one repository
+- **Branches** for parallel work
+- **Git in RStudio** (Noteable)
+
+<https://ggrimes.github.io/gitlab-novice/>
+:::
+::: {.column width="38%"}
+**Pro Git** (the "official" book)
+<https://git-scm.com/book>
+
+**Visualise Git**
+<https://git-school.github.io/visualizing-git/>
+
+**University GitLab**
+<https://git.ecdf.ed.ac.uk>
+:::
+::: {.column width="24%" .qr}
+![](../../fig/lesson-qr.svg){fig-alt="QR code linking to the lesson website ggrimes.github.io/gitlab-novice."}
+
+[Lesson website]{.small .muted}
+:::
+::::
+
+<br>
+
+::: {.muted .small}
+The core loop is always the same: **pull → edit → add → commit → push**.
+:::
+
+# Thank you! {.section-slide background-color="#13294b"}
+
+[Questions & feedback welcome · Graeme.Grimes@ed.ac.uk]{.ep-q}
+
+## About this course {.research}
+
+| Move | Research basis | In this deck |
+|:--|:--|:--|
+| Prepare | Cognitive load (Sweller 1988); Carpentries pre-workshop setup | Logins checked before the day |
+| Hook | Gagné's events of instruction; Keller's ARCS | Reviewer 2 email |
+| Belong | Psychological safety (Edmondson 1999); self-determination theory | Norms, helpers, sticky notes |
+| Activate | Prior knowledge (Ambrose et al. 2010); pretesting effect (Richland et al. 2009) | W1–W2 before any teaching |
+| Struggle | Productive failure (Kapur 2016); Schwartz & Bransford (1998) | The messy folder |
+| Generate | Generation effect (Slamecka & Graf 1978) | "So we need a tool that…" |
+| Map | Advance organisers (Ausubel 1960); signalling (Mayer) | Journey strip at every section |
+| Model | Concreteness fading (Fyfe et al. 2014) | Lab book → boxes → commands |
+| Check | Peer instruction (Crouch & Mazur 2001; Smith et al. 2009) | W5/W6 |
+| Win | Expectancy-value (Eccles); subgoal labels (Margulieux et al.) | First commit by ~09:45 |
+| Space | Retrieval practice (Roediger & Karpicke 2006) | Callbacks, W7, section-start recall |
+| Close | ARCS satisfaction | Answer Reviewer 2 with the tidy repo |
