@@ -14,7 +14,7 @@ them (important for W5/W6).
 | W4  | 09:24 | Your goal for today            | Open question |
 | W5  | 09:30 | Check your model (vote 1)      | Multiple choice, one correct |
 | W6  | 09:32 | Talk to your neighbour (vote 2)| Duplicate of W5 |
-| W7  | 12:10 | Your turn: `git diff HEAD`     | Multiple choice, one correct |
+| W7  | 11:52 | Your turn: `git diff HEAD`     | Multiple choice, one correct |
 | W8  | 13:45 | Before you go                  | Rating 1–5 |
 | W9  | 13:45 | Before you go                  | Multiple choice, no correct answer |
 | W10 | 13:45 | Before you go                  | Open question |

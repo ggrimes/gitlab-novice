@@ -16,6 +16,43 @@
 .reveal section.has-dark-background .journey .stop.done { border-top-color: #bfe6e6; }
 .reveal .section-slide .journey { margin-top: 0.8em; }
 
+/* colour-blind-safe stickies for this deck: yellow = done, pink = help
+   (red/green is hard to tell apart for ~1 in 12 men) */
+.reveal .sticky.green { background: #ffd84d; }
+.reveal .sticky.red { background: #ff7eb6; }
+
+/* bonus round: 2 x 2 grid of challenge cards */
+.reveal .bonus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  font-size: 0.58em;
+}
+.reveal .bonus > .card {
+  background: #f6f3ee;
+  border-top: 6px solid #0f8b8d;
+  border-radius: 8px;
+  padding: 0.4em 0.8em 0.5em;
+}
+.reveal .bonus > .card.star { border-top-color: #ec6b56; background: #fff1ee; }
+.reveal .bonus .card-title {
+  display: block;
+  font-size: 1.15em;
+  font-weight: 800;
+  color: #13294b;
+  margin-bottom: 0.2em;
+}
+.reveal .bonus p { margin: 0.15em 0; line-height: 1.35; }
+.reveal .bonus code { font-size: 0.95em; background: #fff; }
+
+/* the whole picture: four boxes */
+.reveal .flow.wide .box { min-width: 4.5em; padding: 0.4em 0.5em; }
+.reveal .flow.wide .arrow { font-size: 0.55em; }
+
+/* troubleshooting appendix */
+.reveal .fixes table { font-size: 0.58em; }
+.reveal .fixes td:first-child { color: #b42318; }
+
 /* "New commands" box: every command is explained where it first appears */
 .reveal .newcmds {
   background: #fffaf0;

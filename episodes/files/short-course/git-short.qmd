@@ -68,19 +68,19 @@ Could you answer this email today?
 - **Mistakes are expected.** Git is built for *undo*.
 - No question is too basic.
 - We type **everything** together.
-- **Break 10:30 · lunch 12:15 · finish 14:00**
+- **Break 10:30 · lunch 12:00 · finish 14:00**
 :::
 ::: {.column width="45%"}
 **Sticky notes**
 
-[]{.sticky .green} **Green**: done / all good
+[]{.sticky .green} **Yellow**: done / all good
 
-[]{.sticky .red} **Red**: stuck, please come over
+[]{.sticky .red} **Pink**: stuck, please come over
 
 <br>
 
 ::: {.muted .small}
-Your Eddie and GitLab logins were checked before today. Red sticky now if either doesn't work.
+Your Eddie login and GitLab SSH key were set up before today. Pink sticky now if either doesn't work.
 :::
 :::
 ::::
@@ -90,7 +90,7 @@ Your Eddie and GitLab logins were checked before today. Red sticky now if either
 
 **Say:** introduce yourself and each helper (they wave). *"Mistakes are expected. Git is built for undo, so you can't break anything we do today. If you're wondering something, someone else is too."* Point at the timetable.
 
-**Do:** explain the stickies and get everyone to stick one on their laptop lid now. Ask for a red sticky from anyone whose Eddie or GitLab login failed the pre-course check; a helper goes straight over.
+**Do:** explain the stickies (yellow = done, pink = help; chosen because red and green are hard to tell apart for about 1 in 12 men) and get everyone to stick one on their laptop lid now. Ask for a pink sticky from anyone whose Eddie login or GitLab SSH key failed the pre-course check; a helper goes straight over.
 
 **Watch for:** never say "just" or "simply" all day. For a beginner they turn a hard step into a personal failing.
 
@@ -659,7 +659,7 @@ Green sticky up when you see this. 🎉
 
 **Say:** *"The bit in square brackets, 72041c0, is this commit's ID: its hash. Everyone's will be different."*
 
-**Do:** count the green stickies out loud and celebrate. Aim to be here by about 09:50.
+**Do:** count the yellow stickies out loud and celebrate. Aim to be here by about 09:50.
 
 **Watch for:** someone who forgot `-m` ends up in nano: type a message, then `Ctrl+O`, Enter, `Ctrl+X`. Anyone with "Please tell me who you are" skipped the config slide.
 
@@ -917,7 +917,7 @@ Leave your Eddie terminal open. Next: backing up to GitLab.
 ::: notes
 **⏱ 10:30–10:45 · BREAK**
 
-**Do:** skim the W4 goals. Fix any red stickies with helpers. Check that the GitLab login works on the presenter laptop, and have your own GitLab project page open ready.
+**Do:** skim the W4 goals. Fix any pink stickies with helpers. Check that the GitLab login works on the presenter laptop, and have your own GitLab project page open ready.
 :::
 
 # GitLab {.section-slide background-color="#0f8b8d"}
@@ -935,7 +935,7 @@ Leave your Eddie terminal open. Next: backing up to GitLab.
 [How do I back up my repository and keep two copies in sync?]{.ep-q}
 
 ::: notes
-**⏱ 10:45 · section runs to 11:45**
+**⏱ 10:45 · section runs to 11:30**
 
 **Say:** *"So far everything lives in one folder on Eddie. Now: a backup, and a second copy kept in sync."*
 
@@ -1000,6 +1000,8 @@ A **remote** is a saved link to another copy of your repository on a server.
 
 ## SSH keys: password-less access
 
+Set up before today? Just run the test on the right. Otherwise, do it now:
+
 :::: {.columns}
 ::: {.column width="55%"}
 ```bash
@@ -1025,11 +1027,13 @@ First time it asks *"continue connecting?"*: type **yes**. Success = *"Welcome t
 ::::
 
 ::: notes
-**⏱ 10:53 · 12 min · the bottleneck**
+**⏱ 10:53 · 4 min if the key was set up before the day (up to 12 if not) · the old bottleneck**
+
+**Do first:** everyone runs `ssh -T git@git.ecdf.ed.ac.uk`. Anyone who sees "Welcome to GitLab" puts up a yellow sticky and moves on. Only people without a working key do the steps below, with a helper.
 
 **Say:** *"Think of the public key as a padlock you hand out, and the private key as the only key that opens it. GitLab gets the padlock."*
 
-**Do:** go slowly. After `cat`, show exactly which line to copy (it starts with `ssh-ed25519`). Add the key in GitLab on screen. Everyone runs `ssh -T`; green sticky when they see "Welcome to GitLab".
+**Do:** go slowly. After `cat`, show exactly which line to copy (it starts with `ssh-ed25519`). Add the key in GitLab on screen. Everyone runs `ssh -T`; yellow sticky when they see "Welcome to GitLab".
 
 **Watch for:**
 - they already have a key → ssh-keygen asks to overwrite: answer **n** and use the existing `.pub`
@@ -1056,7 +1060,7 @@ git push -u origin main
 :::
 
 ::: notes
-**⏱ 11:05 · 6 min**
+**⏱ 10:57 · 6 min**
 
 **Do:** show where to copy the address on GitLab (Code → Clone with SSH). Step through the three lines.
 
@@ -1070,9 +1074,9 @@ git push -u origin main
 ![](../../fig/gitlab-push01.png){.r-stretch fig-align="center" fig-alt="MyProject page on GitLab after pushing, listing the Data and Src folders and the README file."}
 
 ::: notes
-**⏱ 11:11 · 1 min**
+**⏱ 11:03 · 1 min**
 
-**Do:** everyone refreshes their GitLab project page. Click into the commit history to show it matches `git log`. Point out that the README renders as a formatted page. Green stickies.
+**Do:** everyone refreshes their GitLab project page. Click into the commit history to show it matches `git log`. Point out that the README renders as a formatted page. Yellow stickies.
 :::
 
 ## A second computer
@@ -1100,7 +1104,7 @@ git log --oneline
 :::
 
 ::: notes
-**⏱ 11:12 · 5 min**
+**⏱ 11:04 · 5 min**
 
 **Say:** *"Most of us have a laptop and Eddie. We'll fake that with a second folder."*
 
@@ -1129,7 +1133,7 @@ If `git pull` opens `nano` with *"Merge branch 'main'…"*: that's the merge's m
 :::
 
 ::: notes
-**⏱ 11:17 · 4 min**
+**⏱ 11:09 · 4 min**
 
 **Say:** *"`git pull` brings the other copy's commits into yours. A rejected push isn't an error in your work: the other copy simply pushed first. Pull, then push again."*
 
@@ -1153,7 +1157,7 @@ Step 4 is **rejected**: the laptop copy is behind. `git pull` (Git merges the tw
 :::
 
 ::: notes
-**⏱ 11:21 · 14 min**
+**⏱ 11:13 · 14 min**
 
 **Do:** start the timer. Remind people: `pwd` tells you which copy you're in.
 
@@ -1174,7 +1178,7 @@ Step 4 is **rejected**: the laptop copy is behind. `git pull` (Git merges the tw
 Edit the file, keep what you want, **delete the `<<<<<<<` `=======` `>>>>>>>` markers**, then `add` → `commit` → `push`.
 
 ::: notes
-**⏱ 11:35 · 3 min, concept only**
+**⏱ 11:27 · 3 min, concept only**
 
 **Say:** *"Git merges changes to different lines by itself. Only the same line changed two ways needs you to decide. It refuses to guess which version of your science is right."* Describe the markers: above `=======` is yours, below is the other copy's. Delete all three marker lines, keep what you want, then add, commit, push.
 
@@ -1196,7 +1200,7 @@ Edit the file, keep what you want, **delete the `<<<<<<<` `=======` `>>>>>>>` ma
 [How do I find old versions, and undo mistakes?]{.ep-q}
 
 ::: notes
-**⏱ 11:45 · section runs to 12:15**
+**⏱ 11:30 · section runs to 11:55, lunch at 12:00**
 
 **Do:** 1-minute recall: *"Tell your neighbour: why was your push rejected, and how did you fix it?"*
 
@@ -1220,7 +1224,7 @@ git diff HEAD~2 HEAD README.md  # what changed since then
 :::
 
 ::: notes
-**⏱ 11:47 · 6 min**
+**⏱ 11:32 · 6 min**
 
 **Do:** run all four commands. With `--graph`, point at the merge from the sync exercise.
 
@@ -1244,7 +1248,7 @@ git diff HEAD~2 HEAD README.md  # what changed since then
 :::
 
 ::: notes
-**⏱ 11:53 · 6 min**
+**⏱ 11:38 · 6 min**
 
 **Say:** walk through each row:
 - `restore`: back to the last commit (or any earlier one with `--source`)
@@ -1276,7 +1280,7 @@ git push
 :::
 
 ::: notes
-**⏱ 11:59 · 8 min**
+**⏱ 11:44 · 8 min**
 
 **Do:** start the timer and walk the room.
 
@@ -1306,17 +1310,17 @@ d) two different commits
 :::
 
 ::: notes
-**⏱ 12:07 · 3 min · W7, spaced recall**
+**⏱ 11:52 · 3 min · W7, spaced recall**
 
 **Do:** open W7. Votes on their own, then reveal.
 
-**Say:** *"`HEAD` = the last commit. So `git diff HEAD` = everything you've changed since then, staged or not."* This brings back the 09:50 material just before lunch.
+**Say:** *"`HEAD` = the last commit. So `git diff HEAD` = everything you've changed since then, staged or not."* This brings back the 09:50 material just before lunch. Any spare minutes before 12:00: take questions.
 :::
 
 ## Lunch {.breakslide background-color="#13294b"}
 
 ::: {.bigq}
-Back at **12:45**
+Back at **12:30**
 :::
 
 ::: {.muted style="color:#bfe6e6"}
@@ -1324,9 +1328,9 @@ Next: keeping big data and secrets out, then answering Reviewer 2.
 :::
 
 ::: notes
-**⏱ 12:15–12:45 · LUNCH**
+**⏱ 12:00–12:30 · LUNCH**
 
-**Do:** minute cards: each person writes "one thing that's clear, one that's muddy" on a sticky as they leave. Read them over lunch and address the muddiest one at 12:45.
+**Do:** minute cards: each person writes "one thing that's clear, one that's muddy" on a sticky as they leave. Read them over lunch and address the muddiest one at 12:30.
 :::
 
 # Ignoring Things {.section-slide background-color="#0f8b8d"}
@@ -1344,7 +1348,7 @@ Next: keeping big data and secrets out, then answering Reviewer 2.
 [How do I keep big data and secrets out of my repository?]{.ep-q}
 
 ::: notes
-**⏱ 12:45 · section runs to 13:10**
+**⏱ 12:30 · section runs to 12:51**
 
 **Do:** first, 2 minutes on the muddiest point from the lunch stickies. Then a 1-minute recall: *"Tell your neighbour the difference between amend and revert."*
 
@@ -1390,7 +1394,7 @@ git commit -m "Ignore outputs and temporary files"
 ::::
 
 ::: notes
-**⏱ 12:48 · 5 min**
+**⏱ 12:33 · 5 min**
 
 **Say:** *"`.gitignore` is a list of things for Git to pretend it can't see."* Explain the patterns: `*` matches anything, a trailing `/` means a folder.
 
@@ -1427,7 +1431,7 @@ Already committed a big file? `git rm --cached big.bam` stops tracking it, but i
 :::
 
 ::: notes
-**⏱ 12:53 · 6 min**
+**⏱ 12:38 · 6 min**
 
 **Say:** *"This is the most common Git disaster on an HPC system. Commit a 20 GB BAM once and it's in the history forever, even after you delete it. GitLab will refuse the push."*
 
@@ -1459,7 +1463,7 @@ git push
 :::
 
 ::: notes
-**⏱ 12:59 · 7 min**
+**⏱ 12:44 · 7 min**
 
 **Do:** start the timer.
 
@@ -1483,7 +1487,7 @@ git push
 [How do I mark the exact version behind a paper?]{.ep-q}
 
 ::: notes
-**⏱ 13:10 · section runs to 13:35 · the payoff**
+**⏱ 12:52 · section runs to 13:13 · the payoff**
 
 **Say:** *"Back to Reviewer 2. The last piece: a permanent label on the exact version you submitted."*
 :::
@@ -1517,7 +1521,7 @@ git push origin v1.0
 ::::
 
 ::: notes
-**⏱ 13:11 · 5 min**
+**⏱ 12:53 · 5 min**
 
 **Say:** *"A tag is a permanent name for one commit. The history keeps growing; the tag stays put."*
 
@@ -1545,7 +1549,7 @@ GitLab offers the whole project **as it was at that tag** (zip / tar.gz): exactl
 :::
 
 ::: notes
-**⏱ 13:16 · 5 min**
+**⏱ 12:58 · 5 min**
 
 **Do:** everyone tags and pushes. Show your own project's Code → Tags page on screen and download the zip.
 
@@ -1585,7 +1589,7 @@ git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
 :::
 
 ::: notes
-**⏱ 13:21 · 10 min · CLOSE THE LOOP**
+**⏱ 13:03 · 10 min · CLOSE THE LOOP**
 
 **Say:** *"Same question as 09:14. This morning: six minutes, and no proof. Now let's see."* Start the timer.
 
@@ -1601,7 +1605,48 @@ git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
 [What should I remember, and where do I go next?]{.ep-q}
 
 ::: notes
-**⏱ 13:35 · section runs to 14:00**
+**⏱ 13:13 · section runs to 14:00**
+
+**Shape:** recap (7 min), then the **bonus round as a flexible buffer** (as long as there's time, up to ~20 min), then the polls at **13:45 sharp** whatever happens.
+:::
+
+## The whole picture
+
+::: {.flow .wide}
+[Working<br>directory]{.box}
+[`add` →]{.arrow}
+[Staging<br>area]{.box .teal}
+[`commit` →]{.arrow}
+[Repository<br>on Eddie]{.box .coral}
+[`push` →<br>← `pull`]{.arrow}
+[GitLab]{.box .teal}
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Look at it:** `status` · `diff` · `log` · `show`
+
+**Label it:** `tag`
+:::
+::: {.column width="50%"}
+**Undo it:** `restore` · `revert` · `stash` · `amend`
+
+**Leave things out:** `.gitignore`
+:::
+::::
+
+::: {.fragment .bigq}
+Every command today is a move between these four boxes.
+:::
+
+::: notes
+**⏱ 13:13 · 3 min · CONSOLIDATE**
+
+**Say:** *"Four boxes. Everything you typed today moves work between them, or looks at them."* Point at each arrow and ask the room to name the command before you do.
+
+**Do:** click to reveal the last line.
+
+*Why:* bringing the morning back as one picture ties the separate commands into a single mental model, which is what makes them usable next week.
 :::
 
 ## What we covered {.keypoints}
@@ -1615,7 +1660,7 @@ git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
 - **Tags** for the exact version behind a paper
 
 ::: notes
-**⏱ 13:35 · 3 min**
+**⏱ 13:16 · 2 min**
 
 **Say:** read the list quickly. Then ask: *"Which one will you use this week?"* Take two or three answers.
 
@@ -1670,9 +1715,88 @@ git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
 :::::
 
 ::: notes
-**⏱ 13:38 · 2 min**
+**⏱ 13:18 · 2 min**
 
 **Do:** pause here: people will photograph it. *"It's also on the lesson website."*
+:::
+
+## Bonus round: pick one {.exercise}
+
+::::: {.bonus}
+:::: {.card .star}
+[★ Your own project (recommended)]{.card-title}
+`cd` into a real project of yours, then:\
+`nano .gitignore` · list big data and outputs **first**\
+`git init` · `git add` the files you want (scripts, README)\
+`git status` · check nothing big is staged\
+`git commit -m "Start tracking my project"`\
+New GitLab project → `git remote add origin …` → `git push -u origin main`
+::::
+:::: {.card}
+[Detective, level 2]{.card-title}
+In `~/tidy_project`:\
+When did the **depth filter** appear, and who added it?\
+What threshold did the **very first** version use?
+
+**New:** `git log -S "text" --oneline` · the commits that added or removed that text
+::::
+:::: {.card}
+[Explore on GitLab]{.card-title}
+In `~/MyProject`: make a change, commit, tag it `v1.1`, push the tag.\
+On GitLab: [Code > Compare revisions]{.menu}, compare `v1.0` with `v1.1`.\
+Open `README.md` on GitLab: try **History** and **Blame**.
+::::
+:::: {.card}
+[Time travel]{.card-title}
+`git restore --source=v1.0 README.md` · bring back the tagged version\
+`git diff` · what came back?\
+Keep it (`add` + `commit`) or undo it (`git restore README.md`): your call.
+::::
+:::::
+
+::: notes
+**⏱ 13:20 · FLEXIBLE: as long as there's time (stop at 13:43)**
+
+**Say:** *"Pick one. If you have a real project, do the starred one: putting it under Git today, with help in the room, is the best predictor that you'll keep using Git."*
+
+**Do:** walk the room. Prioritise people doing their own project: check their `.gitignore` and `git status` **before** they commit, so no big data or secrets go in.
+
+**Running late?** Skip straight to "Before you go" at 13:45 and say: *"The bonus round is on the website. Try the starred one this week."*
+
+*Why:* doing it on real work, with help, makes transfer much more likely; a concrete plan ("when I next…, I will commit") helps follow-through (Gollwitzer).
+:::
+
+## Bonus answers {.exercise}
+
+:::: {.columns}
+::: {.column width="50%"}
+**Detective, level 2**
+
+```bash
+cd ~/tidy_project
+git log -S "DP > 10" --oneline
+git show HEAD~3:analysis.py
+```
+
+*"Add depth filter (DP > 10) for the revision"*, April 2025, by Alex Researcher. The first version used `QUAL > 50`.
+:::
+::: {.column width="50%"}
+**Your own project: check before you push**
+
+- `git status` shows **no** data files, outputs or secrets
+- `du -sh .git` is small (a few MB, not GB)
+- `.gitignore` is committed
+
+**Time travel:** nothing is lost either way. The tag still points at the old version.
+:::
+::::
+
+::: notes
+**⏱ ~13:42 · 2 min**
+
+**Do:** show only if people did Detective level 2 or Time travel. For own-project people, the checklist on the right is the key thing: no data in `git status`, a small `.git`.
+
+**Note:** `git log -S "text"` (the "pickaxe") is a favourite real-world trick: *"When did this line appear?"*
 :::
 
 ## Before you go {.wooclap-poll}
@@ -1702,7 +1826,7 @@ Yes · Partly · Not yet
 ::::
 
 ::: notes
-**⏱ 13:40 · 4 min**
+**⏱ 13:45 sharp · 4 min**
 
 **Do:** open W8, W9 and W10 together. Give about 2 minutes.
 
@@ -1716,7 +1840,7 @@ Yes · Partly · Not yet
 []{.wooclap-embed}
 
 ::: notes
-**⏱ 13:44 · 4 min**
+**⏱ 13:49 · 4 min**
 
 **Do:** show W8 next to this morning's W1: point out the shift. Read a few W10 answers; answer one or two quick ones now and promise a follow-up email for the rest.
 
@@ -1759,7 +1883,7 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 :::
 
 ::: notes
-**⏱ 13:48 · 3 min**
+**⏱ 13:53 · 3 min**
 
 **Say:** *"Three things we didn't cover: working with colleagues in one repository, branches, and Git in RStudio. They're all on the lesson website: scan the QR code."* Recommend Visualizing Git for practising.
 :::
@@ -1769,7 +1893,7 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 [Questions & feedback welcome · Graeme.Grimes@ed.ac.uk]{.ep-q}
 
 ::: notes
-**⏱ 13:51 · until 14:00**
+**⏱ 13:56 · until 14:00**
 
 **Do:** thank the helpers by name. Share the feedback form if there is one. Stay around for questions. Ask people to take their stickies off their laptops.
 :::
@@ -1792,5 +1916,36 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 | Close | ARCS satisfaction | Answer Reviewer 2 with the tidy repo |
 
 ::: notes
-**Not presented.** For co-instructors: the research behind each part of the course. Compare W1→W8, the W5→W6 gain, red-sticky counts per section, and the 4-week follow-up across runs.
+**Not presented.** For co-instructors: the research behind each part of the course. Compare W1→W8, the W5→W6 gain, pink-sticky counts per section, and the 4-week follow-up across runs.
+:::
+
+## Fixes: on Eddie {.fixes visibility="uncounted"}
+
+| What you see | Fix |
+|:--|:--|
+| A screen full of `~` (you're in **vim**) | `Esc`, then type `:wq` and `Enter` (or `:q!` to abandon). Then set `core.editor` to nano |
+| *"Please tell me who you are"* | `git config --global user.name "…"` and `user.email "…"` |
+| *"fatal: not a git repository"* | Wrong folder: `pwd`, then `cd ~/MyProject` |
+| `git status` lists your whole home folder | `git init` was run in `~`: `rm -rf ~/.git`, then `cd ~/MyProject` |
+| *"nothing added to commit"* | You skipped `git add` |
+| `git log` won't go away | Press `q` |
+
+::: notes
+**Not in the slide count.** Jump here from the menu (M) when someone hits one of these, then jump back. Also printed on the helper sheet.
+:::
+
+## Fixes: GitLab and syncing {.fixes visibility="uncounted"}
+
+| What you see | Fix |
+|:--|:--|
+| *"Permission denied (publickey)"* | Re-copy the **whole** `.pub` line into GitLab; test with `ssh -T git@git.ecdf.ed.ac.uk` |
+| *"remote origin already exists"* or a typo in the address | `git remote set-url origin <address>` |
+| *"src refspec main does not match any"* | No commits yet, or the branch is called master: `git branch -m master main` |
+| First push rejected (README box was ticked on GitLab) | `git pull --allow-unrelated-histories`, save the message, `git push` |
+| *"[rejected] … non-fast-forward"* | The other copy pushed first: `git pull`, then `git push` |
+| *"Need to specify how to reconcile divergent branches"* | `git config --global pull.rebase false`, then `git pull` again |
+| *"CONFLICT"* | Edit the file, delete the `<<<<<<<` `=======` `>>>>>>>` lines, then `add`, `commit`, `push` |
+
+::: notes
+**Not in the slide count.** Jump here from the menu (M). Most common in the sync exercise: working in the wrong copy (`pwd`), and forgetting to push before pulling in the other copy.
 :::
