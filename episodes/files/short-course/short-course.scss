@@ -16,6 +16,51 @@
 .reveal section.has-dark-background .journey .stop.done { border-top-color: #bfe6e6; }
 .reveal .section-slide .journey { margin-top: 0.8em; }
 
+/* "New commands" box: every command is explained where it first appears */
+.reveal .newcmds {
+  background: #fffaf0;
+  border-left: 6px solid #ffd479;
+  border-radius: 8px;
+  padding: 0.35em 0.8em 0.45em;
+  margin: 0.5em 0;
+  font-size: 0.6em;
+  line-height: 1.45;
+}
+.reveal .newcmds::before {
+  content: "New commands";
+  display: block;
+  font-size: 0.8em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b27d00;
+  margin-bottom: 0.15em;
+}
+.reveal .newcmds p { margin: 0; }
+.reveal .newcmds code { font-size: 0.95em; background: #fff; }
+.reveal .newcmds.hint::before { content: "Commands that will help"; }
+
+/* terminal toolkit table */
+.reveal .toolkit table { font-size: 0.62em; }
+.reveal .toolkit td:first-child { white-space: nowrap; }
+
+/* step label in multi-slide walkthroughs */
+.reveal .step {
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #0f8b8d;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  margin-bottom: 0.3em;
+}
+
+/* menu-path pills may wrap inside narrow columns */
+.reveal .column .menu { white-space: normal; line-height: 1.6; }
+
 /* compact one-line flow diagrams */
 .reveal .flow.compact { font-size: 0.75em; }
 .reveal .flow.compact .box { min-width: 5em; }
