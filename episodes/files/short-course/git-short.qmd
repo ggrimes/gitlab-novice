@@ -28,8 +28,9 @@ wooclap-embed-url: "none"
 workshop-data: "/exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data"
 title-slide-attributes:
   data-background-color: "#13294b"
-  data-background-image: "../../fig/lesson-qr.svg"
-  data-background-size: "150px"
+  # QR on the title slide opens this deck online (live once PR #2 is merged)
+  data-background-image: "../../fig/short-course-qr.svg"
+  data-background-size: "170px"
   data-background-position: "right 60px bottom 70px"
 ---
 
