@@ -1,0 +1,528 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+$git-navy:   #13294b;
+$git-teal:   #0f8b8d;
+$git-coral:  #ec6b56;
+$git-sand:   #f6f3ee;
+$git-ink:    #1f2933;
+$git-muted:  #5b6770;
+
+$body-bg: #ffffff;
+$body-color: $git-ink;
+$link-color: $git-teal;
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", Menlo, monospace;
+$presentation-font-size-root: 34px;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: $git-navy;
+$presentation-heading-font-weight: 800;
+$presentation-h2-font-size: 1.45em;
+$code-color: $git-navy;
+$code-bg: #eef4f4;
+
+/*-- scss:rules --*/
+
+.reveal .slides section {
+  text-align: left;
+}
+
+/* thin accent bar under every slide heading */
+.reveal h2 {
+  letter-spacing: -0.02em;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.6em;
+  border-bottom: 4px solid $git-teal;
+  display: table;   /* shrink-wrap the underline but stay block-level */
+}
+
+/* keep screenshots inside the slide */
+.reveal .columns { align-items: center; }
+.reveal .column img { max-width: 100%; object-fit: contain; }
+.reveal .column p:has(> img) { text-align: center; margin: 0.2em 0; }
+
+/* footer/slide number readable on dark section slides */
+.reveal.has-dark-background .footer,
+.reveal.has-dark-background .slide-number { color: rgba(255,255,255,0.6) !important; }
+
+.reveal strong { color: $git-navy; }
+.reveal ul li::marker, .reveal ol li::marker { color: $git-teal; }
+.reveal ul li { margin-bottom: 0.35em; }
+
+.reveal code {
+  background: $code-bg;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* terminal / code blocks */
+.reveal div.sourceCode {
+  border-left: 4px solid $git-teal;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.reveal pre code {
+  background: $code-bg;
+  padding: 0.5em 0.8em;
+  font-size: 0.62em;
+  line-height: 1.45;
+  max-height: 520px;
+}
+/* bash commands: dark terminal, large, high contrast */
+.reveal div.sourceCode:has(> pre.bash) {
+  border-left-color: $git-coral;
+}
+.reveal pre.sourceCode.bash, .reveal pre.sourceCode.bash code {
+  background: #0d1b2e;
+  color: #f5f7fa;
+}
+.reveal pre.sourceCode.bash code {
+  font-size: 1.45em;
+  font-weight: 600;
+  line-height: 1.35;
+  padding: 0.45em 0.8em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.reveal pre.sourceCode.bash code span { color: #f5f7fa; font-style: normal; }
+/* no line numbers; wrapped lines hang-indent under their command */
+.reveal pre.sourceCode.bash code > span > a:first-child::before { display: none; }
+.reveal pre.sourceCode.bash.numberSource { margin-left: 0; border-left: none; padding-left: 0; }
+.reveal pre.sourceCode.bash code > span {
+  text-indent: -1.5em !important;
+  padding-left: 1.5em !important;
+  left: 0 !important;
+  line-height: 1.35;
+}
+.reveal pre.sourceCode.bash code span.co { color: #8fd3d4; font-weight: 400; } /* comments */
+.reveal pre.sourceCode.bash code span.st,
+.reveal pre.sourceCode.bash code span.dq { color: #ffd479; }               /* strings */
+.reveal pre.sourceCode.bash .code-copy-button { color: #f5f7fa; }
+
+/* program output, diffs and plain file contents: large and readable */
+.reveal pre.sourceCode.output code,
+.reveal pre.sourceCode.diff code,
+.reveal pre:not(.sourceCode) > code {
+  background: $git-sand;
+  color: $git-ink;
+  font-size: 1.15em;
+  line-height: 1.35;
+  padding: 0.45em 0.8em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.reveal div.sourceCode:has(> pre.output),
+.reveal div.sourceCode:has(> pre.diff) {
+  border-left-color: $git-muted;
+}
+/* no line numbers on output/diff blocks either */
+.reveal pre.sourceCode.output code > span > a:first-child::before,
+.reveal pre.sourceCode.diff code > span > a:first-child::before { display: none; }
+.reveal pre.sourceCode.output.numberSource,
+.reveal pre.sourceCode.diff.numberSource { margin-left: 0; border-left: none; padding-left: 0; }
+.reveal pre.sourceCode.output code > span,
+.reveal pre.sourceCode.diff code > span {
+  text-indent: 0 !important;
+  padding-left: 0 !important;
+  left: 0 !important;
+}
+/* diff colouring: header, file/hunk markers, added, removed */
+.reveal pre.sourceCode.diff code span.kw { color: $git-navy; font-weight: 600; }
+.reveal pre.sourceCode.diff code span.dt { color: $git-teal; font-weight: 600; }
+.reveal pre.sourceCode.diff code span.va { color: #1a7f37; background: #dafbe1; font-style: normal; }
+.reveal pre.sourceCode.diff code span.st { color: #b42318; background: #ffebe9; font-style: normal; }
+
+/* anatomy-of-a-diff table */
+.reveal .diff-parts table { font-size: 0.72em; }
+.reveal .diff-parts td:first-child { white-space: nowrap; }
+.reveal .diff-parts td:first-child code { font-size: 0.95em; }
+
+/* menu paths: Settings > Repository */
+.reveal .menu {
+  font-family: $font-family-monospace;
+  font-size: 0.8em;
+  background: $git-navy;
+  color: #fff;
+  padding: 0.1em 0.45em;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+/* screenshots */
+.reveal img {
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(19, 41, 75, 0.18);
+}
+.reveal .no-shadow img, .reveal img.no-shadow { box-shadow: none; }
+.reveal .caption, .reveal figcaption {
+  color: $git-muted;
+  font-size: 0.55em !important;
+  text-align: center;
+}
+
+/* ---------- title slide ---------- */
+#title-slide {
+  text-align: left;
+  .title {
+    font-size: 2.3em;
+    color: #fff;
+    line-height: 1.05;
+    border: none;
+  }
+  .subtitle { color: #bfe6e6; font-weight: 400; font-size: 1.1em; }
+  .author, .date, .quarto-title-author-name { color: #dfe7f0; font-size: 0.7em; text-align: left; }
+  .quarto-title-authors { justify-content: flex-start; }
+}
+
+/* ---------- section divider slides ---------- */
+.reveal .section-slide {
+  h1 {
+    color: #fff;
+    font-size: 2.4em;
+    line-height: 1.05;
+    border: none;
+  }
+  .ep-num {
+    font-family: $font-family-monospace;
+    color: #bfe6e6;
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .ep-q { color: #e8eef5; font-size: 0.8em; margin-top: 1em; }
+}
+
+/* ---------- exercise ("Your turn") slides ---------- */
+.reveal .exercise h2 { border-bottom-color: $git-coral; }
+.reveal .task {
+  background: #fff;
+  border-left: 8px solid $git-coral;
+  border-radius: 8px;
+  padding: 0.6em 0.9em;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  font-size: 0.9em;
+}
+.reveal .task::before {
+  content: "Hands-on";
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: $git-coral;
+  padding: 0.15em 0.7em;
+  border-radius: 999px;
+  margin-bottom: 0.4em;
+}
+.reveal .answer {
+  margin-top: 0.8em;
+  background: #e8f5f4;
+  border-left: 8px solid $git-teal;
+  border-radius: 8px;
+  padding: 0.5em 0.9em;
+  font-size: 0.75em;
+}
+.reveal .answer::before {
+  content: "Answer";
+  display: block;
+  font-weight: 800;
+  color: $git-teal;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+}
+.reveal .task div.sourceCode, .reveal .answer div.sourceCode { margin: 0.3em 0; }
+
+/* ---------- key points ---------- */
+.reveal .keypoints ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.reveal .keypoints li {
+  background: $git-sand;
+  border-radius: 8px;
+  padding: 0.3em 0.7em;
+  margin-bottom: 0.35em;
+  font-size: 0.8em;
+}
+.reveal .keypoints li::before {
+  content: "✓ ";
+  color: $git-teal;
+  font-weight: 800;
+}
+
+/* small pill labels */
+.reveal .pill {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 600;
+  padding: 0.15em 0.7em;
+  border-radius: 999px;
+  background: $git-coral;
+  color: #fff;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* git-state chips: untracked / modified / staged / committed */
+.reveal .chip {
+  display: inline-block;
+  width: 0.9em; height: 0.9em;
+  border-radius: 3px;
+  vertical-align: -0.1em;
+  margin-right: 0.3em;
+}
+
+/* workflow diagram boxes */
+.reveal .flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0.6em 0;
+}
+/* pandoc wraps the spans in a <p>; make that the flex container too */
+.reveal .flow > p {
+  display: flex;
+  flex-direction: inherit;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0;
+}
+.reveal .flow .box {
+  background: $git-sand;
+  border: 3px solid $git-navy;
+  border-radius: 10px;
+  padding: 0.5em 0.8em;
+  text-align: center;
+  font-weight: 600;
+  min-width: 6.5em;
+}
+.reveal .flow .box.teal { border-color: $git-teal; }
+.reveal .flow .box.coral { border-color: $git-coral; }
+.reveal .flow .arrow {
+  font-family: $font-family-monospace;
+  font-size: 0.6em;
+  color: $git-teal;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.reveal .small { font-size: 0.7em; }
+.reveal .muted { color: $git-muted; }
+
+.reveal .slide-number { color: $git-muted; }
+.reveal .footer { color: $git-muted; font-size: 0.45em; }
+
+/* ---------- exercise timer + sticky notes (exercise-timer.html) ---------- */
+.reveal .task-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-top: 0.5em;
+  font-size: 0.6em;
+  color: $git-muted;
+}
+.reveal .timer {
+  font-family: $font-family-monospace;
+  font-size: 1em;
+  font-weight: 600;
+  color: $git-navy;
+  background: $git-sand;
+  border: 2px solid $git-navy;
+  border-radius: 999px;
+  padding: 0.1em 0.8em;
+  cursor: pointer;
+}
+.reveal .timer.running { background: $git-teal; border-color: $git-teal; color: #fff; }
+.reveal .timer.done { background: $git-coral; border-color: $git-coral; color: #fff; animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.55; } }
+.reveal .stickies { margin-left: auto; }
+.reveal .sticky {
+  display: inline-block;
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  border-radius: 2px;
+  transform: rotate(-6deg);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+.reveal .sticky.green { background: #7ed67e; }
+.reveal .sticky.red { background: #ff8a80; }
+
+/* ---------- animated file chip on "The Git workflow" ---------- */
+.reveal .flow .box .filechip {
+  display: block;
+  margin: 0.35em auto 0;
+  width: fit-content;
+  font-family: $font-family-monospace;
+  font-size: 0.6em;
+  font-weight: 600;
+  color: #fff;
+  background: $git-coral;
+  padding: 0.15em 0.6em;
+  border-radius: 6px;
+}
+.reveal .flow .box .filechip.staged { background: $git-teal; }
+.reveal .flow .box .filechip.committed { background: $git-navy; }
+.reveal .flow .box .filechip.ghost { visibility: hidden; }
+
+/* ---------- diagrams (make-diagrams.py) ---------- */
+.reveal img.diagram, .reveal .diagram img {
+  box-shadow: none;
+  border-radius: 0;
+  max-width: 100%;
+}
+
+/* python blocks (exercises): readable size, no line numbers */
+.reveal pre.sourceCode.python code {
+  font-size: 1.15em;
+  line-height: 1.35;
+  padding: 0.4em 0.8em;
+}
+.reveal pre.sourceCode.python code > span > a:first-child::before { display: none; }
+.reveal pre.sourceCode.python.numberSource { margin-left: 0; border-left: none; padding-left: 0; }
+.reveal pre.sourceCode.python code > span { text-indent: 0 !important; padding-left: 0 !important; left: 0 !important; }
+
+/* denser slides: long tables / lists plus a callout */
+.reveal .dense table { font-size: 0.72em; }
+.reveal .dense ul { font-size: 0.82em; }
+.reveal .dense .warn { font-size: 0.65em; }
+
+/* ---------- warning callouts ---------- */
+.reveal .warn {
+  background: #fff4e5;
+  border-left: 8px solid #e0a800;
+  border-radius: 8px;
+  padding: 0.45em 0.8em;
+  font-size: 0.75em;
+  margin-top: 0.6em;
+}
+
+/* ---------- cheat sheet ---------- */
+.reveal .cheatsheet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em;
+  font-size: 0.62em;
+  margin-top: 0.3em;
+}
+.reveal .cheatsheet > .card {
+  background: $git-sand;
+  border-top: 5px solid $git-teal;
+  border-radius: 8px;
+  padding: 0.35em 0.7em;
+}
+.reveal .cheatsheet > .card:nth-child(3n+2) { border-top-color: $git-coral; }
+.reveal .cheatsheet > .card:nth-child(3n) { border-top-color: $git-navy; }
+.reveal .cheatsheet .card-title {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 800;
+  margin: 0.1em 0 0.2em;
+  color: $git-navy;
+}
+.reveal .cheatsheet p { margin: 0.15em 0; line-height: 1.3; }
+.reveal .cheatsheet code { font-size: 0.95em; background: #fff; }
+
+/* ---------- pre-workshop checklist ---------- */
+.reveal .checklist ul { list-style: none; padding-left: 0; margin-left: 0; }
+.reveal .checklist li::before { content: "☐  "; color: $git-teal; font-weight: 800; }
+
+/* ---------- Wooclap ---------- */
+$wooclap: #6f3cff;
+.reveal .wooclap-code {
+  display: inline-block;
+  font-family: $font-family-monospace;
+  font-size: 2.2em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: $wooclap;
+  padding: 0.1em 0.5em;
+  border-radius: 12px;
+  margin: 0.2em 0 0.4em;
+}
+.reveal .wooclap-qr { display: block; text-align: center; }
+/* qrcodejs draws a canvas and an img copy of it: show only the img */
+.reveal .wooclap-qr canvas { display: none !important; }
+.reveal .wooclap-qr img {
+  display: inline-block !important;
+  box-shadow: none;
+  border: 10px solid #fff;
+  outline: 3px solid $wooclap;
+  border-radius: 6px;
+}
+.reveal .wooclap-qr .qr-url {
+  font-family: $font-family-monospace;
+  font-size: 0.55em;
+  color: $git-muted;
+  margin-top: 0.4em;
+}
+.reveal .wooclap-qr .qr-missing {
+  display: inline-block;
+  font-size: 0.6em;
+  color: #b42318;
+  border: 3px dashed #b42318;
+  border-radius: 10px;
+  padding: 2em 1em;
+}
+.reveal .wooclap-code.unset, .reveal .wooclap-badge.unset { outline: 3px dashed #b42318; outline-offset: 3px; }
+/* badge in the top-right corner of quiz slides */
+.reveal .slides section .wooclap-badge {
+  position: absolute;
+  top: 0.55em;
+  right: 0;
+  font-size: 0.5em;
+  font-weight: 700;
+  color: #fff;
+  background: $wooclap;
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+.reveal .poll {
+  background: $git-sand;
+  border-left: 8px solid $wooclap;
+  border-radius: 8px;
+  padding: 0.6em 0.9em;
+  font-size: 0.85em;
+  height: 100%;
+}
+
+/* live Wooclap slides: small heading, iframe fills the rest */
+.reveal .wooclap-embed-url { display: none; }
+.reveal .wooclap-live h2 {
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  border-bottom-color: $wooclap;
+}
+.reveal .wooclap-embed { display: block; text-align: center; }
+.reveal .wooclap-embed iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: 3px solid $wooclap;
+  border-radius: 10px;
+  background: $git-sand;
+}
+.reveal .wooclap-embed .wooclap-open {
+  display: inline-block;
+  margin-top: 0.3em;
+  font-size: 0.45em;
+  color: $git-muted;
+}
+
+/* link lists next to a QR code */
+.reveal .links .column p { font-size: 0.72em; overflow-wrap: anywhere; }
+.reveal .links .column.qr p { font-size: 1em; }
+
+/* ---------- QR code ---------- */
+.reveal .qr img { width: 190px; box-shadow: none; border-radius: 6px; }
+.reveal .qr { text-align: center; }

@@ -1,0 +1,103 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+/* Layered after ../git-theme.scss and ../intro-experiment/intro-experiment.scss
+   (both reused unchanged). */
+
+#title-slide::before { content: "Half-day course · 09:00–14:00"; }
+
+/* break / lunch slides */
+.reveal .breakslide h2 { border-bottom-color: #ffd479; }
+.reveal .breakslide .bigq { color: #fff; }
+.reveal .breakslide strong { color: #ffd479; }
+
+/* journey strip on dark section slides: light "done" marker */
+.reveal section.has-dark-background .journey .stop.done { border-top-color: #bfe6e6; }
+.reveal .section-slide .journey { margin-top: 0.8em; }
+
+/* colour-blind-safe stickies for this deck: yellow = done, pink = help
+   (red/green is hard to tell apart for ~1 in 12 men) */
+.reveal .sticky.green { background: #ffd84d; }
+.reveal .sticky.red { background: #ff7eb6; }
+
+/* bonus round: 2 x 2 grid of challenge cards */
+.reveal .bonus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  font-size: 0.58em;
+}
+.reveal .bonus > .card {
+  background: #f6f3ee;
+  border-top: 6px solid #0f8b8d;
+  border-radius: 8px;
+  padding: 0.4em 0.8em 0.5em;
+}
+.reveal .bonus > .card.star { border-top-color: #ec6b56; background: #fff1ee; }
+.reveal .bonus .card-title {
+  display: block;
+  font-size: 1.15em;
+  font-weight: 800;
+  color: #13294b;
+  margin-bottom: 0.2em;
+}
+.reveal .bonus p { margin: 0.15em 0; line-height: 1.35; }
+.reveal .bonus code { font-size: 0.95em; background: #fff; }
+
+/* the whole picture: four boxes */
+.reveal .flow.wide .box { min-width: 4.5em; padding: 0.4em 0.5em; }
+.reveal .flow.wide .arrow { font-size: 0.55em; }
+
+/* troubleshooting appendix */
+.reveal .fixes table { font-size: 0.58em; }
+.reveal .fixes td:first-child { color: #b42318; }
+
+/* "New commands" box: every command is explained where it first appears */
+.reveal .newcmds {
+  background: #fffaf0;
+  border-left: 6px solid #ffd479;
+  border-radius: 8px;
+  padding: 0.35em 0.8em 0.45em;
+  margin: 0.5em 0;
+  font-size: 0.6em;
+  line-height: 1.45;
+}
+.reveal .newcmds::before {
+  content: "New commands";
+  display: block;
+  font-size: 0.8em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b27d00;
+  margin-bottom: 0.15em;
+}
+.reveal .newcmds p { margin: 0; }
+.reveal .newcmds code { font-size: 0.95em; background: #fff; }
+.reveal .newcmds.hint::before { content: "Commands that will help"; }
+
+/* terminal toolkit table */
+.reveal .toolkit table { font-size: 0.62em; }
+.reveal .toolkit td:first-child { white-space: nowrap; }
+
+/* step label in multi-slide walkthroughs */
+.reveal .step {
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #0f8b8d;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  margin-bottom: 0.3em;
+}
+
+/* menu-path pills may wrap inside narrow columns */
+.reveal .column .menu { white-space: normal; line-height: 1.6; }
+
+/* compact one-line flow diagrams */
+.reveal .flow.compact { font-size: 0.75em; }
+.reveal .flow.compact .box { min-width: 5em; }

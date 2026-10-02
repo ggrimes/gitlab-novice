@@ -1,0 +1,148 @@
+/*-- scss:defaults --*/
+
+$git-navy:   #13294b;
+$git-teal:   #0f8b8d;
+$git-coral:  #ec6b56;
+$git-sand:   #f6f3ee;
+$git-ink:    #1f2933;
+$git-muted:  #5b6770;
+$wooclap:    #6f3cff;
+
+/*-- scss:rules --*/
+
+/* Extra components for the experimental intro only; layered on top of
+   ../git-theme.scss, which is left untouched. */
+
+/* ---------- "EXPERIMENT" ribbon on the title slide ---------- */
+#title-slide::before {
+  content: "Experimental opening";
+  display: inline-block;
+  margin-bottom: 1.2em;
+  font-size: 0.45em;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $git-navy;
+  background: #ffd479;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+}
+
+/* ---------- reviewer email (hook) ---------- */
+.reveal .email {
+  background: #fff;
+  border: 1px solid #d9dee3;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(19, 41, 75, 0.15);
+  padding: 0.6em 1em 0.8em;
+  font-size: 0.8em;
+  max-width: 900px;
+  text-align: left;
+}
+/* the slide's dark background turns text white; the card is white */
+.reveal .email, .reveal .email p { color: $git-ink !important; }
+.reveal .email strong { color: $git-navy; }
+.reveal .email .hdr {
+  display: block;
+  font-size: 0.7em;
+  color: $git-muted;
+  line-height: 1.5;
+  border-bottom: 1px solid #e6e9ec;
+  padding-bottom: 0.4em;
+  margin-bottom: 0.5em;
+}
+.reveal .email .hdr strong { color: $git-ink; }
+.reveal .email p { margin: 0.35em 0; }
+
+/* big centred question */
+.reveal .bigq {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: $git-navy;
+  line-height: 1.15;
+  margin-top: 0.6em;
+}
+
+/* ---------- journey map ("you are here") ---------- */
+.reveal .journey {
+  display: flex;
+  gap: 0.35em;
+  margin: 0.4em 0 0.8em;
+}
+.reveal .journey > p { display: contents; }
+.reveal .journey .stop {
+  flex: 1;
+  text-align: center;
+  font-size: 0.5em;
+  font-weight: 600;
+  color: $git-muted;
+  background: $git-sand;
+  border-top: 8px solid #cfd6dd;
+  border-radius: 6px;
+  padding: 0.5em 0.3em 0.45em;
+  line-height: 1.25;
+}
+.reveal .journey .stop.done { border-top-color: $git-teal; color: $git-ink; }
+.reveal section.has-dark-background .journey .stop.done { border-top-color: $git-navy; }
+.reveal .journey .stop.here {
+  border-top-color: $git-coral;
+  color: $git-navy;
+  font-weight: 800;
+  background: #fff1ee;
+}
+.reveal .journey .stop.here::after {
+  content: "you are here";
+  display: block;
+  font-size: 0.8em;
+  color: $git-coral;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.2em;
+}
+
+/* ---------- outcomes ---------- */
+.reveal .outcomes ul { list-style: none; padding-left: 0; margin-left: 0; }
+.reveal .outcomes li {
+  font-size: 0.82em;
+  margin-bottom: 0.3em;
+}
+.reveal .outcomes li::before { content: "→ "; color: $git-teal; font-weight: 800; }
+
+/* ---------- learner-generated needs ---------- */
+.reveal .needs table { font-size: 0.75em; }
+.reveal .needs td:last-child { color: $git-teal; font-weight: 600; }
+
+/* ---------- peer instruction ---------- */
+.reveal .pi-step {
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: $wooclap;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  margin-bottom: 0.4em;
+}
+.reveal .pi-step.talk { background: $git-coral; }
+.reveal .options { font-size: 0.85em; }
+.reveal .options p { margin: 0.25em 0; }
+
+/* ---------- predict-then-reveal ---------- */
+.reveal .predict {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $git-navy;
+  background: #ffd479;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+}
+
+/* ---------- research basis table ---------- */
+.reveal .research table { font-size: 0.5em; }
+.reveal .research h2 { margin-bottom: 0.3em; }
+.reveal .research td:first-child { white-space: nowrap; font-weight: 700; color: $git-navy; }

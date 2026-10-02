@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<line x1="80" y1="200" x2="260" y2="200" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<path d="M260,200 C355.0,200 355.0,100 450,100" fill="none" stroke="#0f8b8d" stroke-width="7" stroke-linecap="round"/>
+<path d="M260,200 C355.0,200 355.0,300 450,300" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<path d="M450,100 C555.0,100 555.0,200 660,200" fill="none" stroke="#0f8b8d" stroke-width="7" stroke-linecap="round"/>
+<path d="M450,300 C555.0,300 555.0,200 660,200" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<circle cx="80" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="260" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/><text x="260" y="249" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">both start here</text>
+<circle cx="450" cy="100" r="17" fill="#0f8b8d" stroke="#0f8b8d" stroke-width="5"/><text x="450" y="67" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">Person 1 edits line 3</text>
+<circle cx="450" cy="300" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/><text x="450" y="349" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">Person 2 edits line 3</text>
+<text x="450" y="36" text-anchor="middle" font-size="19" font-weight="700" fill="#0f8b8d">pushed first ✓</text>
+<text x="450" y="380" text-anchor="middle" font-size="19" font-weight="700" fill="#ec6b56">push rejected → git pull</text>
+<circle cx="684" cy="200" r="28" fill="#fff4e5" stroke="#e0a800" stroke-width="5"/>
+<text x="684" y="211" text-anchor="middle" font-size="30" font-weight="800" fill="#b27d00">!</text>
+<text x="736" y="194" text-anchor="start" font-size="26" font-weight="800" fill="#1f2933">CONFLICT</text>
+<text x="736" y="224" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">same line, two versions:</text>
+<text x="736" y="250" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">you choose, then commit</text>
+</svg>
