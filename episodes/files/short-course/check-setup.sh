@@ -40,7 +40,7 @@ fi
 
 # 4. GitLab accepts the key (may ask for your passphrase)
 echo "  … testing the connection to GitLab (type your key's passphrase if asked)"
-out=$(ssh -T -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new "git@$GITLAB" 2>&1)
+out=$(ssh -T -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new "git@$GITLAB" 2>&1 < /dev/null)
 if printf '%s' "$out" | grep -qi "welcome to gitlab"; then
   pass "GitLab recognises your SSH key"
 elif printf '%s' "$out" | grep -qi "permission denied"; then
