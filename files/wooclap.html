@@ -1,0 +1,72 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* Wooclap helpers. The event code comes from `wooclap-code` in the deck's
+   YAML (rendered into .wooclap-code); `wooclap-embed-url` (optional) overrides
+   the page shown in the live iframes, e.g. a presenter/results link. */
+(function () {
+  function text(sel) {
+    var el = document.querySelector(sel);
+    return el ? el.textContent.trim() : "";
+  }
+  var code = text(".reveal .wooclap-code");
+  var unset = !code || /^X+$/.test(code);
+  var joinUrl = "https://app.wooclap.com/" + encodeURIComponent(code);
+  var override = text(".reveal .wooclap-embed-url");
+  var embedUrl = /^https?:\/\//.test(override) ? override : joinUrl;
+
+  if (unset) {
+    document.querySelectorAll(".reveal .wooclap-code, .reveal .wooclap-badge")
+      .forEach(function (el) { el.classList.add("unset"); });
+  }
+
+  // join slide: QR code
+  document.querySelectorAll(".reveal .wooclap-qr").forEach(function (el) {
+    if (unset) {
+      el.innerHTML = '<span class="qr-missing">Set <code>wooclap-code</code> in the YAML header and re-render</span>';
+      return;
+    }
+    if (window.QRCode) {
+      new QRCode(el, { text: joinUrl, width: 280, height: 280, colorDark: "#13294b",
+                       colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+    }
+    var cap = document.createElement("div");
+    cap.className = "qr-url";
+    cap.textContent = joinUrl.replace("https://", "");
+    el.appendChild(cap);
+  });
+
+  // live slides: iframe that only loads when its slide is first shown,
+  // then stays loaded so going back and forth keeps Wooclap's state
+  var frames = [];
+  document.querySelectorAll(".reveal .wooclap-embed").forEach(function (el) {
+    if (unset) {
+      el.innerHTML = '<span class="qr-missing">Set <code>wooclap-code</code> in the YAML header and re-render</span>';
+      return;
+    }
+    var f = document.createElement("iframe");
+    f.setAttribute("allow", "fullscreen; clipboard-write");
+    f.setAttribute("allowfullscreen", "");
+    f.title = "Wooclap event";
+    el.appendChild(f);
+    var a = document.createElement("a");
+    a.href = embedUrl; a.target = "_blank"; a.rel = "noopener";
+    a.className = "wooclap-open";
+    a.textContent = "Not loading? Open Wooclap in a new window ↗";
+    el.appendChild(a);
+    frames.push(f);
+  });
+
+  function loadVisible(ev) {
+    var slide = ev && ev.currentSlide;
+    if (!slide) return;
+    slide.querySelectorAll(".wooclap-embed iframe").forEach(function (f) {
+      if (!f.getAttribute("src")) f.setAttribute("src", embedUrl);
+    });
+  }
+  if (frames.length && window.Reveal) {
+    Reveal.on("slidechanged", loadVisible);
+    Reveal.on("ready", loadVisible);
+    if (Reveal.isReady && Reveal.isReady()) loadVisible({ currentSlide: Reveal.getCurrentSlide() });
+  }
+})();
+</script>

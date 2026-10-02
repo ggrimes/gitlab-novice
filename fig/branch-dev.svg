@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<line x1="90" y1="90" x2="300" y2="90" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<path d="M300,90 C360.0,90 360.0,250 420,250" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<circle cx="90" cy="90" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/><text x="90" y="57" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">initial commit</text>
+<circle cx="300" cy="90" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/><text x="300" y="57" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">Add example dataset</text>
+<circle cx="420" cy="250" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/><text x="420" y="299" text-anchor="middle" font-size="24" font-weight="400" fill="#1f2933">Add summary.py</text>
+<line x1="320" y1="90" x2="334" y2="90" stroke="#13294b" stroke-width="3"/><rect x="334" y="70" width="192" height="40" rx="20" fill="#13294b"/><text x="430.0" y="98" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main  ← HEAD</text>
+<line x1="440" y1="250" x2="454" y2="250" stroke="#ec6b56" stroke-width="3"/><rect x="454" y="230" width="66" height="40" rx="20" fill="#ec6b56"/><text x="487.0" y="258" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">dev</text>
+</svg>
