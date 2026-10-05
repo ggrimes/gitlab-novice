@@ -21,7 +21,7 @@ format:
       numbers: true
     include-after-body: [../exercise-timer.html, ../wooclap.html]
 # One Wooclap event for the whole morning (questions W1–W10 in wooclap-questions.md)
-wooclap-code: "XXXXXX"
+wooclap-code: "XMEOJGL"
 wooclap-embed-url: "none"
 # Where the workshop data lives on Eddie: data.csv source, messy_project/ and
 # tidy_project/ (built with ../intro-experiment/make-messy-project.sh)
