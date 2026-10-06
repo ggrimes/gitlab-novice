@@ -31,7 +31,7 @@ Press **Enter** to accept the file location, then choose a **passphrase** (nothi
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Copy the **whole** line it prints (it starts with `ssh-ed25519`). In GitLab: your avatar → **Edit profile** → **SSH Keys** → **Add new key** → paste → **Add key**.
+Copy the **whole** line it prints (it starts with `ssh-ed25519`). In GitLab: click your **user icon** → **Preferences** → **Access** → **SSH Keys** → **Add new key** → paste → **Add key**.
 
 ### 4. Run the setup check
 

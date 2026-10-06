@@ -90,7 +90,7 @@ This will generate two files: the private key file (in this example `/home/usern
 
 You can now add the contents of the public key file `id_ed25519.pub` to the GitLab.
 
-Go to <https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys> then click add **new key**
+In GitLab, click your **user icon**, then **Preferences** → **Access** → **SSH Keys**, and click **Add new key**. (Or go straight to <https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys>.)
 
 ![](fig/gitlab-ssh2.png){alt="GitLab SSH Keys settings page with the Add an SSH key form: a Key box, Title, Usage type and Expiration date."}
 

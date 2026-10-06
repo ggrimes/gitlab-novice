@@ -1009,7 +1009,11 @@ cat ~/.ssh/id_ed25519.pub
 - `id_ed25519.pub`: **public** key. Copy the one line that `cat` shows
 :::
 ::: {.column width="45%"}
-In GitLab: [User settings > SSH Keys > Add new key]{.menu}, paste, **Add key**.
+In GitLab:
+
+1. [User icon > Preferences]{.menu}
+2. [Access > SSH Keys]{.menu}
+3. [Add new key]{.menu}, paste, **Add key**
 
 Then test it:
 
@@ -1178,6 +1182,63 @@ Edit the file, keep what you want, **delete the `<<<<<<<` `=======` `>>>>>>>` ma
 **Say:** *"Git merges changes to different lines by itself. Only the same line changed two ways needs you to decide. It refuses to guess which version of your science is right."* Describe the markers: above `=======` is yours, below is the other copy's. Delete all three marker lines, keep what you want, then add, commit, push.
 
 **Note:** working with colleagues in one repository is a follow-on topic. This is enough to recognise a conflict and not panic. If a fast finisher made one, resolve it live on their screen.
+:::
+
+## Fixing a conflict
+
+:::: {.columns}
+::: {.column width="55%"}
+`git pull` stops with:
+
+```{.output}
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+`nano README.md` shows both versions:
+
+```{.output}
+# My eddie Python project
+
+<<<<<<< HEAD
+To run Python on Eddie, first run:
+=======
+To run Python on eddie you need:
+>>>>>>> 4f2c1a9 (Reword README)
+module load igmm/apps/python/3.12.3
+```
+:::
+::: {.column width="45%" .small}
+`<<<<<<< HEAD` · start of **your** version\
+`=======` · divider\
+`>>>>>>> 4f2c1a9` · end of the **incoming** version (from GitLab)
+
+**To fix it:**
+
+1. Keep yours, theirs, or a mix
+2. **Delete all three marker lines**
+3. `git add README.md`
+4. `git commit` · nano opens: save and exit
+5. `git push`
+
+::: {.muted}
+Back out instead: `git merge --abort`
+:::
+:::
+::::
+
+::: notes
+**⏱ 11:29 · 2 min, concept only (runs slightly into History & Undo)**
+
+**Say:** *"Git has put both versions in the file and marked them. Everything between the arrows and the equals signs is yours; everything after the equals signs is what came from GitLab. You decide what the line should say."*
+
+**Do:** point at each marker in turn. Then show what the fixed file looks like: one line, no markers.
+
+**Watch for:**
+- markers left in the file and committed anyway: Git doesn't check. `grep -n '<<<<<<<' README.md` before `git add` finds any leftovers.
+- `git status` during a conflict says *"both modified: README.md"* and *"You have unmerged paths"*: that's normal until you `add` and `commit`.
+
+**Same in the branching bonus:** `git merge <branch>` gives exactly this when both branches changed the same line.
 :::
 
 # History & Undo {.section-slide background-color="#13294b"}
@@ -1753,6 +1814,8 @@ Keep it (`add` + `commit`) or undo it (`git restore README.md`): your call.
 ::::
 :::::
 
+[Ahead of time? Bonus: branches →](#bonus-branches){.small .muted}
+
 ::: notes
 **⏱ 13:20 · FLEXIBLE: as long as there's time (stop at 13:43)**
 
@@ -1761,6 +1824,8 @@ Keep it (`add` + `commit`) or undo it (`git restore README.md`): your call.
 **Do:** walk the room. Prioritise people doing their own project: check their `.gitignore` and `git status` **before** they commit, so no big data or secrets go in.
 
 **Running late?** Skip straight to "Before you go" at 13:45 and say: *"The bonus round is on the website. Try the starred one this week."*
+
+**Room well ahead?** Teach the branching bonus instead (about 20 min): click the *Bonus: branches* link at the bottom of this slide.
 
 *Why:* doing it on real work, with help, makes transfer much more likely; a concrete plan ("when I next…, I will commit") helps follow-through (Gollwitzer).
 :::
@@ -1899,6 +1964,194 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 **Do:** thank the helpers by name. Share the feedback form if there is one. Stay around for questions. Ask people to take their stickies off their laptops.
 :::
 
+# Bonus: Branches {#bonus-branches .section-slide background-color="#0f8b8d" visibility="uncounted"}
+
+::: {.journey}
+[**Why Git**]{.stop .done}
+[**First commit**]{.stop .done}
+[**Recording**]{.stop .done}
+[**GitLab**]{.stop .done}
+[**History**]{.stop .done}
+[**Ignoring**]{.stop .done}
+[**Tags**]{.stop .done}
+[**Bonus**<br>branches]{.stop .here}
+:::
+
+[How do I try out an idea without breaking the version that works?]{.ep-q}
+
+::: notes
+**⏱ ~13:20 · up to 20 min · ONLY IF THE ROOM IS AHEAD**
+
+**When:** instead of the bonus round, if most people finished the Tags exercise by about 13:10. Not in the slide count: reach it from the link on the bonus round slide, or the menu (M).
+
+**Stop by 13:43, whatever happens:** the last slide has a link back to *Before you go*.
+
+**Say:** *"You've just met a label that never moves: a tag. A branch is a label that **does** move."*
+:::
+
+## A branch is a label that moves {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="50%"}
+**Tag** → fixed on one commit, forever
+
+**Branch** → moves forward each time you commit
+
+You've been on one all day: `main`.
+
+<br>
+
+Use a branch to:
+
+- **try an idea** without breaking the version that works
+- keep an **experiment** separate until it's worth keeping
+:::
+::: {.column width="50%"}
+![](../../fig/branch-dev.svg){.diagram fig-alt="Commit graph: main has 'initial commit' and 'Add example dataset'; dev branches off and adds 'Add summary.py'. HEAD points at main."}
+
+::: {.small .muted}
+Creating a branch is instant: nothing is copied.
+:::
+:::
+::::
+
+::: notes
+**⏱ 2 min**
+
+**Say:** *"Remember `On branch main` in `git status`? That's been there since your first commit. `main` is a branch: a label that moves forward every time you commit."*
+
+**Analogy:** a sticky note on a page of the lab book that you move forward as you write. A tag is a note glued down.
+
+**Note:** the diagram is a simplified history, not their MyProject. HEAD = where you are now.
+:::
+
+## Create, switch, commit {visibility="uncounted"}
+
+```{.bash code-line-numbers="|1|2|3-5|6-7"}
+git switch -c dev         # create a branch called dev, and move to it
+git branch                # list branches: * marks where you are
+nano Src/summary.py
+git add Src/summary.py
+git commit -m "Add summary.py"
+git switch main           # back to main...
+ls Src                    # ...and summary.py has gone!
+```
+
+::: {.fragment}
+It isn't deleted: it lives on `dev`. `git switch dev` and it's back.
+:::
+
+::: {.newcmds .hint}
+`git switch -c <name>` · create a branch and move to it · `git switch <name>` · move to an existing branch · `git branch` · list them
+:::
+
+::: notes
+**⏱ 4 min · live demo**
+
+**Do:** type it live in your own MyProject. Pause on `ls Src` and let the room react before clicking the fragment.
+
+**Watch for:** older Git without `git switch` (before 2.23): use `git checkout -b dev` and `git checkout main`.
+:::
+
+## Merge it back {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.bash code-line-numbers="|1|2|3"}
+git switch main
+git diff main dev
+git merge dev
+```
+
+::: {.small .muted}
+Switch to the branch you merge **into** · preview what `dev` brings · merge
+:::
+
+```{.output}
+Updating 370eb9d..83e878e
+Fast-forward
+ Src/summary.py | 8 ++++++++
+```
+
+**Fast-forward**: `main` had no new commits, so Git just moves the `main` label up to `dev`.
+:::
+::: {.column width="50%"}
+![](../../fig/ff-vs-merge.svg){.diagram fig-alt="Left: fast-forward, where main simply moves along to the tip of dev. Right: both branches have new commits, so Git creates a merge commit joining them."}
+
+::: {.small .muted}
+Both branches moved? Git makes a **merge commit**, just like your `git pull` in the sync exercise. Same line changed on both = a **conflict**, fixed the same way.
+:::
+:::
+::::
+
+::: notes
+**⏱ 3 min**
+
+**Say:** *"Always switch to the branch you want the changes to land on, then merge the other one into it."*
+
+**Callback:** *"You've already done a merge today: `git pull` in the sync exercise merged GitLab's main into yours. That's why nano opened with 'Merge branch…'."*
+:::
+
+## Your turn: an idea on a branch {.exercise visibility="uncounted"}
+
+::: {.task time="8"}
+In `~/MyProject`:
+
+1. Create and switch to a branch called `columns`
+2. Add `print(variants.columns)` to the end of `Src/hello.py`, then add and commit
+3. Switch to `main` and `cat Src/hello.py`: is your line there?
+4. Merge `columns` into `main`, look at `git log --oneline --graph`, delete the branch, then `git push`
+:::
+
+::: {.answer .fragment}
+```bash
+git switch -c columns
+nano Src/hello.py
+git add Src/hello.py && git commit -m "Print the column names"
+git switch main && cat Src/hello.py     # not there: it's on columns
+git merge columns                       # fast-forward
+git log --oneline --graph
+git branch -d columns && git push
+```
+:::
+
+::: notes
+**⏱ 8 min**
+
+**Watch for:**
+- *"Your local changes … would be overwritten"* when switching: they have uncommitted edits. Commit them, or `git stash`.
+- `git branch -d` says *"not fully merged"*: they haven't merged yet. Merge first; don't reach for `-D`.
+- Lost track of where they are: `git status` (first line) or `git branch`.
+
+**Fast finishers:** before merging, switch to `main` and commit a change to `README.md` too. The merge is then a real merge commit (nano opens for the message), and `git log --oneline --graph` draws the fork and the join.
+
+**Full answer:** `instructor-answers.md`, section "Bonus: branches".
+:::
+
+## Share a branch: merge requests {visibility="uncounted"}
+
+```{.bash code-line-numbers="|1|2-3"}
+git push -u origin dev            # publish the branch to GitLab
+git branch -d dev                 # once it's merged: delete it here...
+git push origin --delete dev      # ...and on GitLab
+```
+
+On GitLab, a **merge request** lets colleagues **review** a branch (see the diff, comment on lines) before it goes into `main`. On a shared project, that's how most teams work: nobody pushes straight to `main`.
+
+::: {.small .muted}
+After merging on GitLab: `git switch main` and `git pull` to bring the merge down to Eddie.
+:::
+
+[↩ Back to *Before you go*](#before-you-go){.small}
+
+::: notes
+**⏱ 3 min · demo if there's time**
+
+**Do:** push a branch from your own MyProject. GitLab offers **Create merge request** at the top of the project page: open it, show the **Changes** tab and the comment box, then **Merge**. Then `git pull` on Eddie.
+
+**Then:** click the link back to *Before you go* (13:45 sharp).
+:::
+
 ## About this course {.research}
 
 | Move | Research basis | In this deck |
@@ -1946,6 +2199,7 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 | *"[rejected] … non-fast-forward"* | The other copy pushed first: `git pull`, then `git push` |
 | *"Need to specify how to reconcile divergent branches"* | `git config --global pull.rebase false`, then `git pull` again |
 | *"CONFLICT"* | Edit the file, delete the `<<<<<<<` `=======` `>>>>>>>` lines, then `add`, `commit`, `push` |
+| *"Your local changes … would be overwritten"* (switching branch) | Commit your changes first, or `git stash`, then switch |
 
 ::: notes
 **Not in the slide count.** Jump here from the menu (M). Most common in the sync exercise: working in the wrong copy (`pwd`), and forgetting to push before pulling in the other copy.

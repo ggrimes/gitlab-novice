@@ -15,7 +15,7 @@ Error messages and fixes are in `helper-sheet.md`.
 5. History & undo (11:30–12:00): undo exercise, Q7
 6. Ignoring things (12:30–12:51)
 7. Tags (12:52–13:13): tag your project, Answer Reviewer 2
-8. Wrap-up and bonus (13:13–14:00): the whole picture, bonus round, Q8–Q10, follow-up
+8. Wrap-up and bonus (13:13–14:00): the whole picture, bonus round, bonus branches, Q8–Q10, follow-up
 9. Questions learners often ask (for Q10 and during the day)
 
 ---
@@ -212,6 +212,19 @@ Lesson: **always pull before you start work.**
 Fast finishers who edit the same line in both copies get a **conflict**: edit
 the file, remove the `<<<<<<<` `=======` `>>>>>>>` lines, `add`, `commit`, `push`.
 
+### Fixing a conflict: what the markers mean
+```
+<<<<<<< HEAD                 ← start of your version (this copy)
+To run Python on Eddie, first run:
+=======                      ← divider
+To run Python on eddie you need:
+>>>>>>> 4f2c1a9 (Reword README)   ← end of the incoming version (from GitLab)
+```
+Fixed file: one line of your choosing, **no markers**. Then `git add README.md`,
+`git commit` (save the "Merge branch…" message in nano), `git push`.
+Git doesn't check for leftover markers: `grep -n '<<<<<<<' README.md` before
+`git add`. To give up and go back to before the pull: `git merge --abort`.
+
 ---
 
 ## History & undo (11:30–12:00)
@@ -367,6 +380,39 @@ git diff                              # what came back? any lines added since v1
 git restore README.md                 # undo, or: git add + git commit to keep it
 ```
 Nothing is lost either way: the tag still points at the old version.
+
+### Bonus: branches (only if the room is ahead)
+Taught instead of the bonus round, about 20 minutes; back to *Before you go* by
+13:43. Not in the slide count: link at the bottom of the bonus round slide.
+
+#### Section question: "How do I try out an idea without breaking the version that works?"
+Make a **branch**, commit the idea there, and merge it into `main` only if it
+works. Until then `main` doesn't change.
+
+#### Create, switch, commit: where did `summary.py` go?
+Nowhere: it was committed on `dev`, and `main` doesn't have that commit yet.
+`git switch dev` brings it back; after `git merge dev` it's on `main` too.
+
+#### Your turn: an idea on a branch
+```bash
+git switch -c columns
+nano Src/hello.py                       # add: print(variants.columns)
+git add Src/hello.py && git commit -m "Print the column names"
+git switch main && cat Src/hello.py     # the new line isn't there
+git merge columns                       # "Fast-forward"
+git log --oneline --graph               # a straight line: no merge commit
+git branch -d columns && git push
+```
+**Step 3:** the line isn't on `main`: it's only on `columns` until the merge.
+**Fast finishers** (commit on `main` before merging): the merge makes a merge
+commit, nano opens for its message, and `git log --oneline --graph` shows the
+two lines joining.
+
+#### Merge requests
+`git push -u origin <branch>` publishes the branch; GitLab then offers **Create
+merge request**. Colleagues review the **Changes** tab and comment; **Merge**
+adds it to `main` on GitLab, so `git pull` on Eddie afterwards. Delete the
+branch with `git branch -d <branch>` and `git push origin --delete <branch>`.
 
 ### Q8: How comfortable are you with the command line now? (rating 1–5)
 No right answer. **What to expect:** a shift up of about one point compared
