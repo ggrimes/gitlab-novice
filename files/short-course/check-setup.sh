@@ -45,7 +45,7 @@ if printf '%s' "$out" | grep -qi "welcome to gitlab"; then
   pass "GitLab recognises your SSH key"
 elif printf '%s' "$out" | grep -qi "permission denied"; then
   fail "GitLab doesn't recognise your key" \
-       "copy the whole line from: cat ~/.ssh/id_ed25519.pub  into GitLab → User settings → SSH Keys"
+       "copy the whole line from: cat ~/.ssh/id_ed25519.pub  into GitLab → user icon → Preferences → Access → SSH Keys"
 else
   fail "Couldn't reach $GITLAB" "check you can log in at https://$GITLAB in a browser; message: ${out:0:80}"
 fi
