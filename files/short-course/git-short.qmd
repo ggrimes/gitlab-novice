@@ -19,10 +19,9 @@ format:
     code-copy: true
     menu:
       numbers: true
-    include-after-body: [../exercise-timer.html, ../wooclap.html]
-# One Wooclap event for the whole morning (questions W1–W10 in wooclap-questions.md)
-wooclap-code: "XMEOJGL"
-wooclap-embed-url: "none"
+    include-after-body: [../exercise-timer.html, etherpad.html]
+# One Etherpad for the whole day (paste in etherpad-questions.md: Q1–Q10)
+etherpad-url: "https://webapps.igc.ed.ac.uk/pad/p/2026-10-08_git"
 # Where the workshop data lives on Eddie: data.csv source, messy_project/ and
 # tidy_project/ (built with ../intro-experiment/make-messy-project.sh)
 workshop-data: "/exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data"
@@ -98,17 +97,18 @@ Your Eddie login and GitLab SSH key were set up before today. Pink sticky now if
 *Why:* psychological safety (Edmondson); anxiety uses up working memory.
 :::
 
-## Join the Wooclap
+## Open the Etherpad
 
 :::: {.columns}
 ::: {.column width="55%"}
-1. On your **phone** or laptop, go to **wooclap.com**
-2. Enter the event code:
+1. On your laptop, open the shared page:
 
-[{{< meta wooclap-code >}}]{.wooclap-code}
+[{{< meta etherpad-url >}}]({{< meta etherpad-url >}}){.small}
+
+2. Answer each question **when the slides ask**: type an **x** to vote, or a few words
 
 ::: {.muted .small}
-No account needed. Answers are anonymous.
+No account or name needed. Ask questions there any time too.
 :::
 :::
 ::: {.column width="45%"}
@@ -116,33 +116,33 @@ No account needed. Answers are anonymous.
 :::
 ::::
 
-[{{< meta wooclap-embed-url >}}]{.wooclap-embed-url}
+[{{< meta etherpad-url >}}]{.etherpad-url .wooclap-embed-url}
 
 ::: notes
 **⏱ 09:06 · 2 min**
 
-**Do:** have the Wooclap event open on your laptop in a second window. Watch the participant count; move on when most of the room has joined, not all of it.
+**Do:** have the Etherpad open on your laptop in a second window, already filled in from `etherpad-questions.md`. Move on when most of the room has it open, not all of it.
 
-**Say:** *"No account, completely anonymous. Keep the tab open: we'll use it a few times today."*
+**Say:** *"No account, no name needed. Keep the tab open: we'll use it a few times today, and you can type questions at the bottom whenever you like."*
 
-**Watch for:** venue Wi-Fi. If Wooclap won't load, use hands up and fingers for the rest of the day.
+**Watch for:** venue Wi-Fi. If the pad won't load, use hands up and fingers for the rest of the day. Someone deleting text by accident: the pad's history (clock icon) can restore it.
 :::
 
 ## Where are you starting from? {.wooclap-poll}
 
-[Answer on Wooclap · W1–W2 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Answer on the Etherpad · Q1–Q2]{.wooclap-badge}
 
 :::: {.columns}
 ::: {.column width="45%"}
 ::: {.poll}
-**W1.** How comfortable are you with the **command line**?
+**Q1.** How comfortable are you with the **command line**?
 
 1 = never used it · 5 = live in it
 :::
 :::
 ::: {.column width="55%"}
 ::: {.poll}
-**W2.** How do you keep track of **versions** of your work *now*? (pick all that apply)
+**Q2.** How do you keep track of **versions** of your work *now*? (pick all that apply)
 
 - Renamed copies: `_v2`, `_final`…
 - Dropbox / OneDrive / SharePoint history
@@ -156,23 +156,23 @@ No account needed. Answers are anonymous.
 ::: notes
 **⏱ 09:08 · 2 min · ACTIVATE**
 
-**Do:** open W1 then W2 in Wooclap; give about 40 seconds each. Don't show the results on this slide.
+**Do:** point at Q1 and Q2 on the pad; give about 80 seconds for both. Don't show the pad on this slide.
 
 **Say:** *"There are no wrong answers: this is for me, so I know how fast to go."*
 
-*Why:* bringing back what people already know (Ambrose et al.) and being asked before being taught (the pretesting effect, Richland et al.) both help new material stick. W1 comes back as W8 at the end.
+*Why:* bringing back what people already know (Ambrose et al.) and being asked before being taught (the pretesting effect, Richland et al.) both help new material stick. Q1 comes back as Q8 at the end.
 :::
 
-## Wooclap W1–W2 · live {.wooclap-live}
+## Etherpad Q1–Q2 · live {.wooclap-live}
 
 []{.wooclap-embed}
 
 ::: notes
 **⏱ 09:10 · 1 min**
 
-**Say:** read the W2 spread. Expect "renamed copies" to win. *"That's what I did for years. Let's see how well it works."*
+**Say:** read the Q2 spread. Expect "renamed copies" to win. *"That's what I did for years. Let's see how well it works."*
 
-**Do:** glance at W1. Lots of 1s and 2s → slow down on the next slide and send helpers to the people who look unsure.
+**Do:** glance at Q1. Lots of 1s and 2s → slow down on the next slide and send helpers to the people who look unsure.
 :::
 
 ## Your terminal toolkit {.toolkit}
@@ -245,10 +245,10 @@ Hint: `diff analysis_v2.py analysis_final.py` shows the lines that differ betwee
 
 ## What made that hard? {.wooclap-poll}
 
-[Answer on Wooclap · W3 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Answer on the Etherpad · Q3]{.wooclap-badge}
 
 ::: {.poll}
-**W3.** In one or two words: what made that hard?
+**Q3.** In one or two words: what made that hard?
 :::
 
 ::: {.fragment}
@@ -259,12 +259,12 @@ Best guess: `analysis_final.py`, with the threshold lowered from 30 to 20 and a 
 ::: notes
 **⏱ 09:20 · 2 min**
 
-**Do:** open W3 (word cloud). After about 45 seconds, click to reveal the best guess.
+**Do:** point at Q3 on the pad. After about 45 seconds, click to reveal the best guess.
 
 **Say:** *"Best guess: analysis_final.py, threshold 30 → 20, plus a log scale. But nothing in that folder can prove it."* Let that land: it's the case for everything that follows.
 :::
 
-## Wooclap W3 · live {.wooclap-live}
+## Etherpad Q3 · live {.wooclap-live}
 
 []{.wooclap-embed}
 
@@ -291,7 +291,7 @@ That's version control: a dated, permanent **lab book for code**.
 ::: notes
 **⏱ 09:23 · 2 min**
 
-**Say:** go row by row, using the room's own W3 words where they differ from the left column. *"Every one of these has a Git answer. That's version control: a dated, permanent lab book for code."*
+**Say:** go row by row, using the room's own Q3 words where they differ from the left column. *"Every one of these has a Git answer. That's version control: a dated, permanent lab book for code."*
 
 **Do:** don't explain the Git commands yet; just name them. Each one gets taught properly later today.
 
@@ -332,10 +332,10 @@ By **14:00** you will be able to:
 
 ## Your goal for today {.wooclap-poll}
 
-[Answer on Wooclap · W4 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Answer on the Etherpad · Q4]{.wooclap-badge}
 
 ::: {.poll}
-**W4.** What's **one thing** you want to be able to do with Git by 2 pm? A real project of yours is ideal.
+**Q4.** What's **one thing** you want to be able to do with Git by 2 pm? A real project of yours is ideal.
 :::
 
 ::: {.muted .small}
@@ -345,7 +345,7 @@ We'll look back at these at the end.
 ::: notes
 **⏱ 09:27 · 1 min**
 
-**Do:** open W4 (open text). Don't wait for everyone; it stays open.
+**Do:** point at Q4 on the pad. Don't wait for everyone; it stays open.
 
 **Say:** *"A real project of yours is ideal: we'll check back at 2 o'clock."*
 
@@ -412,9 +412,9 @@ Like a **lab book**: first you do the work on the bench…
 
 ## Check your model {.wooclap-poll}
 
-[Answer on Wooclap · W5 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Vote with your fingers · Q5]{.wooclap-badge}
 
-[Vote 1: on your own]{.pi-step}
+[Vote 1: on your own · hold up 1–4 fingers on 3]{.pi-step}
 
 You edit **two** files, `a.py` and `b.py`. Then you run:
 
@@ -426,18 +426,18 @@ git commit -m "Fix plotting bug"
 ::: {.options}
 What's in the commit?
 
-A. Changes to both `a.py` and `b.py`\
-B. Only the changes to `a.py`\
-C. Nothing: you have to add both files first\
-D. Only the changes to `b.py`
+1. Changes to both `a.py` and `b.py`
+2. Only the changes to `a.py`
+3. Nothing: you have to add both files first
+4. Only the changes to `b.py`
 :::
 
 ::: notes
 **⏱ 09:32 · 2 min · PEER INSTRUCTION, VOTE 1**
 
-**Do:** open W5. Votes on their own, no talking. **Don't show the results.**
+**Do:** give 30 seconds' thinking time, no talking. Then *"1, 2, 3: show me"*: everyone holds up 1–4 fingers at once, so nobody copies. Note the rough split; **don't say which is right.** (Not on the pad: everyone would see the first votes.)
 
-**What the wrong answers mean:** A = "a commit saves everything" (hasn't got staging yet) · C = "Git is all or nothing" · D = confused about what `add` does.
+**What the wrong answers mean:** 1 = "a commit saves everything" (hasn't got staging yet) · 3 = "Git is all or nothing" · 4 = confused about what `add` does.
 
 **If over ~80% are right:** skip the discussion and go straight to the answer slide.
 
@@ -446,7 +446,7 @@ D. Only the changes to `b.py`
 
 ## Talk to your neighbour {.wooclap-poll}
 
-[Answer on Wooclap · W6 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Vote with your fingers · Q6]{.wooclap-badge}
 
 [Convince your neighbour]{.pi-step .talk}
 
@@ -457,30 +457,22 @@ What's in the commit?
 :::
 
 ::: {.muted .small}
-1 minute: find someone who voted differently and convince them. Then **vote again** (W6).
+1 minute: find someone who voted differently and convince them. Then **vote again** with your fingers (Q6).
 :::
 
 ::: notes
-**⏱ 09:34 · 2 min · VOTE 2**
+**⏱ 09:34 · 3 min · VOTE 2**
 
-**Say:** *"Find someone who voted differently and convince them. One minute."* Then open W6 (the same question) and vote again.
+**Say:** *"Find someone who voted differently and convince them. One minute."* Then *"1, 2, 3: show me"* again.
+
+**Do:** compare with vote 1 out loud: *"Lots of 1s and 3s before, mostly 2s now."* The shift is the payoff: point it out. Ask someone who changed their mind what convinced them.
 
 **Watch for:** pairs who agree straight away. Ask them to explain *why* to each other anyway.
 
 *Why:* correct answers rise after discussion even in pairs where neither person was right at first (Smith et al. 2009). The talking does the teaching.
 :::
 
-## Wooclap W5–W6 · live {.wooclap-live}
-
-[]{.wooclap-embed}
-
-::: notes
-**⏱ 09:36 · 1 min**
-
-**Do:** show vote 1 and vote 2 side by side. The shift is the payoff: point it out. Ask someone who changed their mind what convinced them.
-:::
-
-## Answer: B, only `a.py`
+## Answer: 2, only `a.py`
 
 ::: {.flow}
 [Working directory [b.py (still modified)]{.filechip}]{.box}
@@ -807,7 +799,7 @@ git diff HEAD~1 README.md     # compare with one commit ago
 
 **Do:** everyone runs the add and commit, then `git diff HEAD~1 README.md`.
 
-**Say:** map the table onto the three boxes: *"`git diff` = bench vs today's page. `--staged` = today's page vs the last signed page."* Don't drill the table: W7 just before lunch asks about `git diff HEAD`, as spaced recall.
+**Say:** map the table onto the three boxes: *"`git diff` = bench vs today's page. `--staged` = today's page vs the last signed page."* Don't drill the table: Q7 just before lunch asks about `git diff HEAD`, as spaced recall.
 :::
 
 ## Undoing changes
@@ -920,7 +912,7 @@ Leave your Eddie terminal open. Next: backing up to GitLab.
 ::: notes
 **⏱ 10:30–10:45 · BREAK**
 
-**Do:** skim the W4 goals. Fix any pink stickies with helpers. Check that the GitLab login works on the presenter laptop, and have your own GitLab project page open ready.
+**Do:** skim the Q4 goals. Fix any pink stickies with helpers. Check that the GitLab login works on the presenter laptop, and have your own GitLab project page open ready.
 :::
 
 # GitLab {.section-slide background-color="#0f8b8d"}
@@ -1297,7 +1289,7 @@ git push
 
 ## Your turn: `git diff HEAD` {.exercise}
 
-[Answer on Wooclap · W7 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Answer on the Etherpad · Q7]{.wooclap-badge}
 
 ::: {.task time="2"}
 What does `git diff HEAD` show?
@@ -1313,9 +1305,9 @@ d) two different commits
 :::
 
 ::: notes
-**⏱ 11:52 · 3 min · W7, spaced recall**
+**⏱ 11:52 · 3 min · Q7, spaced recall**
 
-**Do:** open W7. Votes on their own, then reveal.
+**Do:** point at Q7 on the pad. Votes on their own, then reveal.
 
 **Say:** *"`HEAD` = the last commit. So `git diff HEAD` = everything you've changed since then, staged or not."* This brings back the 09:50 material just before lunch. Any spare minutes before 12:00: take questions.
 :::
@@ -1810,26 +1802,26 @@ git show HEAD~3:analysis.py
 
 ## Before you go {.wooclap-poll}
 
-[Answer on Wooclap · W8–W10 · {{< meta wooclap-code >}}]{.wooclap-badge}
+[Answer on the Etherpad · Q8–Q10]{.wooclap-badge}
 
 :::: {.columns}
 ::: {.column width="33%"}
 ::: {.poll}
-**W8.** How comfortable are you with the **command line** now?
+**Q8.** How comfortable are you with the **command line** now?
 
 1–5, same as this morning
 :::
 :::
 ::: {.column width="33%"}
 ::: {.poll}
-**W9.** Your goal from this morning (W4): can you do it now?
+**Q9.** Your goal from this morning (Q4): can you do it now?
 
 Yes · Partly · Not yet
 :::
 :::
 ::: {.column width="34%"}
 ::: {.poll}
-**W10.** What's still **confusing**? Anonymous.
+**Q10.** What's still **confusing**? Anonymous.
 :::
 :::
 ::::
@@ -1837,23 +1829,23 @@ Yes · Partly · Not yet
 ::: notes
 **⏱ 13:45 sharp · 4 min**
 
-**Do:** open W8, W9 and W10 together. Give about 2 minutes.
+**Do:** point at Q8, Q9 and Q10 on the pad. Give about 2 minutes.
 
-**Say:** *"W10 is anonymous: tell me what's still confusing. It's how I make this course better."*
+**Say:** *"Q10 is anonymous: tell me what's still confusing. It's how I make this course better."*
 
 **Afterwards:** 4 weeks later, send one question: *"Have you committed to a repository since the workshop?"* That's the real measure of whether it worked.
 :::
 
-## Wooclap W8–W10 · live {.wooclap-live}
+## Etherpad Q8–Q10 · live {.wooclap-live}
 
 []{.wooclap-embed}
 
 ::: notes
 **⏱ 13:49 · 4 min**
 
-**Do:** show W8 next to this morning's W1: point out the shift. Read a few W10 answers; answer one or two quick ones now and promise a follow-up email for the rest.
+**Do:** show Q8 next to this morning's Q1: point out the shift. Read a few Q10 answers; answer one or two quick ones now and promise a follow-up email for the rest.
 
-**Say (W9):** to anyone answering "Not yet": *"Come and talk to me after, or email me: let's get you there."*
+**Say (Q9):** to anyone answering "Not yet": *"Come and talk to me after, or email me: let's get you there."*
 :::
 
 ## Where next? {.links}
@@ -1914,18 +1906,18 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 | Prepare | Cognitive load (Sweller 1988); Carpentries pre-workshop setup | Logins checked before the day |
 | Hook | Gagné's events of instruction; Keller's ARCS | Reviewer 2 email |
 | Belong | Psychological safety (Edmondson 1999); self-determination theory | Norms, helpers, sticky notes |
-| Activate | Prior knowledge (Ambrose et al. 2010); pretesting effect (Richland et al. 2009) | W1–W2 before any teaching |
+| Activate | Prior knowledge (Ambrose et al. 2010); pretesting effect (Richland et al. 2009) | Q1–Q2 before any teaching |
 | Struggle | Productive failure (Kapur 2016); Schwartz & Bransford (1998) | The messy folder |
 | Generate | Generation effect (Slamecka & Graf 1978) | "So we need a tool that…" |
 | Map | Advance organisers (Ausubel 1960); signalling (Mayer) | Journey strip at every section |
 | Model | Concreteness fading (Fyfe et al. 2014) | Lab book → boxes → commands |
-| Check | Peer instruction (Crouch & Mazur 2001; Smith et al. 2009) | W5/W6 |
+| Check | Peer instruction (Crouch & Mazur 2001; Smith et al. 2009) | Q5/Q6 |
 | Win | Expectancy-value (Eccles); subgoal labels (Margulieux et al.) | First commit by ~09:45 |
-| Space | Retrieval practice (Roediger & Karpicke 2006) | Callbacks, W7, section-start recall |
+| Space | Retrieval practice (Roediger & Karpicke 2006) | Callbacks, Q7, section-start recall |
 | Close | ARCS satisfaction | Answer Reviewer 2 with the tidy repo |
 
 ::: notes
-**Not presented.** For co-instructors: the research behind each part of the course. Compare W1→W8, the W5→W6 gain, pink-sticky counts per section, and the 4-week follow-up across runs.
+**Not presented.** For co-instructors: the research behind each part of the course. Compare Q1→Q8, the Q5→Q6 gain, pink-sticky counts per section, and the 4-week follow-up across runs.
 :::
 
 ## Fixes: on Eddie {.fixes visibility="uncounted"}

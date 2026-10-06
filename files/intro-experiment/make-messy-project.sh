@@ -8,8 +8,29 @@
 #
 # Usage:  bash make-messy-project.sh [target-dir]     (default: current dir)
 # Put the result somewhere learners can copy from, e.g. the workshop_data
-# directory on Eddie.
+# directory on Eddie. figure3.png is made by running the analysis scripts,
+# so Python with pandas and matplotlib is needed (loaded below on Eddie).
 set -euo pipefail
+
+# On Eddie, load Python through environment modules first
+PY_MODULE="${PY_MODULE:-igmm/apps/python/3.12.3}"
+if ! command -v module >/dev/null 2>&1 && [ -f /etc/profile.d/modules.sh ]; then
+  source /etc/profile.d/modules.sh
+fi
+if command -v module >/dev/null 2>&1; then
+  module load "$PY_MODULE"
+fi
+# prefer the module's own Python over any conda/mamba python3 on PATH
+if [ -n "${PYTHONBIN:-}" ] && [ -x "$PYTHONBIN/python3" ]; then
+  PYTHON="$PYTHONBIN/python3"
+else
+  PYTHON="$(command -v python3 || command -v python)"
+fi
+"$PYTHON" -c 'import pandas, matplotlib' || {
+  echo "Error: $PYTHON needs pandas and matplotlib (module load $PY_MODULE)" >&2
+  exit 1
+}
+export MPLBACKEND=Agg   # no display needed to save figures
 
 TARGET="${1:-.}"
 mkdir -p "$TARGET"
@@ -60,10 +81,9 @@ write_script() {
   } > "$file"
 }
 
-# a tiny stand-in PNG (1x1 pixel); the exercise is about provenance, not plots
-write_png() {
-  echo 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==' \
-    | base64 --decode > "$1"
+# run an analysis script so its outputs (results CSV, figure3.png) are real
+run_script() {
+  "$PYTHON" "$1"
 }
 
 # --------------------------------------------------------------------------
@@ -80,9 +100,8 @@ mkdir messy_project
   write_script analysis_final_FIXED.py 20 'variants = variants[variants.DP > 10]' yes \
     '# plt.savefig("figure3.png")   # TODO regenerate fig 3?' results_jan_new.csv
 
-  write_png figure3.png
-  printf 'CHROM,POS,QUAL,DP\nchr1,13302,35.0,22\n' > results_jan.csv
-  printf 'CHROM,POS,QUAL,DP\nchr1,13302,35.0,22\n' > results_jan_new.csv
+  run_script analysis_final.py         # figure3.png + results_jan.csv
+  run_script analysis_final_FIXED.py   # results_jan_new.csv only
 
   cat > notes_old.txt <<'EOF'
 - fig 3 for paper: use the final script
@@ -125,8 +144,7 @@ mkdir tidy_project
   commit "2025-02-02T14:32:00" "Lower QUAL threshold to 30 after QC meeting"
 
   write_script analysis.py 20 "" yes 'plt.savefig("figure3.png")' results_jan.csv
-  write_png figure3.png
-  printf 'CHROM,POS,QUAL,DP\nchr1,13302,35.0,22\n' > results_jan.csv
+  run_script analysis.py
   git add analysis.py figure3.png results_jan.csv
   commit "2025-03-14T10:02:00" "Make figure 3 for the paper: QUAL > 20, log scale"
   GIT_COMMITTER_DATE="2025-03-14T10:05:00" \
@@ -134,7 +152,7 @@ mkdir tidy_project
     tag -a v1.0-submitted -m "Code behind the submitted manuscript"
 
   write_script analysis.py 20 'variants = variants[variants.DP > 10]' yes "" results_jan_new.csv
-  printf 'CHROM,POS,QUAL,DP\nchr1,13302,35.0,22\n' > results_jan_new.csv
+  run_script analysis.py
   git add analysis.py results_jan_new.csv
   commit "2025-04-28T11:20:00" "Add depth filter (DP > 10) for the revision"
 )

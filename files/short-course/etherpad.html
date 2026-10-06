@@ -1,0 +1,59 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* Etherpad helpers. The pad address comes from `etherpad-url` in the deck's
+   YAML (rendered into .etherpad-url). Reuses the .wooclap-* classes in
+   git-theme.scss for the QR code, badges and live slides. */
+(function () {
+  var el = document.querySelector(".reveal .etherpad-url");
+  var padUrl = el ? el.textContent.trim() : "";
+  var unset = !/^https?:\/\//.test(padUrl);
+  var embedUrl = padUrl + (padUrl.indexOf("?") < 0 ? "?" : "&") +
+    "showChat=false&showLineNumbers=false";
+
+  // join slide: QR code
+  document.querySelectorAll(".reveal .wooclap-qr").forEach(function (el) {
+    if (unset) {
+      el.innerHTML = '<span class="qr-missing">Set <code>etherpad-url</code> in the YAML header and re-render</span>';
+      return;
+    }
+    if (window.QRCode) {
+      new QRCode(el, { text: padUrl, width: 280, height: 280, colorDark: "#13294b",
+                       colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+    }
+  });
+
+  // live slides: iframe that only loads when its slide is first shown,
+  // then stays loaded so going back and forth keeps the scroll position
+  var frames = [];
+  document.querySelectorAll(".reveal .wooclap-embed").forEach(function (el) {
+    if (unset) {
+      el.innerHTML = '<span class="qr-missing">Set <code>etherpad-url</code> in the YAML header and re-render</span>';
+      return;
+    }
+    var f = document.createElement("iframe");
+    f.setAttribute("allow", "fullscreen; clipboard-write");
+    f.setAttribute("allowfullscreen", "");
+    f.title = "Etherpad";
+    el.appendChild(f);
+    var a = document.createElement("a");
+    a.href = padUrl; a.target = "_blank"; a.rel = "noopener";
+    a.className = "wooclap-open";
+    a.textContent = "Not loading? Open the Etherpad in a new window ↗";
+    el.appendChild(a);
+    frames.push(f);
+  });
+
+  function loadVisible(ev) {
+    var slide = ev && ev.currentSlide;
+    if (!slide) return;
+    slide.querySelectorAll(".wooclap-embed iframe").forEach(function (f) {
+      if (!f.getAttribute("src")) f.setAttribute("src", embedUrl);
+    });
+  }
+  if (frames.length && window.Reveal) {
+    Reveal.on("slidechanged", loadVisible);
+    Reveal.on("ready", loadVisible);
+    if (Reveal.isReady && Reveal.isReady()) loadVisible({ currentSlide: Reveal.getCurrentSlide() });
+  }
+})();
+</script>
