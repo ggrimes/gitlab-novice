@@ -812,7 +812,7 @@ Creates two files:
 - `~/.ssh/id_ed25519`: **private** key. Never share it!
 - `~/.ssh/id_ed25519.pub`: **public** key. Paste this into GitLab.
 
-[User settings > SSH Keys > Add new key]{.menu}
+[User icon > Preferences > Access > SSH Keys > Add new key]{.menu}
 
 ::: {.muted .small}
 See the University's *SSH keys best practice guide* for details.
