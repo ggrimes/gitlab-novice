@@ -1,7 +1,7 @@
 # Instructor answers: Introduction to Git and GitLab (half-day)
 
 Answers and background for **every question** in `git-short.qmd`: the
-exercises, the Wooclap polls, the questions on section slides, and the recall
+exercises, the Etherpad questions, the questions on section slides, and the recall
 questions in the speaker notes, in the order they appear. For helpers and
 co-instructors: read before the day; keep open on the day.
 Error messages and fixes are in `helper-sheet.md`.
@@ -9,14 +9,14 @@ Error messages and fixes are in `helper-sheet.md`.
 **Contents**
 
 1. The two practice folders
-2. Opening (09:00–09:50): hook, polls W1–W6, detective task, first commit
+2. Opening (09:00–09:50): hook, questions Q1–Q6, detective task, first commit
 3. Recording changes (09:50–10:30)
 4. GitLab (10:45–11:30): SSH prompt, sync exercise
-5. History & undo (11:30–12:00): undo exercise, W7
+5. History & undo (11:30–12:00): undo exercise, Q7
 6. Ignoring things (12:30–12:51)
 7. Tags (12:52–13:13): tag your project, Answer Reviewer 2
-8. Wrap-up and bonus (13:13–14:00): the whole picture, bonus round, W8–W10, follow-up
-9. Questions learners often ask (for W10 and during the day)
+8. Wrap-up and bonus (13:13–14:00): the whole picture, bonus round, Q8–Q10, follow-up
+9. Questions learners often ask (for Q10 and during the day)
 
 ---
 
@@ -73,13 +73,13 @@ The honest answer for most people is *"not with certainty"*, which is what the
 detective task makes them feel. Say: *"Hold that thought. By 2 o'clock you'll
 answer it in about 30 seconds."* It's answered at the "Answer Reviewer 2" slide.
 
-### W1: How comfortable are you with the command line? (rating 1–5)
+### Q1: How comfortable are you with the command line? (rating 1–5)
 No right answer. **What to expect:** a spread, often centred on 2–3.
 **How to respond:** lots of 1s and 2s means slowing down on the terminal
 toolkit slide, demoing every command, and sending helpers to anyone who looks
-unsure. Note the average: it's compared with W8 at the end.
+unsure. Note the average: it's compared with Q8 at the end.
 
-### W2: How do you keep track of versions of your work now? (multi-select)
+### Q2: How do you keep track of versions of your work now? (multi-select)
 No right answer. **What to expect:** "renamed copies" is usually the biggest
 bar, then Dropbox/OneDrive history; few pick Git.
 **How to respond:** without judgement. *"That's what I did for years. Let's
@@ -109,20 +109,20 @@ There is **no provable answer**: that's the lesson.
 Most pairs end up torn between `analysis_final.py` and `analysis_final_FIXED.py`.
 Both are reasonable; neither can be proved.
 
-### W3: What made that hard? (word cloud)
+### Q3: What made that hard? (Etherpad, a few words)
 No right answer. **What to expect:** *dates, names, notes, final, guessing,
 versions, no history, which one?, confusing, can't prove.*
 **How to respond:** read 4–5 words out, then map them onto the next slide
 ("So we need a tool that…"): each problem has a Git answer: commits, `git log`,
 `git diff`, commit messages, tags. Use the room's own words where they differ.
 
-### W4: What's one thing you want to be able to do with Git by 2 pm? (open)
+### Q4: What's one thing you want to be able to do with Git by 2 pm? (open)
 No right answer. **What to expect:** *"back up my thesis code"*, *"share code
 with my supervisor"*, *"stop having _final_v2 files"*, *"use GitLab for my
 pipeline"*, *"collaborate with my lab"*.
 **How to respond:** skim at the 10:30 break and reuse their examples all day.
 Goals about collaborating or branches aren't covered today: point those people
-to the lesson website and the bonus round. W9 asks whether they got there.
+to the lesson website and the bonus round. Q9 asks whether they got there.
 
 ### "Any questions about the three boxes?"
 The questions people actually ask, with short answers:
@@ -136,11 +136,11 @@ The questions people actually ask, with short answers:
 - **"Where is the repository?"** In the hidden `.git` folder inside your project.
   Delete `.git` and you delete the history (but not your files).
 
-### W5 and W6: what's in the commit? (`git add a.py`, then `git commit`)
-**B: only the changes to `a.py`.** A commit contains exactly what's staged;
+### Q5 and Q6: what's in the commit? (`git add a.py`, then `git commit`; finger vote 1–4)
+**2: only the changes to `a.py`.** A commit contains exactly what's staged;
 `b.py` is still modified in the working directory.
-What the wrong answers mean: **A** "a commit saves everything" (staging not
-understood) · **C** "Git is all or nothing" · **D** confused about what `add` does.
+What the wrong answers mean: **1** "a commit saves everything" (staging not
+understood) · **3** "Git is all or nothing" · **4** confused about what `add` does.
 **What to expect:** vote 2 (after discussion) usually has more correct answers
 than vote 1. Point out the shift.
 
@@ -238,7 +238,7 @@ git push
 Check: `git log --oneline` shows both *Add silly line* and *Revert "Add silly line"*.
 Amending **after** pushing leads to a rejected push: the golden rule in action.
 
-### W7: what does `git diff HEAD` show?
+### Q7: what does `git diff HEAD` show?
 **c) working directory ↔ last commit**: everything changed since the last
 commit, staged or not.
 (a = plain `git diff` · b = `git diff --staged` · d = `git diff <A> <B>`)
@@ -368,17 +368,17 @@ git restore README.md                 # undo, or: git add + git commit to keep i
 ```
 Nothing is lost either way: the tag still points at the old version.
 
-### W8: How comfortable are you with the command line now? (rating 1–5)
+### Q8: How comfortable are you with the command line now? (rating 1–5)
 No right answer. **What to expect:** a shift up of about one point compared
-with W1. Show the two side by side. If it hasn't moved, ask (kindly) what made
+with Q1. Show the two side by side. If it hasn't moved, ask (kindly) what made
 it hard, and note it for next time.
 
-### W9: Your goal from this morning (W4): can you do it now? (Yes / Partly / Not yet)
+### Q9: Your goal from this morning (Q4): can you do it now? (Yes / Partly / Not yet)
 No right answer. **How to respond:** to "Partly" and "Not yet": *"Come and talk
 to me after, or email me: let's get you there."* Collaboration and branching
 goals are expected to be "Not yet": point to the lesson website.
 
-### W10: What's still confusing? (open, anonymous)
+### Q10: What's still confusing? (open, anonymous)
 Answer one or two quick ones live; the rest go in the follow-up email. The most
 likely ones are in "Questions learners often ask" at the end of this file.
 
@@ -391,7 +391,7 @@ personal reply.
 
 ## Questions learners often ask
 
-Short answers for W10 and for questions during the day.
+Short answers for Q10 and for questions during the day.
 
 **What's the difference between Git, GitLab and GitHub?**
 Git is the tool on your computer that records versions. GitLab and GitHub are
