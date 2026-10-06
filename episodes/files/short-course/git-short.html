@@ -2344,7 +2344,12 @@ display:block!important;
 <li><code>id_ed25519.pub</code>: <strong>public</strong> key. Copy the one line that <code>cat</code> shows</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<p>In GitLab: <span class="menu">User settings &gt; SSH Keys &gt; Add new key</span>, paste, <strong>Add key</strong>.</p>
+<p>In GitLab:</p>
+<ol type="1">
+<li><span class="menu">User icon &gt; Preferences</span></li>
+<li><span class="menu">Access &gt; SSH Keys</span></li>
+<li><span class="menu">Add new key</span>, paste, <strong>Add key</strong></li>
+</ol>
 <p>Then test it:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@git.ecdf.ed.ac.uk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>First time it asks <em>“continue connecting?”</em>: type <strong>yes</strong>. Success = <em>“Welcome to GitLab”</em>.</p>
@@ -2526,6 +2531,57 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+<section id="fixing-a-conflict" class="slide level2">
+<h2>Fixing a conflict</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><code>git pull</code> stops with:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource output number-lines code-with-copy"><code class="sourceCode"><span id="cb32-1"><a href="#cb32-1"></a>CONFLICT (content): Merge conflict in README.md</span>
+<span id="cb32-2"><a href="#cb32-2"></a>Automatic merge failed; fix conflicts and then commit the result.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>nano README.md</code> shows both versions:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource output number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a href="#cb33-1"></a># My eddie Python project</span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span id="cb33-4"><a href="#cb33-4"></a>To run Python on Eddie, first run:</span>
+<span id="cb33-5"><a href="#cb33-5"></a>=======</span>
+<span id="cb33-6"><a href="#cb33-6"></a>To run Python on eddie you need:</span>
+<span id="cb33-7"><a href="#cb33-7"></a>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 4f2c1a9 (Reword README)</span>
+<span id="cb33-8"><a href="#cb33-8"></a>module load igmm/apps/python/3.12.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:45%;">
+<p><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> · start of <strong>your</strong> version<br>
+<code>=======</code> · divider<br>
+<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 4f2c1a9</code> · end of the <strong>incoming</strong> version (from GitLab)</p>
+<p><strong>To fix it:</strong></p>
+<ol type="1">
+<li>Keep yours, theirs, or a mix</li>
+<li><strong>Delete all three marker lines</strong></li>
+<li><code>git add README.md</code></li>
+<li><code>git commit</code> · nano opens: save and exit</li>
+<li><code>git push</code></li>
+</ol>
+<div class="muted">
+<p>Back out instead: <code>git merge --abort</code></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p><strong>⏱ 11:29 · 2 min, concept only (runs slightly into History &amp; Undo)</strong></p>
+<p><strong>Say:</strong> <em>“Git has put both versions in the file and marked them. Everything between the arrows and the equals signs is yours; everything after the equals signs is what came from GitLab. You decide what the line should say.”</em></p>
+<p><strong>Do:</strong> point at each marker in turn. Then show what the fixed file looks like: one line, no markers.</p>
+<p><strong>Watch for:</strong> - markers left in the file and committed anyway: Git doesn’t check. <code>grep -n &#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&#39; README.md</code> before <code>git add</code> finds any leftovers. - <code>git status</code> during a conflict says <em>“both modified: README.md”</em> and <em>“You have unmerged paths”</em>: that’s normal until you <code>add</code> and <code>commit</code>.</p>
+<p><strong>Same in the branching bonus:</strong> <code>git merge &lt;branch&gt;</code> gives exactly this when both branches changed the same line.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section></section>
 <section>
 <section id="history-undo" class="title-slide slide level1 section-slide center" data-background-color="#13294b">
@@ -2553,10 +2609,10 @@ display:block!important;
 <section id="looking-back" class="slide level2">
 <h2>Looking back</h2>
 <p>First, back to the main copy and catch up: <code>cd ~/MyProject</code> then <code>git pull</code></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>       <span class="co"># history, merges drawn as a graph</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">git</span> log <span class="at">-p</span> README.md            <span class="co"># every change ever made to one file</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">git</span> show HEAD~2:README.md       <span class="co"># a file as it was two commits ago</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="fu">git</span> diff HEAD~2 HEAD README.md  <span class="co"># what changed since then</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>       <span class="co"># history, merges drawn as a graph</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">git</span> log <span class="at">-p</span> README.md            <span class="co"># every change ever made to one file</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="fu">git</span> show HEAD~2:README.md       <span class="co"># a file as it was two commits ago</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="fu">git</span> diff HEAD~2 HEAD README.md  <span class="co"># what changed since then</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="newcmds">
 <p><code>--graph</code> · draw the merge from the sync exercise · <code>-p</code> · show each commit’s changes, not just its message<br>
 <code>git show &lt;commit&gt;:&lt;file&gt;</code> · print an old version of a file (nothing is changed) · <code>HEAD~2</code> = two commits before now</p>
@@ -2644,10 +2700,10 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;Add silly line&quot;</span>   <span class="co"># before pushing: rewrite is fine</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">git</span> push</span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="fu">git</span> revert HEAD <span class="at">--no-edit</span>                <span class="co"># after pushing: add an undo commit</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;Add silly line&quot;</span>   <span class="co"># before pushing: rewrite is fine</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">git</span> push</span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="fu">git</span> revert HEAD <span class="at">--no-edit</span>                <span class="co"># after pushing: add an undo commit</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>--no-edit</code> = use Git’s automatic message (<em>Revert “Add silly line”</em>) instead of opening <code>nano</code>.</p>
 </div>
 <aside class="notes">
@@ -2756,7 +2812,7 @@ display:block!important;
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>A file called <strong><code>.gitignore</code></strong> lists what Git should pretend not to see:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">nano</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">nano</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code># a whole folder
 results/
 # any file ending in .dat
@@ -2766,8 +2822,8 @@ results/
 </div><div class="column" style="width:50%;">
 <p><code>*</code> matches anything · a trailing <code>/</code> means a folder · lines starting with <code>#</code> are comments (only at the <strong>start</strong> of a line).</p>
 <p>Commit <code>.gitignore</code> like any other file, so it’s backed up and shared:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore outputs and temporary files&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore outputs and temporary files&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <aside class="notes">
@@ -2840,12 +2896,12 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">echo</span> <span class="st">&quot;my password&quot;</span> <span class="op">&gt;</span> secret.txt</span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="bu">echo</span> <span class="st">&quot;secret.txt&quot;</span> <span class="op">&gt;&gt;</span> .gitignore    <span class="co"># &gt;&gt; adds a line; &gt; would wipe the file</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">git</span> status        <span class="co"># secret.txt no longer appears</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb38-5"><a href="#cb38-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore secret.txt&quot;</span></span>
-<span id="cb38-6"><a href="#cb38-6"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="bu">echo</span> <span class="st">&quot;my password&quot;</span> <span class="op">&gt;</span> secret.txt</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="bu">echo</span> <span class="st">&quot;secret.txt&quot;</span> <span class="op">&gt;&gt;</span> .gitignore    <span class="co"># &gt;&gt; adds a line; &gt; would wipe the file</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="fu">git</span> status        <span class="co"># secret.txt no longer appears</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore secret.txt&quot;</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p><strong>⏱ 12:44 · 7 min</strong></p>
@@ -2898,10 +2954,10 @@ display:block!important;
 <li>the end of a milestone</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Version used for the workshop report&quot;</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">git</span> tag</span>
-<span id="cb39-3"><a href="#cb39-3"></a><span class="fu">git</span> show v1.0</span>
-<span id="cb39-4"><a href="#cb39-4"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Version used for the workshop report&quot;</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">git</span> tag</span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">git</span> show v1.0</span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="newcmds">
 <p><code>git tag -a &lt;name&gt; -m &quot;…&quot;</code> · label the current commit; <code>-a</code> stores who, when and why<br>
 <code>git tag</code> · list tags · <code>git show &lt;tag&gt;</code> · see the tagged commit<br>
@@ -2937,8 +2993,8 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;First tagged version&quot;</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;First tagged version&quot;</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>GitLab offers the whole project <strong>as it was at that tag</strong> (zip / tar.gz): exactly what a reviewer needs.</p>
 </div>
 <aside class="notes">
@@ -2962,8 +3018,8 @@ display:block!important;
 <h2>Answer Reviewer 2</h2>
 <div class="task" data-time="6">
 <p>The detective’s project again, but this time someone used Git:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">cp</span> <span class="at">-r</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/tidy_project ~/</span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="bu">cd</span> ~/tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">cp</span> <span class="at">-r</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/tidy_project ~/</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="bu">cd</span> ~/tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Which commit made <code>figure3.png</code>?</li>
 <li>What changed compared with the version before it?</li>
@@ -2976,9 +3032,9 @@ display:block!important;
 </div>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> figure3.png                          <span class="co"># 1.</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                            <span class="co"># 3.</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> figure3.png                          <span class="co"># 1.</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                            <span class="co"># 3.</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>QUAL &gt; 30</code> → <code>QUAL &gt; 20</code>, log scale added, <code>savefig(&quot;figure3.png&quot;)</code>. <strong>Provable</strong>, with dates and a message.</p>
 </div>
 <aside class="notes">
@@ -3164,11 +3220,13 @@ Open <code>README.md</code> on GitLab: try <strong>History</strong> and <strong>
 Keep it (<code>add</code> + <code>commit</code>) or undo it (<code>git restore README.md</code>): your call.</p>
 </div>
 </div>
+<p><a href="#/bonus-branches" class="small muted">Ahead of time? Bonus: branches →</a></p>
 <aside class="notes">
 <p><strong>⏱ 13:20 · FLEXIBLE: as long as there’s time (stop at 13:43)</strong></p>
 <p><strong>Say:</strong> <em>“Pick one. If you have a real project, do the starred one: putting it under Git today, with help in the room, is the best predictor that you’ll keep using Git.”</em></p>
 <p><strong>Do:</strong> walk the room. Prioritise people doing their own project: check their <code>.gitignore</code> and <code>git status</code> <strong>before</strong> they commit, so no big data or secrets go in.</p>
 <p><strong>Running late?</strong> Skip straight to “Before you go” at 13:45 and say: <em>“The bonus round is on the website. Try the starred one this week.”</em></p>
+<p><strong>Room well ahead?</strong> Teach the branching bonus instead (about 20 min): click the <em>Bonus: branches</em> link at the bottom of this slide.</p>
 <p><em>Why:</em> doing it on real work, with help, makes transfer much more likely; a concrete plan (“when I next…, I will commit”) helps follow-through (Gollwitzer).</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3187,9 +3245,9 @@ display:block!important;
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Detective, level 2</strong></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="bu">cd</span> ~/tidy_project</span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">git</span> log <span class="at">-S</span> <span class="st">&quot;DP &gt; 10&quot;</span> <span class="at">--oneline</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="fu">git</span> show HEAD~3:analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">cd</span> ~/tidy_project</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">git</span> log <span class="at">-S</span> <span class="st">&quot;DP &gt; 10&quot;</span> <span class="at">--oneline</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="fu">git</span> show HEAD~3:analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>“Add depth filter (DP &gt; 10) for the revision”</em>, April 2025, by Alex Researcher. The first version used <code>QUAL &gt; 50</code>.</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Your own project: check before you push</strong></p>
@@ -3313,13 +3371,205 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section></section>
-<section>
 <section id="thank-you" class="title-slide slide level1 section-slide center" data-background-color="#13294b">
 <h1>Thank you!</h1>
 <p><span class="ep-q">Questions &amp; feedback welcome · Graeme.Grimes@ed.ac.uk</span></p>
 <aside class="notes">
 <p><strong>⏱ 13:56 · until 14:00</strong></p>
 <p><strong>Do:</strong> thank the helpers by name. Share the feedback form if there is one. Stay around for questions. Ask people to take their stickies off their laptops.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+
+<section>
+<section id="bonus-branches" class="title-slide slide level1 section-slide center" data-background-color="#0f8b8d" data-visibility="uncounted">
+<h1>Bonus: Branches</h1>
+<div class="journey">
+<p><span class="stop done"><strong>Why Git</strong></span> <span class="stop done"><strong>First commit</strong></span> <span class="stop done"><strong>Recording</strong></span> <span class="stop done"><strong>GitLab</strong></span> <span class="stop done"><strong>History</strong></span> <span class="stop done"><strong>Ignoring</strong></span> <span class="stop done"><strong>Tags</strong></span> <span class="stop here"><strong>Bonus</strong><br>branches</span></p>
+</div>
+<p><span class="ep-q">How do I try out an idea without breaking the version that works?</span></p>
+<aside class="notes">
+<p><strong>⏱ ~13:20 · up to 20 min · ONLY IF THE ROOM IS AHEAD</strong></p>
+<p><strong>When:</strong> instead of the bonus round, if most people finished the Tags exercise by about 13:10. Not in the slide count: reach it from the link on the bonus round slide, or the menu (M).</p>
+<p><strong>Stop by 13:43, whatever happens:</strong> the last slide has a link back to <em>Before you go</em>.</p>
+<p><strong>Say:</strong> <em>“You’ve just met a label that never moves: a tag. A branch is a label that <strong>does</strong> move.”</em></p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-branch-is-a-label-that-moves" class="slide level2" data-visibility="uncounted">
+<h2>A branch is a label that moves</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Tag</strong> → fixed on one commit, forever</p>
+<p><strong>Branch</strong> → moves forward each time you commit</p>
+<p>You’ve been on one all day: <code>main</code>.</p>
+<p><br></p>
+<p>Use a branch to:</p>
+<ul>
+<li><strong>try an idea</strong> without breaking the version that works</li>
+<li>keep an <strong>experiment</strong> separate until it’s worth keeping</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzQwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM0MCIgZm9udC1mYW1pbHk9IkludGVyLCAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiI+CjxsaW5lIHgxPSI5MCIgeTE9IjkwIiB4Mj0iMzAwIiB5Mj0iOTAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMwMCw5MCBDMzYwLjAsOTAgMzYwLjAsMjUwIDQyMCwyNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iOTAiIGN5PSI5MCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHRleHQgeD0iOTAiIHk9IjU3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjMWYyOTMzIj5pbml0aWFsIGNvbW1pdDwvdGV4dD4KPGNpcmNsZSBjeD0iMzAwIiBjeT0iOTAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjMwMCIgeT0iNTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiMxZjI5MzMiPkFkZCBleGFtcGxlIGRhdGFzZXQ8L3RleHQ+CjxjaXJjbGUgY3g9IjQyMCIgY3k9IjI1MCIgcj0iMTciIGZpbGw9IiNlYzZiNTYiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHRleHQgeD0iNDIwIiB5PSIyOTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiMxZjI5MzMiPkFkZCBzdW1tYXJ5LnB5PC90ZXh0Pgo8bGluZSB4MT0iMzIwIiB5MT0iOTAiIHgyPSIzMzQiIHkyPSI5MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzMzQiIHk9IjcwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI0MzAuMCIgeT0iOTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5tYWluICDihpAgSEVBRDwvdGV4dD4KPGxpbmUgeDE9IjQ0MCIgeTE9IjI1MCIgeDI9IjQ1NCIgeTI9IjI1MCIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI0NTQiIHk9IjIzMCIgd2lkdGg9IjY2IiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiNlYzZiNTYiLz48dGV4dCB4PSI0ODcuMCIgeT0iMjU4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+ZGV2PC90ZXh0Pgo8L3N2Zz4K" class="diagram" alt="Commit graph: main has &#39;initial commit&#39; and &#39;Add example dataset&#39;; dev branches off and adds &#39;Add summary.py&#39;. HEAD points at main."></p>
+<div class="small muted">
+<p>Creating a branch is instant: nothing is copied.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p><strong>⏱ 2 min</strong></p>
+<p><strong>Say:</strong> <em>“Remember <code>On branch main</code> in <code>git status</code>? That’s been there since your first commit. <code>main</code> is a branch: a label that moves forward every time you commit.”</em></p>
+<p><strong>Analogy:</strong> a sticky note on a page of the lab book that you move forward as you write. A tag is a note glued down.</p>
+<p><strong>Note:</strong> the diagram is a simplified history, not their MyProject. HEAD = where you are now.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="create-switch-commit" class="slide level2" data-visibility="uncounted">
+<h2>Create, switch, commit</h2>
+<div class="sourceCode" id="cb46" data-code-line-numbers="|1|2|3-5|6-7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">git</span> switch <span class="at">-c</span> dev         <span class="co"># create a branch called dev, and move to it</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="fu">git</span> branch                <span class="co"># list branches: * marks where you are</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a><span class="fu">nano</span> Src/summary.py</span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="fu">git</span> add Src/summary.py</span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add summary.py&quot;</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a><span class="fu">git</span> switch main           <span class="co"># back to main...</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a><span class="fu">ls</span> Src                    <span class="co"># ...and summary.py has gone!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>It isn’t deleted: it lives on <code>dev</code>. <code>git switch dev</code> and it’s back.</p>
+</div>
+<div class="newcmds hint">
+<p><code>git switch -c &lt;name&gt;</code> · create a branch and move to it · <code>git switch &lt;name&gt;</code> · move to an existing branch · <code>git branch</code> · list them</p>
+</div>
+<aside class="notes">
+<p><strong>⏱ 4 min · live demo</strong></p>
+<p><strong>Do:</strong> type it live in your own MyProject. Pause on <code>ls Src</code> and let the room react before clicking the fragment.</p>
+<p><strong>Watch for:</strong> older Git without <code>git switch</code> (before 2.23): use <code>git checkout -b dev</code> and <code>git checkout main</code>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="merge-it-back" class="slide level2" data-visibility="uncounted">
+<h2>Merge it back</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb47" data-code-line-numbers="|1|2|3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">git</span> diff main dev</span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">git</span> merge dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="small muted">
+<p>Switch to the branch you merge <strong>into</strong> · preview what <code>dev</code> brings · merge</p>
+</div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource output number-lines code-with-copy"><code class="sourceCode"><span id="cb48-1"><a href="#cb48-1"></a>Updating 370eb9d..83e878e</span>
+<span id="cb48-2"><a href="#cb48-2"></a>Fast-forward</span>
+<span id="cb48-3"><a href="#cb48-3"></a> Src/summary.py | 8 ++++++++</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Fast-forward</strong>: <code>main</code> had no new commits, so Git just moves the <code>main</code> label up to <code>dev</code>.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzUwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYWgiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI1MDAiIHkxPSIyMCIgeDI9IjUwMCIgeTI9IjMzMCIgc3Ryb2tlPSIjZDlkZWUzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMjAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPkZhc3QtZm9yd2FyZDwvdGV4dD4KPHRleHQgeD0iMjAiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPm1haW4gaGFzIG5vIG5ldyBjb21taXRzIOKGkiBqdXN0IG1vdmUgdGhlIGxhYmVsPC90ZXh0Pgo8bGluZSB4MT0iNjAiIHkxPSIyMDAiIHgyPSI0MjAiIHkyPSIyMDAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNjAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIxODAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjZWM2YjU2IiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI0MjAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjZWM2YjU2IiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNSIvPgo8dGV4dCB4PSIxODAiIHk9IjI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+b2xkIG1haW48L3RleHQ+CjxwYXRoIGQ9Ik0xODAsMTI1IFEzMDAsODUgNDAwLDEyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjYgNiIgbWFya2VyLWVuZD0idXJsKCNhaCkiLz4KPGxpbmUgeDE9IjQyMCIgeTE9IjE1OCIgeDI9IjQyMCIgeTI9IjE4MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODAuMCIgeT0iMTE4IiB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzEzMjk0YiIvPjx0ZXh0IHg9IjQyMCIgeT0iMTQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbjwvdGV4dD4KPHRleHQgeD0iNTQwIiB5PSIzNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5NZXJnZSBjb21taXQ8L3RleHQ+Cjx0ZXh0IHg9IjU0MCIgeT0iNjgiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+Ym90aCBicmFuY2hlcyBtb3ZlZCDihpIgR2l0IGpvaW5zIHRoZW08L3RleHQ+CjxsaW5lIHgxPSI1ODAiIHkxPSIyMDAiIHgyPSI5NDAiIHkyPSIyMDAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTcwMCwyMDAgQzc0NS4wLDIwMCA3NDUuMCwyOTAgNzkwLDI5MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iNzkwIiB5MT0iMjkwIiB4Mj0iODUwIiB5Mj0iMjkwIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik04NTAsMjkwIEM4OTUuMCwyOTAgODk1LjAsMjAwIDk0MCwyMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNTgwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iNzAwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iODIwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iODIwIiBjeT0iMjkwIiByPSIxNyIgZmlsbD0iI2VjNmI1NiIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iOTQwIiBjeT0iMjAwIiByPSIyMiIgZmlsbD0iIzBmOGI4ZCIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjUiLz4KPHRleHQgeD0iODIwIiB5PSIzMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiPmRldjwvdGV4dD4KPHRleHQgeD0iOTg1IiB5PSIzMzgiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiPm1lcmdlIGNvbW1pdDwvdGV4dD4KPGxpbmUgeDE9Ijk0MCIgeTE9IjE1OCIgeDI9Ijk0MCIgeTI9IjE4MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI5MDAuMCIgeT0iMTE4IiB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzEzMjk0YiIvPjx0ZXh0IHg9Ijk0MCIgeT0iMTQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" alt="Left: fast-forward, where main simply moves along to the tip of dev. Right: both branches have new commits, so Git creates a merge commit joining them."></p>
+<div class="small muted">
+<p>Both branches moved? Git makes a <strong>merge commit</strong>, just like your <code>git pull</code> in the sync exercise. Same line changed on both = a <strong>conflict</strong>, fixed the same way.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p><strong>⏱ 3 min</strong></p>
+<p><strong>Say:</strong> <em>“Always switch to the branch you want the changes to land on, then merge the other one into it.”</em></p>
+<p><strong>Callback:</strong> <em>“You’ve already done a merge today: <code>git pull</code> in the sync exercise merged GitLab’s main into yours. That’s why nano opened with ‘Merge branch…’.”</em></p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="your-turn-an-idea-on-a-branch" class="slide level2 exercise" data-visibility="uncounted">
+<h2>Your turn: an idea on a branch</h2>
+<div class="task" data-time="8">
+<p>In <code>~/MyProject</code>:</p>
+<ol type="1">
+<li>Create and switch to a branch called <code>columns</code></li>
+<li>Add <code>print(variants.columns)</code> to the end of <code>Src/hello.py</code>, then add and commit</li>
+<li>Switch to <code>main</code> and <code>cat Src/hello.py</code>: is your line there?</li>
+<li>Merge <code>columns</code> into <code>main</code>, look at <code>git log --oneline --graph</code>, delete the branch, then <code>git push</code></li>
+</ol>
+</div>
+<div class="answer fragment">
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">git</span> switch <span class="at">-c</span> columns</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">nano</span> Src/hello.py</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="fu">git</span> add Src/hello.py <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Print the column names&quot;</span></span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="fu">git</span> switch main <span class="kw">&amp;&amp;</span> <span class="fu">cat</span> Src/hello.py     <span class="co"># not there: it&#39;s on columns</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="fu">git</span> merge columns                       <span class="co"># fast-forward</span></span>
+<span id="cb49-6"><a href="#cb49-6"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb49-7"><a href="#cb49-7"></a><span class="fu">git</span> branch <span class="at">-d</span> columns <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p><strong>⏱ 8 min</strong></p>
+<p><strong>Watch for:</strong> - <em>“Your local changes … would be overwritten”</em> when switching: they have uncommitted edits. Commit them, or <code>git stash</code>. - <code>git branch -d</code> says <em>“not fully merged”</em>: they haven’t merged yet. Merge first; don’t reach for <code>-D</code>. - Lost track of where they are: <code>git status</code> (first line) or <code>git branch</code>.</p>
+<p><strong>Fast finishers:</strong> before merging, switch to <code>main</code> and commit a change to <code>README.md</code> too. The merge is then a real merge commit (nano opens for the message), and <code>git log --oneline --graph</code> draws the fork and the join.</p>
+<p><strong>Full answer:</strong> <code>instructor-answers.md</code>, section “Bonus: branches”.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="share-a-branch-merge-requests" class="slide level2" data-visibility="uncounted">
+<h2>Share a branch: merge requests</h2>
+<div class="sourceCode" id="cb50" data-code-line-numbers="|1|2-3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin dev            <span class="co"># publish the branch to GitLab</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="fu">git</span> branch <span class="at">-d</span> dev                 <span class="co"># once it&#39;s merged: delete it here...</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">git</span> push origin <span class="at">--delete</span> dev      <span class="co"># ...and on GitLab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>On GitLab, a <strong>merge request</strong> lets colleagues <strong>review</strong> a branch (see the diff, comment on lines) before it goes into <code>main</code>. On a shared project, that’s how most teams work: nobody pushes straight to <code>main</code>.</p>
+<div class="small muted">
+<p>After merging on GitLab: <code>git switch main</code> and <code>git pull</code> to bring the merge down to Eddie.</p>
+</div>
+<p><a href="#/before-you-go" class="small">↩︎ Back to <em>Before you go</em></a></p>
+<aside class="notes">
+<p><strong>⏱ 3 min · demo if there’s time</strong></p>
+<p><strong>Do:</strong> push a branch from your own MyProject. GitLab offers <strong>Create merge request</strong> at the top of the project page: open it, show the <strong>Changes</strong> tab and the comment box, then <strong>Merge</strong>. Then <code>git pull</code> on Eddie.</p>
+<p><strong>Then:</strong> click the link back to <em>Before you go</em> (13:45 sharp).</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -3519,6 +3769,10 @@ display:block!important;
 <tr class="odd">
 <td style="text-align: left;"><em>“CONFLICT”</em></td>
 <td style="text-align: left;">Edit the file, delete the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> <code>=======</code> <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> lines, then <code>add</code>, <code>commit</code>, <code>push</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>“Your local changes … would be overwritten”</em> (switching branch)</td>
+<td style="text-align: left;">Commit your changes first, or <code>git stash</code>, then switch</td>
 </tr>
 </tbody>
 </table>
