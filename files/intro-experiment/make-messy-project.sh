@@ -3,8 +3,11 @@
 #
 #   messy_project/  the "before Git" folder: renamed copies, misleading
 #                   notes, and timestamps that no longer line up
-#   tidy_project/   the same history as a Git repository, used at the end
-#                   of the day to answer the same question in seconds
+#   tidy_project/   the same history as a Git repository, laid out as in
+#                   Good Enough Practices (README, data/, src/, results/),
+#                   used at the end of the day to answer the same question
+#                   in seconds. Learners clone it from GitLab
+#                   (igmmbioinformatics/tidy_project).
 #
 # Usage:  bash make-messy-project.sh [target-dir]     (default: current dir)
 # Put the result somewhere learners can copy from, e.g. the workshop_data
@@ -58,16 +61,17 @@ EOF
 
 # analysis script, parameterised by version
 # $1 = file, $2 = QUAL threshold, $3 = extra filter line (or ""),
-# $4 = log scale (yes/no), $5 = figure line (or ""), $6 = results file
+# $4 = log scale (yes/no), $5 = figure line (or ""), $6 = results file,
+# $7 = input data file (default data.csv)
 write_script() {
-  local file=$1 qual=$2 extra=$3 logscale=$4 fig=$5 results=$6
+  local file=$1 qual=$2 extra=$3 logscale=$4 fig=$5 results=$6 data=${7:-data.csv}
   {
     echo '#!/usr/bin/env python'
     echo '"""Filter variants by quality and summarise them."""'
     echo 'import pandas as pd'
     echo 'import matplotlib.pyplot as plt'
     echo ''
-    echo 'variants = pd.read_csv("data.csv")'
+    echo "variants = pd.read_csv(\"$data\")"
     echo "variants = variants[variants.QUAL > $qual]"
     if [ -n "$extra" ]; then echo "$extra"; fi
     echo ''
@@ -135,26 +139,51 @@ mkdir tidy_project
       commit -q -m "$2"
   }
 
-  write_data data.csv
-  write_script analysis.py 50 "" no "" results.csv
-  git add data.csv analysis.py
+  # Good Enough Practices layout: README, requirements.txt, data/, src/, results/
+  # (run from the project folder: python src/analysis.py)
+  DATA=data/variants.csv
+  RESULTS=results/filtered_variants.csv
+  FIG='plt.savefig("results/figure3.png")'
+  write_readme() {   # write_readme [extra line about the paper]
+    {
+      echo '# Variant quality analysis'
+      echo ''
+      echo 'Filters variant calls by quality (QUAL) and plots their distribution.'
+      echo ''
+      echo '- `data/variants.csv`: raw variant calls (do not edit)'
+      echo '- `src/analysis.py`: filters the variants and makes the plot'
+      echo '- `results/`: everything `src/analysis.py` writes'
+      echo ''
+      echo 'Run from this folder: `python src/analysis.py`'
+      echo '(needs the packages in `requirements.txt`).'
+      if [ -n "${1:-}" ]; then echo ''; echo "$1"; fi
+    } > README.md
+  }
+  mkdir data src results
+
+  write_data "$DATA"
+  printf 'pandas\nmatplotlib\n' > requirements.txt
+  write_readme
+  write_script src/analysis.py 50 "" no "" "$RESULTS" "$DATA"
+  git add README.md requirements.txt data src
   commit "2025-01-10T10:15:00" "Add first variant-quality analysis"
 
-  write_script analysis.py 30 "" no "" results.csv
-  git add analysis.py
+  write_script src/analysis.py 30 "" no "" "$RESULTS" "$DATA"
+  git add src/analysis.py
   commit "2025-02-02T14:32:00" "Lower QUAL threshold to 30 after QC meeting"
 
-  write_script analysis.py 20 "" yes 'plt.savefig("figure3.png")' results_jan.csv
-  run_script analysis.py
-  git add analysis.py figure3.png results_jan.csv
+  write_script src/analysis.py 20 "" yes "$FIG" "$RESULTS" "$DATA"
+  write_readme 'Figure 3 in the paper is `results/figure3.png`. The exact code behind the submitted manuscript is tagged `v1.0-submitted`.'
+  run_script src/analysis.py
+  git add README.md src/analysis.py results
   commit "2025-03-14T10:02:00" "Make figure 3 for the paper: QUAL > 20, log scale"
   GIT_COMMITTER_DATE="2025-03-14T10:05:00" \
     git -c user.name="Alex Researcher" -c user.email="alex@example.org" \
     tag -a v1.0-submitted -m "Code behind the submitted manuscript"
 
-  write_script analysis.py 20 'variants = variants[variants.DP > 10]' yes "" results_jan_new.csv
-  run_script analysis.py
-  git add analysis.py results_jan_new.csv
+  write_script src/analysis.py 20 'variants = variants[variants.DP > 10]' yes "" "$RESULTS" "$DATA"
+  run_script src/analysis.py
+  git add src/analysis.py results
   commit "2025-04-28T11:20:00" "Add depth filter (DP > 10) for the revision"
 )
 
