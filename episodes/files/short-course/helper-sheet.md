@@ -15,7 +15,7 @@ Thank you for helping! One page: how the day runs, how to help, and the fixes yo
 
 | Time | Section | Where people get stuck |
 |---|---|---|
-| 09:00 | Opening, detective task | long `cp` path (copy it from the website) |
+| 09:00 | Opening, detective task | long `cp -rp` path (copy it from the website); if Eddie's shared folder fails, the zip on the website |
 | 09:38 | Config + first commit | `git init` in the home folder; forgetting `git add` |
 | 09:50 | Recording changes | saving in nano (`Ctrl+O`, `Enter`, `Ctrl+X`); `q` to leave `git log` |
 | 10:30 | **Break** | |
@@ -24,9 +24,10 @@ Thank you for helping! One page: how the day runs, how to help, and the fixes yo
 | 11:30 | History & undo | `--amend` after pushing; revert opening nano |
 | 12:00 | **Lunch** | |
 | 12:30 | Ignoring | `>` instead of `>>` wipes `.gitignore` |
-| 12:52 | Tags, Answer Reviewer 2 | forgetting `git push origin v1.0` |
-| 13:20 | **Bonus round** | own projects: check `.gitignore` and `git status` **before** they commit: no data, no secrets |
-| 13:45 | Polls, wrap-up | |
+| 12:52 | Tags | forgetting `git push origin v1.0`; "tag already exists" if they typed along with the demo (`git tag -d v1.0`, then retag) |
+| 13:03 | Answer Reviewer 2 | `git clone` of `tidy_project` fails with "Permission denied (publickey)": use `git clone https://git.ecdf.ed.ac.uk/igmmbioinformatics/tidy_project.git`; cloning inside `MyProject`: `cd ~` first |
+| 13:20 | **Bonus round** (or the branching bonus if the room is ahead) | own projects: check `.gitignore` and `git status` **before** they commit: no data, no secrets |
+| 13:45 | Etherpad questions, wrap-up | |
 
 ## Fixes
 
