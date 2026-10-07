@@ -41,7 +41,7 @@ folder on Eddie with `cp -rp` (the `p` keeps the dates). If that isn't
 available, or on another system, it's also a zip on the lesson website:
 ```bash
 cd ~
-curl -LO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip
+curl -fLO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip
 unzip -q messy_project.zip && cd messy_project
 ```
 `tidy_project` is cloned from GitLab (see below), so it works anywhere.
