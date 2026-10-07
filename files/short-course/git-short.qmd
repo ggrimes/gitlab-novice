@@ -212,7 +212,7 @@ Log in to Eddie and get an interactive node: `ssh <UUN>@eddie.ecdf.ed.ac.uk`, th
 In pairs. Copy a colleague's project to your home folder and look around:
 
 ```bash
-cp -r {{< meta workshop-data >}}/messy_project ~/
+cp -rp {{< meta workshop-data >}}/messy_project ~/
 cd ~/messy_project
 ls -l
 cat notes_old.txt
@@ -236,7 +236,7 @@ Hint: `diff analysis_v2.py analysis_final.py` shows the lines that differ betwee
 
 **The trap:** `figure3.png` is dated 2 May (it was copied to a shared drive later), after every script, so the dates don't help. `notes_old.txt` says to use the FIXED script, but the FIXED script has its `savefig` line commented out. `diff` shows *what* differs between two files, never *which one made the figure*. Most pairs end up torn between `analysis_final.py` and `analysis_final_FIXED.py`.
 
-**Watch for:** `cp: cannot stat`: a typo in the long path. Copy it from the lesson website.
+**Watch for:** `cp: cannot stat`: a typo in the long path. Copy it from the lesson website. Plain `cp -r` (no `p`) gives every file today's date and spoils the dates trap: check `ls -l` shows 2025 dates.
 
 *Why:* struggling first prepares people to learn from the explanation (Kapur; Schwartz & Bransford).
 
@@ -1620,7 +1620,7 @@ GitLab offers the whole project **as it was at that tag** (zip / tar.gz): exactl
 The detective's project again, but this time someone used Git:
 
 ```bash
-cp -r {{< meta workshop-data >}}/tidy_project ~/
+cp -rp {{< meta workshop-data >}}/tidy_project ~/
 cd ~/tidy_project
 ```
 
