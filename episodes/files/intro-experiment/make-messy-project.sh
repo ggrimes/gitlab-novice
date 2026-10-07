@@ -128,6 +128,7 @@ mkdir tidy_project
   cd tidy_project
   git init -q
   git symbolic-ref HEAD refs/heads/main     # works on old and new Git
+  git config core.fileMode false            # ignore permission-only changes in copies
   commit() {   # commit <date> <message>
     GIT_AUTHOR_DATE="$1" GIT_COMMITTER_DATE="$1" \
       git -c user.name="Alex Researcher" -c user.email="alex@example.org" \
@@ -156,6 +157,11 @@ mkdir tidy_project
   git add analysis.py results_jan_new.csv
   commit "2025-04-28T11:20:00" "Add depth filter (DP > 10) for the revision"
 )
+
+# plain read/write files: a shared folder's default ACL can make new files
+# executable, which shows up as "modified" in git status. chmod keeps mtimes.
+find messy_project tidy_project -type f ! -path '*/.git/*' -exec chmod 644 {} +
+chmod -R a+rX messy_project tidy_project
 
 echo "Created:"
 echo "  $(pwd)/messy_project"

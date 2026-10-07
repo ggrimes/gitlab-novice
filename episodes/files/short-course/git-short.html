@@ -1455,7 +1455,7 @@ display:block!important;
 <h2>Your turn: be the detective</h2>
 <div class="task" data-time="6">
 <p>In pairs. Copy a colleague’s project to your home folder and look around:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">cp</span> <span class="at">-r</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/messy_project ~/</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">cp</span> <span class="at">-rp</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/messy_project ~/</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="bu">cd</span> ~/messy_project</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">ls</span> <span class="at">-l</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">cat</span> notes_old.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1473,7 +1473,7 @@ display:block!important;
 <p><strong>Say:</strong> <em>“In pairs. This is designed to be frustrating: there isn’t a clean answer, and that’s the point.”</em> Start the timer.</p>
 <p><strong>Do:</strong> walk the room; don’t rescue people. Ask <em>“How sure are you? Would that convince a reviewer?”</em></p>
 <p><strong>The trap:</strong> <code>figure3.png</code> is dated 2 May (it was copied to a shared drive later), after every script, so the dates don’t help. <code>notes_old.txt</code> says to use the FIXED script, but the FIXED script has its <code>savefig</code> line commented out. <code>diff</code> shows <em>what</em> differs between two files, never <em>which one made the figure</em>. Most pairs end up torn between <code>analysis_final.py</code> and <code>analysis_final_FIXED.py</code>.</p>
-<p><strong>Watch for:</strong> <code>cp: cannot stat</code>: a typo in the long path. Copy it from the lesson website.</p>
+<p><strong>Watch for:</strong> <code>cp: cannot stat</code>: a typo in the long path. Copy it from the lesson website. Plain <code>cp -r</code> (no <code>p</code>) gives every file today’s date and spoils the dates trap: check <code>ls -l</code> shows 2025 dates.</p>
 <p><em>Why:</em> struggling first prepares people to learn from the explanation (Kapur; Schwartz &amp; Bransford).</p>
 <p><strong>Full answer and background:</strong> <code>instructor-answers.md</code>, section “The two practice folders”.</p>
 <style type="text/css">
@@ -3018,7 +3018,7 @@ display:block!important;
 <h2>Answer Reviewer 2</h2>
 <div class="task" data-time="6">
 <p>The detective’s project again, but this time someone used Git:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">cp</span> <span class="at">-r</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/tidy_project ~/</span>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">cp</span> <span class="at">-rp</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/tidy_project ~/</span>
 <span id="cb43-2"><a href="#cb43-2"></a><span class="bu">cd</span> ~/tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Which commit made <code>figure3.png</code>?</li>
