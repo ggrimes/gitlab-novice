@@ -214,18 +214,24 @@ In pairs. Copy a colleague's project to your home folder and look around:
 
 ```bash
 cp -rp {{< meta workshop-data >}}/messy_project ~/
-cd ~/messy_project
-ls -l
+cd ~/messy_project && ls -l
 cat notes_old.txt
 ```
 
+::: {.tight}
 1. Which script made `figure3.png`?
 2. What **changed** compared with the version before it?
 3. **How sure are you?** Could you prove it to Reviewer 2?
+:::
 
 ::: {.small .muted}
-Hint: `diff analysis_v2.py analysis_final.py` shows the lines that differ between two files.\
-Not on Eddie? Download [messy_project.zip](https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip) and `unzip -q messy_project.zip` (keeps the dates).
+Hint: `diff analysis_v2.py analysis_final.py` shows the lines that differ between two files.
+
+```bash
+# Not on Eddie? Download and unzip it instead (keeps the dates):
+curl -fLO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip
+unzip -q messy_project.zip
+```
 :::
 :::
 
