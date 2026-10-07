@@ -28,7 +28,7 @@ etherpad-url: "https://webapps.igc.ed.ac.uk/pad/p/2026-10-08_git"
 workshop-data: "/exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data"
 title-slide-attributes:
   data-background-color: "#13294b"
-  # QR on the title slide opens this deck online (live once PR #2 is merged)
+  # QR on the title slide opens this deck online
   data-background-image: "../../fig/short-course-qr.svg"
   data-background-size: "170px"
   data-background-position: "right 60px bottom 70px"
@@ -185,8 +185,8 @@ Log in to Eddie and get an interactive node: `ssh <UUN>@eddie.ecdf.ed.ac.uk`, th
 | `pwd` | **where am I?** prints the folder you're in |
 | `ls -l` | **list** the files here, with sizes and dates |
 | `cd MyFolder` · `cd ~` | **change** folder · `~` is your home folder |
-| `mkdir Data` | **make** a new folder |
-| `cp -r source destination` | **copy** (`-r` = include everything inside a folder) |
+| `mkdir data` | **make** a new folder |
+| `cp -r source destination` | **copy** (`-r` = include everything inside a folder; add `p`, `-rp`, to keep the original dates) |
 | `cat notes.txt` | **show** what's in a file |
 | `nano notes.txt` | **edit** a file · save: `Ctrl+O`, `Enter` · exit: `Ctrl+X` |
 | `echo "hi" > a.txt` · `>> a.txt` | **write** text to a file: `>` replaces it, `>>` adds to the end |
@@ -274,7 +274,7 @@ Best guess: `analysis_final.py`, with the threshold lowered from 30 to 20 and a 
 ::: notes
 **⏱ 09:22 · 1 min**
 
-**Say:** read out four or five words from the cloud (expect: dates, names, notes, guessing, "which is final?"). *"Remember these words: they're our shopping list for a tool."*
+**Say:** read out four or five answers from the pad (expect: dates, names, notes, guessing, "which is final?"). *"Remember these words: they're our shopping list for a tool."*
 :::
 
 ## So we need a tool that… {.needs}
@@ -328,7 +328,7 @@ By **14:00** you will be able to:
 
 **Say:** read the outcomes. *"This strip comes back at the start of every section, so you always know where we are."* Say the break times out loud.
 
-**Say also:** what's *not* covered today: working with colleagues in one repository, branches, Git in RStudio. They're on the website, and on the last slide.
+**Say also:** what's *not* covered today: working with colleagues in one repository, branches (a short bonus if we're ahead), Git in RStudio. They're on the website, and on the last slide.
 
 *Why:* stating objectives and giving an advance organiser (Gagné; Ausubel) reduces the load of keeping track.
 :::
@@ -649,7 +649,7 @@ git commit -m "initial commit"
 :::
 
 ::: {.bigq}
-Green sticky up when you see this. 🎉
+Yellow sticky up when you see this. 🎉
 :::
 
 ::: notes
@@ -832,18 +832,18 @@ git restore --staged README.md  # take it out of staging, keep the edits
 Git tracks **files**, not empty directories:
 
 ```bash
-mkdir Src
-touch Src/.gitkeep          # an empty placeholder file, so Git keeps the folder
-git add Src/.gitkeep
+mkdir src
+touch src/.gitkeep          # an empty placeholder file, so Git keeps the folder
+git add src/.gitkeep
 ```
 
 Add a small dataset (copy it in and give it a shorter name):
 
 ```bash
-mkdir Data
-cp {{< meta workshop-data >}}/combined_tidy_vcf.csv Data/data.csv
-git add Data/data.csv
-git commit -m "Add Src folder and example dataset"
+mkdir data
+cp {{< meta workshop-data >}}/combined_tidy_vcf.csv data/data.csv
+git add data/data.csv
+git commit -m "Add src folder and example dataset"
 ```
 
 ::: {.newcmds}
@@ -858,7 +858,7 @@ Small, stable data is fine to commit. Large or sensitive data: after lunch.
 ::: notes
 **⏱ 10:13 · 6 min**
 
-**Say:** *"Git tracks files, not folders. An empty folder is invisible to it, so we put a placeholder file inside."*
+**Say:** *"Git tracks files, not folders. An empty folder is invisible to it, so we put a placeholder file inside."* Callback: lowercase `data/` and `src/` are the Good Enough Practices layout they've seen before.
 
 **Do:** everyone types along. Use the copy button on the website for the long `cp` path. Then `git status` and `git log --oneline` to check.
 
@@ -868,7 +868,7 @@ Small, stable data is fine to commit. Large or sensitive data: after lunch.
 ## Your turn: a Python script {.exercise}
 
 ::: {.task time="10"}
-1. Create `Src/hello.py` with `nano Src/hello.py`, then add and commit it:
+1. Create `src/hello.py` with `nano src/hello.py`, then add and commit it:
 
 ```python
 #!/usr/bin/env python
@@ -883,11 +883,11 @@ print("Hello World!")
 #!/usr/bin/env python
 import pandas as pd
 
-variants = pd.read_csv("Data/data.csv")
+variants = pd.read_csv("data/data.csv")
 print(len(variants))
 ```
 
-`git diff Src/hello.py` → `git add Src/hello.py` → `git commit -m "Read CSV and report row count"`
+`git diff src/hello.py` → `git add src/hello.py` → `git commit -m "Read CSV and report row count"`
 :::
 
 ::: notes
@@ -897,7 +897,7 @@ print(len(variants))
 
 **Watch for:** people who commit without `git add` ("nothing added to commit"), or who try `git add` from the wrong folder (`pwd` should end in MyProject).
 
-**Fast finishers:** `git log --oneline`: there should be 5 commits. Then `git log -p Src/hello.py`.
+**Fast finishers:** `git log --oneline`: there should be 5 commits. Then `git log -p src/hello.py`.
 
 **If behind:** stop at step 1; reveal the answer and do step 2 together.
 :::
@@ -1078,7 +1078,7 @@ git push -u origin main
 ::: notes
 **⏱ 11:03 · 1 min**
 
-**Do:** everyone refreshes their GitLab project page. Click into the commit history to show it matches `git log`. Point out that the README renders as a formatted page. Yellow stickies.
+**Do:** everyone refreshes their GitLab project page. Click into the commit history to show it matches `git log`. Point out that the README renders as a formatted page. Yellow stickies. (The screenshot is from an older run with `Data` and `Src`; theirs will show lowercase `data` and `src`.)
 :::
 
 ## A second computer
@@ -1150,7 +1150,7 @@ Switch copies with `cd ~/MyProject-laptop` or `cd ~/MyProject` (check with `pwd`
 1. **laptop**: `nano README.md`, add a `## Data` heading → `add`, `commit`, `push`
 2. **MyProject**: `git pull` → is the heading there? (`cat README.md`)
 3. **MyProject**: `echo "todo" > notes.txt` → `add`, `commit`, `push`
-4. **laptop**, *without pulling*: `nano Src/hello.py`, change a line → `add`, `commit`, `push`. What happens? Fix it.
+4. **laptop**, *without pulling*: `nano src/hello.py`, change a line → `add`, `commit`, `push`. What happens? Fix it.
 :::
 
 ::: {.answer .fragment}
@@ -1180,9 +1180,9 @@ Step 4 is **rejected**: the laptop copy is behind. `git pull` (Git merges the tw
 Edit the file, keep what you want, **delete the `<<<<<<<` `=======` `>>>>>>>` markers**, then `add` → `commit` → `push`.
 
 ::: notes
-**⏱ 11:27 · 3 min, concept only**
+**⏱ 11:27 · 2 min, concept only**
 
-**Say:** *"Git merges changes to different lines by itself. Only the same line changed two ways needs you to decide. It refuses to guess which version of your science is right."* Describe the markers: above `=======` is yours, below is the other copy's. Delete all three marker lines, keep what you want, then add, commit, push.
+**Say:** *"Git merges changes to different lines by itself. Only the same line changed two ways needs you to decide. It refuses to guess which version of your science is right."* The markers and the fix are on the next slide.
 
 **Note:** working with colleagues in one repository is a follow-on topic. This is enough to recognise a conflict and not panic. If a fast finisher made one, resolve it live on their screen.
 :::
@@ -1586,9 +1586,9 @@ git push origin v1.0
 
 **Say:** *"A tag is a permanent name for one commit. The history keeps growing; the tag stays put."*
 
-**Do:** read the New commands box. Stress: **tags are not sent by plain `git push`**.
+**Do:** demo only; learners **don't type along** here (they tag `v1.0` in the next exercise, and a second `v1.0` would fail with "already exists"). Read the New commands box. Stress: **tags are not sent by plain `git push`**.
 
-**Say (`git show v1.0:README.md`):** *"Tag, colon, file: that file exactly as it was at the tag, even if you've changed it since. Same trick works with a commit hash. Save a copy with `git show v1.0:Src/hello.py > hello_v1.0.py`."*
+**Say (`git show v1.0:README.md`):** *"Tag, colon, file: that file exactly as it was at the tag, even if you've changed it since. Same trick works with a commit hash. Save a copy with `git show v1.0:src/hello.py > hello_v1.0.py`."*
 
 **Say:** *"Put the tag name and the GitLab link in your paper's code availability statement. That's your answer to Reviewer 2, ready before they ask."*
 :::
@@ -1681,7 +1681,7 @@ git diff v1.0-submitted~1 v1.0-submitted -- src/analysis.py   # 2.
 ::: notes
 **⏱ 13:13 · section runs to 14:00**
 
-**Shape:** recap (7 min), then the **bonus round as a flexible buffer** (as long as there's time, up to ~20 min), then the polls at **13:45 sharp** whatever happens.
+**Shape:** recap (7 min), then the **bonus round as a flexible buffer** (as long as there's time, up to ~20 min), then the Etherpad questions at **13:45 sharp** whatever happens.
 :::
 
 ## The whole picture
@@ -1965,7 +1965,7 @@ The core loop is always the same: **pull → edit → add → commit → push**.
 ::: notes
 **⏱ 13:53 · 3 min**
 
-**Say:** *"Three things we didn't cover: working with colleagues in one repository, branches, and Git in RStudio. They're all on the lesson website: scan the QR code."* Recommend Visualizing Git for practising.
+**Say:** *"Three things we didn't cover: working with colleagues in one repository, branches, and Git in RStudio. They're all on the lesson website: scan the QR code."* (If you taught the branching bonus: *"…and more on branches."*) Recommend Visualizing Git for practising.
 :::
 
 # Thank you! {.section-slide background-color="#13294b"}
@@ -2044,11 +2044,11 @@ Creating a branch is instant: nothing is copied.
 ```{.bash code-line-numbers="|1|2|3-5|6-7"}
 git switch -c dev         # create a branch called dev, and move to it
 git branch                # list branches: * marks where you are
-nano Src/summary.py
-git add Src/summary.py
+nano src/summary.py
+git add src/summary.py
 git commit -m "Add summary.py"
 git switch main           # back to main...
-ls Src                    # ...and summary.py has gone!
+ls src                    # ...and summary.py has gone!
 ```
 
 ::: {.fragment}
@@ -2062,7 +2062,7 @@ It isn't deleted: it lives on `dev`. `git switch dev` and it's back.
 ::: notes
 **⏱ 4 min · live demo**
 
-**Do:** type it live in your own MyProject. Pause on `ls Src` and let the room react before clicking the fragment.
+**Do:** type it live in your own MyProject. Pause on `ls src` and let the room react before clicking the fragment.
 
 **Watch for:** older Git without `git switch` (before 2.23): use `git checkout -b dev` and `git checkout main`.
 :::
@@ -2084,7 +2084,7 @@ Switch to the branch you merge **into** · preview what `dev` brings · merge
 ```{.output}
 Updating 370eb9d..83e878e
 Fast-forward
- Src/summary.py | 8 ++++++++
+ src/summary.py | 8 ++++++++
 ```
 
 **Fast-forward**: `main` had no new commits, so Git just moves the `main` label up to `dev`.
@@ -2112,17 +2112,17 @@ Both branches moved? Git makes a **merge commit**, just like your `git pull` in 
 In `~/MyProject`:
 
 1. Create and switch to a branch called `columns`
-2. Add `print(variants.columns)` to the end of `Src/hello.py`, then add and commit
-3. Switch to `main` and `cat Src/hello.py`: is your line there?
+2. Add `print(variants.columns)` to the end of `src/hello.py`, then add and commit
+3. Switch to `main` and `cat src/hello.py`: is your line there?
 4. Merge `columns` into `main`, look at `git log --oneline --graph`, delete the branch, then `git push`
 :::
 
 ::: {.answer .fragment}
 ```bash
 git switch -c columns
-nano Src/hello.py
-git add Src/hello.py && git commit -m "Print the column names"
-git switch main && cat Src/hello.py     # not there: it's on columns
+nano src/hello.py
+git add src/hello.py && git commit -m "Print the column names"
+git switch main && cat src/hello.py     # not there: it's on columns
 git merge columns                       # fast-forward
 git log --oneline --graph
 git branch -d columns && git push

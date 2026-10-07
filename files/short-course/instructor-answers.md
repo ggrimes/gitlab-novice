@@ -195,16 +195,16 @@ who, when and why. Before committing, `git restore <file>` throws away unwanted 
 #!/usr/bin/env python
 import pandas as pd
 
-variants = pd.read_csv("Data/data.csv")
+variants = pd.read_csv("data/data.csv")
 print(len(variants))
 ```
 ```bash
-git diff Src/hello.py
-git add Src/hello.py
+git diff src/hello.py
+git add src/hello.py
 git commit -m "Read CSV and report row count"
 ```
 `git log --oneline` should then show **5 commits**: initial commit, Describe how
-to run Python, Add Src folder and example dataset, (add hello.py), Read CSV and
+to run Python, Add src folder and example dataset, (add hello.py), Read CSV and
 report row count. Running the script isn't required.
 
 ---
@@ -231,7 +231,7 @@ appear again for GitLab.
 2. **MyProject:** `git pull`. **Is the heading there?** Yes: the pull brought the
    laptop's commit across.
 3. **MyProject:** `notes.txt`, `add`, `commit`, `push`. Works.
-4. **laptop, without pulling:** edit `Src/hello.py`, `commit`, `push`.
+4. **laptop, without pulling:** edit `src/hello.py`, `commit`, `push`.
    **What happens?** The push is **rejected** (non-fast-forward), because the
    laptop copy is behind. **Fix:** `git pull` → Git merges automatically
    (different files) → nano opens with *"Merge branch 'main'…"* → save and exit →
@@ -425,9 +425,9 @@ Nowhere: it was committed on `dev`, and `main` doesn't have that commit yet.
 #### Your turn: an idea on a branch
 ```bash
 git switch -c columns
-nano Src/hello.py                       # add: print(variants.columns)
-git add Src/hello.py && git commit -m "Print the column names"
-git switch main && cat Src/hello.py     # the new line isn't there
+nano src/hello.py                       # add: print(variants.columns)
+git add src/hello.py && git commit -m "Print the column names"
+git switch main && cat src/hello.py     # the new line isn't there
 git merge columns                       # "Fast-forward"
 git log --oneline --graph               # a straight line: no merge commit
 git branch -d columns && git push

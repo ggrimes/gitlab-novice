@@ -3292,12 +3292,12 @@ results/             filtered_variants.csv, figure3.png</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>variants <span class="op">=</span> pd.read_csv(<span class="st">&quot;Data/data.csv&quot;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>variants <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/data.csv&quot;</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(variants))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff Src/hello.py</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Src/hello.py</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff src/hello.py</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add src/hello.py</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Read CSV and report row count&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>git log --oneline</code> should then show <strong>5 commits</strong>: initial commit, Describe how to run Python, Add Src folder and example dataset, (add hello.py), Read CSV and report row count. Running the script isn’t required.</p>
+<p><code>git log --oneline</code> should then show <strong>5 commits</strong>: initial commit, Describe how to run Python, Add src folder and example dataset, (add hello.py), Read CSV and report row count. Running the script isn’t required.</p>
 <hr>
 </section>
 </section>
@@ -3321,7 +3321,7 @@ results/             filtered_variants.csv, figure3.png</code></pre>
 <li><strong>laptop:</strong> edit README, <code>add</code>, <code>commit</code>, <code>push</code>. Works.</li>
 <li><strong>MyProject:</strong> <code>git pull</code>. <strong>Is the heading there?</strong> Yes: the pull brought the laptop’s commit across.</li>
 <li><strong>MyProject:</strong> <code>notes.txt</code>, <code>add</code>, <code>commit</code>, <code>push</code>. Works.</li>
-<li><strong>laptop, without pulling:</strong> edit <code>Src/hello.py</code>, <code>commit</code>, <code>push</code>. <strong>What happens?</strong> The push is <strong>rejected</strong> (non-fast-forward), because the laptop copy is behind. <strong>Fix:</strong> <code>git pull</code> → Git merges automatically (different files) → nano opens with <em>“Merge branch ‘main’…”</em> → save and exit → <code>git push</code>.</li>
+<li><strong>laptop, without pulling:</strong> edit <code>src/hello.py</code>, <code>commit</code>, <code>push</code>. <strong>What happens?</strong> The push is <strong>rejected</strong> (non-fast-forward), because the laptop copy is behind. <strong>Fix:</strong> <code>git pull</code> → Git merges automatically (different files) → nano opens with <em>“Merge branch ‘main’…”</em> → save and exit → <code>git push</code>.</li>
 </ol>
 <p>Lesson: <strong>always pull before you start work.</strong> Fast finishers who edit the same line in both copies get a <strong>conflict</strong>: edit the file, remove the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> <code>=======</code> <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> lines, <code>add</code>, <code>commit</code>, <code>push</code>.</p>
 </section>
@@ -3504,9 +3504,9 @@ To run Python on eddie you need:
 <section id="your-turn-an-idea-on-a-branch" class="level4">
 <h4 class="anchored" data-anchor-id="your-turn-an-idea-on-a-branch">Your turn: an idea on a branch</h4>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> columns</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> Src/hello.py                       <span class="co"># add: print(variants.columns)</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Src/hello.py <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Print the column names&quot;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main <span class="kw">&amp;&amp;</span> <span class="fu">cat</span> Src/hello.py     <span class="co"># the new line isn&#39;t there</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> src/hello.py                       <span class="co"># add: print(variants.columns)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add src/hello.py <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Print the column names&quot;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main <span class="kw">&amp;&amp;</span> <span class="fu">cat</span> src/hello.py     <span class="co"># the new line isn&#39;t there</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge columns                       <span class="co"># &quot;Fast-forward&quot;</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>               <span class="co"># a straight line: no merge commit</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> columns <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

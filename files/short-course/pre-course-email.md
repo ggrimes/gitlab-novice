@@ -38,7 +38,8 @@ Copy the **whole** line it prints (it starts with `ssh-ed25519`). In GitLab: cli
 Still on Eddie:
 
 ```
-bash [WORKSHOP-DATA-DIR]/check-setup.sh
+curl -fLO https://ggrimes.github.io/gitlab-novice/files/short-course/check-setup.sh
+bash check-setup.sh
 ```
 
 You should see four green ticks. Any red crosses come with a hint on what to do. If you're stuck, reply to this email with a copy of what it printed.
@@ -46,7 +47,7 @@ You should see four green ticks. Any red crosses come with a hint on what to do.
 ### On the day, please bring
 
 - a laptop that can connect to the University Wi-Fi (or VPN) and log in to Eddie
-- a phone, for some quick anonymous polls (no account needed)
+- your laptop is also used for a shared Etherpad page during the day (no account needed)
 - a real project of yours, if you have one: there's time at the end to put it under Git
 
 No prior Git experience needed. The course website: <https://ggrimes.github.io/gitlab-novice/>
