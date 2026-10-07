@@ -101,3 +101,6 @@
 /* compact one-line flow diagrams */
 .reveal .flow.compact { font-size: 0.75em; }
 .reveal .flow.compact .box { min-width: 5em; }
+
+/* compact numbered list (detective slide) */
+.reveal .tight li { margin-top: 0; margin-bottom: 0; line-height: 1.25; }
