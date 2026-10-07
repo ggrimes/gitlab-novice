@@ -239,7 +239,7 @@ Hint: `diff analysis_v2.py analysis_final.py` shows the lines that differ betwee
 
 **Watch for:** `cp: cannot stat`: a typo in the long path. Copy it from the lesson website. Plain `cp -r` (no `p`) gives every file today's date and spoils the dates trap: check `ls -l` shows 2025 dates.
 
-**Eddie's shared folder unavailable, or on another system?** Download the zip instead (unzip keeps the 2025 dates): `cd ~ && curl -LO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip && unzip -q messy_project.zip && cd messy_project`
+**Eddie's shared folder unavailable, or on another system?** Download the zip instead (unzip keeps the 2025 dates): `cd ~ && curl -fLO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip && unzip -q messy_project.zip && cd messy_project`
 
 *Why:* struggling first prepares people to learn from the explanation (Kapur; Schwartz & Bransford).
 
