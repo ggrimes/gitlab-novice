@@ -2957,10 +2957,12 @@ display:block!important;
 <div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Version used for the workshop report&quot;</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a><span class="fu">git</span> tag</span>
 <span id="cb41-3"><a href="#cb41-3"></a><span class="fu">git</span> show v1.0</span>
-<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">git</span> show v1.0:README.md</span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="newcmds">
 <p><code>git tag -a &lt;name&gt; -m &quot;…&quot;</code> · label the current commit; <code>-a</code> stores who, when and why<br>
 <code>git tag</code> · list tags · <code>git show &lt;tag&gt;</code> · see the tagged commit<br>
+<code>git show &lt;tag&gt;:&lt;file&gt;</code> · print one file exactly as it was at the tag (path from the project folder)<br>
 <code>git push origin &lt;tag&gt;</code> · tags are <strong>not</strong> sent by plain <code>git push</code></p>
 </div>
 </div>
@@ -2969,6 +2971,7 @@ display:block!important;
 <p><strong>⏱ 12:53 · 5 min</strong></p>
 <p><strong>Say:</strong> <em>“A tag is a permanent name for one commit. The history keeps growing; the tag stays put.”</em></p>
 <p><strong>Do:</strong> read the New commands box. Stress: <strong>tags are not sent by plain <code>git push</code></strong>.</p>
+<p><strong>Say (<code>git show v1.0:README.md</code>):</strong> <em>“Tag, colon, file: that file exactly as it was at the tag, even if you’ve changed it since. Same trick works with a commit hash. Save a copy with <code>git show v1.0:Src/hello.py &gt; hello_v1.0.py</code>.”</em></p>
 <p><strong>Say:</strong> <em>“Put the tag name and the GitLab link in your paper’s code availability statement. That’s your answer to Reviewer 2, ready before they ask.”</em></p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3017,11 +3020,12 @@ display:block!important;
 <section id="answer-reviewer-2" class="slide level2 exercise">
 <h2>Answer Reviewer 2</h2>
 <div class="task" data-time="6">
-<p>The detective’s project again, but this time someone used Git:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">cp</span> <span class="at">-rp</span> /exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data/tidy_project ~/</span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="bu">cd</span> ~/tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The detective’s project again, but organised the <strong>Good Enough Practices</strong> way, kept in <strong>Git</strong>, and put on GitLab. Get it the way a reviewer would:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">git</span> clone git@git.ecdf.ed.ac.uk:igmmbioinformatics/tidy_project.git</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="bu">cd</span> tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>Which commit made <code>figure3.png</code>?</li>
+<li>Which commit made <code>results/figure3.png</code>?</li>
 <li>What changed compared with the version before it?</li>
 <li>Which version was <strong>submitted</strong>?</li>
 </ol>
@@ -3032,14 +3036,17 @@ display:block!important;
 </div>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> figure3.png                          <span class="co"># 1.</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                            <span class="co"># 3.</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>QUAL &gt; 30</code> → <code>QUAL &gt; 20</code>, log scale added, <code>savefig(&quot;figure3.png&quot;)</code>. <strong>Provable</strong>, with dates and a message.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> results/figure3.png                      <span class="co"># 1.</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                                <span class="co"># 3.</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> src/analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>QUAL &gt; 30</code> → <code>QUAL &gt; 20</code>, log scale added, <code>savefig(&quot;results/figure3.png&quot;)</code>. <strong>Provable</strong>, with dates and a message.</p>
 </div>
 <aside class="notes">
 <p><strong>⏱ 13:03 · 10 min · CLOSE THE LOOP</strong></p>
-<p><strong>What <code>tidy_project</code> is:</strong> the same project as this morning’s <code>messy_project</code>, but kept in Git: one <code>analysis.py</code>, 4 commits, and the tag <code>v1.0-submitted</code> on the commit that made Figure 3.</p>
+<p><strong>What <code>tidy_project</code> is:</strong> the same project as this morning’s <code>messy_project</code>, but kept in Git and published on GitLab (<code>igmmbioinformatics/tidy_project</code>, public): laid out as in Good Enough Practices (<code>README.md</code>, <code>requirements.txt</code>, <code>data/</code>, <code>src/</code>, <code>results/</code>), with one <code>src/analysis.py</code>, 4 commits, and the tag <code>v1.0-submitted</code> on the commit that made Figure 3.</p>
+<p><strong>Say:</strong> <em>“This is how a reviewer or a colleague gets your code: clone it from the link in the paper. Same <code>git clone</code> as this morning.”</em> Then: <em>“It’s organised the way you learned in Good Enough Practices: <code>ls</code>, and <code>cat README.md</code>. The folders tell you <strong>where</strong> things are. Only the history can <strong>prove</strong> how Figure 3 was made.”</em></p>
+<p><strong>If someone says</strong> <em>“Good Enough Practices says don’t name files after figure numbers”</em>: they’re right, and that’s the point: <em>“Figure numbers change while you write. The tag and the history don’t.”</em></p>
+<p><strong>Watch for:</strong> <em>“Permission denied (publickey)”</em>: their SSH key isn’t working. Use the HTTPS address instead, no key needed: <code>git clone https://git.ecdf.ed.ac.uk/igmmbioinformatics/tidy_project.git</code>. <em>“destination path ‘tidy_project’ already exists”</em>: they cloned it already; just <code>cd tidy_project</code>. Pushing to it will be refused: it’s your project, not theirs.</p>
 <p><strong>Say:</strong> <em>“Same question as 09:14. This morning: six minutes, and no proof. Now let’s see.”</em> Start the timer.</p>
 <p><strong>Do:</strong> point at the hint box. Reveal the answer after about 6 minutes.</p>
 <p><strong>Then ask:</strong> <em>“So what would you write back to Reviewer 2?”</em> Take one or two answers. (The tag <code>v1.0-submitted</code>, the commit “Make figure 3 for the paper”, and the exact diff: QUAL 30 → 20 plus a log scale.)</p>
@@ -3247,7 +3254,7 @@ display:block!important;
 <p><strong>Detective, level 2</strong></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">cd</span> ~/tidy_project</span>
 <span id="cb45-2"><a href="#cb45-2"></a><span class="fu">git</span> log <span class="at">-S</span> <span class="st">&quot;DP &gt; 10&quot;</span> <span class="at">--oneline</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="fu">git</span> show HEAD~3:analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="fu">git</span> show HEAD~3:src/analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>“Add depth filter (DP &gt; 10) for the revision”</em>, April 2025, by Alex Researcher. The first version used <code>QUAL &gt; 50</code>.</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Your own project: check before you push</strong></p>
