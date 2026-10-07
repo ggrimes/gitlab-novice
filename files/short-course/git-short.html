@@ -1474,6 +1474,7 @@ display:block!important;
 <p><strong>Do:</strong> walk the room; don’t rescue people. Ask <em>“How sure are you? Would that convince a reviewer?”</em></p>
 <p><strong>The trap:</strong> <code>figure3.png</code> is dated 2 May (it was copied to a shared drive later), after every script, so the dates don’t help. <code>notes_old.txt</code> says to use the FIXED script, but the FIXED script has its <code>savefig</code> line commented out. <code>diff</code> shows <em>what</em> differs between two files, never <em>which one made the figure</em>. Most pairs end up torn between <code>analysis_final.py</code> and <code>analysis_final_FIXED.py</code>.</p>
 <p><strong>Watch for:</strong> <code>cp: cannot stat</code>: a typo in the long path. Copy it from the lesson website. Plain <code>cp -r</code> (no <code>p</code>) gives every file today’s date and spoils the dates trap: check <code>ls -l</code> shows 2025 dates.</p>
+<p><strong>Eddie’s shared folder unavailable, or on another system?</strong> Download the zip instead (unzip keeps the 2025 dates): <code>cd ~ &amp;&amp; curl -fLO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip &amp;&amp; unzip -q messy_project.zip &amp;&amp; cd messy_project</code></p>
 <p><em>Why:</em> struggling first prepares people to learn from the explanation (Kapur; Schwartz &amp; Bransford).</p>
 <p><strong>Full answer and background:</strong> <code>instructor-answers.md</code>, section “The two practice folders”.</p>
 <style type="text/css">
