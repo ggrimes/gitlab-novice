@@ -36,6 +36,16 @@ organised two ways:
 | Which version was submitted | a confusing note in `notes_old.txt` | a tag: `v1.0-submitted` |
 | Can you **prove** which script made Figure 3? | **No** | **Yes, in about 30 seconds** |
 
+**Where learners get them:** `messy_project` is copied from the workshop data
+folder on Eddie with `cp -rp` (the `p` keeps the dates). If that isn't
+available, or on another system, it's also a zip on the lesson website:
+```bash
+cd ~
+curl -LO https://ggrimes.github.io/gitlab-novice/files/short-course/messy_project.zip
+unzip -q messy_project.zip && cd messy_project
+```
+`tidy_project` is cloned from GitLab (see below), so it works anywhere.
+
 The contrast is the point of the day: same project, with and without Git. The
 tidy layout is the one from the Good Enough Practices lesson learners have
 already done; it tells you *where* things are, but only the history can prove
