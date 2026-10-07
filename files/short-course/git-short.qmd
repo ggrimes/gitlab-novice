@@ -22,8 +22,9 @@ format:
     include-after-body: [../exercise-timer.html, etherpad.html]
 # One Etherpad for the whole day (paste in etherpad-questions.md: Q1–Q10)
 etherpad-url: "https://webapps.igc.ed.ac.uk/pad/p/2026-10-08_git"
-# Where the workshop data lives on Eddie: data.csv source, messy_project/ and
-# tidy_project/ (built with ../intro-experiment/make-messy-project.sh)
+# Where the workshop data lives on Eddie: data.csv source and messy_project/
+# (built with ../intro-experiment/make-messy-project.sh). tidy_project is
+# cloned from GitLab: igmmbioinformatics/tidy_project (public).
 workshop-data: "/exports/igmm/software-rl9/bac/dataWranglingGenomics/20230529/workshop_data"
 title-slide-attributes:
   data-background-color: "#13294b"
@@ -1565,12 +1566,14 @@ Use tags for:
 git tag -a v1.0 -m "Version used for the workshop report"
 git tag
 git show v1.0
+git show v1.0:README.md
 git push origin v1.0
 ```
 
 ::: {.newcmds}
 `git tag -a <name> -m "…"` · label the current commit; `-a` stores who, when and why\
 `git tag` · list tags · `git show <tag>` · see the tagged commit\
+`git show <tag>:<file>` · print one file exactly as it was at the tag (path from the project folder)\
 `git push origin <tag>` · tags are **not** sent by plain `git push`
 :::
 :::
@@ -1582,6 +1585,8 @@ git push origin v1.0
 **Say:** *"A tag is a permanent name for one commit. The history keeps growing; the tag stays put."*
 
 **Do:** read the New commands box. Stress: **tags are not sent by plain `git push`**.
+
+**Say (`git show v1.0:README.md`):** *"Tag, colon, file: that file exactly as it was at the tag, even if you've changed it since. Same trick works with a commit hash. Save a copy with `git show v1.0:Src/hello.py > hello_v1.0.py`."*
 
 **Say:** *"Put the tag name and the GitLab link in your paper's code availability statement. That's your answer to Reviewer 2, ready before they ask."*
 :::
@@ -1617,14 +1622,15 @@ GitLab offers the whole project **as it was at that tag** (zip / tar.gz): exactl
 ## Answer Reviewer 2 {.exercise}
 
 ::: {.task time="6"}
-The detective's project again, but this time someone used Git:
+The detective's project again, but organised the **Good Enough Practices** way, kept in **Git**, and put on GitLab. Get it the way a reviewer would:
 
 ```bash
-cp -rp {{< meta workshop-data >}}/tidy_project ~/
-cd ~/tidy_project
+cd ~
+git clone git@git.ecdf.ed.ac.uk:igmmbioinformatics/tidy_project.git
+cd tidy_project
 ```
 
-1. Which commit made `figure3.png`?
+1. Which commit made `results/figure3.png`?
 2. What changed compared with the version before it?
 3. Which version was **submitted**?
 
@@ -1637,17 +1643,23 @@ cd ~/tidy_project
 
 ::: {.answer .fragment}
 ```bash
-git log --oneline -- figure3.png                          # 1.
-git show v1.0-submitted --stat                            # 3.
-git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2.
+git log --oneline -- results/figure3.png                      # 1.
+git show v1.0-submitted --stat                                # 3.
+git diff v1.0-submitted~1 v1.0-submitted -- src/analysis.py   # 2.
 ```
-`QUAL > 30` → `QUAL > 20`, log scale added, `savefig("figure3.png")`. **Provable**, with dates and a message.
+`QUAL > 30` → `QUAL > 20`, log scale added, `savefig("results/figure3.png")`. **Provable**, with dates and a message.
 :::
 
 ::: notes
 **⏱ 13:03 · 10 min · CLOSE THE LOOP**
 
-**What `tidy_project` is:** the same project as this morning's `messy_project`, but kept in Git: one `analysis.py`, 4 commits, and the tag `v1.0-submitted` on the commit that made Figure 3.
+**What `tidy_project` is:** the same project as this morning's `messy_project`, but kept in Git and published on GitLab (`igmmbioinformatics/tidy_project`, public): laid out as in Good Enough Practices (`README.md`, `requirements.txt`, `data/`, `src/`, `results/`), with one `src/analysis.py`, 4 commits, and the tag `v1.0-submitted` on the commit that made Figure 3.
+
+**Say:** *"This is how a reviewer or a colleague gets your code: clone it from the link in the paper. Same `git clone` as this morning."* Then: *"It's organised the way you learned in Good Enough Practices: `ls`, and `cat README.md`. The folders tell you **where** things are. Only the history can **prove** how Figure 3 was made."*
+
+**If someone says** *"Good Enough Practices says don't name files after figure numbers"*: they're right, and that's the point: *"Figure numbers change while you write. The tag and the history don't."*
+
+**Watch for:** *"Permission denied (publickey)"*: their SSH key isn't working. Use the HTTPS address instead, no key needed: `git clone https://git.ecdf.ed.ac.uk/igmmbioinformatics/tidy_project.git`. *"destination path 'tidy_project' already exists"*: they cloned it already; just `cd tidy_project`. Pushing to it will be refused: it's your project, not theirs.
 
 **Say:** *"Same question as 09:14. This morning: six minutes, and no proof. Now let's see."* Start the timer.
 
@@ -1839,7 +1851,7 @@ Keep it (`add` + `commit`) or undo it (`git restore README.md`): your call.
 ```bash
 cd ~/tidy_project
 git log -S "DP > 10" --oneline
-git show HEAD~3:analysis.py
+git show HEAD~3:src/analysis.py
 ```
 
 *"Add depth filter (DP > 10) for the revision"*, April 2025, by Alex Researcher. The first version used `QUAL > 50`.

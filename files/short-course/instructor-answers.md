@@ -29,30 +29,49 @@ organised two ways:
 
 | | `messy_project` (detective task, ~09:14) | `tidy_project` (Answer Reviewer 2, ~13:03) |
 |---|---|---|
-| Scripts | four copies: `analysis.py`, `analysis_v2.py`, `analysis_final.py`, `analysis_final_FIXED.py` | **one** `analysis.py`, every version in the history |
+| Layout | everything in one folder | Good Enough Practices: `README.md`, `requirements.txt`, `data/`, `src/`, `results/` |
+| Scripts | four copies: `analysis.py`, `analysis_v2.py`, `analysis_final.py`, `analysis_final_FIXED.py` | **one** `src/analysis.py`, every version in the history |
 | Dates | misleading: `figure3.png` was copied later, so its date matches no script | exact date and author on every commit |
 | What changed | compare files by eye, or with `diff` | `git diff` shows the exact lines |
 | Which version was submitted | a confusing note in `notes_old.txt` | a tag: `v1.0-submitted` |
 | Can you **prove** which script made Figure 3? | **No** | **Yes, in about 30 seconds** |
 
-The contrast is the point of the day: same project, with and without Git.
+The contrast is the point of the day: same project, with and without Git. The
+tidy layout is the one from the Good Enough Practices lesson learners have
+already done; it tells you *where* things are, but only the history can prove
+*how* Figure 3 was made.
 
 ### Inside `tidy_project`
 
 A Git repository with 4 commits and 1 tag (the commits are backdated so the
-history looks real):
+history looks real). Learners **clone** it from GitLab
+(`git@git.ecdf.ed.ac.uk:igmmbioinformatics/tidy_project.git`, public; HTTPS
+`https://git.ecdf.ed.ac.uk/igmmbioinformatics/tidy_project.git` needs no key),
+so everyone sees these IDs:
 
 ```
-4204ec8 (HEAD -> main) Add depth filter (DP > 10) for the revision
-cc86a42 (tag: v1.0-submitted) Make figure 3 for the paper: QUAL > 20, log scale
-6af5dac Lower QUAL threshold to 30 after QC meeting
-f8cafbd Add first variant-quality analysis
+39771bf (HEAD -> main) Add depth filter (DP > 10) for the revision
+f7ca314 (tag: v1.0-submitted) Make figure 3 for the paper: QUAL > 20, log scale
+92600d9 Lower QUAL threshold to 30 after QC meeting
+496a415 Add first variant-quality analysis
 ```
 
-Files: `analysis.py`, `data.csv`, `figure3.png`, `results_jan.csv`,
-`results_jan_new.csv`. The scripts don't need to run: the exercises are about
-tracing versions, not plotting. Hashes depend on the machine's timezone, so
-they may differ on another system; the tag and messages don't.
+Files:
+```
+README.md            what it is, how to run it; says Figure 3 = tag v1.0-submitted
+requirements.txt     pandas, matplotlib
+data/variants.csv    raw variant calls
+src/analysis.py      the analysis (run from the project folder)
+results/             filtered_variants.csv, figure3.png
+```
+`figure3.png` keeps its figure-number name on purpose, although Good Enough
+Practices advises against it: the exercise asks "which commit made Figure 3?".
+If a learner spots it: *"Figure numbers change while you write; the tag and
+the history don't."* The scripts don't need to run: the exercises are about
+tracing versions, not plotting. Rebuilding it with the script can give
+different IDs for the last two commits (`figure3.png` is drawn slightly
+differently on each machine); the tag and messages don't change. The GitLab
+copy is the one learners use.
 
 How the threshold changed over time:
 
@@ -60,8 +79,8 @@ How the threshold changed over time:
 |---|---|---|
 | Add first variant-quality analysis | > 50 | |
 | Lower QUAL threshold to 30 after QC meeting | > 30 | |
-| Make figure 3 for the paper (**v1.0-submitted**) | > 20 | log scale; saves `figure3.png` and `results_jan.csv` |
-| Add depth filter for the revision | > 20 | adds `DP > 10`; writes `results_jan_new.csv`; no longer saves the figure |
+| Make figure 3 for the paper (**v1.0-submitted**) | > 20 | log scale; saves `results/figure3.png`; README names the tag |
+| Add depth filter for the revision | > 20 | adds `DP > 10`; updates `results/filtered_variants.csv`; no longer saves the figure |
 
 ---
 
@@ -310,13 +329,13 @@ what you'd give a reviewer.
 
 ### Answer Reviewer 2 (`tidy_project`)
 ```bash
-git log --oneline -- figure3.png                          # 1. which commit made it
-git show v1.0-submitted --stat                            # 3. the submitted version
-git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2. what changed
+git log --oneline -- results/figure3.png                      # 1. which commit made it
+git show v1.0-submitted --stat                                # 3. the submitted version
+git diff v1.0-submitted~1 v1.0-submitted -- src/analysis.py   # 2. what changed
 ```
 1. **"Make figure 3 for the paper: QUAL > 20, log scale"** (14 March 2025)
 2. `QUAL > 30` → `QUAL > 20`, `ax.set_yscale("log")` added,
-   `plt.savefig("figure3.png")` added, results file renamed to `results_jan.csv`
+   `plt.savefig("results/figure3.png")` added
 3. The tag **`v1.0-submitted`** points at that same commit
 
 **"So what would you write back to Reviewer 2?"** *"Figure 3 was generated by commit
@@ -363,7 +382,7 @@ No single answer. Check **before** they commit or push:
 ```bash
 git log -S "DP > 10" --oneline     # → "Add depth filter (DP > 10) for the revision"
 git log -S "DP > 10"               # full entry: Alex Researcher, 28 April 2025
-git show HEAD~3:analysis.py        # first version: QUAL > 50
+git show HEAD~3:src/analysis.py    # first version: QUAL > 50
 ```
 `git log -S "text"` (the "pickaxe") lists commits that added or removed that text.
 
