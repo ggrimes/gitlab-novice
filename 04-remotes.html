@@ -372,7 +372,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with Remote Repositories</h1>
-        <p>Last updated on 2026-10-06 |
+        <p>Last updated on 2026-10-08 |
 
         <a href="https://github.com/ggrimes/gitlab-novice/edit/main/episodes/04-remotes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -452,74 +452,88 @@ your existing git repository.</p></li>
 <p>To enable password less access to your remote, you can add your
 public SSH Key from Eddie to the remote repository.</p>
 <div class="section level4">
-<h4 id="generating-a-new-ssh-key">Generating a new SSH key<a class="anchor" aria-label="anchor" href="#generating-a-new-ssh-key"></a></h4>
-<p>You can generate a new SSH key on your local machine. After you
-generate the key, you can add the public key to your account on GitLab
-to enable authentication for Git operations over SSH.</p>
-<p>See the University’s <a href="https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide" class="external-link">SSH
-keys best practice guide</a>.</p>
-<p>Example below</p>
+<h4 id="use-your-eddie-ssh-key">Use your Eddie SSH key<a class="anchor" aria-label="anchor" href="#use-your-eddie-ssh-key"></a></h4>
+<p>Eddie has already created an SSH key for you,
+<code>~/.ssh/id_alcescluster</code>, so you don’t need to make a new
+one. Show the public half of the key:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[username@login02</span><span class="er">(</span><span class="ex">eddie</span><span class="kw">)</span> <span class="ex">~]$</span> ssh-keygen <span class="at">-o</span> <span class="at">-t</span> ed25519</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">Generating</span> public/private ed25519 key pair.</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">Enter</span> file in which to save the key <span class="er">(</span><span class="ex">/home/username/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">Enter</span> passphrase <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a><span class="ex">Enter</span> same passphrase again:</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a><span class="ex">Your</span> identification has been saved in /home/username/.ssh/id_ed25519.</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a><span class="ex">Your</span> public key has been saved in /home/username/.ssh/id_ed25519.pub.</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a><span class="ex">The</span> key fingerprint is:</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1" aria-label="code-block-1-9"></a><span class="ex">SHA256:3t/tZzvbviR5Xs1YYYQeaGtI2n02W</span><span class="er">(</span><span class="ex">and</span> some more characters<span class="kw">)</span><span class="ex">hxxt</span> <span class="er">(</span><span class="ex">email</span> address of the user<span class="kw">)</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1" aria-label="code-block-1-10"></a><span class="ex">The</span> key<span class="st">'s randomart image is:</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1" aria-label="code-block-1-11"></a><span class="st">+--[ED25519 256]--+</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1" aria-label="code-block-1-12"></a><span class="st">|  oo..   .  o... |</span></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1" aria-label="code-block-1-13"></a><span class="st">| o. o o ...o.+.  |</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1" aria-label="code-block-1-14"></a><span class="st">|  .+ + o+ +o+ .o |</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1" aria-label="code-block-1-15"></a><span class="st">| E  o o. o +.B. .|</span></span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1" aria-label="code-block-1-16"></a><span class="st">|        S . = o .|</span></span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1" aria-label="code-block-1-17"></a><span class="st">|       . . .  .+.|</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1" aria-label="code-block-1-18"></a><span class="st">|        . .  o.o+|</span></span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1" aria-label="code-block-1-19"></a><span class="st">|           . .=o=|</span></span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1" aria-label="code-block-1-20"></a><span class="st">|            . .O@|</span></span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1" aria-label="code-block-1-21"></a><span class="st">+----[SHA256]-----+</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[username@login02</span><span class="er">(</span><span class="ex">eddie</span><span class="kw">)</span> <span class="ex">~]$</span> cat ~/.ssh/id_alcescluster.pub</span></code></pre>
 </div>
-<p>This will generate two files: the private key file (in this example
-<code>/home/username/.ssh/id_ed25519</code>) and the public key file
-(<code>/home/username/.ssh/id_ed25519.pub</code>) - it is vitally
-important that you never share your private key</p>
+<p>Copy the <strong>whole</strong> line it prints (it starts with
+<code>ssh-</code>). That is the public key file, and it is safe to
+share. The file without <code>.pub</code>,
+<code>~/.ssh/id_alcescluster</code>, is your private key: it is vitally
+important that you never share it.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>Why not <code>ssh-keygen</code>?</p>
+<p>On Eddie, <code>~/.ssh/config</code> starts with a
+<code>Host *</code> block that sets
+<code>IdentityFile ~/.ssh/id_alcescluster</code>. Because an identity
+file is set for every host, SSH only offers that key, and never tries
+the default <code>~/.ssh/id_ed25519</code>. So a key you generate
+yourself with <code>ssh-keygen</code> is ignored, even if you add it to
+GitLab, and you get <em>“Permission denied (publickey)”</em>.</p>
+<p>If you really want your own key, generate it, add its
+<code>.pub</code> file to GitLab, and add this to the
+<strong>top</strong> of <code>~/.ssh/config</code>, above the
+<code>Host *</code> block:</p>
+<pre><code>Host git.ecdf.ed.ac.uk
+    IdentityFile ~/.ssh/id_ed25519</code></pre>
+<p>See the University’s <a href="https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide" class="external-link">SSH
+keys best practice guide</a>.</p>
+</div>
+</div>
+</div>
 <p>You can now add the contents of the public key file
-<code>id_ed25519.pub</code> to the GitLab.</p>
+<code>id_alcescluster.pub</code> to GitLab.</p>
 <p>In GitLab, click your <strong>user icon</strong>, then
 <strong>Preferences</strong> → <strong>Access</strong> → <strong>SSH
 Keys</strong>, and click <strong>Add new key</strong>. (Or go straight
 to <a href="https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys" class="external-link uri">https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys</a>.)</p>
-<figure><img src="fig/gitlab-ssh2.png" alt="GitLab SSH Keys settings page with the Add an SSH key form: a Key box, Title, Usage type and Expiration date." class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/gitlab-ssh2.png" alt="GitLab SSH Keys settings page with the Add an SSH key form: a Key box, Title, Usage type and Expiration date." class="figure mx-auto d-block"></figure><p>Paste the line into the <strong>Key</strong> box and click
+<strong>Add key</strong>. Then test the connection from Eddie:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">[username@login02</span><span class="er">(</span><span class="ex">eddie</span><span class="kw">)</span> <span class="ex">~]$</span> ssh <span class="at">-T</span> git@git.ecdf.ed.ac.uk</span></code></pre>
+</div>
+<p>The first time, SSH asks <em>“Are you sure you want to continue
+connecting (yes/no)?”</em>: type <strong>yes</strong>. You should see
+<em>“Welcome to GitLab”</em>.</p>
+</div>
 </div>
 </section><section><h2 class="section-heading" id="git-remote-on-eddie">Git Remote on Eddie<a class="anchor" aria-label="anchor" href="#git-remote-on-eddie"></a></h2>
 <hr class="half-width"><p>Here we will link our existing repository on Eddie with the remote on
 GitLab, using the <code>git remote</code> command.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">$</span> git remote <span class="at">--help</span>     <span class="co"># on eddie</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">$</span> git remote <span class="at">--help</span>     <span class="co"># on eddie</span></span></code></pre>
 </div>
 <p>To add our remote we use <code>git remote add</code> using the
 information on the blank GitLab Repository page, replacing
 <code>&lt;username&gt;</code> with your own UUN.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git remote add origin git@git.ecdf.ed.ac.uk:<span class="op">&lt;</span>username<span class="op">&gt;</span>/myproject.git</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">$</span> git remote add origin git@git.ecdf.ed.ac.uk:<span class="op">&lt;</span>username<span class="op">&gt;</span>/myproject.git</span></code></pre>
 </div>
 <p>We can now use the <code>git remote -v</code> command to see it has
 been linked.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
@@ -561,11 +575,11 @@ file.”</p>
 <p>When you push your changes, you are essentially updating the remote
 repository with commits that have been made in your local repository</p>
 <p>To do this, use the command</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="co"># on eddie</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="ex">$</span> git push <span class="at">-u</span> origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="co"># on eddie</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">$</span> git push <span class="at">-u</span> origin main</span></code></pre>
 </div>
 <p>Here “origin” refers to the “remote repository” and “main” refers to
 the branch you want to upload. The <code>-u</code> flag sets up a
@@ -578,10 +592,10 @@ will see the repository has been synced with the local version.</p>
 <div class="section level3">
 <h3 id="syncing-changes">1. Syncing Changes<a class="anchor" aria-label="anchor" href="#syncing-changes"></a></h3>
 <p>Make a change to the <code>README.md</code> file</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> nano README.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> nano README.md</span></code></pre>
 </div>
 <p>Add this text, or something else, to the bottom of the
 <code>README.md</code> file</p>
@@ -589,14 +603,14 @@ will see the repository has been synced with the local version.</p>
 The [data](https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632895) is made available under an [Creative Commons license](https://creativecommons.org/licenses/by/3.0/).</code></pre>
 <p>Now we will, add, commit to our local repository and push changes to
 our remote repository.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git status</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">$</span> git add README.md</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add Data section"</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a><span class="ex">$</span> git status</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a><span class="ex">$</span> git push</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> git status</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">$</span> git add README.md</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Add Data section"</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="ex">$</span> git status</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="ex">$</span> git push</span></code></pre>
 </div>
 
 </div>
@@ -606,10 +620,10 @@ our remote repository.</p>
 need to get these changes locally. We can use the command
 <code>git pull</code> to keep your local repository up to date with the
 remote repository.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">$</span> git pull</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">$</span> git pull</span></code></pre>
 </div>
 <p>If there is no divergence, Git performs a <em>fast‑forward</em>
 merge. Otherwise you may need to resolve conflicts before completing the
@@ -621,12 +635,12 @@ merge.</p>
 <pre class="text"><code>! [rejected]   main -&gt; main (non-fast-forward)</code></pre>
 <p>This means your local branch is <strong>behind</strong> the remote.
 Fix it by pulling, resolving any conflicts, then pushing again:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">$</span> git pull   <span class="co"># merge the remote changes into your branch</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="co"># ...resolve conflicts if prompted...</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a><span class="ex">$</span> git push</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">$</span> git pull   <span class="co"># merge the remote changes into your branch</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="co"># ...resolve conflicts if prompted...</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a><span class="ex">$</span> git push</span></code></pre>
 </div>
 <div id="merge-or-rebase" class="callout">
 <div class="callout-square">
@@ -661,7 +675,7 @@ straighter history.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The output lists fetch and push URLs for <em>origin</em>.</li>
 </ol></div>
@@ -686,7 +700,7 @@ straighter history.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>git branch -vv</code> lists local branches with their upstream
 counterparts.</p>
@@ -713,7 +727,7 @@ why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The log shows commits that exist in <em>origin/main</em> but
 <strong>not</strong> in your local <em>main</em>; the two‑dot syntax
@@ -741,7 +755,7 @@ remote.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p><em>Advantage:</em> <code>git clone</code> copies
 <strong>all</strong> history and configures the remote automatically,
@@ -843,7 +857,7 @@ any links that you are not going to use.
   "url": "https://ggrimes.github.io/gitlab-novice/04-remotes.html",
   "identifier": "https://ggrimes.github.io/gitlab-novice/04-remotes.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-08",
   "datePublished": "2026-10-08"
 }
 
