@@ -2288,18 +2288,20 @@ display:block!important;
 </section>
 <section id="ssh-keys-password-less-access" class="slide level2">
 <h2>SSH keys: password-less access</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">[username@login02</span><span class="er">(</span><span class="ex">eddie</span><span class="kw">)</span> <span class="ex">~]$</span> ssh-keygen <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Creates two files:</p>
+<p>Eddie has <strong>already made a key</strong> for you:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">[username@login02</span><span class="er">(</span><span class="ex">eddie</span><span class="kw">)</span> <span class="ex">~]$</span> cat ~/.ssh/id_alcescluster.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><code>~/.ssh/id_ed25519</code>: <strong>private</strong> key. Never share it!</li>
-<li><code>~/.ssh/id_ed25519.pub</code>: <strong>public</strong> key. Paste this into GitLab.</li>
+<li><code>~/.ssh/id_alcescluster</code>: <strong>private</strong> key. Never share it!</li>
+<li><code>~/.ssh/id_alcescluster.pub</code>: <strong>public</strong> key. Paste this into GitLab.</li>
 </ul>
 <p><span class="menu">User icon &gt; Preferences &gt; Access &gt; SSH Keys &gt; Add new key</span></p>
+<p>Test it: <code>ssh -T git@git.ecdf.ed.ac.uk</code> → <em>“Welcome to GitLab”</em></p>
 <div class="muted small">
-<p>See the University’s <em>SSH keys best practice guide</em> for details.</p>
+<p>Don’t make a new key with <code>ssh-keygen</code>: Eddie’s <code>~/.ssh/config</code> tells SSH to use <code>id_alcescluster</code> for every server, so a new <code>id_ed25519</code> is never offered to GitLab.</p>
 </div>
 <aside class="notes">
-<p>Analogy: the public key is a padlock you hand out; the private key is the only key that opens it. cat ~/.ssh/id_ed25519.pub and copy the single line. Test with ssh -T git@git.ecdf.ed.ac.uk: it should say “Welcome to GitLab”.</p>
+<p>Analogy: the public key is a padlock you hand out; the private key is the only key that opens it. cat ~/.ssh/id_alcescluster.pub and copy the single line. Test with ssh -T git@git.ecdf.ed.ac.uk: it should say “Welcome to GitLab”.</p>
+<p>Why this key: Eddie’s ~/.ssh/config has a “Host <em>” block with ”IdentityFile ~/.ssh/id_alcescluster”. With an identity file set, SSH only offers that key, so a freshly generated id_ed25519 gets ”Permission denied (publickey)” even when it’s on GitLab. Anyone who wants their own key must add a ”Host git.ecdf.ed.ac.uk / IdentityFile ~/.ssh/id_ed25519” block above ”Host </em>”.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

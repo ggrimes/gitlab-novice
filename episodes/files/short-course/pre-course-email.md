@@ -17,21 +17,17 @@ qlogin
 
 Go to <https://git.ecdf.ed.ac.uk> and sign in with your University login. (This creates your account.)
 
-### 3. Create an SSH key on Eddie and add it to GitLab
+### 3. Add your Eddie SSH key to GitLab
 
-On Eddie:
-
-```
-ssh-keygen -t ed25519
-```
-
-Press **Enter** to accept the file location, then choose a **passphrase** (nothing appears as you type; that's normal). Then show your public key:
+Eddie has already made an SSH key for you, so you don't need to create one. On Eddie, show its public half:
 
 ```
-cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_alcescluster.pub
 ```
 
-Copy the **whole** line it prints (it starts with `ssh-ed25519`). In GitLab: click your **user icon** → **Preferences** → **Access** → **SSH Keys** → **Add new key** → paste → **Add key**.
+Copy the **whole** line it prints (it starts with `ssh-`). In GitLab: click your **user icon** → **Preferences** → **Access** → **SSH Keys** → **Add new key** → paste → **Add key**.
+
+Please use this key rather than making a new one with `ssh-keygen`: Eddie is set up to use `id_alcescluster` for every connection, so a new key would be ignored and GitLab would refuse you.
 
 ### 4. Run the setup check
 

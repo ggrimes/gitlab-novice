@@ -803,23 +803,27 @@ We already have a repository, so we use the "Push an existing Git repository" se
 
 ## SSH keys: password-less access
 
+Eddie has **already made a key** for you:
+
 ```bash
-[username@login02(eddie) ~]$ ssh-keygen -t ed25519
+[username@login02(eddie) ~]$ cat ~/.ssh/id_alcescluster.pub
 ```
 
-Creates two files:
-
-- `~/.ssh/id_ed25519`: **private** key. Never share it!
-- `~/.ssh/id_ed25519.pub`: **public** key. Paste this into GitLab.
+- `~/.ssh/id_alcescluster`: **private** key. Never share it!
+- `~/.ssh/id_alcescluster.pub`: **public** key. Paste this into GitLab.
 
 [User icon > Preferences > Access > SSH Keys > Add new key]{.menu}
 
+Test it: `ssh -T git@git.ecdf.ed.ac.uk` → *"Welcome to GitLab"*
+
 ::: {.muted .small}
-See the University's *SSH keys best practice guide* for details.
+Don't make a new key with `ssh-keygen`: Eddie's `~/.ssh/config` tells SSH to use `id_alcescluster` for every server, so a new `id_ed25519` is never offered to GitLab.
 :::
 
 ::: notes
-Analogy: the public key is a padlock you hand out; the private key is the only key that opens it. cat ~/.ssh/id_ed25519.pub and copy the single line. Test with ssh -T git@git.ecdf.ed.ac.uk: it should say "Welcome to GitLab".
+Analogy: the public key is a padlock you hand out; the private key is the only key that opens it. cat ~/.ssh/id_alcescluster.pub and copy the single line. Test with ssh -T git@git.ecdf.ed.ac.uk: it should say "Welcome to GitLab".
+
+Why this key: Eddie's ~/.ssh/config has a "Host *" block with "IdentityFile ~/.ssh/id_alcescluster". With an identity file set, SSH only offers that key, so a freshly generated id_ed25519 gets "Permission denied (publickey)" even when it's on GitLab. Anyone who wants their own key must add a "Host git.ecdf.ed.ac.uk / IdentityFile ~/.ssh/id_ed25519" block above "Host *".
 :::
 
 ## Connect and push

@@ -54,45 +54,44 @@ Log into GitLab, <https://git.ecdf.ed.ac.uk>, using your University of Edinburgh
 
 To enable password less access to your remote, you can add your public SSH Key from Eddie to the remote repository.
 
-#### Generating a new SSH key
+#### Use your Eddie SSH key
 
-You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on GitLab to enable authentication for Git operations over SSH.
-
-See the University's [SSH keys best practice guide](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide).
-
-Example below
+Eddie has already created an SSH key for you, `~/.ssh/id_alcescluster`, so you don't need to make a new one. Show the public half of the key:
 
 ``` bash
-[username@login02(eddie) ~]$ ssh-keygen -o -t ed25519
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (/home/username/.ssh/id_ed25519):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/username/.ssh/id_ed25519.
-Your public key has been saved in /home/username/.ssh/id_ed25519.pub.
-The key fingerprint is:
-SHA256:3t/tZzvbviR5Xs1YYYQeaGtI2n02W(and some more characters)hxxt (email address of the user)
-The key's randomart image is:
-+--[ED25519 256]--+
-|  oo..   .  o... |
-| o. o o ...o.+.  |
-|  .+ + o+ +o+ .o |
-| E  o o. o +.B. .|
-|        S . = o .|
-|       . . .  .+.|
-|        . .  o.o+|
-|           . .=o=|
-|            . .O@|
-+----[SHA256]-----+
+[username@login02(eddie) ~]$ cat ~/.ssh/id_alcescluster.pub
 ```
 
-This will generate two files: the private key file (in this example `/home/username/.ssh/id_ed25519`) and the public key file (`/home/username/.ssh/id_ed25519.pub`) - it is vitally important that you never share your private key
+Copy the **whole** line it prints (it starts with `ssh-`). That is the public key file, and it is safe to share. The file without `.pub`, `~/.ssh/id_alcescluster`, is your private key: it is vitally important that you never share it.
 
-You can now add the contents of the public key file `id_ed25519.pub` to the GitLab.
+::: callout
+Why not `ssh-keygen`?
+
+On Eddie, `~/.ssh/config` starts with a `Host *` block that sets `IdentityFile ~/.ssh/id_alcescluster`. Because an identity file is set for every host, SSH only offers that key, and never tries the default `~/.ssh/id_ed25519`. So a key you generate yourself with `ssh-keygen` is ignored, even if you add it to GitLab, and you get *"Permission denied (publickey)"*.
+
+If you really want your own key, generate it, add its `.pub` file to GitLab, and add this to the **top** of `~/.ssh/config`, above the `Host *` block:
+
+```
+Host git.ecdf.ed.ac.uk
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+See the University's [SSH keys best practice guide](https://www.wiki.ed.ac.uk/spaces/ResearchServices/pages/447372312/SSH+keys+best+practice+guide).
+:::
+
+You can now add the contents of the public key file `id_alcescluster.pub` to GitLab.
 
 In GitLab, click your **user icon**, then **Preferences** → **Access** → **SSH Keys**, and click **Add new key**. (Or go straight to <https://git.ecdf.ed.ac.uk/-/user_settings/ssh_keys>.)
 
 ![](fig/gitlab-ssh2.png){alt="GitLab SSH Keys settings page with the Add an SSH key form: a Key box, Title, Usage type and Expiration date."}
+
+Paste the line into the **Key** box and click **Add key**. Then test the connection from Eddie:
+
+``` bash
+[username@login02(eddie) ~]$ ssh -T git@git.ecdf.ed.ac.uk
+```
+
+The first time, SSH asks *"Are you sure you want to continue connecting (yes/no)?"*: type **yes**. You should see *"Welcome to GitLab"*.
 
 ## Git Remote on Eddie
 

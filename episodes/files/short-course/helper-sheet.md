@@ -38,7 +38,7 @@ Thank you for helping! One page: how the day runs, how to help, and the fixes yo
 | "not a git repository" | wrong folder: `pwd`, `cd ~/MyProject` |
 | `git status` lists the whole home folder | `rm -rf ~/.git`, then `cd ~/MyProject` |
 | "nothing added to commit" | they skipped `git add` |
-| "Permission denied (publickey)" | re-copy the **whole** `cat ~/.ssh/id_ed25519.pub` line into GitLab; test `ssh -T git@git.ecdf.ed.ac.uk` |
+| "Permission denied (publickey)" | add the **whole** `cat ~/.ssh/id_alcescluster.pub` line to GitLab (**not** `id_ed25519.pub`: Eddie's `~/.ssh/config` makes SSH use only `id_alcescluster`); test `ssh -T git@git.ecdf.ed.ac.uk` |
 | "remote origin already exists" or a typo in the address | `git remote set-url origin <address>` |
 | "src refspec main does not match any" | no commits yet, or the branch is `master`: `git branch -m master main` |
 | First push rejected (README box ticked) | `git pull --allow-unrelated-histories`, save, `git push` |
