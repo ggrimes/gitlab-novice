@@ -2341,13 +2341,15 @@ display:block!important;
 <p>Set up before today? Just run the test on the right. Otherwise, do it now:</p>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Eddie has <strong>already made a key</strong> for you. Show its public half:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">cat</span> ~/.ssh/id_alcescluster.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>Enter</strong> to accept the file location, then choose a <strong>passphrase</strong> (typing is invisible)</li>
-<li><code>id_ed25519</code>: <strong>private</strong> key. Never share it!</li>
-<li><code>id_ed25519.pub</code>: <strong>public</strong> key. Copy the one line that <code>cat</code> shows</li>
+<li><code>id_alcescluster.pub</code>: <strong>public</strong> key. Copy the <strong>whole</strong> line that <code>cat</code> shows</li>
+<li><code>id_alcescluster</code>: <strong>private</strong> key. Never share it!</li>
 </ul>
+<div class="muted small">
+<p>Why this key? Eddie’s <code>~/.ssh/config</code> tells SSH to use <code>id_alcescluster</code> for every server, so a key you make yourself (<code>id_ed25519</code>) is never offered to GitLab.</p>
+</div>
 </div><div class="column" style="width:45%;">
 <p>In GitLab:</p>
 <ol type="1">
@@ -2363,9 +2365,10 @@ display:block!important;
 <aside class="notes">
 <p><strong>⏱ 10:53 · 4 min if the key was set up before the day (up to 12 if not) · the old bottleneck</strong></p>
 <p><strong>Do first:</strong> everyone runs <code>ssh -T git@git.ecdf.ed.ac.uk</code>. Anyone who sees “Welcome to GitLab” puts up a yellow sticky and moves on. Only people without a working key do the steps below, with a helper.</p>
-<p><strong>Say:</strong> <em>“Think of the public key as a padlock you hand out, and the private key as the only key that opens it. GitLab gets the padlock.”</em></p>
-<p><strong>Do:</strong> go slowly. After <code>cat</code>, show exactly which line to copy (it starts with <code>ssh-ed25519</code>). Add the key in GitLab on screen. Everyone runs <code>ssh -T</code>; yellow sticky when they see “Welcome to GitLab”.</p>
-<p><strong>Watch for:</strong> - they already have a key → ssh-keygen asks to overwrite: answer <strong>n</strong> and use the existing <code>.pub</code> - “Permission denied (publickey)” → they pasted the private key, or only part of the line - the passphrase seems not to type: it’s invisible on purpose</p>
+<p><strong>Say:</strong> <em>“Think of the public key as a padlock you hand out, and the private key as the only key that opens it. GitLab gets the padlock. Eddie made one for you when your account was created.”</em></p>
+<p><strong>Do:</strong> go slowly. After <code>cat</code>, show exactly which line to copy: the whole line, from <code>ssh-</code> to the end. Add the key in GitLab on screen. Everyone runs <code>ssh -T</code>; yellow sticky when they see “Welcome to GitLab”.</p>
+<p><strong>Why not <code>ssh-keygen</code>?</strong> <code>cat ~/.ssh/config</code> on Eddie shows a <code>Host *</code> block with <code>IdentityFile ~/.ssh/id_alcescluster</code>. Because an identity file is set, SSH only offers that key, never the default <code>id_ed25519</code>. So a freshly made key, even correctly added to GitLab, still gives <em>“Permission denied (publickey)”</em>.</p>
+<p><strong>Watch for:</strong> - <em>“Permission denied (publickey)”</em> → they added <code>id_ed25519.pub</code> (e.g. following older instructions): add <code>id_alcescluster.pub</code> as well - they pasted the private key (starts <code>-----BEGIN</code>), or only part of the line - <em>“No such file”</em> for <code>id_alcescluster.pub</code> (rare): fetch a helper. Fallback: <code>ssh-keygen -t ed25519</code>, add that <code>.pub</code> to GitLab, then add to <code>~/.ssh/config</code>: <code>Host git.ecdf.ed.ac.uk</code> / <code>IdentityFile ~/.ssh/id_ed25519</code>, <strong>above</strong> the <code>Host *</code> block</p>
 <p><strong>If behind:</strong> helpers take the stragglers; carry on with everyone else.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3906,7 +3909,7 @@ display:block!important;
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><em>“Permission denied (publickey)”</em></td>
-<td style="text-align: left;">Re-copy the <strong>whole</strong> <code>.pub</code> line into GitLab; test with <code>ssh -T git@git.ecdf.ed.ac.uk</code></td>
+<td style="text-align: left;">Add the <strong>whole</strong> line from <code>cat ~/.ssh/id_alcescluster.pub</code> to GitLab (not <code>id_ed25519.pub</code>: Eddie’s <code>~/.ssh/config</code> only offers <code>id_alcescluster</code>); test with <code>ssh -T git@git.ecdf.ed.ac.uk</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><em>“remote origin already exists”</em> or a typo in the address</td>

@@ -1009,14 +1009,18 @@ Set up before today? Just run the test on the right. Otherwise, do it now:
 
 :::: {.columns}
 ::: {.column width="55%"}
+Eddie has **already made a key** for you. Show its public half:
+
 ```bash
-ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_alcescluster.pub
 ```
 
-- **Enter** to accept the file location, then choose a **passphrase** (typing is invisible)
-- `id_ed25519`: **private** key. Never share it!
-- `id_ed25519.pub`: **public** key. Copy the one line that `cat` shows
+- `id_alcescluster.pub`: **public** key. Copy the **whole** line that `cat` shows
+- `id_alcescluster`: **private** key. Never share it!
+
+::: {.muted .small}
+Why this key? Eddie's `~/.ssh/config` tells SSH to use `id_alcescluster` for every server, so a key you make yourself (`id_ed25519`) is never offered to GitLab.
+:::
 :::
 ::: {.column width="45%"}
 In GitLab:
@@ -1040,14 +1044,16 @@ First time it asks *"continue connecting?"*: type **yes**. Success = *"Welcome t
 
 **Do first:** everyone runs `ssh -T git@git.ecdf.ed.ac.uk`. Anyone who sees "Welcome to GitLab" puts up a yellow sticky and moves on. Only people without a working key do the steps below, with a helper.
 
-**Say:** *"Think of the public key as a padlock you hand out, and the private key as the only key that opens it. GitLab gets the padlock."*
+**Say:** *"Think of the public key as a padlock you hand out, and the private key as the only key that opens it. GitLab gets the padlock. Eddie made one for you when your account was created."*
 
-**Do:** go slowly. After `cat`, show exactly which line to copy (it starts with `ssh-ed25519`). Add the key in GitLab on screen. Everyone runs `ssh -T`; yellow sticky when they see "Welcome to GitLab".
+**Do:** go slowly. After `cat`, show exactly which line to copy: the whole line, from `ssh-` to the end. Add the key in GitLab on screen. Everyone runs `ssh -T`; yellow sticky when they see "Welcome to GitLab".
+
+**Why not `ssh-keygen`?** `cat ~/.ssh/config` on Eddie shows a `Host *` block with `IdentityFile ~/.ssh/id_alcescluster`. Because an identity file is set, SSH only offers that key, never the default `id_ed25519`. So a freshly made key, even correctly added to GitLab, still gives *"Permission denied (publickey)"*.
 
 **Watch for:**
-- they already have a key → ssh-keygen asks to overwrite: answer **n** and use the existing `.pub`
-- "Permission denied (publickey)" → they pasted the private key, or only part of the line
-- the passphrase seems not to type: it's invisible on purpose
+- *"Permission denied (publickey)"* → they added `id_ed25519.pub` (e.g. following older instructions): add `id_alcescluster.pub` as well
+- they pasted the private key (starts `-----BEGIN`), or only part of the line
+- *"No such file"* for `id_alcescluster.pub` (rare): fetch a helper. Fallback: `ssh-keygen -t ed25519`, add that `.pub` to GitLab, then add to `~/.ssh/config`: `Host git.ecdf.ed.ac.uk` / `IdentityFile ~/.ssh/id_ed25519`, **above** the `Host *` block
 
 **If behind:** helpers take the stragglers; carry on with everyone else.
 :::
@@ -2345,7 +2351,7 @@ After merging on GitLab: `git switch main` and `git pull` to bring the merge dow
 
 | What you see | Fix |
 |:--|:--|
-| *"Permission denied (publickey)"* | Re-copy the **whole** `.pub` line into GitLab; test with `ssh -T git@git.ecdf.ed.ac.uk` |
+| *"Permission denied (publickey)"* | Add the **whole** line from `cat ~/.ssh/id_alcescluster.pub` to GitLab (not `id_ed25519.pub`: Eddie's `~/.ssh/config` only offers `id_alcescluster`); test with `ssh -T git@git.ecdf.ed.ac.uk` |
 | *"remote origin already exists"* or a typo in the address | `git remote set-url origin <address>` |
 | *"src refspec main does not match any"* | No commits yet, or the branch is called master: `git branch -m master main` |
 | First push rejected (README box was ticked on GitLab) | `git pull --allow-unrelated-histories`, save the message, `git push` |

@@ -31,21 +31,22 @@ else
   fail "Git not found" "email the course organiser before the day"
 fi
 
-# 3. an SSH key exists
-if [ -f "$HOME/.ssh/id_ed25519.pub" ] || [ -f "$HOME/.ssh/id_rsa.pub" ]; then
-  pass "SSH key found in ~/.ssh"
+# 3. an SSH key exists. Eddie's ~/.ssh/config (Host * / IdentityFile) makes ssh
+#    offer only id_alcescluster, so that is the key GitLab needs.
+if [ -f "$HOME/.ssh/id_alcescluster.pub" ]; then
+  pass "Eddie SSH key found: ~/.ssh/id_alcescluster.pub"
 else
-  fail "No SSH key found" "run: ssh-keygen -t ed25519   (press Enter for the file, choose a passphrase)"
+  fail "No ~/.ssh/id_alcescluster.pub found" "email the course organiser before the day"
 fi
 
-# 4. GitLab accepts the key (may ask for your passphrase)
-echo "  … testing the connection to GitLab (type your key's passphrase if asked)"
+# 4. GitLab accepts the key
+echo "  … testing the connection to GitLab"
 out=$(ssh -T -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new "git@$GITLAB" 2>&1 < /dev/null)
 if printf '%s' "$out" | grep -qi "welcome to gitlab"; then
   pass "GitLab recognises your SSH key"
 elif printf '%s' "$out" | grep -qi "permission denied"; then
   fail "GitLab doesn't recognise your key" \
-       "copy the whole line from: cat ~/.ssh/id_ed25519.pub  into GitLab → user icon → Preferences → Access → SSH Keys"
+       "copy the whole line from: cat ~/.ssh/id_alcescluster.pub  into GitLab → user icon → Preferences → Access → SSH Keys (not id_ed25519.pub)"
 else
   fail "Couldn't reach $GITLAB" "check you can log in at https://$GITLAB in a browser; message: ${out:0:80}"
 fi
