@@ -2596,9 +2596,10 @@ display:block!important;
 </div>
 <p><span class="ep-q">How do I find old versions, and undo mistakes?</span></p>
 <aside class="notes">
-<p><strong>⏱ 11:30 · section runs to 11:55, lunch at 12:00</strong></p>
+<p><strong>⏱ 11:30 · section runs to 12:00, then lunch</strong></p>
 <p><strong>Do:</strong> 1-minute recall: <em>“Tell your neighbour: why was your push rejected, and how did you fix it?”</em></p>
 <p><strong>Say:</strong> <em>“Everyone back to the main copy and catch up first:”</em> <code>cd ~/MyProject</code>, then <code>git pull</code>.</p>
+<p><strong>Shape of the section:</strong> two slides on <em>looking</em> (nothing changes), then one map of the undo commands, one slide per command, the golden rule, and an exercise.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2611,22 +2612,26 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="looking-back" class="slide level2">
-<h2>Looking back</h2>
+<section id="your-history-is-a-chain-of-commits" class="slide level2 nostretch">
+<h2>Your history is a chain of commits</h2>
 <p>First, back to the main copy and catch up: <code>cd ~/MyProject</code> then <code>git pull</code></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>       <span class="co"># history, merges drawn as a graph</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">git</span> log <span class="at">-p</span> README.md            <span class="co"># every change ever made to one file</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="fu">git</span> show HEAD~2:README.md       <span class="co"># a file as it was two commits ago</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">git</span> diff HEAD~2 HEAD README.md  <span class="co"># what changed since then</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>   <span class="co"># one line per commit, newest first</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">git</span> log <span class="at">-p</span> README.md        <span class="co"># every change ever made to one file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDI5MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMjkwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI5MCIgeTE9IjExMCIgeDI9IjY5MCIgeTI9IjExMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI5MCIgY3k9IjExMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjI5MCIgY3k9IjExMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjExMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjY5MCIgY3k9IjExMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjkwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPjcyMDQxYzA8L3RleHQ+Cjx0ZXh0IHg9IjI5MCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj4zYjllMWYyPC90ZXh0Pgo8dGV4dCB4PSI0OTAiIHk9IjcyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+YTQxYzdkMDwvdGV4dD4KPHRleHQgeD0iNjkwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPjlmMmU2YjE8L3RleHQ+Cjx0ZXh0IHg9IjkwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5IRUFEfjM8L3RleHQ+Cjx0ZXh0IHg9IjI5MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+SEVBRH4yPC90ZXh0Pgo8dGV4dCB4PSI0OTAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPkhFQUR+MTwvdGV4dD4KPHRleHQgeD0iNjkwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5IRUFEPC90ZXh0Pgo8bGluZSB4MT0iNzEwIiB5MT0iMTEwIiB4Mj0iNzI0IiB5Mj0iMTEwIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjcyNCIgeT0iOTAiIHdpZHRoPSIxOTIiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzEzMjk0YiIvPjx0ZXh0IHg9IjgyMC4wIiB5PSIxMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5tYWluICDihpAgSEVBRDwvdGV4dD4KPHBhdGggZD0iTTY5MCwxODggUTQ5MCwyNTAgMzAwLDE5MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNiIgbWFya2VyLWVuZD0idXJsKCNhYykiLz4KPHRleHQgeD0iNDkwIiB5PSIyNzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiPkhFQUR+MiA9IHN0YXJ0IGF0IEhFQUQsIGNvdW50IHR3byBjb21taXRzIGJhY2s8L3RleHQ+Cjwvc3ZnPgo=" class="diagram" style="width:66.0%" alt="Four commits in a row, each with a short hash above. Labelled from oldest to newest: HEAD~3, HEAD~2, HEAD~1, HEAD. The main branch label points at the newest commit, HEAD. A dashed arrow from HEAD back to HEAD~2 reads: start at HEAD, count two commits back."></p>
+</figure>
+</div>
+<p>Each commit has a <strong>hash</strong> (its ID). <strong><code>HEAD</code></strong> = the commit you’re on now. Name an older commit by its hash, or count back from <code>HEAD</code>.</p>
 <div class="newcmds">
-<p><code>--graph</code> · draw the merge from the sync exercise · <code>-p</code> · show each commit’s changes, not just its message<br>
-<code>git show &lt;commit&gt;:&lt;file&gt;</code> · print an old version of a file (nothing is changed) · <code>HEAD~2</code> = two commits before now</p>
+<p><code>--graph</code> · draw merges, like the one from the sync exercise · <code>-p</code> · show each commit’s changes, not just its message</p>
 </div>
 <aside class="notes">
-<p><strong>⏱ 11:32 · 6 min</strong></p>
-<p><strong>Do:</strong> run all four commands. With <code>--graph</code>, point at the merge from the sync exercise.</p>
-<p><strong>Say:</strong> <em>“This is everything the detective task was missing: every version, with who, when and why. <code>git show</code> only prints the old version; nothing changes.”</em></p>
-<p><strong>Watch for:</strong> <code>HEAD~2</code> errors in a repository with fewer commits: use <code>HEAD~1</code>.</p>
+<p><strong>⏱ 11:31 · 4 min</strong></p>
+<p><strong>Do:</strong> run both commands. With <code>--graph</code>, point at the merge from the sync exercise. Press <code>q</code> to leave <code>git log -p</code>.</p>
+<p><strong>Say:</strong> point at the diagram. <em>“Your history is a chain. The newest commit is HEAD: ‘you are here’. Every commit has a hash, the seven characters on the left of <code>git log --oneline</code>. To name an older commit you can copy its hash, or count back from HEAD: HEAD~1 is one back, HEAD~2 is two back.”</em></p>
+<p><strong>Do:</strong> ask <em>“What’s HEAD~1 in your own log?”</em> People point at the second line of their <code>git log --oneline</code>.</p>
+<p><strong>Say:</strong> <em>“This is everything the detective task was missing: every version, with who, when and why.”</em></p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2639,50 +2644,183 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="oops-undoing-mistakes" class="slide level2 dense">
-<h2>Oops! Undoing mistakes</h2>
-<table>
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Situation</th>
-<th style="text-align: left;">Fix</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Deleted or broke a file (not committed)</td>
-<td style="text-align: left;"><code>git restore &lt;file&gt;</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Want a file back from an earlier commit</td>
-<td style="text-align: left;"><code>git restore --source=HEAD~1 &lt;file&gt;</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Typo in the last commit message</td>
-<td style="text-align: left;"><code>git commit --amend -m &quot;Better message&quot;</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A bad commit is <strong>already pushed</strong></td>
-<td style="text-align: left;"><code>git revert &lt;hash&gt;</code>: a <em>new</em> commit that undoes it</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Half-done edits, but need to <code>git pull</code></td>
-<td style="text-align: left;"><code>git stash</code> → <code>git pull</code> → <code>git stash pop</code></td>
-</tr>
-</tbody>
-</table>
-<div class="warn">
-<p><strong>Golden rule:</strong> only <code>--amend</code> commits you have <strong>not pushed</strong> yet. Once something is on GitLab, use <code>git revert</code>, which adds history instead of rewriting it.</p>
+<section id="look-at-an-old-version" class="slide level2 nostretch">
+<h2>Look at an old version</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">git</span> show HEAD~2:README.md       <span class="co"># README.md as it was two commits ago</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">git</span> diff HEAD~2 HEAD README.md  <span class="co"># what changed between then and now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM0NSIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzQ1IiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9IjQwMCIgeT0iMzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5naXQgZGlmZiBIRUFEfjIgSEVBRDwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+d2hhdCBjaGFuZ2VkIGJldHdlZW4gdGhlc2UgdHdvIGNvbW1pdHM8L3RleHQ+CjxwYXRoIGQ9Ik0xNTAsMTAwIEwxNTAsODAgTDY1MCw4MCBMNjUwLDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjMiLz4KPGxpbmUgeDE9IjE1MCIgeTE9IjE1MCIgeDI9IjY1MCIgeTI9IjE1MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxNTAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxNTAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8bGluZSB4MT0iNjcwIiB5MT0iMTUwIiB4Mj0iNjg0IiB5Mj0iMTUwIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjY4NCIgeT0iMTMwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI3ODAuMCIgeT0iMTU4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbiAg4oaQIEhFQUQ8L3RleHQ+Cjx0ZXh0IHg9IjE1MCIgeT0iMjA1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+SEVBRH4yPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjIwNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPkhFQUR+MTwvdGV4dD4KPHRleHQgeD0iNjUwIiB5PSIyMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5IRUFEPC90ZXh0Pgo8cGF0aCBkPSJNMTUwLDIxOCBMMTUwLDI1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNiIgbWFya2VyLWVuZD0idXJsKCNhdCkiLz4KPHJlY3QgeD0iMjAiIHk9IjI2NCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSI3MiIgcng9IjEwIiBmaWxsPSIjMTMyOTRiIi8+Cjx0ZXh0IHg9IjQwIiB5PSIyOTMiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPiQgZ2l0IHNob3cgSEVBRH4yOlJFQURNRS5tZDwvdGV4dD4KPHRleHQgeD0iNDAiIHk9IjMyMSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjYmZlNmU2Ij5wcmludHMgUkVBRE1FLm1kIGFzIGl0IHdhcyBiYWNrIHRoZW48L3RleHQ+CjxyZWN0IHg9IjU0MCIgeT0iMjY0IiB3aWR0aD0iNDQwIiBoZWlnaHQ9IjcyIiByeD0iMTAiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9Ijc2MCIgeT0iMjkzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5Zb3VyIGZpbGVzOiB1bmNoYW5nZWQg4pyTPC90ZXh0Pgo8dGV4dCB4PSI3NjAiIHk9IjMyMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+c2hvdyBhbmQgZGlmZiBvbmx5IGxvb2ssIHRoZXkgbmV2ZXIgZWRpdDwvdGV4dD4KPC9zdmc+Cg==" class="diagram" style="width:68.0%" alt="Three commits: HEAD~2, HEAD~1 and HEAD. A bracket from HEAD~2 to HEAD is labelled git diff HEAD~2 HEAD: what changed between these two commits. An arrow from HEAD~2 leads to a terminal box: git show HEAD~2:README.md prints README.md as it was back then. A second box says: your files are unchanged; show and diff only look, they never edit."></p>
+</figure>
+</div>
+<p>Both only <strong>look</strong>, so they’re always safe to try. Instead of <code>HEAD~2</code> you can use a hash from <code>git log</code>, like <code>3b9e1f2</code>.</p>
+<aside class="notes">
+<p><strong>⏱ 11:35 · 4 min</strong></p>
+<p><strong>Do:</strong> run both. Then <code>cat README.md</code> to show the file itself is unchanged.</p>
+<p><strong>Say:</strong> <em>“<code>git show</code> prints the old version to the screen. <code>git diff</code> with two commits compares them. Neither touches your files: looking is always safe. To actually get an old version back, that’s <code>git restore</code>, in two slides.”</em></p>
+<p><strong>Watch for:</strong> <code>HEAD~2</code> errors (<em>unknown revision</em>) in a repository with fewer commits: use <code>HEAD~1</code>. A missing colon in <code>HEAD~2:README.md</code>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="oops-which-undo-do-i-need" class="slide level2 nostretch">
+<h2>Oops! Which undo do I need?</h2>
+<p>It depends on <strong>how far the mistake has travelled</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDMzMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzMwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI5MCIgcng9IjE0IiBmaWxsPSIjZjZmM2VlIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjE1MC4wIiB5PSI2NS4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5FZGl0ZWQ8L3RleHQ+PHRleHQgeD0iMTUwLjAiIHk9Ijk1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPm5vdCBjb21taXR0ZWQgeWV0PC90ZXh0Pgo8cGF0aCBkPSJNMTUwLDExNiBMMTUwLDE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjQiIG1hcmtlci1lbmQ9InVybCgjYWMpIi8+CjxyZWN0IHg9IjIwIiB5PSIxNTYiIHdpZHRoPSIyNjAiIGhlaWdodD0iNDgiIHJ4PSIyNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjMiLz4KPHRleHQgeD0iMTUwIiB5PSIxODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5naXQgcmVzdG9yZSAmbHQ7ZmlsZSZndDs8L3RleHQ+Cjx0ZXh0IHg9IjE1MCIgeT0iMjM4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWYyOTMzIj5iYWNrIHRvIHRoZSBsYXN0IGNvbW1pdDwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIyNjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPnVuY29tbWl0dGVkIGVkaXRzIGFyZSBsb3N0PC90ZXh0Pgo8cmVjdCB4PSIzNzAiIHk9IjIwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iMTQiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNTAwLjAiIHk9IjY1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPkNvbW1pdHRlZDwvdGV4dD48dGV4dCB4PSI1MDAuMCIgeT0iOTUuMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+b24gRWRkaWUsIG5vdCBwdXNoZWQ8L3RleHQ+CjxwYXRoIGQ9Ik01MDAsMTE2IEw1MDAsMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhYykiLz4KPHJlY3QgeD0iMzcwIiB5PSIxNTYiIHdpZHRoPSIyNjAiIGhlaWdodD0iNDgiIHJ4PSIyNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjMiLz4KPHRleHQgeD0iNTAwIiB5PSIxODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5naXQgY29tbWl0IC0tYW1lbmQ8L3RleHQ+Cjx0ZXh0IHg9IjUwMCIgeT0iMjM4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWYyOTMzIj5yZWRvIHRoZSBsYXN0IGNvbW1pdDwvdGV4dD4KPHRleHQgeD0iNTAwIiB5PSIyNjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPnJld3JpdGVzIGl0OiBmaW5lLCBub2JvZHkgaGFzIGl0PC90ZXh0Pgo8cmVjdCB4PSI3MjAiIHk9IjIwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iMTQiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iODUwLjAiIHk9IjY1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPlB1c2hlZDwvdGV4dD48dGV4dCB4PSI4NTAuMCIgeT0iOTUuMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+b24gR2l0TGFiPC90ZXh0Pgo8cGF0aCBkPSJNODUwLDExNiBMODUwLDE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjQiIG1hcmtlci1lbmQ9InVybCgjYWMpIi8+CjxyZWN0IHg9IjcyMCIgeT0iMTU2IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9Ijg1MCIgeT0iMTg4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZWM2YjU2IiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+Z2l0IHJldmVydCAmbHQ7aGFzaCZndDs8L3RleHQ+Cjx0ZXh0IHg9Ijg1MCIgeT0iMjM4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMWYyOTMzIj5uZXcgY29tbWl0IHRoYXQgdW5kb2VzIGl0PC90ZXh0Pgo8dGV4dCB4PSI4NTAiIHk9IjI2NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+YWRkcyBoaXN0b3J5OiBhbHdheXMgc2FmZTwvdGV4dD4KPHBhdGggZD0iTTI4Niw2NSBMMzYyLDY1IiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhdCkiLz4KPHRleHQgeD0iMzI1IiB5PSI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPmNvbW1pdDwvdGV4dD4KPHBhdGggZD0iTTYzNiw2NSBMNzEyLDY1IiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhdCkiLz4KPHRleHQgeD0iNjc1IiB5PSI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPnB1c2g8L3RleHQ+CjxsaW5lIHgxPSIyMCIgeTE9IjI5MCIgeDI9Ijk4MCIgeTI9IjI5MCIgc3Ryb2tlPSIjZDlkZWUzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iNTAwIiB5PSIzMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPk5vdCBhIG1pc3Rha2UsIGp1c3QgaW4gdGhlIHdheSBvZiBhIGdpdCBwdWxsPyAg4oaSICBnaXQgc3Rhc2g8L3RleHQ+Cjwvc3ZnPgo=" class="diagram" style="width:92.0%" alt="Three stages left to right: Edited (not committed yet), Committed (on Eddie, not pushed), Pushed (on GitLab), joined by commit and push arrows. Under each is its undo: git restore &lt;file&gt; goes back to the last commit and loses uncommitted edits; git commit --amend redoes the last commit, which is fine because nobody else has it; git revert &lt;hash&gt; makes a new commit that undoes it, which is always safe. Footer: not a mistake, just in the way of a git pull? Use git stash."></p>
+</figure>
+</div>
+<div class="muted small">
+<p>The next slides take these one at a time.</p>
 </div>
 <aside class="notes">
-<p><strong>⏱ 11:38 · 6 min</strong></p>
-<p><strong>Say:</strong> walk through each row: - <code>restore</code>: back to the last commit (or any earlier one with <code>--source</code>) - <code>--amend</code>: <em>replaces</em> the last commit - <code>revert</code>: a <em>new</em> commit that is the exact opposite of an old one; get the hash from <code>git log --oneline</code> - <code>stash</code>: puts unfinished edits on a shelf; <code>stash pop</code> puts them back</p>
-<p>Then the golden rule: <em>“Only amend what you haven’t pushed. Once it’s on GitLab, revert.”</em></p>
-<p><strong>Note:</strong> this is the slide people photograph. Give them a moment.</p>
+<p><strong>⏱ 11:39 · 2 min</strong></p>
+<p><strong>Say:</strong> <em>“There isn’t one undo command, because ‘undo’ means different things depending on where the mistake is. Still on your bench? Restore. Committed but only on Eddie? Amend. Already on GitLab? Revert.”</em> Trace left to right with your hand.</p>
+<p><strong>Note:</strong> this is the slide people photograph. Give them a moment. It’s also on the cheat sheet at the end.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="git-restore-get-a-file-back" class="slide level2 nostretch">
+<h2><code>git restore</code>: get a file back</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">git</span> restore README.md                  <span class="co"># as it was in the last commit</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">git</span> restore <span class="at">--source</span><span class="op">=</span>HEAD~1 README.md  <span class="co"># as it was one commit earlier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM2NSIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzY1IiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSIxMjAiIHkxPSI4MCIgeDI9IjYwMCIgeTI9IjgwIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjgwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iMzYwIiBjeT0iODAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI2MDAiIGN5PSI4MCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjM2MCIgeT0iNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5IRUFEfjE8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5IRUFEPC90ZXh0Pgo8bGluZSB4MT0iNjIwIiB5MT0iODAiIHgyPSI2MzQiIHkyPSI4MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI2MzQiIHk9IjYwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI3MzAuMCIgeT0iODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5tYWluICDihpAgSEVBRDwvdGV4dD4KPHJlY3QgeD0iMjAwIiB5PSIyMzIiIHdpZHRoPSI3ODAiIGhlaWdodD0iODgiIHJ4PSIxMiIgZmlsbD0iI2Y2ZjNlZSIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz4KPHRleHQgeD0iMjI1IiB5PSIyODQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzEzMjk0YiI+V29ya2luZyBkaXJlY3Rvcnk8L3RleHQ+CjxyZWN0IHg9IjUxNS4wIiB5PSIyNjAiIHdpZHRoPSIxNzAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZWM2YjU2Ii8+PHRleHQgeD0iNjAwIiB5PSIyODMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5SRUFETUUubWQ8L3RleHQ+CjxwYXRoIGQ9Ik02MDAsMTAyIEw2MDAsMjUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhdCkiLz4KPHRleHQgeD0iNjIwIiB5PSIxNjAiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPmdpdCByZXN0b3JlIFJFQURNRS5tZDwvdGV4dD4KPHRleHQgeD0iNjIwIiB5PSIxODYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+dGhlIHZlcnNpb24gaW4gdGhlIGxhc3QgY29tbWl0PC90ZXh0Pgo8cGF0aCBkPSJNMzYwLDEwMiBDMzYwLDE4MCA1NDAsMTkwIDU4NSwyNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI3IDYiIG1hcmtlci1lbmQ9InVybCgjYWMpIi8+Cjx0ZXh0IHg9IjM0NSIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0iZW5kIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZWM2YjU2IiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+Z2l0IHJlc3RvcmUgLS1zb3VyY2U9SEVBRH4xPC90ZXh0Pgo8dGV4dCB4PSIzNDUiIHk9IjE3NCIgdGV4dC1hbmNob3I9ImVuZCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2VjNmI1NiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPlJFQURNRS5tZDwvdGV4dD4KPHRleHQgeD0iMzQ1IiB5PSIyMDAiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPmFuIG9sZGVyIHZlcnNpb248L3RleHQ+Cjx0ZXh0IHg9IjUwMCIgeT0iMzUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj5FaXRoZXIgd2F5IHRoZSBmaWxlIGlzIG92ZXJ3cml0dGVuOiBlZGl0cyB5b3UgbmV2ZXIgY29tbWl0dGVkIGFyZSBnb25lLjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" style="width:66.0%" alt="Three commits; the newest is HEAD and the one before is HEAD~1. A solid arrow from HEAD down to README.md in the working directory is labelled git restore README.md: the version in the last commit. A dashed arrow from HEAD~1 is labelled git restore --source=HEAD~1 README.md: an older version. Caption: either way the file is overwritten, and edits you never committed are gone."></p>
+</figure>
+</div>
+<p>For when you’ve broken or deleted a file. Git <strong>copies</strong> the version from a commit back into your folder; the history itself doesn’t change.</p>
+<aside class="notes">
+<p><strong>⏱ 11:41 · 2 min</strong></p>
+<p><strong>Say:</strong> <em>“You met the first line at 10:09. Git copies README.md out of the last commit, over the top of your broken one. <code>--source</code> lets you pick an older commit to copy from instead.”</em></p>
+<p><strong>Say:</strong> <em>“The history doesn’t change: no commit is added or removed. But your uncommitted edits to that file are overwritten. That’s the one way to really lose work in Git.”</em></p>
+<p><strong>Note:</strong> after <code>--source</code>, the old version shows up as a change in <code>git status</code>. Commit it if you want to keep it.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="git-commit---amend-fix-the-last-commit" class="slide level2 nostretch">
+<h2><code>git commit --amend</code>: fix the last commit</h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;Add silly line&quot;</span>   <span class="co"># a new message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM0NSIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzQ1IiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9IjIwIiB5PSI3OCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5CZWZvcmU8L3RleHQ+CjxsaW5lIHgxPSIyODAiIHkxPSI3MCIgeDI9IjYyMCIgeTI9IjcwIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjI4MCIgY3k9IjcwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iNzAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI2MjAiIGN5PSI3MCIgcj0iMTciIGZpbGw9IiNlYzZiNTYiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjYyMCIgeT0iMTIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjZWM2YjU2IiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+Im9vcHMiICA0ZTFhMmIzPC90ZXh0Pgo8bGluZSB4MT0iNjQwIiB5MT0iNzAiIHgyPSI2NTQiIHkyPSI3MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI2NTQiIHk9IjUwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI3NTAuMCIgeT0iNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5tYWluICDihpAgSEVBRDwvdGV4dD4KPGxpbmUgeDE9IjIwIiB5MT0iMTUwIiB4Mj0iOTgwIiB5Mj0iMTUwIiBzdHJva2U9IiNkOWRlZTMiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIyMCIgeT0iMjY4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPkFmdGVyPC90ZXh0Pgo8dGV4dCB4PSIyMCIgeT0iMjk2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj4tLWFtZW5kPC90ZXh0Pgo8cGF0aCBkPSJNNDUwLDI3MCBDNTM1LDI3MCA1MzUsMjAwIDYwMywyMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzViNjc3MCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI3IDYiLz4KPGNpcmNsZSBjeD0iNjIwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNWI2NzcwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNCIvPgo8dGV4dCB4PSI2NTAiIHk9IjIwNyIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj4ib29wcyIgaXMgcmVwbGFjZWQ6IGdvbmUgZnJvbSBoaXN0b3J5PC90ZXh0Pgo8bGluZSB4MT0iMjgwIiB5MT0iMjcwIiB4Mj0iNjIwIiB5Mj0iMjcwIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjI4MCIgY3k9IjI3MCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjI3MCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjYyMCIgY3k9IjI3MCIgcj0iMjIiIGZpbGw9IiMwZjhiOGQiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjYyMCIgeT0iMzI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjMGY4YjhkIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+IkFkZCBzaWxseSBsaW5lIiAgOGMwZDVmOTwvdGV4dD4KPGxpbmUgeDE9IjY0MCIgeTE9IjI3MCIgeDI9IjY1NCIgeTI9IjI3MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI2NTQiIHk9IjI1MCIgd2lkdGg9IjE5MiIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSIjMTMyOTRiIi8+PHRleHQgeD0iNzUwLjAiIHk9IjI3OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPm1haW4gIOKGkCBIRUFEPC90ZXh0Pgo8L3N2Zz4K" class="diagram" style="width:68.0%" alt="Before: three commits, the last one red with message oops and hash 4e1a2b3. After --amend: the last commit is replaced by a new teal commit, Add silly line with hash 8c0d5f9. The old oops commit hangs off the side as a dashed ghost, gone from history."></p>
+</figure>
+</div>
+<p><code>--amend</code> doesn’t edit the old commit: it <strong>replaces</strong> it with a new one (note the new hash). Forgot a file? <code>git add</code> it first, then <code>--amend</code>.</p>
+<aside class="notes">
+<p><strong>⏱ 11:43 · 2 min</strong></p>
+<p><strong>Say:</strong> <em>“Typo in the message, or forgot to add a file? Amend. But look at the hash: it’s changed. Git didn’t edit the old commit, it threw it away and made a new one in its place.”</em></p>
+<p><strong>Say:</strong> <em>“That’s fine while the commit only lives on Eddie. Hold on to ‘new hash’: it’s why the golden rule exists.”</em></p>
+<p><strong>Watch for:</strong> <code>--amend</code> without <code>-m</code> opens nano with the old message: edit, save and exit.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="git-revert-undo-a-commit-thats-already-pushed" class="slide level2 nostretch">
+<h2><code>git revert</code>: undo a commit that’s already pushed</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>     <span class="co"># find the bad commit&#39;s hash</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">git</span> revert c5d8e21    <span class="co"># make a new commit that undoes it</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDI3MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMjcwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI4MCIgeTE9IjEwMCIgeDI9Ijc0MCIgeTI9IjEwMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjI2MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjQ3MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiNlYzZiNTYiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9Ijc0MCIgY3k9IjEwMCIgcj0iMjIiIGZpbGw9IiMwZjhiOGQiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjQ3MCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiPkFkZCBzaWxseSBsaW5lPC90ZXh0Pgo8dGV4dCB4PSI3NDAiIHk9IjYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIj5SZXZlcnQgIkFkZCBzaWxseSBsaW5lIjwvdGV4dD4KPGxpbmUgeDE9Ijc2MCIgeTE9IjEwMCIgeDI9Ijc3NCIgeTI9IjEwMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI3NzQiIHk9IjgwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI4NzAuMCIgeT0iMTA4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbiAg4oaQIEhFQUQ8L3RleHQ+CjxwYXRoIGQ9Ik03MzUsMTMyIFE2MDUsMjAwIDQ4MiwxMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI3IDYiIG1hcmtlci1lbmQ9InVybCgjYXQpIi8+Cjx0ZXh0IHg9IjYwNSIgeT0iMjA0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIj51bmRvZXMgaXRzIGNoYW5nZXM8L3RleHQ+Cjx0ZXh0IHg9IjUwMCIgeT0iMjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj5Ob3RoaW5nIGlzIGRlbGV0ZWQ6IGJvdGggY29tbWl0cyBzdGF5IGluIHRoZSBoaXN0b3J5LCBhbmQgR2l0TGFiIGlzIGhhcHB5LjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" style="width:72.0%" alt="A row of commits. A red commit, Add silly line, is followed by a teal commit, Revert Add silly line, where main and HEAD point. A dashed arrow from the revert commit back to the red one says: undoes its changes. Caption: nothing is deleted; both commits stay in the history, and GitLab is happy."></p>
+</figure>
+</div>
+<p>Git works out the <strong>exact opposite</strong> of the old commit’s changes and commits that. The mistake stays in the history with its fix right after it, just like crossing out in a lab book.</p>
+<aside class="notes">
+<p><strong>⏱ 11:45 · 2 min</strong></p>
+<p><strong>Say:</strong> <em>“Revert doesn’t delete anything. It looks at what the bad commit did, works out the opposite, and saves that as a brand new commit. Lines it added get removed; lines it removed come back.”</em></p>
+<p><strong>Say:</strong> <em>“Like a lab book: you don’t tear the page out, you write ‘correction’ on the next page.”</em></p>
+<p><strong>Note:</strong> revert opens nano for the message (<em>Revert “…”</em>): save and exit, or add <code>--no-edit</code>. <code>git revert HEAD</code> undoes the most recent commit.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="the-golden-rule" class="slide level2 nostretch">
+<h2>The golden rule</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzUwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI1MDAiIHkxPSIyMCIgeDI9IjUwMCIgeTI9IjMzMCIgc3Ryb2tlPSIjZDlkZWUzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMjAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNlYzZiNTYiPuKclyBBbWVuZCBhZnRlciBwdXNoaW5nPC90ZXh0Pgo8dGV4dCB4PSIyMCIgeT0iNjgiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+eW91ciBjb3B5IGFuZCBHaXRMYWIgbm93IGRpc2FncmVlPC90ZXh0Pgo8bGluZSB4MT0iNTAiIHkxPSIyMDAiIHgyPSIxNzAiIHkyPSIyMDAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE3MCwyMDAgQzI0MC4wLDIwMCAyNDAuMCwxMjUgMzEwLDEyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTcwLDIwMCBDMjQwLjAsMjAwIDI0MC4wLDI3NSAzMTAsMjc1IiBmaWxsPSJub25lIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iMTcwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iMzEwIiBjeT0iMTI1IiByPSIxNyIgZmlsbD0iIzBmOGI4ZCIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iMzEwIiBjeT0iMjc1IiByPSIxNyIgZmlsbD0iI2VjNmI1NiIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjUiLz4KPHRleHQgeD0iMzEwIiB5PSI5OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCI+b24gR2l0TGFiPC90ZXh0Pgo8dGV4dCB4PSIzMTAiIHk9IjMyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2VjNmI1NiI+eW91ciBhbWVuZGVkIGNvcHk8L3RleHQ+Cjx0ZXh0IHg9IjM1MCIgeT0iMTk2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNlYzZiNTYiPnB1c2g8L3RleHQ+Cjx0ZXh0IHg9IjM1MCIgeT0iMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNlYzZiNTYiPnJlamVjdGVkPC90ZXh0Pgo8dGV4dCB4PSI1MzAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMwZjhiOGQiPuKckyBSZXZlcnQgYWZ0ZXIgcHVzaGluZzwvdGV4dD4KPHRleHQgeD0iNTMwIiB5PSI2OCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj5vbmUgaGlzdG9yeSwgb25lIGV4dHJhIGNvbW1pdDwvdGV4dD4KPGxpbmUgeDE9IjU2MCIgeTE9IjIwMCIgeDI9IjkyMCIgeTI9IjIwMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1NjAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI2ODAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI4MDAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjZWM2YjU2IiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI5MjAiIGN5PSIyMDAiIHI9IjIyIiBmaWxsPSIjMGY4YjhkIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iNSIvPgo8dGV4dCB4PSI4MDAiIHk9IjI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCI+b24gR2l0TGFiPC90ZXh0Pgo8dGV4dCB4PSI5MjAiIHk9IjI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzEzMjk0YiI+eW91ciBjb3B5PC90ZXh0Pgo8dGV4dCB4PSI3NDAiIHk9IjMxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBmOGI4ZCI+cHVzaCBqdXN0IGFkZHMgdGhlIG5ldyBjb21taXQg4pyTPC90ZXh0Pgo8L3N2Zz4K" class="diagram" style="width:74.0%" alt="Left, amend after pushing (wrong): history splits in two, one tip on GitLab and one in your amended copy, and the push is rejected. Right, revert after pushing (right): one straight line where your copy is just one commit ahead of GitLab, so the push simply adds the new commit."></p>
+</figure>
+</div>
+<p>Amend makes a commit with a <strong>new hash</strong>. GitLab still has the old one, so the two histories split and your push is <strong>rejected</strong>.</p>
+<div class="warn">
+<p><strong>Only <code>--amend</code> commits you have not pushed yet.</strong> Once something is on GitLab, use <code>git revert</code>, which adds history instead of rewriting it.</p>
+</div>
+<aside class="notes">
+<p><strong>⏱ 11:47 · 1 min</strong></p>
+<p><strong>Say:</strong> <em>“Left: you amended after pushing. GitLab has the old commit, you have the new one, and they no longer line up. Git refuses the push. Right: revert just adds one commit on top, so the push goes straight through.”</em></p>
+<p><strong>Say:</strong> <em>“Only amend what you haven’t pushed. Once it’s on GitLab, revert.”</em> Have the room say it back.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="git-stash-put-edits-on-a-shelf" class="slide level2 nostretch">
+<h2><code>git stash</code>: put edits on a shelf</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">git</span> stash       <span class="co"># put your half-done edits on a shelf</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">git</span> pull        <span class="co"># now the pull can go ahead</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="fu">git</span> stash pop   <span class="co"># take your edits back off the shelf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM0NSIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzQ1IiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSIzMzUiIHkxPSIyMCIgeDI9IjMzNSIgeTI9IjMxMCIgc3Ryb2tlPSIjZDlkZWUzIiBzdHJva2Utd2lkdGg9IjIiLz4KPGxpbmUgeDE9IjY3MCIgeTE9IjIwIiB4Mj0iNjcwIiB5Mj0iMzEwIiBzdHJva2U9IiNkOWRlZTMiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIyMCIgeT0iMzYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzEzMjk0YiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPjEgZ2l0IHN0YXNoPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNTgiIHdpZHRoPSIyOTAiIGhlaWdodD0iMTE4IiByeD0iMTAiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9IjE2NSIgeT0iODIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPldvcmtpbmcgZGlyZWN0b3J5PC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iMjI2IiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI4IDYiLz4KPHRleHQgeD0iMTY1IiB5PSIyNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPnRoZSBzdGFzaCAoYSBzaGVsZik8L3RleHQ+Cjx0ZXh0IHg9IjE2NSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIj5jbGVhbiDinJM8L3RleHQ+CjxyZWN0IHg9Ijg1LjAiIHk9IjI2MiIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNlYzZiNTYiLz48dGV4dCB4PSIxNjUiIHk9IjI4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPnlvdXIgZWRpdHM8L3RleHQ+CjxwYXRoIGQ9Ik0xNjUsMTgyIEwxNjUsMjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhYykiLz4KPHRleHQgeD0iMzU1IiB5PSIzNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTMyOTRiIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+MiBnaXQgcHVsbDwvdGV4dD4KPHJlY3QgeD0iMzU1IiB5PSI1OCIgd2lkdGg9IjI5MCIgaGVpZ2h0PSIxMTgiIHJ4PSIxMCIgZmlsbD0iI2Y2ZjNlZSIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz4KPHRleHQgeD0iNTAwIiB5PSI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+V29ya2luZyBkaXJlY3Rvcnk8L3RleHQ+CjxyZWN0IHg9IjM1NSIgeT0iMjI2IiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI4IDYiLz4KPHRleHQgeD0iNTAwIiB5PSIyNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPnRoZSBzdGFzaCAoYSBzaGVsZik8L3RleHQ+CjxyZWN0IHg9IjM3NS4wIiB5PSIxMDIiIHdpZHRoPSIyNTAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjMTMyOTRiIi8+PHRleHQgeD0iNTAwIiB5PSIxMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5uZXcgZnJvbSBHaXRMYWI8L3RleHQ+CjxyZWN0IHg9IjQyMC4wIiB5PSIyNjIiIHdpZHRoPSIxNjAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZWM2YjU2Ii8+PHRleHQgeD0iNTAwIiB5PSIyODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj55b3VyIGVkaXRzPC90ZXh0Pgo8dGV4dCB4PSI2OTAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxMzI5NGIiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj4zIGdpdCBzdGFzaCBwb3A8L3RleHQ+CjxyZWN0IHg9IjY5MCIgeT0iNTgiIHdpZHRoPSIyOTAiIGhlaWdodD0iMTE4IiByeD0iMTAiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9IjgzNSIgeT0iODIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPldvcmtpbmcgZGlyZWN0b3J5PC90ZXh0Pgo8cmVjdCB4PSI2OTAiIHk9IjIyNiIgd2lkdGg9IjI5MCIgaGVpZ2h0PSI4MCIgcng9IjEwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iOCA2Ii8+Cjx0ZXh0IHg9IjgzNSIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj50aGUgc3Rhc2ggKGEgc2hlbGYpPC90ZXh0Pgo8cmVjdCB4PSI3MTAuMCIgeT0iOTYiIHdpZHRoPSIyNTAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjMTMyOTRiIi8+PHRleHQgeD0iODM1IiB5PSIxMTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj5uZXcgZnJvbSBHaXRMYWI8L3RleHQ+CjxyZWN0IHg9Ijc1NS4wIiB5PSIxMzYiIHdpZHRoPSIxNjAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZWM2YjU2Ii8+PHRleHQgeD0iODM1IiB5PSIxNTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBNZW5sbywgbW9ub3NwYWNlIj55b3VyIGVkaXRzPC90ZXh0Pgo8dGV4dCB4PSI4MzUiIHk9IjI4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+ZW1wdHk8L3RleHQ+CjxwYXRoIGQ9Ik04MzUsMjIwIEw4MzUsMTg0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjhiOGQiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhdCkiLz4KPHRleHQgeD0iNTAwIiB5PSIzMzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPmdpdCBwdWxsIGNhbiByZWZ1c2Ugd2hpbGUgeW91IGhhdmUgdW5jb21taXR0ZWQgZWRpdHM6IHRoZSBzdGFzaCBrZWVwcyB0aGVtIHNhZmUgbWVhbndoaWxlLjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" style="width:70.0%" alt="Three panels. 1, git stash: your edits move from the working directory down onto the stash shelf, leaving the folder clean. 2, git pull: new commits from GitLab arrive in the working directory while your edits wait on the shelf. 3, git stash pop: your edits move back up and sit on top of the new work; the shelf is empty."></p>
+</figure>
+</div>
+<p>Not an undo, a <strong>pause</strong>. Use it when <code>git pull</code> says <em>“Your local changes … would be overwritten by merge”</em>.</p>
+<aside class="notes">
+<p><strong>⏱ 11:48 · 2 min</strong></p>
+<p><strong>Say:</strong> <em>“Sometimes you’re halfway through an edit and need to pull. Git may refuse, because the pull would overwrite your unfinished work. Stash puts your edits on a shelf, the pull goes ahead, and pop puts your edits back on top.”</em></p>
+<p><strong>Note:</strong> <code>git stash list</code> shows what’s on the shelf. If pop hits the same lines as the pull, it’s a conflict, fixed just like the one before.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2705,17 +2843,23 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;Add silly line&quot;</span>   <span class="co"># before pushing: rewrite is fine</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">git</span> push</span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="fu">git</span> revert HEAD <span class="at">--no-edit</span>                <span class="co"># after pushing: add an undo commit</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>--no-edit</code> = use Git’s automatic message (<em>Revert “Add silly line”</em>) instead of opening <code>nano</code>.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;Add silly line&quot;</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">git</span> push</span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">git</span> revert HEAD <span class="at">--no-edit</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Amend <strong>before</strong> pushing; revert <strong>after</strong>. <code>--no-edit</code> = use Git’s automatic message instead of opening <code>nano</code>.</p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDI3MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMjcwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYXQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48bWFya2VyIGlkPSJhYyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2VjNmI1NiIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImFuIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMTMyOTRiIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiM1YjY3NzAiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI4MCIgeTE9IjEwMCIgeDI9Ijc0MCIgeTI9IjEwMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjI2MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiMxMzI5NGIiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9IjQ3MCIgY3k9IjEwMCIgcj0iMTciIGZpbGw9IiNlYzZiNTYiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+CjxjaXJjbGUgY3g9Ijc0MCIgY3k9IjEwMCIgcj0iMjIiIGZpbGw9IiMwZjhiOGQiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjQ3MCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiPkFkZCBzaWxseSBsaW5lPC90ZXh0Pgo8dGV4dCB4PSI3NDAiIHk9IjYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIj5SZXZlcnQgIkFkZCBzaWxseSBsaW5lIjwvdGV4dD4KPGxpbmUgeDE9Ijc2MCIgeTE9IjEwMCIgeDI9Ijc3NCIgeTI9IjEwMCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI3NzQiIHk9IjgwIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiMxMzI5NGIiLz48dGV4dCB4PSI4NzAuMCIgeT0iMTA4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbiAg4oaQIEhFQUQ8L3RleHQ+CjxwYXRoIGQ9Ik03MzUsMTMyIFE2MDUsMjAwIDQ4MiwxMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBmOGI4ZCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI3IDYiIG1hcmtlci1lbmQ9InVybCgjYXQpIi8+Cjx0ZXh0IHg9IjYwNSIgeT0iMjA0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMGY4YjhkIj51bmRvZXMgaXRzIGNoYW5nZXM8L3RleHQ+Cjx0ZXh0IHg9IjUwMCIgeT0iMjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj5Ob3RoaW5nIGlzIGRlbGV0ZWQ6IGJvdGggY29tbWl0cyBzdGF5IGluIHRoZSBoaXN0b3J5LCBhbmQgR2l0TGFiIGlzIGhhcHB5LjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" alt="Your history afterwards: Add silly line, followed by Revert Add silly line, which undoes it."></p>
+</div>
+</div>
 </div>
 <aside class="notes">
-<p><strong>⏱ 11:44 · 8 min</strong></p>
+<p><strong>⏱ 11:50 · 7 min</strong></p>
 <p><strong>Do:</strong> start the timer and walk the room.</p>
 <p><strong>Watch for:</strong> - <code>--amend</code> without <code>-m</code> opens nano with the old message: edit it and save - revert without <code>--no-edit</code> opens nano: save and exit - someone who amends <em>after</em> pushing gets a rejected push: that’s the golden rule in action. Talk them through it: <code>git pull</code>, then push.</p>
-<p><strong>Check:</strong> <code>git log --oneline</code> shows both “Add silly line” and ‘Revert “Add silly line”’.</p>
+<p><strong>Check:</strong> <code>git log --oneline</code> shows both “Add silly line” and ‘Revert “Add silly line”’, exactly like the diagram.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2731,22 +2875,28 @@ display:block!important;
 <section id="your-turn-git-diff-head" class="slide level2 exercise">
 <h2>Your turn: <code>git diff HEAD</code></h2>
 <p><span class="wooclap-badge">Answer on the Etherpad · Q7</span></p>
+<div class="columns">
+<div class="column" style="width:44%;">
 <div class="task" data-time="2">
 <p>What does <code>git diff HEAD</code> show?</p>
 <ol type="a">
-<li>working directory ↔︎ staging area</li>
+<li>working dir ↔︎ staging area</li>
 <li>staging area ↔︎ last commit</li>
-<li>working directory ↔︎ last commit</li>
+<li>working dir ↔︎ last commit</li>
 <li>two different commits</li>
 </ol>
 </div>
+</div><div class="column" style="width:56%;">
 <div class="answer fragment">
 <p><strong>c)</strong>. Everything that has changed since the last commit, staged or not.</p>
+<p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDI3MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMjcwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPHJlY3QgeD0iMjAiIHk9IjkwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iMTQiIGZpbGw9IiNmNmYzZWUiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iMTUwLjAiIHk9IjEzNS4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5Xb3JraW5nIGRpcjwvdGV4dD48dGV4dCB4PSIxNTAuMCIgeT0iMTY1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPndoYXQgeW91IGVkaXQ8L3RleHQ+CjxyZWN0IHg9IjM3MCIgeT0iOTAiIHdpZHRoPSIyNjAiIGhlaWdodD0iOTAiIHJ4PSIxNCIgZmlsbD0iI2Y2ZjNlZSIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI1MDAuMCIgeT0iMTM1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPlN0YWdpbmcgYXJlYTwvdGV4dD48dGV4dCB4PSI1MDAuMCIgeT0iMTY1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPmFmdGVyIGdpdCBhZGQ8L3RleHQ+CjxyZWN0IHg9IjcyMCIgeT0iOTAiIHdpZHRoPSIyNjAiIGhlaWdodD0iOTAiIHJ4PSIxNCIgZmlsbD0iI2Y2ZjNlZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI4NTAuMCIgeT0iMTM1LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPkxhc3QgY29tbWl0PC90ZXh0Pjx0ZXh0IHg9Ijg1MC4wIiB5PSIxNjUuMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+SEVBRDwvdGV4dD4KPHBhdGggZD0iTTE1MCw4MiBMMTUwLDY0IEw1MDAsNjQgTDUwMCw4MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWI2NzcwIiBzdHJva2Utd2lkdGg9IjMiLz4KPHRleHQgeD0iMzI1IiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzViNjc3MCIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPmdpdCBkaWZmPC90ZXh0Pgo8cGF0aCBkPSJNNTAwLDgyIEw1MDAsNjQgTDg1MCw2NCBMODUwLDgyIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YjY3NzAiIHN0cm9rZS13aWR0aD0iMyIvPgo8dGV4dCB4PSI2NzUiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNWI2NzcwIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+Z2l0IGRpZmYgLS1zdGFnZWQ8L3RleHQ+CjxwYXRoIGQ9Ik0xNTAsMTg4IEwxNTAsMjEwIEw4NTAsMjEwIEw4NTAsMTg4IiBmaWxsPSJub25lIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNCIvPgo8dGV4dCB4PSI1MDAiIHk9IjI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2VjNmI1NiIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIE1lbmxvLCBtb25vc3BhY2UiPmdpdCBkaWZmIEhFQUQ8L3RleHQ+Cjx0ZXh0IHg9IjUwMCIgeT0iMjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjNWI2NzcwIj5ldmVyeXRoaW5nIHNpbmNlIHRoZSBsYXN0IGNvbW1pdCwgc3RhZ2VkIG9yIG5vdDwvdGV4dD4KPC9zdmc+Cg==" class="diagram" alt="Three boxes: working directory, staging area, last commit (HEAD). git diff compares the working directory with the staging area; git diff --staged compares the staging area with the last commit; git diff HEAD spans from the working directory all the way to the last commit."></p>
+</div>
+</div>
 </div>
 <aside class="notes">
-<p><strong>⏱ 11:52 · 3 min · Q7, spaced recall</strong></p>
+<p><strong>⏱ 11:57 · 3 min · Q7, spaced recall</strong></p>
 <p><strong>Do:</strong> point at Q7 on the pad. Votes on their own, then reveal.</p>
-<p><strong>Say:</strong> <em>“<code>HEAD</code> = the last commit. So <code>git diff HEAD</code> = everything you’ve changed since then, staged or not.”</em> This brings back the 09:50 material just before lunch. Any spare minutes before 12:00: take questions.</p>
+<p><strong>Say:</strong> <em>“<code>HEAD</code> = the last commit. So <code>git diff HEAD</code> = everything you’ve changed since then, staged or not.”</em> Point at the three brackets: a is plain <code>git diff</code>, b is <code>--staged</code>. This brings back the 09:50 material just before lunch.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2817,7 +2967,7 @@ display:block!important;
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>A file called <strong><code>.gitignore</code></strong> lists what Git should pretend not to see:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">nano</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">nano</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code># a whole folder
 results/
 # any file ending in .dat
@@ -2827,8 +2977,8 @@ results/
 </div><div class="column" style="width:50%;">
 <p><code>*</code> matches anything · a trailing <code>/</code> means a folder · lines starting with <code>#</code> are comments (only at the <strong>start</strong> of a line).</p>
 <p>Commit <code>.gitignore</code> like any other file, so it’s backed up and shared:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore outputs and temporary files&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore outputs and temporary files&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <aside class="notes">
@@ -2901,12 +3051,12 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="bu">echo</span> <span class="st">&quot;my password&quot;</span> <span class="op">&gt;</span> secret.txt</span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="bu">echo</span> <span class="st">&quot;secret.txt&quot;</span> <span class="op">&gt;&gt;</span> .gitignore    <span class="co"># &gt;&gt; adds a line; &gt; would wipe the file</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">git</span> status        <span class="co"># secret.txt no longer appears</span></span>
-<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb41-5"><a href="#cb41-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore secret.txt&quot;</span></span>
-<span id="cb41-6"><a href="#cb41-6"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="bu">echo</span> <span class="st">&quot;my password&quot;</span> <span class="op">&gt;</span> secret.txt</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="bu">echo</span> <span class="st">&quot;secret.txt&quot;</span> <span class="op">&gt;&gt;</span> .gitignore    <span class="co"># &gt;&gt; adds a line; &gt; would wipe the file</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a><span class="fu">git</span> status        <span class="co"># secret.txt no longer appears</span></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Ignore secret.txt&quot;</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p><strong>⏱ 12:44 · 7 min</strong></p>
@@ -2959,11 +3109,11 @@ display:block!important;
 <li>the end of a milestone</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Version used for the workshop report&quot;</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">git</span> tag</span>
-<span id="cb42-3"><a href="#cb42-3"></a><span class="fu">git</span> show v1.0</span>
-<span id="cb42-4"><a href="#cb42-4"></a><span class="fu">git</span> show v1.0:README.md</span>
-<span id="cb42-5"><a href="#cb42-5"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;Version used for the workshop report&quot;</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">git</span> tag</span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">git</span> show v1.0</span>
+<span id="cb47-4"><a href="#cb47-4"></a><span class="fu">git</span> show v1.0:README.md</span>
+<span id="cb47-5"><a href="#cb47-5"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="newcmds">
 <p><code>git tag -a &lt;name&gt; -m &quot;…&quot;</code> · label the current commit; <code>-a</code> stores who, when and why<br>
 <code>git tag</code> · list tags · <code>git show &lt;tag&gt;</code> · see the tagged commit<br>
@@ -3001,8 +3151,8 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;First tagged version&quot;</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">git</span> tag <span class="at">-a</span> v1.0 <span class="at">-m</span> <span class="st">&quot;First tagged version&quot;</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">git</span> push origin v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>GitLab offers the whole project <strong>as it was at that tag</strong> (zip / tar.gz): exactly what a reviewer needs.</p>
 </div>
 <aside class="notes">
@@ -3026,9 +3176,9 @@ display:block!important;
 <h2>Answer Reviewer 2</h2>
 <div class="task" data-time="6">
 <p>The detective’s project again, but organised the <strong>Good Enough Practices</strong> way, kept in <strong>Git</strong>, and put on GitLab. Get it the way a reviewer would:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> clone git@git.ecdf.ed.ac.uk:igmmbioinformatics/tidy_project.git</span>
-<span id="cb44-3"><a href="#cb44-3"></a><span class="bu">cd</span> tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">git</span> clone git@git.ecdf.ed.ac.uk:igmmbioinformatics/tidy_project.git</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="bu">cd</span> tidy_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Which commit made <code>results/figure3.png</code>?</li>
 <li>What changed compared with the version before it?</li>
@@ -3041,9 +3191,9 @@ display:block!important;
 </div>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> results/figure3.png                      <span class="co"># 1.</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                                <span class="co"># 3.</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> src/analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> results/figure3.png                      <span class="co"># 1.</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="fu">git</span> show v1.0-submitted <span class="at">--stat</span>                                <span class="co"># 3.</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">git</span> diff v1.0-submitted~1 v1.0-submitted <span class="at">--</span> src/analysis.py   <span class="co"># 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>QUAL &gt; 30</code> → <code>QUAL &gt; 20</code>, log scale added, <code>savefig(&quot;results/figure3.png&quot;)</code>. <strong>Provable</strong>, with dates and a message.</p>
 </div>
 <aside class="notes">
@@ -3257,9 +3407,9 @@ display:block!important;
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Detective, level 2</strong></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="bu">cd</span> ~/tidy_project</span>
-<span id="cb46-2"><a href="#cb46-2"></a><span class="fu">git</span> log <span class="at">-S</span> <span class="st">&quot;DP &gt; 10&quot;</span> <span class="at">--oneline</span></span>
-<span id="cb46-3"><a href="#cb46-3"></a><span class="fu">git</span> show HEAD~3:src/analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">cd</span> ~/tidy_project</span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="fu">git</span> log <span class="at">-S</span> <span class="st">&quot;DP &gt; 10&quot;</span> <span class="at">--oneline</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="fu">git</span> show HEAD~3:src/analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>“Add depth filter (DP &gt; 10) for the revision”</em>, April 2025, by Alex Researcher. The first version used <code>QUAL &gt; 50</code>.</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Your own project: check before you push</strong></p>
@@ -3465,13 +3615,13 @@ display:block!important;
 </section>
 <section id="create-switch-commit" class="slide level2" data-visibility="uncounted">
 <h2>Create, switch, commit</h2>
-<div class="sourceCode" id="cb47" data-code-line-numbers="|1|2|3-5|6-7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">git</span> switch <span class="at">-c</span> dev         <span class="co"># create a branch called dev, and move to it</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">git</span> branch                <span class="co"># list branches: * marks where you are</span></span>
-<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">nano</span> src/summary.py</span>
-<span id="cb47-4"><a href="#cb47-4"></a><span class="fu">git</span> add src/summary.py</span>
-<span id="cb47-5"><a href="#cb47-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add summary.py&quot;</span></span>
-<span id="cb47-6"><a href="#cb47-6"></a><span class="fu">git</span> switch main           <span class="co"># back to main...</span></span>
-<span id="cb47-7"><a href="#cb47-7"></a><span class="fu">ls</span> src                    <span class="co"># ...and summary.py has gone!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52" data-code-line-numbers="|1|2|3-5|6-7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">git</span> switch <span class="at">-c</span> dev         <span class="co"># create a branch called dev, and move to it</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="fu">git</span> branch                <span class="co"># list branches: * marks where you are</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="fu">nano</span> src/summary.py</span>
+<span id="cb52-4"><a href="#cb52-4"></a><span class="fu">git</span> add src/summary.py</span>
+<span id="cb52-5"><a href="#cb52-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add summary.py&quot;</span></span>
+<span id="cb52-6"><a href="#cb52-6"></a><span class="fu">git</span> switch main           <span class="co"># back to main...</span></span>
+<span id="cb52-7"><a href="#cb52-7"></a><span class="fu">ls</span> src                    <span class="co"># ...and summary.py has gone!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>It isn’t deleted: it lives on <code>dev</code>. <code>git switch dev</code> and it’s back.</p>
 </div>
@@ -3498,15 +3648,15 @@ display:block!important;
 <h2>Merge it back</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb48" data-code-line-numbers="|1|2|3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">git</span> diff main dev</span>
-<span id="cb48-3"><a href="#cb48-3"></a><span class="fu">git</span> merge dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53" data-code-line-numbers="|1|2|3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="fu">git</span> diff main dev</span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="fu">git</span> merge dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="small muted">
 <p>Switch to the branch you merge <strong>into</strong> · preview what <code>dev</code> brings · merge</p>
 </div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource output number-lines code-with-copy"><code class="sourceCode"><span id="cb49-1"><a href="#cb49-1"></a>Updating 370eb9d..83e878e</span>
-<span id="cb49-2"><a href="#cb49-2"></a>Fast-forward</span>
-<span id="cb49-3"><a href="#cb49-3"></a> src/summary.py | 8 ++++++++</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource output number-lines code-with-copy"><code class="sourceCode"><span id="cb54-1"><a href="#cb54-1"></a>Updating 370eb9d..83e878e</span>
+<span id="cb54-2"><a href="#cb54-2"></a>Fast-forward</span>
+<span id="cb54-3"><a href="#cb54-3"></a> src/summary.py | 8 ++++++++</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Fast-forward</strong>: <code>main</code> had no new commits, so Git just moves the <code>main</code> label up to <code>dev</code>.</p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDM1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzUwIiBmb250LWZhbWlseT0iSW50ZXIsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIj4KPGRlZnM+PG1hcmtlciBpZD0iYWgiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMwZjhiOGQiLz48L21hcmtlcj48L2RlZnM+CjxsaW5lIHgxPSI1MDAiIHkxPSIyMCIgeDI9IjUwMCIgeTI9IjMzMCIgc3Ryb2tlPSIjZDlkZWUzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMjAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMxMzI5NGIiPkZhc3QtZm9yd2FyZDwvdGV4dD4KPHRleHQgeD0iMjAiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM1YjY3NzAiPm1haW4gaGFzIG5vIG5ldyBjb21taXRzIOKGkiBqdXN0IG1vdmUgdGhlIGxhYmVsPC90ZXh0Pgo8bGluZSB4MT0iNjAiIHkxPSIyMDAiIHgyPSI0MjAiIHkyPSIyMDAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNjAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIxODAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjMTMyOTRiIiBzdHJva2U9IiMxMzI5NGIiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjZWM2YjU2IiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSI0MjAiIGN5PSIyMDAiIHI9IjE3IiBmaWxsPSIjZWM2YjU2IiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNSIvPgo8dGV4dCB4PSIxODAiIHk9IjI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+b2xkIG1haW48L3RleHQ+CjxwYXRoIGQ9Ik0xODAsMTI1IFEzMDAsODUgNDAwLDEyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjYgNiIgbWFya2VyLWVuZD0idXJsKCNhaCkiLz4KPGxpbmUgeDE9IjQyMCIgeTE9IjE1OCIgeDI9IjQyMCIgeTI9IjE4MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODAuMCIgeT0iMTE4IiB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzEzMjk0YiIvPjx0ZXh0IHg9IjQyMCIgeT0iMTQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbjwvdGV4dD4KPHRleHQgeD0iNTQwIiB5PSIzNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMTMyOTRiIj5NZXJnZSBjb21taXQ8L3RleHQ+Cjx0ZXh0IHg9IjU0MCIgeT0iNjgiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzViNjc3MCI+Ym90aCBicmFuY2hlcyBtb3ZlZCDihpIgR2l0IGpvaW5zIHRoZW08L3RleHQ+CjxsaW5lIHgxPSI1ODAiIHkxPSIyMDAiIHgyPSI5NDAiIHkyPSIyMDAiIHN0cm9rZT0iIzEzMjk0YiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTcwMCwyMDAgQzc0NS4wLDIwMCA3NDUuMCwyOTAgNzkwLDI5MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iNzkwIiB5MT0iMjkwIiB4Mj0iODUwIiB5Mj0iMjkwIiBzdHJva2U9IiNlYzZiNTYiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik04NTAsMjkwIEM4OTUuMCwyOTAgODk1LjAsMjAwIDk0MCwyMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VjNmI1NiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNTgwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iNzAwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iODIwIiBjeT0iMjAwIiByPSIxNyIgZmlsbD0iIzEzMjk0YiIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iODIwIiBjeT0iMjkwIiByPSIxNyIgZmlsbD0iI2VjNmI1NiIgc3Ryb2tlPSIjZWM2YjU2IiBzdHJva2Utd2lkdGg9IjUiLz4KPGNpcmNsZSBjeD0iOTQwIiBjeT0iMjAwIiByPSIyMiIgZmlsbD0iIzBmOGI4ZCIgc3Ryb2tlPSIjMGY4YjhkIiBzdHJva2Utd2lkdGg9IjUiLz4KPHRleHQgeD0iODIwIiB5PSIzMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYzZiNTYiPmRldjwvdGV4dD4KPHRleHQgeD0iOTg1IiB5PSIzMzgiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwZjhiOGQiPm1lcmdlIGNvbW1pdDwvdGV4dD4KPGxpbmUgeDE9Ijk0MCIgeTE9IjE1OCIgeDI9Ijk0MCIgeTI9IjE4MCIgc3Ryb2tlPSIjMTMyOTRiIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI5MDAuMCIgeT0iMTE4IiB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzEzMjk0YiIvPjx0ZXh0IHg9Ijk0MCIgeT0iMTQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgTWVubG8sIG1vbm9zcGFjZSI+bWFpbjwvdGV4dD4KPC9zdmc+Cg==" class="diagram" alt="Left: fast-forward, where main simply moves along to the tip of dev. Right: both branches have new commits, so Git creates a merge commit joining them."></p>
@@ -3543,13 +3693,13 @@ display:block!important;
 </ol>
 </div>
 <div class="answer fragment">
-<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">git</span> switch <span class="at">-c</span> columns</span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="fu">nano</span> src/hello.py</span>
-<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">git</span> add src/hello.py <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Print the column names&quot;</span></span>
-<span id="cb50-4"><a href="#cb50-4"></a><span class="fu">git</span> switch main <span class="kw">&amp;&amp;</span> <span class="fu">cat</span> src/hello.py     <span class="co"># not there: it&#39;s on columns</span></span>
-<span id="cb50-5"><a href="#cb50-5"></a><span class="fu">git</span> merge columns                       <span class="co"># fast-forward</span></span>
-<span id="cb50-6"><a href="#cb50-6"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
-<span id="cb50-7"><a href="#cb50-7"></a><span class="fu">git</span> branch <span class="at">-d</span> columns <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">git</span> switch <span class="at">-c</span> columns</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="fu">nano</span> src/hello.py</span>
+<span id="cb55-3"><a href="#cb55-3"></a><span class="fu">git</span> add src/hello.py <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Print the column names&quot;</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a><span class="fu">git</span> switch main <span class="kw">&amp;&amp;</span> <span class="fu">cat</span> src/hello.py     <span class="co"># not there: it&#39;s on columns</span></span>
+<span id="cb55-5"><a href="#cb55-5"></a><span class="fu">git</span> merge columns                       <span class="co"># fast-forward</span></span>
+<span id="cb55-6"><a href="#cb55-6"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb55-7"><a href="#cb55-7"></a><span class="fu">git</span> branch <span class="at">-d</span> columns <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p><strong>⏱ 8 min</strong></p>
@@ -3570,9 +3720,9 @@ display:block!important;
 </section>
 <section id="share-a-branch-merge-requests" class="slide level2" data-visibility="uncounted">
 <h2>Share a branch: merge requests</h2>
-<div class="sourceCode" id="cb51" data-code-line-numbers="|1|2-3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin dev            <span class="co"># publish the branch to GitLab</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="fu">git</span> branch <span class="at">-d</span> dev                 <span class="co"># once it&#39;s merged: delete it here...</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="fu">git</span> push origin <span class="at">--delete</span> dev      <span class="co"># ...and on GitLab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56" data-code-line-numbers="|1|2-3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin dev            <span class="co"># publish the branch to GitLab</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="fu">git</span> branch <span class="at">-d</span> dev                 <span class="co"># once it&#39;s merged: delete it here...</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a><span class="fu">git</span> push origin <span class="at">--delete</span> dev      <span class="co"># ...and on GitLab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>On GitLab, a <strong>merge request</strong> lets colleagues <strong>review</strong> a branch (see the diff, comment on lines) before it goes into <code>main</code>. On a shared project, that’s how most teams work: nobody pushes straight to <code>main</code>.</p>
 <div class="small muted">
 <p>After merging on GitLab: <code>git switch main</code> and <code>git pull</code> to bring the merge down to Eddie.</p>
