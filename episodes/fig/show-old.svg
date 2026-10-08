@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 345" width="1000" height="345" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker><marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ec6b56"/></marker><marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13294b"/></marker><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/></marker></defs>
+<text x="400" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#ec6b56" font-family="'JetBrains Mono', Menlo, monospace">git diff HEAD~2 HEAD</text>
+<text x="400" y="62" text-anchor="middle" font-size="19" font-weight="400" fill="#5b6770">what changed between these two commits</text>
+<path d="M150,100 L150,80 L650,80 L650,100" fill="none" stroke="#ec6b56" stroke-width="3"/>
+<line x1="150" y1="150" x2="650" y2="150" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="150" cy="150" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="400" cy="150" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="650" cy="150" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<line x1="670" y1="150" x2="684" y2="150" stroke="#13294b" stroke-width="3"/><rect x="684" y="130" width="192" height="40" rx="20" fill="#13294b"/><text x="780.0" y="158" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main  ← HEAD</text>
+<text x="150" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~2</text>
+<text x="400" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~1</text>
+<text x="650" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD</text>
+<path d="M150,218 L150,258" fill="none" stroke="#0f8b8d" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#at)"/>
+<rect x="20" y="264" width="440" height="72" rx="10" fill="#13294b"/>
+<text x="40" y="293" text-anchor="start" font-size="19" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">$ git show HEAD~2:README.md</text>
+<text x="40" y="321" text-anchor="start" font-size="18" font-weight="400" fill="#bfe6e6">prints README.md as it was back then</text>
+<rect x="540" y="264" width="440" height="72" rx="10" fill="#f6f3ee" stroke="#0f8b8d" stroke-width="3"/>
+<text x="760" y="293" text-anchor="middle" font-size="22" font-weight="800" fill="#13294b">Your files: unchanged ✓</text>
+<text x="760" y="321" text-anchor="middle" font-size="18" font-weight="400" fill="#5b6770">show and diff only look, they never edit</text>
+</svg>
