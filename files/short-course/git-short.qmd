@@ -1266,65 +1266,182 @@ Back out instead: `git merge --abort`
 [How do I find old versions, and undo mistakes?]{.ep-q}
 
 ::: notes
-**⏱ 11:30 · section runs to 11:55, lunch at 12:00**
+**⏱ 11:30 · section runs to 12:00, then lunch**
 
 **Do:** 1-minute recall: *"Tell your neighbour: why was your push rejected, and how did you fix it?"*
 
 **Say:** *"Everyone back to the main copy and catch up first:"* `cd ~/MyProject`, then `git pull`.
+
+**Shape of the section:** two slides on *looking* (nothing changes), then one map of the undo commands, one slide per command, the golden rule, and an exercise.
 :::
 
-## Looking back
+## Your history is a chain of commits {.nostretch}
 
 First, back to the main copy and catch up: `cd ~/MyProject` then `git pull`
 
 ```bash
-git log --oneline --graph       # history, merges drawn as a graph
-git log -p README.md            # every change ever made to one file
-git show HEAD~2:README.md       # a file as it was two commits ago
-git diff HEAD~2 HEAD README.md  # what changed since then
+git log --oneline --graph   # one line per commit, newest first
+git log -p README.md        # every change ever made to one file
 ```
 
+![](../../fig/history-chain.svg){.diagram fig-align="center" width="66%" fig-alt="Four commits in a row, each with a short hash above. Labelled from oldest to newest: HEAD~3, HEAD~2, HEAD~1, HEAD. The main branch label points at the newest commit, HEAD. A dashed arrow from HEAD back to HEAD~2 reads: start at HEAD, count two commits back."}
+
+Each commit has a **hash** (its ID). **`HEAD`** = the commit you're on now. Name an older commit by its hash, or count back from `HEAD`.
+
 ::: {.newcmds}
-`--graph` · draw the merge from the sync exercise · `-p` · show each commit's changes, not just its message\
-`git show <commit>:<file>` · print an old version of a file (nothing is changed) · `HEAD~2` = two commits before now
+`--graph` · draw merges, like the one from the sync exercise · `-p` · show each commit's changes, not just its message
 :::
 
 ::: notes
-**⏱ 11:32 · 6 min**
+**⏱ 11:31 · 4 min**
 
-**Do:** run all four commands. With `--graph`, point at the merge from the sync exercise.
+**Do:** run both commands. With `--graph`, point at the merge from the sync exercise. Press `q` to leave `git log -p`.
 
-**Say:** *"This is everything the detective task was missing: every version, with who, when and why. `git show` only prints the old version; nothing changes."*
+**Say:** point at the diagram. *"Your history is a chain. The newest commit is HEAD: 'you are here'. Every commit has a hash, the seven characters on the left of `git log --oneline`. To name an older commit you can copy its hash, or count back from HEAD: HEAD~1 is one back, HEAD~2 is two back."*
 
-**Watch for:** `HEAD~2` errors in a repository with fewer commits: use `HEAD~1`.
+**Do:** ask *"What's HEAD~1 in your own log?"* People point at the second line of their `git log --oneline`.
+
+**Say:** *"This is everything the detective task was missing: every version, with who, when and why."*
 :::
 
-## Oops! Undoing mistakes {.dense}
+## Look at an old version {.nostretch}
 
-| Situation | Fix |
-|:--|:--|
-| Deleted or broke a file (not committed) | `git restore <file>` |
-| Want a file back from an earlier commit | `git restore --source=HEAD~1 <file>` |
-| Typo in the last commit message | `git commit --amend -m "Better message"` |
-| A bad commit is **already pushed** | `git revert <hash>`: a *new* commit that undoes it |
-| Half-done edits, but need to `git pull` | `git stash` → `git pull` → `git stash pop` |
+```bash
+git show HEAD~2:README.md       # README.md as it was two commits ago
+git diff HEAD~2 HEAD README.md  # what changed between then and now
+```
+
+![](../../fig/show-old.svg){.diagram fig-align="center" width="68%" fig-alt="Three commits: HEAD~2, HEAD~1 and HEAD. A bracket from HEAD~2 to HEAD is labelled git diff HEAD~2 HEAD: what changed between these two commits. An arrow from HEAD~2 leads to a terminal box: git show HEAD~2:README.md prints README.md as it was back then. A second box says: your files are unchanged; show and diff only look, they never edit."}
+
+Both only **look**, so they're always safe to try. Instead of `HEAD~2` you can use a hash from `git log`, like `3b9e1f2`.
+
+::: notes
+**⏱ 11:35 · 4 min**
+
+**Do:** run both. Then `cat README.md` to show the file itself is unchanged.
+
+**Say:** *"`git show` prints the old version to the screen. `git diff` with two commits compares them. Neither touches your files: looking is always safe. To actually get an old version back, that's `git restore`, in two slides."*
+
+**Watch for:** `HEAD~2` errors (*unknown revision*) in a repository with fewer commits: use `HEAD~1`. A missing colon in `HEAD~2:README.md`.
+:::
+
+## Oops! Which undo do I need? {.nostretch}
+
+It depends on **how far the mistake has travelled**:
+
+![](../../fig/which-undo.svg){.diagram fig-align="center" width="92%" fig-alt="Three stages left to right: Edited (not committed yet), Committed (on Eddie, not pushed), Pushed (on GitLab), joined by commit and push arrows. Under each is its undo: git restore <file> goes back to the last commit and loses uncommitted edits; git commit --amend redoes the last commit, which is fine because nobody else has it; git revert <hash> makes a new commit that undoes it, which is always safe. Footer: not a mistake, just in the way of a git pull? Use git stash."}
+
+::: {.muted .small}
+The next slides take these one at a time.
+:::
+
+::: notes
+**⏱ 11:39 · 2 min**
+
+**Say:** *"There isn't one undo command, because 'undo' means different things depending on where the mistake is. Still on your bench? Restore. Committed but only on Eddie? Amend. Already on GitLab? Revert."* Trace left to right with your hand.
+
+**Note:** this is the slide people photograph. Give them a moment. It's also on the cheat sheet at the end.
+:::
+
+## `git restore`: get a file back {.nostretch}
+
+```bash
+git restore README.md                  # as it was in the last commit
+git restore --source=HEAD~1 README.md  # as it was one commit earlier
+```
+
+![](../../fig/restore.svg){.diagram fig-align="center" width="66%" fig-alt="Three commits; the newest is HEAD and the one before is HEAD~1. A solid arrow from HEAD down to README.md in the working directory is labelled git restore README.md: the version in the last commit. A dashed arrow from HEAD~1 is labelled git restore --source=HEAD~1 README.md: an older version. Caption: either way the file is overwritten, and edits you never committed are gone."}
+
+For when you've broken or deleted a file. Git **copies** the version from a commit back into your folder; the history itself doesn't change.
+
+::: notes
+**⏱ 11:41 · 2 min**
+
+**Say:** *"You met the first line at 10:09. Git copies README.md out of the last commit, over the top of your broken one. `--source` lets you pick an older commit to copy from instead."*
+
+**Say:** *"The history doesn't change: no commit is added or removed. But your uncommitted edits to that file are overwritten. That's the one way to really lose work in Git."*
+
+**Note:** after `--source`, the old version shows up as a change in `git status`. Commit it if you want to keep it.
+:::
+
+## `git commit --amend`: fix the last commit {.nostretch}
+
+```bash
+git commit --amend -m "Add silly line"   # a new message
+```
+
+![](../../fig/amend.svg){.diagram fig-align="center" width="68%" fig-alt="Before: three commits, the last one red with message oops and hash 4e1a2b3. After --amend: the last commit is replaced by a new teal commit, Add silly line with hash 8c0d5f9. The old oops commit hangs off the side as a dashed ghost, gone from history."}
+
+`--amend` doesn't edit the old commit: it **replaces** it with a new one (note the new hash). Forgot a file? `git add` it first, then `--amend`.
+
+::: notes
+**⏱ 11:43 · 2 min**
+
+**Say:** *"Typo in the message, or forgot to add a file? Amend. But look at the hash: it's changed. Git didn't edit the old commit, it threw it away and made a new one in its place."*
+
+**Say:** *"That's fine while the commit only lives on Eddie. Hold on to 'new hash': it's why the golden rule exists."*
+
+**Watch for:** `--amend` without `-m` opens nano with the old message: edit, save and exit.
+:::
+
+## `git revert`: undo a commit that's already pushed {.nostretch}
+
+```bash
+git log --oneline     # find the bad commit's hash
+git revert c5d8e21    # make a new commit that undoes it
+git push
+```
+
+![](../../fig/revert.svg){.diagram fig-align="center" width="72%" fig-alt="A row of commits. A red commit, Add silly line, is followed by a teal commit, Revert Add silly line, where main and HEAD point. A dashed arrow from the revert commit back to the red one says: undoes its changes. Caption: nothing is deleted; both commits stay in the history, and GitLab is happy."}
+
+Git works out the **exact opposite** of the old commit's changes and commits that. The mistake stays in the history with its fix right after it, just like crossing out in a lab book.
+
+::: notes
+**⏱ 11:45 · 2 min**
+
+**Say:** *"Revert doesn't delete anything. It looks at what the bad commit did, works out the opposite, and saves that as a brand new commit. Lines it added get removed; lines it removed come back."*
+
+**Say:** *"Like a lab book: you don't tear the page out, you write 'correction' on the next page."*
+
+**Note:** revert opens nano for the message (*Revert "…"*): save and exit, or add `--no-edit`. `git revert HEAD` undoes the most recent commit.
+:::
+
+## The golden rule {.nostretch}
+
+![](../../fig/golden-rule.svg){.diagram fig-align="center" width="74%" fig-alt="Left, amend after pushing (wrong): history splits in two, one tip on GitLab and one in your amended copy, and the push is rejected. Right, revert after pushing (right): one straight line where your copy is just one commit ahead of GitLab, so the push simply adds the new commit."}
+
+Amend makes a commit with a **new hash**. GitLab still has the old one, so the two histories split and your push is **rejected**.
 
 ::: {.warn}
-**Golden rule:** only `--amend` commits you have **not pushed** yet. Once something is on GitLab, use `git revert`, which adds history instead of rewriting it.
+**Only `--amend` commits you have not pushed yet.** Once something is on GitLab, use `git revert`, which adds history instead of rewriting it.
 :::
 
 ::: notes
-**⏱ 11:38 · 6 min**
+**⏱ 11:47 · 1 min**
 
-**Say:** walk through each row:
-- `restore`: back to the last commit (or any earlier one with `--source`)
-- `--amend`: *replaces* the last commit
-- `revert`: a *new* commit that is the exact opposite of an old one; get the hash from `git log --oneline`
-- `stash`: puts unfinished edits on a shelf; `stash pop` puts them back
+**Say:** *"Left: you amended after pushing. GitLab has the old commit, you have the new one, and they no longer line up. Git refuses the push. Right: revert just adds one commit on top, so the push goes straight through."*
 
-Then the golden rule: *"Only amend what you haven't pushed. Once it's on GitLab, revert."*
+**Say:** *"Only amend what you haven't pushed. Once it's on GitLab, revert."* Have the room say it back.
+:::
 
-**Note:** this is the slide people photograph. Give them a moment.
+## `git stash`: put edits on a shelf {.nostretch}
+
+```bash
+git stash       # put your half-done edits on a shelf
+git pull        # now the pull can go ahead
+git stash pop   # take your edits back off the shelf
+```
+
+![](../../fig/stash.svg){.diagram fig-align="center" width="70%" fig-alt="Three panels. 1, git stash: your edits move from the working directory down onto the stash shelf, leaving the folder clean. 2, git pull: new commits from GitLab arrive in the working directory while your edits wait on the shelf. 3, git stash pop: your edits move back up and sit on top of the new work; the shelf is empty."}
+
+Not an undo, a **pause**. Use it when `git pull` says *"Your local changes … would be overwritten by merge"*.
+
+::: notes
+**⏱ 11:48 · 2 min**
+
+**Say:** *"Sometimes you're halfway through an edit and need to pull. Git may refuse, because the pull would overwrite your unfinished work. Stash puts your edits on a shelf, the pull goes ahead, and pop puts your edits back on top."*
+
+**Note:** `git stash list` shows what's on the shelf. If pop hits the same lines as the pull, it's a conflict, fixed just like the one before.
 :::
 
 ## Your turn: undo it {.exercise}
@@ -1336,17 +1453,25 @@ Then the golden rule: *"Only amend what you haven't pushed. Once it's on GitLab,
 :::
 
 ::: {.answer .fragment}
+:::: {.columns}
+::: {.column width="55%"}
 ```bash
-git commit --amend -m "Add silly line"   # before pushing: rewrite is fine
+git commit --amend -m "Add silly line"
 git push
-git revert HEAD --no-edit                # after pushing: add an undo commit
+git revert HEAD --no-edit
 git push
 ```
-`--no-edit` = use Git's automatic message (*Revert "Add silly line"*) instead of opening `nano`.
+Amend **before** pushing; revert **after**.
+`--no-edit` = use Git's automatic message instead of opening `nano`.
+:::
+::: {.column width="45%"}
+![](../../fig/revert.svg){.diagram fig-alt="Your history afterwards: Add silly line, followed by Revert Add silly line, which undoes it."}
+:::
+::::
 :::
 
 ::: notes
-**⏱ 11:44 · 8 min**
+**⏱ 11:50 · 7 min**
 
 **Do:** start the timer and walk the room.
 
@@ -1355,32 +1480,39 @@ git push
 - revert without `--no-edit` opens nano: save and exit
 - someone who amends *after* pushing gets a rejected push: that's the golden rule in action. Talk them through it: `git pull`, then push.
 
-**Check:** `git log --oneline` shows both "Add silly line" and 'Revert "Add silly line"'.
+**Check:** `git log --oneline` shows both "Add silly line" and 'Revert "Add silly line"', exactly like the diagram.
 :::
 
 ## Your turn: `git diff HEAD` {.exercise}
 
 [Answer on the Etherpad · Q7]{.wooclap-badge}
 
+::::: {.columns}
+:::: {.column width="44%"}
 ::: {.task time="2"}
 What does `git diff HEAD` show?
 
-a) working directory ↔ staging area
+a) working dir ↔ staging area
 b) staging area ↔ last commit
-c) working directory ↔ last commit
+c) working dir ↔ last commit
 d) two different commits
 :::
-
+::::
+:::: {.column width="56%"}
 ::: {.answer .fragment}
 **c)**. Everything that has changed since the last commit, staged or not.
+
+![](../../fig/diff-head.svg){.diagram fig-alt="Three boxes: working directory, staging area, last commit (HEAD). git diff compares the working directory with the staging area; git diff --staged compares the staging area with the last commit; git diff HEAD spans from the working directory all the way to the last commit."}
 :::
+::::
+:::::
 
 ::: notes
-**⏱ 11:52 · 3 min · Q7, spaced recall**
+**⏱ 11:57 · 3 min · Q7, spaced recall**
 
 **Do:** point at Q7 on the pad. Votes on their own, then reveal.
 
-**Say:** *"`HEAD` = the last commit. So `git diff HEAD` = everything you've changed since then, staged or not."* This brings back the 09:50 material just before lunch. Any spare minutes before 12:00: take questions.
+**Say:** *"`HEAD` = the last commit. So `git diff HEAD` = everything you've changed since then, staged or not."* Point at the three brackets: a is plain `git diff`, b is `--staged`. This brings back the 09:50 material just before lunch.
 :::
 
 ## Lunch {.breakslide background-color="#13294b"}
