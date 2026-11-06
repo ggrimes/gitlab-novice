@@ -7,8 +7,8 @@ version control with Git and GitLab. It is built with
 
 **Lesson website:** <https://ggrimes.github.io/gitlab-novice/>
 
-**Status:** beta. The lesson has been taught and is ready to be taught by
-instructors outside the original author team. Feedback from those workshops is
+**Status:** beta. The lesson has been taught at the University of Edinburgh
+and is still being refined. Feedback from learners and other instructors is
 very welcome.
 
 ## Who the lesson is for

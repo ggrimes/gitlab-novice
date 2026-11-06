@@ -9,7 +9,6 @@ type: dataset
 authors:
   - given-names: Graeme
     family-names: Grimes
-    email: Graeme.Grimes@ed.ac.uk
     affiliation: The University of Edinburgh
 abstract: >-
   A hands-on introduction to version control with Git and
