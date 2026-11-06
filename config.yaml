@@ -27,7 +27,7 @@ keywords: 'software, data, lesson, git, git-lab'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'pre-alpha'
+life_cycle: 'beta'
 
 # License of the lesson materials (recommended CC-BY 4.0)
 license: 'CC-BY 4.0'
@@ -71,9 +71,9 @@ episodes:
 - 04-remotes.Rmd
 - 05-git-gui.Rmd
 - 06-collaborating.Rmd
-- 05-exploring-history.Rmd
-- ignoring-things.Rmd
-- 07-branching-and-tagging.Rmd
+- 07-exploring-history.Rmd
+- 08-ignoring-things.Rmd
+- 09-branching-and-tagging.Rmd
 
 # Information for Learners
 learners:
