@@ -43,13 +43,13 @@
         <a href="index.html">
         <img id="incubator-logo" alt="Lesson Description" src="../assets/images/incubator-logo.svg"></a>
 
-        <span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -293,7 +293,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface RStudio</a>
+        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface (RStudio)</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -317,7 +317,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="05-exploring-history.html">7. Exploring History</a>
+        <a href="07-exploring-history.html">7. Exploring History</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -329,7 +329,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="ignoring-things.html">8. Ignoring Things</a>
+        <a href="08-ignoring-things.html">8. Ignoring Things</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -341,7 +341,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="07-branching-and-tagging.html">9. Branching and Tagging</a>
+        <a href="09-branching-and-tagging.html">9. Branching and Tagging</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -425,14 +425,121 @@
         <h1>Instructor Notes</h1>
         
 
-<p>This is workshop is intended to be run with the University of
-Edinburgh and makes use of their services.</p>
-<section><h2 class="section-heading" id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
+<p>This workshop is designed to run at the University of Edinburgh and
+uses its services: ECDF GitLab, the Eddie cluster and Noteable.
+Instructors elsewhere can use <a href="https://gitlab.com" class="external-link">gitlab.com</a> and learners’ own computers
+instead. The GitLab screens look the same, but menu names may differ
+slightly between versions.</p>
+<section><h2 class="section-heading" id="before-the-workshop">Before the workshop<a class="anchor" aria-label="anchor" href="#before-the-workshop"></a>
 </h2>
 <hr class="half-width">
 <ul>
-<li><a href="https://education.github.com/git-cheat-sheet-education.pdf" class="external-link">git-cheat-sheet</a></li>
-<li><a href="https://github.blog/developer-skills/github/top-12-git-commands-every-developer-must-know/" class="external-link">top-12-git-commands-every-developer-must-know</a></li>
+<li>
+<strong>Send the setup instructions at least a week ahead</strong>
+and ask learners to confirm that <code>git --version</code> works.
+Installation problems are the most common cause of lost time in the
+first half hour.</li>
+<li>
+<strong>Ask learners to set up SSH keys in advance</strong>, or plan
+15 minutes for it at the start. Learners on Eddie should use the key
+already set up for the cluster.</li>
+<li>
+<strong>Off-campus learners need the University VPN</strong> to
+reach ECDF GitLab. Remind them to connect before the workshop
+starts.</li>
+<li>
+<strong>Prepare a pairing plan for episode 6.</strong> Collaborating
+needs learners in pairs, and each person needs their partner’s UUN. In a
+hybrid workshop, pair in-room learners together and online learners
+together.</li>
+</ul></section><section><h2 class="section-heading" id="timing">Timing<a class="anchor" aria-label="anchor" href="#timing"></a>
+</h2>
+<hr class="half-width">
+<p>The full lesson takes about 2 hours 50 minutes of teaching and
+exercises, plus breaks. If time is short:</p>
+<ul>
+<li>Episodes 1–4 and 6 are the core of the lesson.</li>
+<li>Episode 5 (RStudio) can be skipped if learners are not R users, or
+used instead of the command line for learners who find the terminal
+difficult.</li>
+<li>Episodes 8 (Ignoring Things) and 9 (Branching and Tagging) can be
+shortened or set as follow-up reading.</li>
+</ul></section><section><h2 class="section-heading" id="hybrid-delivery">Hybrid delivery<a class="anchor" aria-label="anchor" href="#hybrid-delivery"></a>
+</h2>
+<hr class="half-width">
+<ul>
+<li>
+<strong>Have an online helper.</strong> One person should watch the
+chat, answer questions from online learners, and tell the instructor
+when someone is stuck.</li>
+<li>
+<strong>Use a consistent way to ask for help</strong>, such as
+raising a hand in Teams for online learners and coloured sticky notes in
+the room.</li>
+<li>
+<strong>Increase the terminal font size</strong> and use a light
+background so code is readable on a shared screen and in a video
+call.</li>
+<li>
+<strong>Paste each command into the chat</strong> or a shared notes
+document after typing it, so online learners can catch up if the video
+lags.</li>
+</ul></section><section><h2 class="section-heading" id="common-problems">Common problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>
+</h2>
+<hr class="half-width">
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>Problem</th>
+<th>What usually helps</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>
+<code>Permission denied (publickey)</code> when pushing or
+cloning</td>
+<td>The SSH key is missing, not added to GitLab, or the wrong key is
+being used. Check with <code>ssh -T git@git.ecdf.ed.ac.uk</code>.</td>
+</tr>
+<tr>
+<td>Cannot reach GitLab off campus</td>
+<td>Connect to the University VPN.</td>
+</tr>
+<tr>
+<td>Push to <code>main</code> rejected in episode 6</td>
+<td>The branch is still protected. Repeat Step 2 (unprotect the
+branch).</td>
+</tr>
+<tr>
+<td>
+<code>git</code> opens Vim during a commit or merge</td>
+<td>Show learners how to exit (<code>Esc</code>, then <code>:wq</code>),
+then set a friendlier editor with
+<code>git config --global core.editor nano</code>.</td>
+</tr>
+<tr>
+<td>Commits show the wrong name or email</td>
+<td>
+<code>git config</code> was not run in episode 2, or was run without
+<code>--global</code>.</td>
+</tr>
+<tr>
+<td>Learners worry about “breaking” the repository</td>
+<td>Emphasise that committed work can almost always be recovered, and
+show <code>git log</code> and <code>git restore</code> early.</td>
+</tr>
+</tbody>
+</table></section><section><h2 class="section-heading" id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
+</h2>
+<hr class="half-width">
+<ul>
+<li><a href="https://education.github.com/git-cheat-sheet-education.pdf" class="external-link">Git
+cheat sheet (GitHub Education)</a></li>
+<li><a href="https://github.blog/developer-skills/github/top-12-git-commands-every-developer-must-know/" class="external-link">Top
+12 Git commands every developer must know</a></li>
 </ul>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
@@ -479,7 +586,7 @@ step reinforces the mental model.</p>
 sets up the <strong>tracking relationship</strong>, allowing future
 <code>git push</code>/<code>git pull</code> without extra arguments.</p>
 <hr>
-<br></section><section id="05-git-gui"><h2 class="section-heading"><a href="05-git-gui.html">Using Git with a Graphical User Interface RStudio</a></h2>
+<br></section><section id="05-git-gui"><h2 class="section-heading"><a href="05-git-gui.html">Using Git with a Graphical User Interface (RStudio)</a></h2>
 <hr class="half-width">
 <h3 id="05-git-gui-headingInstructor1">
 <a href="05-git-gui.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#05-git-gui-headingInstructor1"></a>
@@ -489,20 +596,20 @@ Git—it’s just another interface to the same tool. Some users will
 transition back and forth between the GUI and command line.</p>
 <hr>
 <br></section><section id="06-collaborating"><h2 class="section-heading"><a href="06-collaborating.html">Collaborating</a></h2>
-<hr class="half-width"></section><section id="05-exploring-history"><h2 class="section-heading"><a href="05-exploring-history.html">Exploring History</a></h2>
-<hr class="half-width"></section><section id="ignoring-things"><h2 class="section-heading"><a href="ignoring-things.html">Ignoring Things</a></h2>
-<hr class="half-width"></section><section id="07-branching-and-tagging"><h2 class="section-heading"><a href="07-branching-and-tagging.html">Branching and Tagging</a></h2>
+<hr class="half-width"></section><section id="07-exploring-history"><h2 class="section-heading"><a href="07-exploring-history.html">Exploring History</a></h2>
+<hr class="half-width"></section><section id="08-ignoring-things"><h2 class="section-heading"><a href="08-ignoring-things.html">Ignoring Things</a></h2>
+<hr class="half-width"></section><section id="09-branching-and-tagging"><h2 class="section-heading"><a href="09-branching-and-tagging.html">Branching and Tagging</a></h2>
 <hr class="half-width">
-<h3 id="07-branching-and-tagging-headingInstructor1">
-<a href="07-branching-and-tagging.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#07-branching-and-tagging-headingInstructor1"></a>
+<h3 id="09-branching-and-tagging-headingInstructor1">
+<a href="09-branching-and-tagging.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#09-branching-and-tagging-headingInstructor1"></a>
 </h3>
 <p>Learners often think a branch is a copy of all the files. Emphasise
 that a branch is only a <em>pointer</em> to a commit, which is why
 creating one is instant. Drawing the commits as circles and the branches
 as sticky labels on the whiteboard works well here.</p>
 <hr>
-<br><h3 id="07-branching-and-tagging-headingInstructor2">
-<a href="07-branching-and-tagging.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#07-branching-and-tagging-headingInstructor2"></a>
+<br><h3 id="09-branching-and-tagging-headingInstructor2">
+<a href="09-branching-and-tagging.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#09-branching-and-tagging-headingInstructor2"></a>
 </h3>
 <p>Link tags back to the introduction’s reason for using version
 control: “the state of the system when you published a paper”. Many
@@ -559,8 +666,8 @@ release) gives learners a stable reference they can cite.</p>
   "url": "https://ggrimes.github.io/gitlab-novice/instructor/instructor-notes.html",
   "identifier": "https://ggrimes.github.io/gitlab-novice/instructor/instructor-notes.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2026-11-03",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-06",
+  "datePublished": "2026-11-06"
 }
 
   </script><script>

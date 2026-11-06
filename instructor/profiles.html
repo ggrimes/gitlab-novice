@@ -27,13 +27,13 @@
         <a href="index.html">
         <img id="incubator-logo" alt="Lesson Description" src="../assets/images/incubator-logo.svg"></a>
 
-        <span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -241,7 +241,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface RStudio</a>
+        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface (RStudio)</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -259,7 +259,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="05-exploring-history.html">7. Exploring History</a>
+        <a href="07-exploring-history.html">7. Exploring History</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="ignoring-things.html">8. Ignoring Things</a>
+        <a href="08-ignoring-things.html">8. Ignoring Things</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -277,7 +277,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="07-branching-and-tagging.html">9. Branching and Tagging</a>
+        <a href="09-branching-and-tagging.html">9. Branching and Tagging</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -342,14 +342,64 @@
         <h1>Learner Profiles</h1>
         
 
-<p>This is a placeholder file. Please add content here.</p>
-<!--
+<p>This lesson is written for researchers and analysts at the University
+of Edinburgh and partner NHS organisations who work with data and code,
+but who have not used version control before. It is usually taught as
+the final workshop of a two-week Introduction to Data Science programme,
+in a hybrid setting with some learners in the room and some online.</p>
+<p>The profiles below describe the kinds of learners we design for. They
+are composites, not real people.</p>
+<section><h2 class="section-heading" id="aisha-postdoctoral-research-scientist">Aisha: postdoctoral research scientist<a class="anchor" aria-label="anchor" href="#aisha-postdoctoral-research-scientist"></a></h2>
+<hr class="half-width"><p>Aisha is a postdoc in a clinical research group, analysing patient
+cohort data in R. She has used RStudio for several years but rarely
+opens a terminal and is nervous about “breaking something” on the
+command line. She keeps old versions of her analysis as
+<code>analysis_v2_final_FINAL.R</code> and shares scripts with
+collaborators by email. She is joining online from her office.</p>
+<p>Aisha wants a reliable record of how her results were produced, for
+papers and for the next person to join the project. The RStudio Git
+episode and a steady pace through the command-line steps will help her
+most, along with clear help channels for online learners.</p>
+</section><section><h2 class="section-heading" id="tomasz-phd-student-in-biological-sciences">Tomasz: PhD student in biological sciences<a class="anchor" aria-label="anchor" href="#tomasz-phd-student-in-biological-sciences"></a></h2>
+<hr class="half-width"><p>Tomasz is in the second year of a PhD and analyses sequencing data
+with a mix of shell scripts and Python on the University HPC cluster. He
+is comfortable in the terminal and has cloned repositories from GitHub,
+but he has never made a commit or worked with a remote of his own.
+English is his second language.</p>
+<p>Tomasz wants to put his analysis code under version control before
+his thesis and to collaborate with a lab mate. He will move quickly
+through the early episodes, so the challenges and the branching episode
+give him something to stretch towards. Plain, consistent terminology
+helps him follow along.</p>
+</section><section><h2 class="section-heading" id="priya-postgraduate-taught-student">Priya: postgraduate taught student<a class="anchor" aria-label="anchor" href="#priya-postgraduate-taught-student"></a></h2>
+<hr class="half-width"><p>Priya is on a one-year MSc and is new to programming. She has
+completed the earlier workshops in the data science programme, so she
+has seen the shell and R for the first time in the past fortnight. She
+is attending in person.</p>
+<p>Priya needs to use GitLab for a group project later in her course.
+She benefits most from the step-by-step local workflow, frequent short
+challenges that check her understanding, and having a helper nearby when
+an error message appears.</p>
+</section><section><h2 class="section-heading" id="what-these-profiles-mean-for-the-lesson">What these profiles mean for the lesson<a class="anchor" aria-label="anchor" href="#what-these-profiles-mean-for-the-lesson"></a></h2>
+<hr class="half-width"><ul><li>
+<strong>Mixed prior experience:</strong> challenges have worked
+solutions, and later episodes (Exploring History, Branching and Tagging)
+can be shortened or extended depending on the group.</li>
+<li>
+<strong>Command line and GUI:</strong> the RStudio episode gives
+learners who are less confident in the terminal a second route to the
+same workflow.</li>
+<li>
+<strong>Hybrid delivery:</strong> setup instructions are sent in
+advance, and an online helper supports learners joining remotely.</li>
+<li>
+<strong>Institutional accounts:</strong> setup uses University of
+Edinburgh GitLab, with gitlab.com as an alternative for learners without
+a University login.</li>
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-
-
-      </div>
+ --></section></div>
     </main></div>
 <!-- END  : inst/pkgdown/templates/content-extra.html -->
 
@@ -394,8 +444,8 @@ any links that you are not going to use.
   "url": "https://ggrimes.github.io/gitlab-novice/instructor/profiles.html",
   "identifier": "https://ggrimes.github.io/gitlab-novice/instructor/profiles.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2026-11-03",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-06",
+  "datePublished": "2026-11-06"
 }
 
   </script><script>

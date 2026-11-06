@@ -27,13 +27,13 @@
         <a href="index.html">
         <img id="incubator-logo" alt="Lesson Description" src="assets/images/incubator-logo.svg"></a>
 
-        <span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -252,7 +252,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface RStudio</a>
+        <a href="05-git-gui.html">5. Using Git with a Graphical User Interface (RStudio)</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -270,7 +270,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="05-exploring-history.html">7. Exploring History</a>
+        <a href="07-exploring-history.html">7. Exploring History</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -279,7 +279,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="ignoring-things.html">8. Ignoring Things</a>
+        <a href="08-ignoring-things.html">8. Ignoring Things</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -288,7 +288,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="07-branching-and-tagging.html">9. Branching and Tagging</a>
+        <a href="09-branching-and-tagging.html">9. Branching and Tagging</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -360,24 +360,57 @@
       
 <div class="section level1">
 <h1 id="introduction-to-git-and-gitlab">Introduction to Git and GitLab<a class="anchor" aria-label="anchor" href="#introduction-to-git-and-gitlab"></a></h1>
-<p>This lesson provides an introduction to version control with Git and
-GitLab.</p>
+<p>This lesson is a hands-on introduction to version control with Git
+and GitLab. Learners start by tracking changes to files on their own
+computer, then share their work on GitLab and collaborate with others in
+a shared repository.</p>
 <div class="section level2">
-<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a></h2>
-<p>The lesson covers the basics of Git, including:</p>
-<ul><li>Configuring Git</li>
-<li>The local workflow (staging, committing, etc.)</li>
-<li>Working with remotes</li>
-<li>Exploring the history of a project</li>
-<li>Collaborating with others</li>
-</ul><p>It also introduces GitLab as a platform for hosting and managing Git
-repositories.</p>
+<h2 id="who-this-lesson-is-for">Who this lesson is for<a class="anchor" aria-label="anchor" href="#who-this-lesson-is-for"></a></h2>
+<p>The lesson is for researchers, analysts and postgraduate students who
+work with data and code but have not used version control before. It is
+usually taught as the final workshop of a two-week Introduction to Data
+Science programme at the University of Edinburgh, with some learners in
+the room and some online. The <a href="learner-profiles.html">learner
+profiles</a> describe the learners we have in mind.</p>
+<div id="prerequisites" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<span class="callout-header">Prerequisite</span>
+<div id="prerequisites" class="callout-inner">
+<h3 class="callout-title">Prerequisites</h3>
+<div class="callout-content">
+<ul><li>Basic use of the command line: moving between directories, listing
+files and running commands. The Software Carpentry <a href="https://swcarpentry.github.io/shell-novice/" class="external-link">Unix Shell</a> lesson
+covers this.</li>
+<li>Ability to edit a text file with an editor such as nano, VS Code or
+RStudio.</li>
+<li>For episode 5, some familiarity with RStudio.</li>
+<li>A University of Edinburgh login, or a free <a href="https://gitlab.com" class="external-link">gitlab.com</a> account.</li>
+</ul><p>No previous experience of Git is needed.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="section level2">
+<h2 id="what-the-lesson-covers">What the lesson covers<a class="anchor" aria-label="anchor" href="#what-the-lesson-covers"></a></h2>
+<ul><li>Why version control is useful</li>
+<li>Configuring Git</li>
+<li>The local workflow: staging, committing and checking status</li>
+<li>Working with remote repositories on GitLab</li>
+<li>Using Git from RStudio</li>
+<li>Collaborating in a shared repository, including resolving merge
+conflicts</li>
+<li>Exploring the history of a project and restoring earlier
+versions</li>
+<li>Ignoring files</li>
+<li>Branching and tagging</li>
+</ul></div>
+<div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a></h2>
-<p>The setup instructions for this lesson are specific to resources
-available at the University of Edinburgh. These instructions can be
-found in the <a href="index.html#setup">setup guide</a>.</p>
+<p>The setup instructions are specific to resources available at the
+University of Edinburgh, with notes for learners using gitlab.com. They
+can be found in the <a href="index.html#setup">setup guide</a>.</p>
 <p>This lesson is built with <a href="https://carpentries.github.io/sandpaper-docs" class="external-link">The Carpentries
 Workbench</a>.</p>
 <!--
@@ -599,8 +632,8 @@ any links that you are not going to use.
   "url": "https://ggrimes.github.io/gitlab-novice/index.html",
   "identifier": "https://ggrimes.github.io/gitlab-novice/index.html",
   "dateCreated": "2025-06-05",
-  "dateModified": "2026-11-03",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-06",
+  "datePublished": "2026-11-06"
 }
 
   </script><script>
