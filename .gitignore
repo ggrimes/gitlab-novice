@@ -54,3 +54,6 @@ renv/sandbox/
 
 # macOS
 .DS_Store
+
+# Local slides, not part of the lesson
+episodes/files/igv-slides.*
