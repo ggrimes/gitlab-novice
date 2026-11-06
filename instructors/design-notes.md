@@ -16,15 +16,10 @@ analyse data but have never used version control. They are **novices** with
 Git, though some are competent programmers. See the
 [learner profiles](../profiles/learner-profiles.md).
 
-**Audiences we decided not to design for:**
-
-- *Experienced developers* who already use Git and want advanced workflows
-  such as rebasing or submodules. The lesson would move too slowly for them.
-- *Learners with no command-line experience at all.* The lesson is the final
-  workshop of a two-week programme, so it assumes the shell basics taught
-  earlier. Learners new to the shell should take a shell lesson first.
-- *Learners who need GitHub specifically.* The lesson uses GitLab because it is
-  the University's supported service, but most of it transfers to GitHub.
+**Audience we decided not to design for:** learners with no command-line
+experience at all. The lesson is the final workshop of a two-week programme,
+so it assumes the shell basics taught earlier. Learners new to the shell
+should take a shell lesson first.
 
 ## Prerequisites and pre-workshop check
 
@@ -39,7 +34,8 @@ themselves.
 2. **Which of these have you done?**
    I have used Git to make a commit / I have cloned a repository but never
    committed / I have never used Git.
-   Learners who regularly commit and push are probably beyond this lesson.
+   This shows the mix of experience in the group, so the instructor can
+   plan extension tasks for learners who already use Git.
 
 ## Lesson objectives and how episodes map to them
 
