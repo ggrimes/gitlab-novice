@@ -46,6 +46,23 @@ Priya needs to use GitLab for a group project later in her course. She benefits
 most from the step-by-step local workflow, frequent short challenges that check
 her understanding, and having a helper nearby when an error message appears.
 
+## Expertise stage and likely misconceptions
+
+All three learners are **novices** with Git, even though Tomasz is a competent
+programmer. The lesson therefore uses live coding, worked examples and short,
+frequent challenges rather than open-ended exploration.
+
+Misconceptions we expect, and where the lesson addresses them:
+
+| Misconception | Where it is addressed |
+|---|---|
+| "Committing saves my work to GitLab." Learners confuse the local repository with the remote. | Episodes 3 and 4: the working directory → staging area → repository → remote model |
+| "`git add` saves my changes." The staging area is seen as the final step. | Episode 3: `git status` after every step |
+| "A branch is a copy of all my files." | Episode 9: a branch is a pointer to a commit |
+| "If something goes wrong I'll lose my work." | Episodes 3 and 7: `git log` and `git restore` |
+| "A merge conflict means I broke something." | Episode 6: conflicts are a normal part of collaborating |
+| "Git is only for software developers, not for analysis scripts." | Episode 1: reasons to use version control in research |
+
 ## What these profiles mean for the lesson
 
 - **Mixed prior experience:** challenges have worked solutions, and later

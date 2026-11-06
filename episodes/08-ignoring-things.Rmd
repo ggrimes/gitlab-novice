@@ -13,7 +13,7 @@ exercises: 2
 ::: objectives
 -   Explain the purpose of a `.gitignore` file in Git repositories
 -   Create and edit a `.gitignore` file to exclude unnecessary files
--   Understand common patterns and pitfalls when using `.gitignore`
+-   Identify common patterns and pitfalls when using `.gitignore`
 :::
 
 ## What is `.gitignore`?
