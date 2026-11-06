@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 345" width="1000" height="345" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker><marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ec6b56"/></marker><marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13294b"/></marker><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/></marker></defs>
+<line x1="335" y1="20" x2="335" y2="310" stroke="#d9dee3" stroke-width="2"/>
+<line x1="670" y1="20" x2="670" y2="310" stroke="#d9dee3" stroke-width="2"/>
+<text x="20" y="36" text-anchor="start" font-size="22" font-weight="700" fill="#13294b" font-family="'JetBrains Mono', Menlo, monospace">1 git stash</text>
+<rect x="20" y="58" width="290" height="118" rx="10" fill="#f6f3ee" stroke="#13294b" stroke-width="3"/>
+<text x="165" y="82" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">Working directory</text>
+<rect x="20" y="226" width="290" height="80" rx="10" fill="#fff" stroke="#0f8b8d" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="165" y="250" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">the stash (a shelf)</text>
+<text x="165" y="135" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d">clean ✓</text>
+<rect x="85.0" y="262" width="160" height="32" rx="6" fill="#ec6b56"/><text x="165" y="285" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">your edits</text>
+<path d="M165,182 L165,218" fill="none" stroke="#ec6b56" stroke-width="4" marker-end="url(#ac)"/>
+<text x="355" y="36" text-anchor="start" font-size="22" font-weight="700" fill="#13294b" font-family="'JetBrains Mono', Menlo, monospace">2 git pull</text>
+<rect x="355" y="58" width="290" height="118" rx="10" fill="#f6f3ee" stroke="#13294b" stroke-width="3"/>
+<text x="500" y="82" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">Working directory</text>
+<rect x="355" y="226" width="290" height="80" rx="10" fill="#fff" stroke="#0f8b8d" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="500" y="250" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">the stash (a shelf)</text>
+<rect x="375.0" y="102" width="250" height="32" rx="6" fill="#13294b"/><text x="500" y="125" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">new from GitLab</text>
+<rect x="420.0" y="262" width="160" height="32" rx="6" fill="#ec6b56"/><text x="500" y="285" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">your edits</text>
+<text x="690" y="36" text-anchor="start" font-size="22" font-weight="700" fill="#13294b" font-family="'JetBrains Mono', Menlo, monospace">3 git stash pop</text>
+<rect x="690" y="58" width="290" height="118" rx="10" fill="#f6f3ee" stroke="#13294b" stroke-width="3"/>
+<text x="835" y="82" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">Working directory</text>
+<rect x="690" y="226" width="290" height="80" rx="10" fill="#fff" stroke="#0f8b8d" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="835" y="250" text-anchor="middle" font-size="17" font-weight="400" fill="#5b6770">the stash (a shelf)</text>
+<rect x="710.0" y="96" width="250" height="32" rx="6" fill="#13294b"/><text x="835" y="119" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">new from GitLab</text>
+<rect x="755.0" y="136" width="160" height="32" rx="6" fill="#ec6b56"/><text x="835" y="159" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">your edits</text>
+<text x="835" y="285" text-anchor="middle" font-size="19" font-weight="400" fill="#5b6770">empty</text>
+<path d="M835,220 L835,184" fill="none" stroke="#0f8b8d" stroke-width="4" marker-end="url(#at)"/>
+<text x="500" y="336" text-anchor="middle" font-size="18" font-weight="400" fill="#5b6770">git pull can refuse while you have uncommitted edits: the stash keeps them safe meanwhile.</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="1000" height="350" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker></defs>
+<line x1="500" y1="20" x2="500" y2="330" stroke="#d9dee3" stroke-width="2"/>
+<text x="20" y="36" text-anchor="start" font-size="28" font-weight="800" fill="#13294b">Fast-forward</text>
+<text x="20" y="68" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">main has no new commits → just move the label</text>
+<line x1="60" y1="200" x2="420" y2="200" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="60" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="180" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="300" cy="200" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/>
+<circle cx="420" cy="200" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/>
+<text x="180" y="252" text-anchor="middle" font-size="19" font-weight="400" fill="#5b6770">old main</text>
+<path d="M180,125 Q300,85 400,125" fill="none" stroke="#0f8b8d" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+<line x1="420" y1="158" x2="420" y2="180" stroke="#13294b" stroke-width="3"/><rect x="380.0" y="118" width="80" height="40" rx="20" fill="#13294b"/><text x="420" y="146" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main</text>
+<text x="540" y="36" text-anchor="start" font-size="28" font-weight="800" fill="#13294b">Merge commit</text>
+<text x="540" y="68" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">both branches moved → Git joins them</text>
+<line x1="580" y1="200" x2="940" y2="200" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<path d="M700,200 C745.0,200 745.0,290 790,290" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<line x1="790" y1="290" x2="850" y2="290" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<path d="M850,290 C895.0,290 895.0,200 940,200" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<circle cx="580" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="700" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="820" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="820" cy="290" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/>
+<circle cx="940" cy="200" r="22" fill="#0f8b8d" stroke="#0f8b8d" stroke-width="5"/>
+<text x="820" y="338" text-anchor="middle" font-size="19" font-weight="700" fill="#ec6b56">dev</text>
+<text x="985" y="338" text-anchor="end" font-size="20" font-weight="700" fill="#0f8b8d">merge commit</text>
+<line x1="940" y1="158" x2="940" y2="180" stroke="#13294b" stroke-width="3"/><rect x="900.0" y="118" width="80" height="40" rx="20" fill="#13294b"/><text x="940" y="146" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main</text>
+</svg>

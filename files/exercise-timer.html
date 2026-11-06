@@ -1,0 +1,50 @@
+<script>
+/* Exercise helpers for "Your turn" slides.
+   ::: {.task time="5"}  -> adds a clickable 5-minute countdown
+   Every .task also gets the green/red sticky-note reminder. */
+(function () {
+  function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+
+  document.querySelectorAll(".reveal .task").forEach(function (task) {
+    var bar = document.createElement("div");
+    bar.className = "task-bar";
+
+    var mins = parseFloat(task.getAttribute("data-time") || task.getAttribute("time"));
+    if (mins > 0) {
+      var total = Math.round(mins * 60), left = total, id = null;
+      var btn = document.createElement("button");
+      btn.className = "timer";
+      btn.title = "Click to start / pause, double-click to reset";
+      btn.textContent = "⏱ " + fmt(left);
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (id) { clearInterval(id); id = null; btn.classList.remove("running"); return; }
+        if (left <= 0) left = total;
+        btn.classList.add("running"); btn.classList.remove("done");
+        id = setInterval(function () {
+          left -= 1;
+          btn.textContent = "⏱ " + fmt(Math.max(left, 0));
+          if (left <= 0) {
+            clearInterval(id); id = null;
+            btn.classList.remove("running"); btn.classList.add("done");
+            btn.textContent = "⏱ time!";
+          }
+        }, 1000);
+      });
+      btn.addEventListener("dblclick", function (e) {
+        e.stopPropagation();
+        clearInterval(id); id = null; left = total;
+        btn.className = "timer"; btn.textContent = "⏱ " + fmt(left);
+      });
+      bar.appendChild(btn);
+    }
+
+    var sticky = document.createElement("span");
+    sticky.className = "stickies";
+    sticky.innerHTML = '<span class="sticky green"></span> done &nbsp;<span class="sticky red"></span> stuck';
+    bar.appendChild(sticky);
+
+    task.appendChild(bar);
+  });
+})();
+</script>

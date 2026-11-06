@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="1000" height="350" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker><marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ec6b56"/></marker><marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13294b"/></marker><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/></marker></defs>
+<line x1="500" y1="20" x2="500" y2="330" stroke="#d9dee3" stroke-width="2"/>
+<text x="20" y="36" text-anchor="start" font-size="28" font-weight="800" fill="#ec6b56">✗ Amend after pushing</text>
+<text x="20" y="68" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">your copy and GitLab now disagree</text>
+<line x1="50" y1="200" x2="170" y2="200" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<path d="M170,200 C240.0,200 240.0,125 310,125" fill="none" stroke="#0f8b8d" stroke-width="7" stroke-linecap="round"/>
+<path d="M170,200 C240.0,200 240.0,275 310,275" fill="none" stroke="#ec6b56" stroke-width="7" stroke-linecap="round"/>
+<circle cx="50" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="170" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="310" cy="125" r="17" fill="#0f8b8d" stroke="#0f8b8d" stroke-width="5"/>
+<circle cx="310" cy="275" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/>
+<text x="310" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="#0f8b8d">on GitLab</text>
+<text x="310" y="322" text-anchor="middle" font-size="20" font-weight="700" fill="#ec6b56">your amended copy</text>
+<text x="350" y="196" text-anchor="start" font-size="22" font-weight="800" fill="#ec6b56">push</text>
+<text x="350" y="222" text-anchor="start" font-size="22" font-weight="800" fill="#ec6b56">rejected</text>
+<text x="530" y="36" text-anchor="start" font-size="28" font-weight="800" fill="#0f8b8d">✓ Revert after pushing</text>
+<text x="530" y="68" text-anchor="start" font-size="19" font-weight="400" fill="#5b6770">one history, one extra commit</text>
+<line x1="560" y1="200" x2="920" y2="200" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="560" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="680" cy="200" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="800" cy="200" r="17" fill="#ec6b56" stroke="#ec6b56" stroke-width="5"/>
+<circle cx="920" cy="200" r="22" fill="#0f8b8d" stroke="#0f8b8d" stroke-width="5"/>
+<text x="800" y="252" text-anchor="middle" font-size="20" font-weight="700" fill="#0f8b8d">on GitLab</text>
+<text x="920" y="252" text-anchor="middle" font-size="20" font-weight="700" fill="#13294b">your copy</text>
+<text x="740" y="310" text-anchor="middle" font-size="21" font-weight="700" fill="#0f8b8d">push just adds the new commit ✓</text>
+</svg>

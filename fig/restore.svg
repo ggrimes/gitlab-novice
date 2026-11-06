@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 365" width="1000" height="365" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker><marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ec6b56"/></marker><marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13294b"/></marker><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/></marker></defs>
+<line x1="120" y1="80" x2="600" y2="80" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="120" cy="80" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="360" cy="80" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="600" cy="80" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<text x="360" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~1</text>
+<text x="600" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD</text>
+<line x1="620" y1="80" x2="634" y2="80" stroke="#13294b" stroke-width="3"/><rect x="634" y="60" width="192" height="40" rx="20" fill="#13294b"/><text x="730.0" y="88" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main  ← HEAD</text>
+<rect x="200" y="232" width="780" height="88" rx="12" fill="#f6f3ee" stroke="#13294b" stroke-width="3"/>
+<text x="225" y="284" text-anchor="start" font-size="24" font-weight="800" fill="#13294b">Working directory</text>
+<rect x="515.0" y="260" width="170" height="32" rx="6" fill="#ec6b56"/><text x="600" y="283" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">README.md</text>
+<path d="M600,102 L600,252" fill="none" stroke="#0f8b8d" stroke-width="4" marker-end="url(#at)"/>
+<text x="620" y="160" text-anchor="start" font-size="20" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">git restore README.md</text>
+<text x="620" y="186" text-anchor="start" font-size="18" font-weight="400" fill="#5b6770">the version in the last commit</text>
+<path d="M360,102 C360,180 540,190 585,252" fill="none" stroke="#ec6b56" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ac)"/>
+<text x="345" y="150" text-anchor="end" font-size="19" font-weight="700" fill="#ec6b56" font-family="'JetBrains Mono', Menlo, monospace">git restore --source=HEAD~1</text>
+<text x="345" y="174" text-anchor="end" font-size="19" font-weight="700" fill="#ec6b56" font-family="'JetBrains Mono', Menlo, monospace">README.md</text>
+<text x="345" y="200" text-anchor="end" font-size="18" font-weight="400" fill="#5b6770">an older version</text>
+<text x="500" y="352" text-anchor="middle" font-size="19" font-weight="400" fill="#5b6770">Either way the file is overwritten: edits you never committed are gone.</text>
+</svg>

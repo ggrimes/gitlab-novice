@@ -1,0 +1,596 @@
+---
+title: "Introduction to Git and GitLab"
+subtitle: "Version control for your research, hands-on on Eddie"
+author: "Graeme Grimes"
+format:
+  revealjs:
+    theme: [default, ../git-theme.scss, intro-experiment.scss]
+    slide-number: c/t
+    transition: fade
+    background-transition: fade
+    progress: true
+    hash: true
+    center: false
+    width: 1280
+    height: 760
+    margin: 0.06
+    footer: "Introduction to Git and GitLab · experimental opening"
+    embed-resources: true
+    code-copy: true
+    menu:
+      numbers: true
+    include-after-body: [../exercise-timer.html, ../wooclap.html]
+# Wooclap event for this experiment (questions E1–E8 in wooclap-questions.md)
+wooclap-code: "XXXXXX"
+wooclap-embed-url: "none"
+title-slide-attributes:
+  data-background-color: "#13294b"
+  data-background-image: "../../fig/lesson-qr.svg"
+  data-background-size: "150px"
+  data-background-position: "right 60px bottom 70px"
+---
+
+## {background-color="#13294b"}
+
+::: {.email}
+[**From:** Reviewer 2 · **To:** you · **Subject:** Manuscript GEN-2025-0417, revision]{.hdr}
+
+Dear author,
+
+The histogram in **Figure 3** looks different from the one in your preprint.
+
+Please provide **the exact code and parameters** used to generate Figure 3 in the submitted version, and explain what changed.
+:::
+
+::: {.bigq .fragment style="color:#fff"}
+You made Figure 3 fourteen months ago.\
+Could you answer this email today?
+:::
+
+::: notes
+**HOOK · 3 min.** No welcome, no agenda yet: open on the problem. Read the email out loud, then pause on the question. Let the silence do the work; a few nervous laughs is the right reaction.
+
+Why: Gagné's first event (gain attention) and the R in Keller's ARCS (relevance). A concrete, high-stakes story is remembered far better than a list of benefits.
+
+Say: "Hold that thought. By 4 o'clock you'll answer this email in about 30 seconds."
+:::
+
+## How today works
+
+:::: {.columns}
+::: {.column width="55%"}
+- I'm **Graeme**; helpers today: **[names]**
+- **Mistakes are expected.** Git is built for *undo*: you can't break anything we do today.
+- No question is too basic. If you're wondering, someone else is too.
+- We'll type **everything** together. No slides of code to copy.
+:::
+::: {.column width="45%"}
+**Sticky notes**
+
+[]{.sticky .green} **Green**: done / all good
+
+[]{.sticky .red} **Red**: stuck, please come over
+
+<br>
+
+::: {.muted .small}
+Already set up? Your Eddie, GitLab and Noteable logins were checked before today. Red sticky now if any of them don't work.
+:::
+:::
+::::
+
+::: notes
+**BELONG · 3 min.** Psychological safety (Edmondson 1999) and relatedness (self-determination theory): anxiety eats working memory, so lower it before asking anything of people.
+
+Avoid "just" and "simply" all day: for a novice they turn a hard step into a personal failing.
+
+Set-up was done before the day (pre-workshop email + self-check). Helpers sort out any red stickies quietly while you carry on: logins are not a whole-room activity.
+:::
+
+## Join the Wooclap
+
+:::: {.columns}
+::: {.column width="55%"}
+1. On your **phone** or laptop, go to **wooclap.com**
+2. Enter the event code:
+
+[{{< meta wooclap-code >}}]{.wooclap-code}
+
+::: {.muted .small}
+No account needed. Answers are anonymous.
+:::
+:::
+::: {.column width="45%"}
+[]{.wooclap-qr}
+:::
+::::
+
+[{{< meta wooclap-embed-url >}}]{.wooclap-embed-url}
+
+::: notes
+One minute. Watch the participant count in Wooclap.
+:::
+
+## Where are you starting from? {.wooclap-poll}
+
+[Answer on Wooclap · E1–E2 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.poll}
+**E1.** How comfortable are you with the **command line**?
+
+1 = never used it · 5 = live in it
+:::
+:::
+::: {.column width="55%"}
+::: {.poll}
+**E2.** How do you keep track of **versions** of your work *now*? (pick all that apply)
+
+- Renamed copies: `_v2`, `_final`…
+- Dropbox / OneDrive / SharePoint history
+- Emailing files to myself or others
+- Git (or another version control system)
+- I don't, really
+:::
+:::
+::::
+
+::: notes
+**ACTIVATE · 4 min.** Activating prior knowledge (Ambrose et al. 2010): new ideas attach to what's already there. Asking before teaching also helps retention, even when people can't answer well (the pretesting effect, Richland, Kornell & Kao 2009).
+
+E2 is honest market research: the room will be mostly "renamed copies". Say so, without judgement: "That's what I did for years."
+
+E1 is asked again at the end (E7), so people can see their own shift.
+:::
+
+## Wooclap E1–E2 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Show the spread. Point out the "renamed copies" bar: "Let's see how well that works."
+:::
+
+## Your turn: be the detective {.exercise}
+
+::: {.task time="6"}
+In pairs. Copy a colleague's project to your home directory on Eddie:
+
+```bash
+cp -r /exports/igmm/software-rl9/bac/dataWranglingGenomics/messy_project ~/
+cd ~/messy_project
+ls -l
+```
+
+1. Which script made `figure3.png`?
+2. What **changed** compared with the version before it?
+3. **How sure are you?** Could you prove it to Reviewer 2?
+:::
+
+::: notes
+**STRUGGLE · 6 min.** Productive failure (Kapur 2008, 2016) and "a time for telling" (Schwartz & Bransford 1998): learners get much more from an explanation once they've felt the problem it solves. It's also a low-stakes first go at the terminal: ls, cd, cat.
+
+Say up front: "This is designed to be frustrating. There isn't a clean answer, and that's the point."
+
+The trap: figure3.png is dated 2 May (copied to a shared drive), later than every script, so timestamps don't help. notes_old.txt says to use the FIXED script, but the FIXED script has its savefig commented out. Most pairs end up between analysis_final.py and analysis_final_FIXED.py.
+
+Fast finishers: `cat analysis_v2.py analysis_final.py` and spot the differences by eye. (Don't teach diff yet.)
+
+Path: put the folder in the workshop data directory first with make-messy-project.sh, and update the cp path on this slide.
+:::
+
+## What made that hard? {.wooclap-poll}
+
+[Answer on Wooclap · E3 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+::: {.poll}
+**E3.** In one or two words: what made that hard?
+:::
+
+::: {.fragment}
+Best guess: `analysis_final.py`, with the threshold lowered from 30 to 20 and a log scale added.\
+**But nothing in that folder can *prove* it.**
+:::
+
+::: notes
+Word cloud first, then the fragment. Expect: "names", "dates", "notes", "no history", "which is final?", "guessing".
+
+The honest answer is "we can't know". That's what makes the case for version control, so let it land.
+:::
+
+## Wooclap E3 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Read out four or five words from the cloud. They become the next slide.
+:::
+
+## So we need a tool that… {.needs}
+
+| You said… | So we need… | Git's answer |
+|:--|:--|:--|
+| "which one is final?" | **one** file, with its whole history | commits |
+| "dates were wrong" | a **record** of when and who | `git log` |
+| "couldn't see what changed" | **exact differences** between versions | `git diff` |
+| "notes didn't match" | a **message** attached to every change | commit messages |
+| "can't prove it" | a fixed label on **the submitted version** | tags |
+
+::: {.muted .small}
+That's version control: a dated, permanent **lab book for code**.
+:::
+
+::: notes
+Map the room's words (from E3) onto the left column as you go. Better still, use their exact words if they differ. People remember explanations they help generate (the generation effect, Slamecka & Graf 1978).
+
+This slide replaces "What is Git?" and "Why use it?" in the main deck: they've just experienced why.
+:::
+
+## Today's journey
+
+::: {.journey}
+[**Why Git**<br>the detective]{.stop .done}
+[**Your first commit**<br>on Eddie]{.stop .here}
+[**GitLab**<br>backup & share]{.stop}
+[**RStudio**<br>on Noteable]{.stop}
+[**Together**<br>conflicts]{.stop}
+[**History & undo**<br>log, revert]{.stop}
+[**Branches & tags**<br>answer Reviewer 2]{.stop}
+:::
+
+::: {.outcomes}
+By **16:00** you will be able to:
+
+- **record** your work as commits, and see exactly what changed
+- **back up and share** a project on the University GitLab
+- **work with a colleague** on the same files, and fix a conflict
+- **go back** to any version, and **tag** the one behind a paper
+:::
+
+::: notes
+**MAP · 3 min.** Gagné's second event (state the objectives) and an advance organiser (Ausubel 1960). This strip comes back at every section start with "you are here" moved along: that signalling cuts the load of keeping track (Mayer).
+
+Timings for the day: break 11:00 · lunch 12:30 · finish 16:00. Say them, don't put them on a slide.
+:::
+
+## Your goal for today {.wooclap-poll}
+
+[Answer on Wooclap · E4 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+::: {.poll}
+**E4.** What's **one thing** you want to be able to do with Git by 4 pm? A real project of yours is ideal.
+:::
+
+::: {.muted .small}
+We'll look back at these at the end of the day.
+:::
+
+::: notes
+**30 seconds.** Choosing a personal goal gives people autonomy (self-determination theory) and raises the value they put on the day (Eccles, expectancy-value).
+
+Glance at the answers at the break: if lots of people mention "share with my supervisor" or "my thesis", use those as examples all day.
+:::
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip data-id="file"}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .ghost}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .ghost}]{.box .coral data-id="repo"}
+:::
+
+Like a **lab book**: first you do the work on the bench…
+
+::: notes
+**MODEL · 4 min.** Concreteness fading (Fyfe et al. 2014): concrete analogy first, then the diagram, then the commands. The single most useful thing an introduction can give novices is a working mental model.
+:::
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip .ghost}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .staged data-id="file"}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .ghost}]{.box .coral data-id="repo"}
+:::
+
+…then you **choose** what goes on today's page…
+
+::: notes
+Staging = choosing what to write up. You can stage some changes and not others: that's the point of the next question.
+:::
+
+## How Git thinks {auto-animate="true"}
+
+::: {.flow}
+[Working directory [README.md]{.filechip .ghost}]{.box data-id="wd"}
+[`git add` →]{.arrow data-id="a1"}
+[Staging area [README.md]{.filechip .ghost}]{.box .teal data-id="st"}
+[`git commit` →]{.arrow data-id="a2"}
+[Repository [README.md]{.filechip .committed data-id="file"}]{.box .coral data-id="repo"}
+:::
+
+…and **sign and date** the page. It's permanent.
+
+- **Working directory**: the files you edit
+- **Staging area**: what you've chosen for the next snapshot
+- **Repository**: every snapshot (**commit**), forever
+
+::: notes
+Stop here and ask: "Any questions about the three boxes?" Then go straight to the concept question.
+:::
+
+## Check your model {.wooclap-poll}
+
+[Answer on Wooclap · E5 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+[Vote 1: on your own]{.pi-step}
+
+You edit **two** files, `a.py` and `b.py`. Then you run:
+
+```bash
+git add a.py
+git commit -m "Fix plotting bug"
+```
+
+::: {.options}
+What's in the commit?
+
+A. Changes to both `a.py` and `b.py`\
+B. Only the changes to `a.py`\
+C. Nothing: you have to add both files first\
+D. Only the changes to `b.py`
+:::
+
+::: notes
+**PEER INSTRUCTION · 4 min total** (Crouch & Mazur 2001; Smith et al. 2009, *Science*). Vote alone first; do NOT show the results yet.
+
+This is a diagnostic question: each wrong answer is a specific misconception. A = "commit saves everything" (didn't get staging). C = "Git is all or nothing". D = confusion about what add does.
+
+If over ~80% are right on vote 1, skip the discussion and go straight to the answer.
+:::
+
+## Talk to your neighbour {.wooclap-poll}
+
+[Answer on Wooclap · E6 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+[Convince your neighbour]{.pi-step .talk}
+
+You edit `a.py` and `b.py`, then run `git add a.py` and `git commit`.
+
+::: {.bigq}
+What's in the commit?
+:::
+
+::: {.muted .small}
+1 minute: find someone who voted differently and convince them. Then **vote again** (E6).
+:::
+
+::: notes
+The research finding: after discussion, the share of correct answers goes up even in pairs where *neither* person was right at first (Smith et al. 2009). The talking does the teaching.
+
+Show vote 1 and vote 2 side by side on the next slide: the shift is the payoff.
+:::
+
+## Wooclap E5–E6 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+::: notes
+Show both votes. Then reveal on the next slide.
+:::
+
+## Answer: B, only `a.py`
+
+::: {.flow}
+[Working directory [b.py (still modified)]{.filechip}]{.box}
+[`git add a.py` →]{.arrow}
+[Staging area [a.py]{.filechip .staged}]{.box .teal}
+[`git commit` →]{.arrow}
+[Repository [a.py]{.filechip .committed}]{.box .coral}
+:::
+
+A commit contains **exactly what's staged**: no more, no less. `b.py` is still waiting in the working directory.
+
+::: {.muted .small}
+That's a feature: one commit = one logical change ("Fix plotting bug"), even if you've touched five files.
+:::
+
+::: notes
+Explain the answer with the same three boxes. Whoever was right: ask them how they convinced their neighbour.
+:::
+
+## Tell Git who you are
+
+```{.bash code-line-numbers="|1|2|3"}
+git config --global user.name "Your Name"
+git config --global user.email "you@ed.ac.uk"
+git config --global init.defaultBranch main
+```
+
+Every commit is **signed** with this name and email, just like a lab book page.
+
+::: {.muted .small}
+Once per machine. Other settings come later, when we need them.
+:::
+
+::: notes
+**Just in time (3 min).** Only the three settings needed for a first commit. The editor setting comes before the first merge and pull.rebase before the first pull: fewer things to hold in mind right now (cognitive load, Sweller 1988).
+:::
+
+## Your first commit
+
+```{.bash code-line-numbers="|1|2|3|4|5|6"}
+mkdir ~/my-first-repo && cd ~/my-first-repo
+git init
+echo "# My first repository" > README.md
+git add README.md
+git commit -m "Add README"
+git log --oneline
+```
+
+:::: {.columns .small}
+::: {.column width="33%"}
+**Set up** · lines 1–2\
+make a folder; start tracking
+:::
+::: {.column width="33%"}
+**Make a change** · line 3\
+write a file
+:::
+::: {.column width="34%"}
+**Save a snapshot** · lines 4–6\
+stage → commit → check
+:::
+::::
+
+::: notes
+**WIN · 10 min.** Live-code it at typing speed; everyone types along (Carpentries). The labels under the code are subgoal labels (Margulieux et al.): they name the purpose of each group of commands, which helps novices transfer them to new problems.
+
+Before line 3, ask the room to predict (next slide).
+
+Aim to be here by about 10:10. An early success makes people expect to succeed (Eccles), which feeds motivation for the rest of the day.
+:::
+
+## Predict first
+
+[Predict]{.predict}
+
+You've just created `README.md` but haven't run `git add` yet.
+
+::: {.bigq}
+What will `git status` say?
+:::
+
+::: {.fragment}
+```{.output}
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+```
+
+Git **sees** the file but isn't tracking it yet: it's still on the bench.
+:::
+
+::: notes
+Ask for a prediction from a neighbour pair before revealing. Making a prediction turns watching into retrieval, and wrong predictions are where the learning is.
+
+Then everyone runs git status for real, then add, commit and log.
+:::
+
+## You made a commit {background-color="#0f8b8d"}
+
+::: {.journey}
+[**Why Git**<br>the detective]{.stop .done}
+[**Your first commit**<br>on Eddie]{.stop .done}
+[**GitLab**<br>backup & share]{.stop .here}
+[**RStudio**<br>on Noteable]{.stop}
+[**Together**<br>conflicts]{.stop}
+[**History & undo**<br>log, revert]{.stop}
+[**Branches & tags**<br>answer Reviewer 2]{.stop}
+:::
+
+::: {.bigq style="color:#fff"}
+Green sticky up when `git log` shows your commit.
+:::
+
+::: notes
+Count the green stickies. Celebrate it out loud. Then continue with the main deck from Episode 03 "Make a change" onwards (or Episode 04 if time is tight). Episode 02's remaining settings are covered just in time later.
+
+From here the main deck takes over; the next slide is for the END of the day.
+:::
+
+# End of the day {.section-slide background-color="#13294b"}
+
+[Close the loop]{.ep-num}
+
+[Back to Reviewer 2]{.ep-q}
+
+::: notes
+Jump here (press M for the menu) in the last 15 minutes of the day, after Branching & Tagging.
+:::
+
+## Answer Reviewer 2 {.exercise}
+
+::: {.task time="5"}
+The same project, but this time someone used Git:
+
+```bash
+cp -r /exports/igmm/software-rl9/bac/dataWranglingGenomics/tidy_project ~/
+cd ~/tidy_project
+```
+
+1. Which commit made `figure3.png`?
+2. What changed compared with the version before it?
+3. Which version was **submitted**?
+:::
+
+::: {.answer .fragment}
+```bash
+git log --oneline -- figure3.png        # 1. the commit that made it
+git show v1.0-submitted --stat          # 3. tagged at submission
+git diff v1.0-submitted~1 v1.0-submitted -- analysis.py   # 2. exactly what changed
+```
+`QUAL > 30` → `QUAL > 20`, log scale added, `savefig("figure3.png")`. **Provable**, with dates and a message.
+:::
+
+::: notes
+**CLOSE THE LOOP · 5 min.** The S in ARCS (satisfaction) plus spaced retrieval of the whole day (Roediger & Karpicke 2006). Same question as the morning: this morning it took six minutes and you couldn't prove it; now it takes 30 seconds.
+
+Ask: "So what would you write back to Reviewer 2?"
+:::
+
+## Before you go {.wooclap-poll}
+
+[Answer on Wooclap · E7–E8 · {{< meta wooclap-code >}}]{.wooclap-badge}
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.poll}
+**E7.** How comfortable are you with the **command line** now?
+
+1–5, same as this morning
+:::
+:::
+::: {.column width="50%"}
+::: {.poll}
+**E8.** Look at your goal from this morning (E4). Can you do it now?
+
+Yes · Partly · Not yet
+:::
+:::
+::::
+
+::: notes
+Show E7 next to E1: the shift is the evidence. For anyone answering "Not yet" on E8, point them at the lesson website and offer a follow-up drop-in.
+
+Four weeks later, send one question: "Have you committed to a repository since the workshop?" That's the real measure of whether it worked (transfer).
+:::
+
+## Wooclap E7–E8 · live {.wooclap-live}
+
+[]{.wooclap-embed}
+
+## About this opening {.research}
+
+| Move | Research basis | In this deck |
+|:--|:--|:--|
+| Prepare | Cognitive load (Sweller 1988); Carpentries pre-workshop setup | Logins checked before the day |
+| Hook | Gagné's events of instruction; Keller's ARCS (attention, relevance) | Reviewer 2 email |
+| Belong | Psychological safety (Edmondson 1999); self-determination theory | Norms, helpers, sticky notes |
+| Activate | Prior knowledge (Ambrose et al. 2010); pretesting effect (Richland et al. 2009) | E1–E2 before any teaching |
+| Struggle | Productive failure (Kapur 2016); "A time for telling" (Schwartz & Bransford 1998) | The messy folder |
+| Generate | Generation effect (Slamecka & Graf 1978) | "So we need a tool that…" from E3 |
+| Map | Advance organisers (Ausubel 1960); signalling (Mayer) | Journey strip + outcomes + own goal |
+| Model | Concreteness fading (Fyfe et al. 2014); mental models | Lab-book analogy → boxes → commands |
+| Check | Peer instruction (Crouch & Mazur 2001; Smith et al. 2009) | E5/E6 vote, discuss, re-vote |
+| Win | Expectancy-value (Eccles); subgoal labels (Margulieux et al.) | First commit by ~10:10 |
+| Close | ARCS satisfaction; retrieval practice (Roediger & Karpicke 2006) | Answer Reviewer 2 with the tidy repo |
+
+::: notes
+For co-instructors: this table is the rationale. It's an experiment: compare E1→E7 shifts, E5→E6 gains, red-sticky counts and the 4-week follow-up against a run with the original opening.
+:::

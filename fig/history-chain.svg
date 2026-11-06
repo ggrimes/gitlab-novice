@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 290" width="1000" height="290" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f8b8d"/></marker><marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ec6b56"/></marker><marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13294b"/></marker><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6770"/></marker></defs>
+<line x1="90" y1="110" x2="690" y2="110" stroke="#13294b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="90" cy="110" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="290" cy="110" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="490" cy="110" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<circle cx="690" cy="110" r="17" fill="#13294b" stroke="#13294b" stroke-width="5"/>
+<text x="90" y="72" text-anchor="middle" font-size="21" font-weight="400" fill="#5b6770" font-family="'JetBrains Mono', Menlo, monospace">72041c0</text>
+<text x="290" y="72" text-anchor="middle" font-size="21" font-weight="400" fill="#5b6770" font-family="'JetBrains Mono', Menlo, monospace">3b9e1f2</text>
+<text x="490" y="72" text-anchor="middle" font-size="21" font-weight="400" fill="#5b6770" font-family="'JetBrains Mono', Menlo, monospace">a41c7d0</text>
+<text x="690" y="72" text-anchor="middle" font-size="21" font-weight="400" fill="#5b6770" font-family="'JetBrains Mono', Menlo, monospace">9f2e6b1</text>
+<text x="90" y="168" text-anchor="middle" font-size="24" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~3</text>
+<text x="290" y="168" text-anchor="middle" font-size="24" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~2</text>
+<text x="490" y="168" text-anchor="middle" font-size="24" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD~1</text>
+<text x="690" y="168" text-anchor="middle" font-size="24" font-weight="700" fill="#0f8b8d" font-family="'JetBrains Mono', Menlo, monospace">HEAD</text>
+<line x1="710" y1="110" x2="724" y2="110" stroke="#13294b" stroke-width="3"/><rect x="724" y="90" width="192" height="40" rx="20" fill="#13294b"/><text x="820.0" y="118" text-anchor="middle" font-size="22" font-weight="700" fill="#fff" font-family="'JetBrains Mono', Menlo, monospace">main  ← HEAD</text>
+<path d="M690,188 Q490,250 300,190" fill="none" stroke="#ec6b56" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ac)"/>
+<text x="490" y="270" text-anchor="middle" font-size="21" font-weight="700" fill="#ec6b56">HEAD~2 = start at HEAD, count two commits back</text>
+</svg>
