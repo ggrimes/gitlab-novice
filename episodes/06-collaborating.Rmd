@@ -14,7 +14,7 @@ exercises: 15
 -   Describe multiple models of collaboration using Git
 -   Demonstrate how to add collaborators and manage permissions in GitLab
 -   Practice cloning, committing, and pushing to a shared repository
--   Understand how to resolve common issues like push rejections and merge conflicts
+-   Resolve a rejected push and a simple merge conflict
 :::
 
 ## Collaborating with Git
@@ -161,7 +161,7 @@ Then resolve any conflicts if necessary and try pushing again.
 ## Why was my push rejected?
 
 Person 1 and Person 2 both cloned the repository at the same commit. Person 1
-edits `analysis.R`, commits and pushes. Person 2 then edits `README.md`,
+edits `Src/hello.py`, commits and pushes. Person 2 then edits `README.md`,
 commits and runs `git push`.
 
 1. What happens when Person 2 pushes?
