@@ -49,7 +49,8 @@ To build the lesson locally, see the
 
 ## Maintainer
 
-Graeme Grimes, The University of Edinburgh (<Graeme.Grimes@ed.ac.uk>)
+Graeme Grimes, The University of Edinburgh (<Graeme.Grimes@ed.ac.uk>,
+ORCID [0000-0002-3106-5996](https://orcid.org/0000-0002-3106-5996))
 
 ## Licence
 
