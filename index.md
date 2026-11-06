@@ -33,6 +33,20 @@ No previous experience of Git is needed.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Lesson objectives
+
+By the end of this lesson, learners will be able to:
+
+1. Track changes to their own project with Git, and inspect and restore
+   earlier versions of their work.
+2. Share a project on GitLab and collaborate with others in a shared
+   repository, resolving rejected pushes and merge conflicts.
+3. Use branches to keep experimental work separate, and tags to mark the
+   version of their code used for a result.
+
+Each episode's objectives build towards one or more of these. The
+[lesson design notes](instructors/design-notes.md) show how they map.
+
 ## What the lesson covers
 
 - Why version control is useful
