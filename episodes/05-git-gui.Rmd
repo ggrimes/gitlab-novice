@@ -1,5 +1,5 @@
 ---
-title: "Using Git with a Graphical User Interface RStudio"
+title: "Using Git with a Graphical User Interface (RStudio)"
 teaching: 15
 exercises: 2
 ---

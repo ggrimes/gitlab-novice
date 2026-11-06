@@ -1,11 +1,5 @@
-# This template CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to replace its contents
-# with information about your lesson.
-# Remember to update this file periodically, 
-# ensuring that the author list and other fields remain accurate.
-
 cff-version: 1.2.0
-title: FIXME
+title: Introduction to Git and GitLab
 message: >-
   Please cite this lesson using the information in this file
   when you refer to it in publications, and/or if you
@@ -13,10 +7,26 @@ message: >-
   training material.
 type: dataset
 authors:
-  - given-names: FIXME
-    family-names: FIXME
+  - given-names: Graeme
+    family-names: Grimes
+    affiliation: The University of Edinburgh
+    orcid: 'https://orcid.org/0000-0002-3106-5996'
 abstract: >-
-  FIXME Replace this with a short abstract describing the
-  lesson, e.g. its target audience and main intended
-  learning objectives.
+  A hands-on introduction to version control with Git and
+  GitLab for researchers, analysts and postgraduate students
+  who work with data and code but have not used version
+  control before. Learners configure Git, record changes
+  locally, work with remote repositories on GitLab, use Git
+  from RStudio, collaborate in a shared repository, explore
+  and restore history, ignore files, and use branches and
+  tags. The setup uses University of Edinburgh services, with
+  gitlab.com as an alternative.
+repository-code: 'https://github.com/ggrimes/gitlab-novice'
+url: 'https://ggrimes.github.io/gitlab-novice/'
+keywords:
+  - git
+  - gitlab
+  - version control
+  - lesson
+  - The Carpentries
 license: CC-BY-4.0

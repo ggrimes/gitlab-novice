@@ -1,7 +1,7 @@
 ---
 title: "Collaborating"
 teaching: 15
-exercises: 3
+exercises: 15
 ---
 
 ::: questions
@@ -28,6 +28,35 @@ There are several ways to collaborate using Git:
 -   **Shared repository model**: You give collaborators direct access to your repository. This is quick but requires trust.
 
 -   **Fork-and-pull model**: A collaborator creates a copy (fork) of your repository, makes changes, and submits a *merge request* (also called a pull request). This is commonly used in open-source projects. It may not work between two private repositories.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Which model?
+
+For each situation, would you choose the shared repository model or the
+fork-and-pull model?
+
+1. You and a colleague in the same research group are writing analysis
+   scripts for a joint paper.
+2. You want to suggest a fix to a public R package maintained by people you
+   have never met.
+3. A new student joins your lab and you want to review their changes before
+   they reach `main`.
+
+:::::::::::::::: solution
+
+1. **Shared repository.** You know and trust each other, and you both need to
+   push changes regularly.
+2. **Fork and pull.** You don't have permission to push to their repository,
+   so you work in your own fork and open a merge request.
+3. **Either can work.** A shared repository with a protected `main` branch,
+   where the student works on a branch and opens a merge request, gives you
+   the chance to review. Forking also works if you'd rather not give them
+   write access.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 For this exercise, we assume a **shared repository trust model**. That means you'll work directly in each other's repositories.
 
@@ -127,6 +156,31 @@ git pull
 Then resolve any conflicts if necessary and try pushing again.
 :::
 
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Why was my push rejected?
+
+Person 1 and Person 2 both cloned the repository at the same commit. Person 1
+edits `analysis.R`, commits and pushes. Person 2 then edits `README.md`,
+commits and runs `git push`.
+
+1. What happens when Person 2 pushes?
+2. What should Person 2 do next?
+3. Will there be a merge conflict?
+
+:::::::::::::::: solution
+
+1. The push is **rejected**. The remote now has a commit (Person 1's) that
+   Person 2 doesn't have locally, so Git refuses to overwrite it.
+2. Run `git pull` to fetch and merge Person 1's commit, then `git push` again.
+3. **No.** The two people changed different files, so Git can merge the
+   changes automatically. A conflict only happens when both people change the
+   same lines of the same file.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Merge Conflicts
 
 Sometimes two collaborators edit the same part of a file. This creates a *merge conflict*.
@@ -142,6 +196,51 @@ git add filename
 git commit -m "Resolve conflict in filename"
 git push
 ```
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Create and resolve a conflict
+
+Working with your partner in the shared repository:
+
+1. Both of you run `git pull` so you start from the same commit.
+2. Both of you edit the **same line** of `README.md`, for example the title,
+   and write something different.
+3. Person 1 commits and pushes first.
+4. Person 2 commits, then tries to push. When the push is rejected, run
+   `git pull`.
+5. Person 2 opens `README.md`, resolves the conflict, then adds, commits and
+   pushes.
+6. Person 1 runs `git pull` and checks that the resolved version has arrived.
+
+Finally, run `git log --oneline --graph` and find the merge commit.
+
+:::::::::::::::: solution
+
+After step 4, Person 2 sees a message like this:
+
+```output
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+`README.md` now contains both versions between the `<<<<<<<`, `=======` and
+`>>>>>>>` markers. To resolve it, Person 2 edits the file to keep the text
+they want (one version, the other, or a mix of both) and **deletes all three
+marker lines**. Then:
+
+```bash
+git add README.md
+git commit -m "Resolve conflict in README title"
+git push
+```
+
+In `git log --oneline --graph`, the merge commit is where the two lines of
+history join.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 ::: callout
 ## Optional: Cache Your Credentials
